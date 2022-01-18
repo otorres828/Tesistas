@@ -12,19 +12,32 @@ class Crud {
         $this->conexion = (new Conexion())->conectar();
         $this->tabla = $tabla;
     }
-
+    // Devuelve un array que contiene todas las filas del conjunto de resultados
     public function get() {
         try {
            
             $this->sql = "SELECT * FROM {$this->tabla} {$this->wheres}";
+            var_dump($this->sql);
             $query = $this->conexion->prepare($this->sql);
             $query->execute();
             return $query->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
-     
     }
+     // Devuelve la siguiente fila de un conjunto de resultados
+     public function getOb() {
+        try {
+           
+            $this->sql = "SELECT * FROM {$this->tabla} {$this->wheres}";
+            var_dump($this->sql);
+            $query = $this->conexion->prepare($this->sql);
+            $query->execute();
+            return $query->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }
+    }   
 
     public function first() {
         $lista = $this->get();
@@ -75,13 +88,16 @@ class Crud {
     //strpos = encuentra la posicion de la primera ocurrencia
     public function where($llave, $condicion, $valor) {
         $this->wheres .= (strpos($this->wheres, "WHERE")) ? " AND " : " WHERE ";
-        $this->wheres .= "`$llave` $condicion " . ((is_string($valor)) ? "\"$valor\"" : $valor) . " ";
+        $valor = "'" .$valor."'";
+        $this->wheres .= "$llave $condicion " . ((is_string($valor)) ? $valor : $valor) . " ";
         return $this;
     }
 
     public function orWhere($llave, $condicion, $valor) {
         $this->wheres .= (strpos($this->wheres, "WHERE")) ? " OR " : " WHERE ";
-        $this->wheres .= "`$llave` $condicion " . ((is_string($valor)) ? "\"$valor\"" : $valor) . " ";
+        //"\"$valor\"" 
+        $valor = "'" .$valor."'";
+        $this->wheres .= "$llave $condicion " . ((is_string($valor)) ? $valor: $valor) . " ";
         return $this;
     }
 

@@ -97,7 +97,7 @@ class Router
                     throw new \Exception("Method $action in controller $controller cannot be called directly - remove the Action suffix to call this method");
                 }
             } else {
-                throw new \Exception("Controller class $controller not found");
+                throw new \Exception("No se pudo encontrar el controllador $controller ");
             }
         } else {
             throw new \Exception('No route matched.', 404);
