@@ -8,7 +8,8 @@ $router->add('login', ['controller' => 'autenticacion\AuthController', 'method' 
 $router->add('login-iniciar', ['controller' => 'autenticacion\AuthController', 'method' => 'comprobarLogin']);
 
 
-//TESISTAS
+//ESCUELA
+$router->add('administrador', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);
 
 
 
