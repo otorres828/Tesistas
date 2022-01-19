@@ -8,5 +8,8 @@ $router->add('login', ['controller' => 'autenticacion\AuthController', 'method' 
 $router->add('login-iniciar', ['controller' => 'autenticacion\AuthController', 'method' => 'comprobarLogin']);
 
 
+//TESISTAS
+
+
 
 $router->dispatch($_SERVER['QUERY_STRING']);
