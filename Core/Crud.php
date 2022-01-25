@@ -30,7 +30,6 @@ class Crud {
         try {
            
             $this->sql = "SELECT * FROM {$this->tabla} {$this->wheres}";
-            var_dump($this->sql);
             $query = $this->conexion->prepare($this->sql);
             $query->execute();
             return $query->fetch(PDO::FETCH_ASSOC);

@@ -18,7 +18,7 @@
 <body class="text-center">
     <div class="container ">
 
-        <main class="form-signin">
+        <div class="pt-10">
             <form  action="login-iniciar" method="POST">
 
                 <?php session_start(); if (isset($_SESSION['mensaje'])) { ?>
@@ -27,8 +27,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <?php session_unset(); session_destroy(); ?>
-                <?php } ?>
-
+                <?php } echo $estudiante['name'];?>
+                
                 <h1 class="h3 mb-3 fw-normal">Inicia sesion 😉</h1>
 
                 <div class="form-floating">
@@ -49,7 +49,7 @@
 
                 <p class="mt-5 mb-3 text-muted">&copy; 2022 TESISTAS-UCAB</p>
             </form>
-        </main>
+        </div>
     </div>
 
 

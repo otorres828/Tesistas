@@ -42,10 +42,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Panel de Control</a>
+        <a href="index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Mensajes</a>
+        <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
 
@@ -215,7 +215,9 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
-              <p>Profesores<i class="fas fa-angle-left right"></i>
+              <p>
+                Profesores
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -342,11 +344,7 @@
           <div class="col-sm-6">
             <h1 class="m-0">Dashboard</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Panel de Control</a></li>
-            </ol>
-          </div><!-- /.col -->
+        
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -409,9 +407,14 @@
           <div class="col-sm-6">
             <h1 class="m-0">Pagina de Inicio</h1>
           </div><!-- /.col -->
-       
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Starter Page</li>
+            </ol>
+          </div><!-- /.col -->
         </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
     </div>
         <!-- /.row -->
         <!-- Main row -->
