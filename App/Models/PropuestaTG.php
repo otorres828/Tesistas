@@ -29,5 +29,6 @@ class PropuestaTG extends ModeloGenerico{
         return $this->where('cedula','=','cedulaautenticado')->get();
     }
 
-
+    public function comosemepegue(){
+    }
 }

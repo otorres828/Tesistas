@@ -27,7 +27,11 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     <?php session_unset(); session_destroy(); ?>
-                <?php } echo $estudiante['name'];?>
+                <?php } 
+                foreach($estudiantes as $estudiante){
+                    echo $estudiante['name'];echo "</br>";
+                }
+                ?>
                 
                 <h1 class="h3 mb-3 fw-normal">Inicia sesion 😉</h1>
 

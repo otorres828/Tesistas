@@ -15,9 +15,7 @@ class Crud {
     // Devuelve un array que contiene todas las filas del conjunto de resultados
     public function get() {
         try {
-           
             $this->sql = "SELECT * FROM {$this->tabla} {$this->wheres}";
-            var_dump($this->sql);
             $query = $this->conexion->prepare($this->sql);
             $query->execute();
             return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -28,7 +26,6 @@ class Crud {
      // Devuelve la siguiente fila de un conjunto de resultados
      public function getOb() {
         try {
-           
             $this->sql = "SELECT * FROM {$this->tabla} {$this->wheres}";
             $query = $this->conexion->prepare($this->sql);
             $query->execute();
@@ -88,7 +85,7 @@ class Crud {
     public function where($llave, $condicion, $valor) {
         $this->wheres .= (strpos($this->wheres, "WHERE")) ? " AND " : " WHERE ";
         $valor = "'" .$valor."'";
-        $this->wheres .= "$llave $condicion " . ((is_string($valor)) ? $valor : $valor) . " ";
+        $this->wheres .= "$llave $condicion  $valor  ";
         return $this;
     }
 

@@ -10,7 +10,7 @@ require '../Core/ModeloGenerico.php';
 class Auth extends ModeloGenerico{
   
     public function __construct($propiedades = null) {
-        parent::__construct("users", Auth::class, $propiedades);
+        parent::__construct("teachings", Auth::class, $propiedades);
     }
 
     public function correo($correo){

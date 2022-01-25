@@ -8,8 +8,10 @@ use \Core\View;
 class AuthController extends \Core\Controller{
 
     public function index() {
-        $estudiante = (new Auth())->where('id','=',2)->getOb();
-        View::render('autenticacion/login.php',['estudiante'=>$estudiante]);
+        $estudiantes = (new Auth())->where('status','=',2)->where('user_id','=',20)->get();
+
+
+        View::render('autenticacion/login.php',['estudiantes'=>$estudiantes]);
     }
 
     public function comprobarLogin() {

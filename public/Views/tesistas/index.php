@@ -188,16 +188,6 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a href="cargar-propuesta" class="nav-link">
-            <i class="fas fa-users"></i>
-              <p>
-                Cargar Propuesta
-                
-              </p>
-            </a>
-           
-          </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link">
