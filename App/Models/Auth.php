@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Core\View;
 use Exception;
 use ModeloGenerico;
 use PDO;
@@ -38,4 +39,17 @@ class Auth extends ModeloGenerico{
        
     }
 
+    public static function verificado(){
+        session_start();
+        if(!isset($_SESSION['cedula']) && !isset($_SESSION['modelo'])){
+            session_destroy();
+            header("Location: login");                   
+        }
+    }
+
+    public static function rol($tabla){
+        if(isset($_SESSION['modelo']))
+            if($_SESSION['modelo']!=$tabla)
+                header("Location: error");                   
+    }
 }

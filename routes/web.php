@@ -1,8 +1,8 @@
 <?php
 
 $router = new Core\Router();
-
-$router->add('', ['controller' => 'autenticacion\AuthController', 'method' => 'index']);
+//ERRORES
+$router->add('error', ['controller' => 'autenticacion\AuthController', 'method' => 'error']);
 //LOGIN
 $router->add('login', ['controller' => 'autenticacion\AuthController', 'method' => 'index']);
 $router->add('login-iniciar', ['controller' => 'autenticacion\AuthController', 'method' => 'comprobarLogin']);
@@ -10,7 +10,7 @@ $router->add('login-cerrarsesion', ['controller' => 'autenticacion\AuthControlle
 
 
 //ESCUELA
-$router->add('administrador', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);
+$router->add('escuela', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);
 
 //TESISTAS
 $router->add('tesistas',['controller' => 'tesistas\TesistasController','method'=>'index']);

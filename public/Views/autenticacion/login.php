@@ -26,8 +26,7 @@
                         <?php echo $_SESSION['mensaje']; ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    <?php session_unset(); ?>
-                <?php } ?>
+                <?php } session_destroy();?>
                 
                 <h1 class="h3 mb-3 fw-normal">Inicia sesion 😉</h1>
 

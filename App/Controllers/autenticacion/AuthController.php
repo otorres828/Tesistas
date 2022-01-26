@@ -8,7 +8,19 @@ use \Core\View;
 class AuthController extends \Core\Controller{
 
     public function index() {
-        View::render('autenticacion/login.php',['usuarios'=>(new Auth)->get()]);
+        session_start();
+        if(isset($_SESSION['cedula'])){
+            $modelo = $_SESSION['modelo'];
+            if($modelo=='Tesistas'){
+                header("Location: tesistas");                    
+            }else if($modelo=='Profesores'){
+                header("Location: profesores");                    
+            }else{
+                header("Location: Escuela");                    
+            }
+        }else
+
+        View::render('autenticacion/login.php');
     }
 
     public function comprobarLogin() {
@@ -19,13 +31,18 @@ class AuthController extends \Core\Controller{
             $resultado=$autenticar->correo($_POST['correo']);
             if($resultado>0){
                 if($autenticar->clave($_POST['correo'], $_POST['clave'])){ 
-                    
-                    $_SESSION['mensaje'] = "SESION INICIADA";
-                    $_SESSION['colorcito'] = "success";
 
                     $resultado=(new Auth())->where('correo','=',$_POST['correo'])->getOb();
-                    $_SESSION['id_usuario'] = $resultado['id_usuario'];
-                    header("Location: administrador");                    
+                    $_SESSION['modelo'] = $resultado['modelo'];
+                    $_SESSION['cedula'] = $resultado['cedula'];
+                    $modelo = $_SESSION['modelo'];
+                    if($modelo=='Tesistas'){
+                        header("Location: tesistas");                    
+                    }else if($modelo=='Profesores'){
+                        header("Location: profesores");                    
+                    }else{
+                        header("Location: Escuela");                    
+                    }
                 }else{
                     $_SESSION['mensaje'] = "CLAVE ERRONEA";
                     $_SESSION['colorcito'] = "danger";
@@ -46,11 +63,15 @@ class AuthController extends \Core\Controller{
 
     public function cerrarSesion(){
         session_start();
-        if (isset($_SESSION['id_usuario'])) {
+        if (isset($_SESSION['cedula'])) {
             session_unset();
             $_SESSION['mensaje'] = "SESION CERRADA  ";
             $_SESSION['colorcito'] = "danger";
             header("Location: login");
         }
+    }
+
+    public function error(){
+        View::render('errores\404.php');
     }
 }

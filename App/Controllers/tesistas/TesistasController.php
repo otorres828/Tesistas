@@ -9,7 +9,10 @@ use \Core\View;
 class TesistasController extends \Core\Controller{
 
     public function index() {
-        View::render('tesistas/index.php',); 
+        Auth::verificado();
+        Auth::rol('Tesistas');
+        $tesista=(new Auth())->where('cedula','=',$_SESSION['cedula'])->getOb();
+        View::render('tesistas/index.php',['tesista'=>$tesista]); 
     }
 
     public function guardarpropuesta(){
