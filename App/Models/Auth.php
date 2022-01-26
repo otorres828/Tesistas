@@ -28,11 +28,10 @@ class Auth extends ModeloGenerico{
     public function clave($correo, $clave){
         $resultado=$this->where('correo','=',$correo)->getOb();
         $cla=password_verify($clave, $resultado['contraseña']);
-        if($cla){
-            // session_start();
-            // $_SESSION['user_id'] = $resultado['id'];
-            // $_SESSION['username']=  $resultado['name'];
+        if($cla>0){
+           
             return 1;
+            
         }else{
             return 0;           
         }
