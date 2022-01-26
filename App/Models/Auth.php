@@ -10,11 +10,11 @@ require '../Core/ModeloGenerico.php';
 class Auth extends ModeloGenerico{
   
     public function __construct($propiedades = null) {
-        parent::__construct("teachings", Auth::class, $propiedades);
+        parent::__construct("usuarios", Auth::class, $propiedades);
     }
 
     public function correo($correo){
-        $resultado=$this->where('email','=',$correo)->getOb();
+        $resultado=$this->where('correo','=',$correo)->getOb();
         // $query = $this->conexion->prepare('SELECT * FROM users WHERE email = :correo');
         // $query->bindParam(':correo', $correo);
         // $query->execute();
@@ -26,9 +26,9 @@ class Auth extends ModeloGenerico{
     }
 
     public function clave($correo, $clave){
-        $resultado=$this->where('email','=',$correo)->getOb();
-        $cla=password_verify($clave, $resultado['password']);
-        if($cla>0){
+        $resultado=$this->where('correo','=',$correo)->getOb();
+        $cla=password_verify($clave, $resultado['contraseña']);
+        if($cla){
             // session_start();
             // $_SESSION['user_id'] = $resultado['id'];
             // $_SESSION['username']=  $resultado['name'];

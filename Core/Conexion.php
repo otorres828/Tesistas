@@ -34,7 +34,7 @@ class Conexion {
 
             $contraseña = "26269828";
             $usuario = "postgres";
-            $nombreBaseDeDatos = "mansion-de-cristo";
+            $nombreBaseDeDatos = "tesistas";
             $rutaServidor = "localhost";
             $puerto = "5432";
             try {

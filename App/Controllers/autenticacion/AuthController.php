@@ -8,15 +8,12 @@ use \Core\View;
 class AuthController extends \Core\Controller{
 
     public function index() {
-        $estudiantes = (new Auth())->where('status','=',2)->where('user_id','=',20)->get();
-
-
-        View::render('autenticacion/login.php',['estudiantes'=>$estudiantes]);
+        View::render('autenticacion/login.php',['usuarios'=>(new Auth)->get()]);
     }
 
     public function comprobarLogin() {
         session_start();
-        
+    
         $autenticar = new Auth();
         if (!empty($_POST['correo']) && !empty($_POST['clave'])) {
             $resultado=$autenticar->correo($_POST['correo']);
