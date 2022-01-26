@@ -26,9 +26,15 @@ class PropuestaTG extends ModeloGenerico{
     }
 
     public function mispropuestas(){
-        return $this->where('cedula','=','cedulaautenticado')->get();
+        $sql = "SELECT PropuestaTG.Num_C,PropuestaTG.Titulo,observaciones,modalidad,Nro_Comite,Nro_Consejo,Cedula_Revisor,Cedula_Tutor 
+                from PropuestaTG
+                RIGH JOIN Presenta 
+                ON PropuestaTG.cedula=Presenta.cedula where Presenta.cedula=".$this->cedula();
     }
 
-    public function comosemepegue(){
+
+    public static function cedula(){
+        $cedula = $_SESSION['cedula'];
+        return $cedula;
     }
 }

@@ -9,7 +9,6 @@ use \Core\View;
 class TesistasController extends \Core\Controller{
 
     public function index() {
-        // $mispropuestas= (new PropuestaTG())->where('cedula','=','cedulaautenticado')->get();
         View::render('tesistas/index.php',); 
     }
 

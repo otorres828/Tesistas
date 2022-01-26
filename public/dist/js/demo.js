@@ -60,7 +60,7 @@
   // Checkboxes
 
   $container.append(
-    '<h5>Customize AdminLTE</h5><hr class="mb-2"/>'
+    '<h5>Personalizar Plataforma</h5><hr class="mb-2"/>'
   )
 
   var $dark_mode_checkbox = $('<input />', {
