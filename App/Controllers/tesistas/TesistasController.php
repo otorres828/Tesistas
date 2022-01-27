@@ -9,25 +9,43 @@ use \Core\View;
 class TesistasController extends \Core\Controller{
 
     public function index() {
-        Auth::verificado();
-        Auth::rol('Tesistas');
+        $this->autenticar();
+        
         $tesista=(new Auth())->where('cedula','=',$_SESSION['cedula'])->getOb();
-        View::render('tesistas/index.php',['tesista'=>$tesista]); 
+        $mispropuestas=(new PropuestaTG())->mispropuestas($_SESSION['cedula']);
+        View::render('tesistas/index.php',['tesista'=>$tesista,
+                                            'mispropuestas'=>$mispropuestas
+                                            ]); 
     }
 
-    public function guardarpropuesta(){
-        session_start();
-        $objeto= new PropuestaTG();
-        $valor = $objeto->comprobarnombre($_POST['nombrepropuesta']);
-        if($valor==0){
-            $objeto->insertar($_POST['nombrepropuesta'], $_POST['flexRadioDefault'],$_POST['descripcion']);
-            $_SESSION['mensaje'] = "OBJETO INSERTADO";
-            $_SESSION['colorcito'] = "success";
-        } else{
-            $_SESSION['mensaje'] = "OBJETO NO INSERTADO";
-            $_SESSION['colorcito'] = "danger";
-        }
-        // header("Location: tesistas");                    
+    public function perfil(){
+        $this->autenticar();
+        $tesista=(new Auth())->where('cedula','=',$_SESSION['cedula'])->getOb();
+        View::render('tesistas/perfil.php',['tesista'=>$tesista]); 
+    }
 
+    public function propuestasaprobadas(){
+        $autenticacion= new Auth();
+        $autenticacion->verificado();
+        $autenticacion->rol('Tesistas'); 
+
+        $tesista=(new Auth())->where('cedula','=',$_SESSION['cedula'])->getOb();
+        $propuestasaprobadas="";
+        View::render('tesistas/propuestasaprobadas.php',['tesista'=>$tesista,
+                                                         'propuestasaprobadas'=>$propuestasaprobadas]);
+    }
+
+    public function modificarClave(){
+        if(isset($_POST['modificarclave'])){
+            if(isset($_POST['claveactual']) && isset($_POST['nuevaclave'])){
+                echo "existen las claves;";
+            }
+        }
+    }
+
+    private function autenticar(){
+        $autenticacion= new Auth();
+        $autenticacion->verificado();
+        $autenticacion->rol('Tesistas');
     }
 }

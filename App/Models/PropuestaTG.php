@@ -2,39 +2,19 @@
 
 namespace App\Models;
 
-use Exception;
 use ModeloGenerico;
-use PDO;
 
-require '../Core/ModeloGenerico.php';
+require_once '../Core/ModeloGenerico.php';
 class PropuestaTG extends ModeloGenerico{
-  
+    public $sql;
+    
     public function __construct($propiedades = null) {
-        parent::__construct("PropuestaTG", PropuestaTG::class, $propiedades);
+        parent::__construct("propuestatg", PropuestaTG::class, $propiedades);
     }
 
-    public function comprobarnombre($nombre){
-        $resultado=$this->where('nombre','=',$nombre)->getOb();
-        if($resultado>0){
-            return 1;
-        }
-        return 0;
+    public function mispropuestas($cedula){
+        $this->sql = "SELECT num_c,titulo,modalidad,observaciones FROM propuestatg WHERE Num_C = ANY(SELECT Num_C FROM Presentan WHERE Cedula =$cedula)";             
+        return $this->sentencia($this->sql);
     }
 
-    public function insertar($nombre,$tipo,$descripcion){
-        
-    }
-
-    public function mispropuestas(){
-        $sql = "SELECT PropuestaTG.Num_C,PropuestaTG.Titulo,observaciones,modalidad,Nro_Comite,Nro_Consejo,Cedula_Revisor,Cedula_Tutor 
-                from PropuestaTG
-                RIGH JOIN Presenta 
-                ON PropuestaTG.cedula=Presenta.cedula where Presenta.cedula=".$this->cedula();
-    }
-
-
-    public static function cedula(){
-        $cedula = $_SESSION['cedula'];
-        return $cedula;
-    }
 }

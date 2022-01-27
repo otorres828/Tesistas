@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tesista | Panel de Control</title>
+  <title>Tesista | Propuestas Aprobadas</title>
   <?php include_once('../public/Views/componentes/cssadminlte.php');?>
   <!-- DATATABLES -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -27,6 +27,7 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
+
           <!-- Notifications Dropdown Menu -->
           <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
@@ -156,74 +157,9 @@
           <div class="container-fluid">
               <div class="row mb-2">
                 <div class="col-sm-6">
-                  <div  class = "btn btn-primary "  data-bs-toggle="modal" data-bs-target="#crearpropuesta" data-bs-whatever="@mdo" >Crear Propuesta</div>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                  <h1 class="float-sm-right"><strong>Mis Propuestas</strong></h1>
+                  <h1 class="float-sm"><strong>Mis Propuestas Aprobadas</strong></h1>
                 </div><!-- /.col -->
               </div><!-- /.row -->
-          </div>
-          <!-- MODAL CREAR PROPUESTA -->
-          <div class="modal fade" id="crearpropuesta" tabindex="-1" aria-labelledby="crearpropuesta" aria-hidden="true">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h5 class="modal-title" id="staticBackdropLabel">Crear Propuesta</h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                          <div class="card">
-                              <div class="card-body">
-                                  <form action="tesistas-guardar-propuesta" method="POST" enctype="multipart/form-data">                                                       
-                                      <div class="form-group">
-                                          <label >Nombre de la propuesta</label>
-                                          <input type="text"  name="nombrepropuesta"placeholder="nombre de la propuesta" class="form-control" required >
-                                      </div>
-                                      <div class="form-group flex">
-                                        <label>Tipo de Propuesta</label>
-                                        <div class="form-check ">
-                                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                          <label class="form-check-label" for="flexRadioDefault1">
-                                            Instrumental
-                                          </label>
-                                        </div>
-                                        <div class="form-check">
-                                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                          <label class="form-check-label" for="flexRadioDefault2">
-                                            Experimental
-                                          </label>
-                                        </div>
-                                      </div>
-                                      <div class="form-group">
-                                          <label >Descripcion</label>
-                                          <input type="textarea"  name="descripcion"placeholder="descripcion" class="form-control" required >  
-                                      </div>
-                                      <div class="row align-items-center">
-                                        <div class="col-md-6 mb-3">
-                                            <div class="form-group">
-                                                <label >Cedula del Compañero</label>
-                                                <input class="form-control" type="number"
-                                                    placeholder="cedula del compañero">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-3">
-                                            <div class="form-group">
-                                                <label>Codigo de Seguridad</label>
-                                                <input class="form-control" type="text"
-                                                    placeholder="Codigo de seguridad">
-                                            </div>
-                                        </div>
-                                      </div>
-                                      <div class="d-flex justify-content-end align-items-baseline">
-                                      <button name="nuevapropuesta" type="submit" class="btn btn-success" required>Crear Propuesta</button>
-                                          <button type="button"  class="ml-1 btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                                      </div>
-                                  </form>
-                              </div>
-                          </div>         
-                      </div>
-                  </div>
-              </div>
           </div>
 
           <div class="p-4 card table-responsive py-4">
@@ -234,20 +170,11 @@
                     <th>Titulo</th>
                     <th>Modalidad</th>
                     <th>Observaciones</th>
-                    <th>E.Comite</th>
-                    <th>E.Consejo</th>
-
+                    <th>Tutor Academico</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <?php foreach($mispropuestas as $propuesta){?>
-                    <tr>
-                        <td><?php echo $propuesta['num_c'];?></td>
-                        <td><?php echo $propuesta['titulo'];?></td>
-                        <td><?php echo $propuesta['modalidad'];?></td>
-                        <td><?php echo $propuesta['observaciones'];?></td>
-                    </tr> 
-                  <?php }?>
+                  
                 </tbody>
             </table>
           </div>
@@ -255,7 +182,7 @@
       </div>   
       
       <?php include_once('../public/Views/componentes/footer.php');?>
-         
+
   </div>
 
   <?php include_once('../public/Views/componentes/adminlte.php');?>

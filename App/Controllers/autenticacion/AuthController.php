@@ -8,18 +8,6 @@ use \Core\View;
 class AuthController extends \Core\Controller{
 
     public function index() {
-        session_start();
-        if(isset($_SESSION['cedula'])){
-            $modelo = $_SESSION['modelo'];
-            if($modelo=='Tesistas'){
-                header("Location: tesistas");                    
-            }else if($modelo=='Profesores'){
-                header("Location: profesores");                    
-            }else{
-                header("Location: Escuela");                    
-            }
-        }else
-
         View::render('autenticacion/login.php');
     }
 
@@ -31,10 +19,10 @@ class AuthController extends \Core\Controller{
             $resultado=$autenticar->correo($_POST['correo']);
             if($resultado>0){
                 if($autenticar->clave($_POST['correo'], $_POST['clave'])){ 
-
                     $resultado=(new Auth())->where('correo','=',$_POST['correo'])->getOb();
                     $_SESSION['modelo'] = $resultado['modelo'];
                     $_SESSION['cedula'] = $resultado['cedula'];
+                    
                     $modelo = $_SESSION['modelo'];
                     if($modelo=='Tesistas'){
                         header("Location: tesistas");                    

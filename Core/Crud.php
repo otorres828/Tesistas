@@ -1,5 +1,5 @@
 <?php
-require 'Conexion.php';
+require_once 'Conexion.php';
 
 class Crud {
 
@@ -115,6 +115,16 @@ class Crud {
     private function reiniciarValores() {
         $this->wheres = "";
         $this->sql = null;
+    }
+
+    public function sentencia($obj){
+        try {
+            $query = $this->conexion->prepare($obj);
+            $query->execute();
+            return $query->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }  
     }
 
 }

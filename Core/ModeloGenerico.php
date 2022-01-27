@@ -1,5 +1,5 @@
 <?php
-require 'Crud.php';
+require_once 'Crud.php';
 
 class ModeloGenerico extends Crud {
     

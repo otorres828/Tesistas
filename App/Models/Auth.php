@@ -2,12 +2,9 @@
 
 namespace App\Models;
 
-use Core\View;
-use Exception;
 use ModeloGenerico;
-use PDO;
 
-require '../Core/ModeloGenerico.php';
+require_once '../Core/ModeloGenerico.php';
 class Auth extends ModeloGenerico{
   
     public function __construct($propiedades = null) {
@@ -29,17 +26,15 @@ class Auth extends ModeloGenerico{
     public function clave($correo, $clave){
         $resultado=$this->where('correo','=',$correo)->getOb();
         $cla=password_verify($clave, $resultado['contraseña']);
-        if($cla>0){
-           
-            return 1;
-            
+        if($cla>0){    
+            return 1;     
         }else{
             return 0;           
         }
        
     }
 
-    public static function verificado(){
+    public  function verificado(){
         session_start();
         if(!isset($_SESSION['cedula']) && !isset($_SESSION['modelo'])){
             session_destroy();
@@ -47,7 +42,7 @@ class Auth extends ModeloGenerico{
         }
     }
 
-    public static function rol($tabla){
+    public function rol($tabla){
         if(isset($_SESSION['modelo']))
             if($_SESSION['modelo']!=$tabla)
                 header("Location: error");                   
