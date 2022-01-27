@@ -13,9 +13,9 @@
 
   <div class="wrapper">
       <!-- Preloader -->
-      <div class="preloader flex-column justify-content-center align-items-center">
+      <!-- <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-      </div>
+      </div> -->
 
       <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -27,24 +27,24 @@
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-          <!-- CONFIGURACION -->
+          <!-- Notifications Dropdown Menu -->
           <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="fas fa-cog"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-              <span class="dropdown-item dropdown-header"><?php echo $tesista['nombre_usuario'];?></span>
-              <div class="dropdown-divider"></div>
-              <a href="tesista-perfil" class="dropdown-item">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fas fa-cog"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header"><?php echo $tesista['nombre_usuario'];?></span>
+            <div class="dropdown-divider"></div>
+            <a href="tesista-perfil" class="dropdown-item">
               <i class="fas fa-user"></i> Perfil
-              </a>
-              <div class="dropdown-divider"></div>
-              <a href="login-cerrarsesion" class="dropdown-item">
-              <i class="fas fa-sign-out-alt"></i>Cerrar Sesion
-              </a>
-              
-            </div>
-          </li>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="login-cerrarsesion" class="dropdown-item">
+            <i class="fas fa-sign-out-alt"></i>Cerrar Sesion
+            </a>
+            
+          </div>
+        </li>
           <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
               <i class="fas fa-expand-arrows-alt"></i>
@@ -73,11 +73,9 @@
               <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-              <a href="#" class="d-block">Tesista</a>
+              <a href="tesista-perfil" class="d-block"><?php echo $tesista['nombre_usuario'];?></a>
             </div>
-          </div>
-
-    
+          </div>   
 
           <!-- Sidebar Menu -->
           <nav class="mt-2">
@@ -94,13 +92,21 @@
 
 
               <li class="nav-item">
+                <a href="tesista-propuestas-aprobadas" class="nav-link">
+                  <i class="nav-icon fas fa-table"></i>
+                  <p>
+                    Propuestas Aprobadas
+                  </p>
+                </a>
+            
+              </li>
+              <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-table"></i>
                   <p>
                     Entregas
                   </p>
-                </a>
-            
+                </a>       
               </li>
 
               <li class="nav-item">
@@ -184,7 +190,7 @@
                               <div class="col-md-12 mb-3">
                                   <div>
                                       <label for="last_name">Biografia</label>
-                                      <label class="form-control" placeholder="Also your last name" disabled></label>
+                                      <label class="form-control" placeholder="Also your last name" disabled>en el soy indetenible</label>
                                   </div>
                               </div>
                           </div>

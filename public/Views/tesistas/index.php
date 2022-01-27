@@ -13,9 +13,9 @@
 
   <div class="wrapper">
       <!-- Preloader -->
-      <div class="preloader flex-column justify-content-center align-items-center">
+      <!-- <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-      </div>
+      </div> -->
 
       <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -73,7 +73,7 @@
               <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-              <a href="#" class="d-block">Tesista</a>
+              <a href="tesista-perfil" class="d-block"><?php echo $tesista['nombre_usuario'];?></a>
             </div>
           </div>   
 
