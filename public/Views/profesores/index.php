@@ -93,10 +93,10 @@
 
 
             <li class="nav-item">
-              <a href="tesista-propuestas-aprobadas" class="nav-link">
+              <a href="profesor-propuestas-aprobadas" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
-                  Propuestas Aprobadas
+                  Revisor
                 </p>
               </a>
 
@@ -105,7 +105,7 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
-                  Entregas
+                  Tutor Academico
                 </p>
               </a>
             </li>
@@ -114,24 +114,10 @@
               <a href="#" class="nav-link">
                 <i class="fas fa-balance-scale"></i>
                 <p>
-                  Perfil
-                  <i class="fas fa-angle-left right"></i>
+                  Jurado
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="pages/search/simple.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Todos</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/search/enhanced.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Cargar Comites</p>
-                  </a>
-                </li>
-              </ul>
+
             </li>
 
 
@@ -150,127 +136,215 @@
               <h1 class="m-0">Panel de Control</h1>
             </div><!-- /.col -->
 
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+          </div>
+        </div>
       </div>
 
       <section class="content">
         <div class="container-fluid">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault">
-            <label class="form-check-label">
-              interno
-            </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" >
-            <label class="form-check-label">
-              externo
-            </label>
-          </div>
-
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <div class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#crearpropuesta" data-bs-whatever="@mdo">Crear Propuesta</div>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <h1 class="float-sm-right"><strong>SOY PROFESOR</strong></h1>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div>
-        <!-- MODAL CREAR PROPUESTA -->
-        <div class="modal fade" id="crearpropuesta" tabindex="-1" aria-labelledby="crearpropuesta" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Crear Propuesta</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="card">
-                  <div class="card-body">
-                    <form action="tesistas-guardar-propuesta" method="POST" enctype="multipart/form-data">
-                      <div class="form-group">
-                        <label>Nombre de la propuesta</label>
-                        <input type="text" name="nombrepropuesta" placeholder="nombre de la propuesta" class="form-control" required>
-                      </div>
-                      <div class="form-group flex">
-                        <label>Tipo de Propuesta</label>
-                        <div class="form-check ">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                          <label class="form-check-label" for="flexRadioDefault1">
-                            Instrumental
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                          <label class="form-check-label" for="flexRadioDefault2">
-                            Experimental
-                          </label>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label>Descripcion</label>
-                        <input type="textarea" name="descripcion" placeholder="descripcion" class="form-control" required>
-                      </div>
-                      <div class="d-flex justify-content-end align-items-baseline">
-                        <button name="nuevapropuesta" type="submit" class="btn btn-success" required>Crear Propuesta</button>
-                        <button type="button" class="ml-1 btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                      </div>
-                    </form>
-                  </div>
+          <div class="row">
+            <div class="col-lg-4 col-6">
+              <div class="small-box bg-info">
+                <div class="inner">
+                  <h3>150</h3>
+                  <p>Revisor</p>
                 </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+
+                </div>
+                <a href="#" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
+            <!-- ./col -->
+            <div class="col-lg-4 col-6">
+              <!-- small box -->
+              <div class="small-box bg-success">
+                <div class="inner">
+                  <h3>53<sup style="font-size: 20px"></sup></h3>
+
+                  <p>Tutor academico</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+                </div>
+                <a href="#" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-4 col-6">
+              <!-- small box -->
+              <div class="small-box bg-warning">
+                <div class="inner">
+                  <h3>44</h3>
+
+                  <p>Jurado</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
+          </div>
+          <div class="container-fluid">
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0">Pagina de Inicio</h1>
+              </div><!-- /.col -->
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item"><a href="#">Home</a></li>
+                  <li class="breadcrumb-item active">Starter Page</li>
+                </ol>
+              </div><!-- /.col -->
+            </div><!-- /.row -->
           </div>
         </div>
 
-        <div class="p-4 card table-responsive py-4">
-          <table class="table table-flush" id="example">
-            <thead class="thead-light">
-              <tr>
+        <div class="row">
+          <section class="col-lg-12 connectedSortable">
+            <div class="card">
+              <div class=" table-responsive py-4 p-4">
+                <div class="card-header">
+                  <h1>SOY TUTOR ACADEMICO DE</h1>
+                </div>
+                <table class="card-body table table-flush" id="example">
+                  <thead class="thead-light">
+                    <tr>
 
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-              </tr>
-              <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-              </tr>
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Office</th>
+                      <th>Age</th>
+                      <th>Start date</th>
+                      <th>Salary</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>Edinburgh</td>
+                      <td>61</td>
+                      <td>2011/04/25</td>
+                      <td>$320,800</td>
+                    </tr>
+                    <tr>
+                      <td>Garrett Winters</td>
+                      <td>Accountant</td>
+                      <td>Tokyo</td>
+                      <td>63</td>
+                      <td>2011/07/25</td>
+                      <td>$170,750</td>
+                    </tr>
 
-            </tbody>
-          </table>
+                  </tbody>
+                </table>
+              </div>
 
+            </div>
+          </section>
+
+          <section class="col-lg-7 connectedSortable">
+            <div class="card">
+              <div class=" table-responsive py-4 p-4">
+                <div class="card-header">
+                  <h1>SOY JURADO DE</h1>
+                </div>
+                <table class="card-body table table-flush" id="example">
+                  <thead class="thead-light">
+                    <tr>
+
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Office</th>
+                      <th>Age</th>
+                      <th>Start date</th>
+                      <th>Salary</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>Edinburgh</td>
+                      <td>61</td>
+                      <td>2011/04/25</td>
+                      <td>$320,800</td>
+                    </tr>
+                    <tr>
+                      <td>Garrett Winters</td>
+                      <td>Accountant</td>
+                      <td>Tokyo</td>
+                      <td>63</td>
+                      <td>2011/07/25</td>
+                      <td>$170,750</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </section>
+
+          <section class="col-lg-5 connectedSortable">
+            <div class="card">
+              <div class=" table-responsive py-4 p-4">
+                <div class="card-header">
+                  <h1>SOY REVISOR DE</h1>
+                </div>
+                <table class="card-body table table-flush" id="example">
+                  <thead class="thead-light">
+                    <tr>
+
+                      <th>Name</th>
+                      <th>Position</th>
+                      <th>Office</th>
+                      <th>Age</th>
+                      <th>Start date</th>
+                      <th>Salary</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Tiger Nixon</td>
+                      <td>System Architect</td>
+                      <td>Edinburgh</td>
+                      <td>61</td>
+                      <td>2011/04/25</td>
+                      <td>$320,800</td>
+                    </tr>
+                    <tr>
+                      <td>Garrett Winters</td>
+                      <td>Accountant</td>
+                      <td>Tokyo</td>
+                      <td>63</td>
+                      <td>2011/07/25</td>
+                      <td>$170,750</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </section>
         </div>
-      </section>
-    </div>
-
-
-    <footer class="main-footer">
-      <strong>Copyright &copy; 2022 <a href="#">Oliver Torres / Jesus Alfonzo / Cesar Sotillo / Ricardo Colina</a>.</strong>
-      Todos los derechos reservados
-      <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 1.00
       </div>
-    </footer>
+    </section>
+  </div>
+
+
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2022 <a href="#">Oliver Torres / Jesus Alfonzo / Cesar Sotillo / Ricardo Colina</a>.</strong>
+    Todos los derechos reservados
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 1.00
+    </div>
+  </footer>
 
   </div>
 

@@ -28,7 +28,7 @@ class AuthController extends \Core\Controller{
                     }else if($modelo=='Profesores'){
                         header("Location: profesores");                    
                     }else{
-                        header("Location: Escuela");                    
+                        header("Location: escuela");                    
                     }
                 }else{
                     $_SESSION['mensaje'] = "CLAVE ERRONEA";
