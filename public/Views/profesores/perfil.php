@@ -3,19 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tesista | Perfil</title>
+  <title>Profesor | Perfil</title>
   <?php include_once('../public/Views/componentes/cssadminlte.php');?>
   <!-- DATATABLES -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
 
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
 
   <div class="wrapper">
       <!-- Preloader -->
-      <!-- <div class="preloader flex-column justify-content-center align-items-center">
+      <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-      </div> -->
+      </div> 
 
       <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -33,9 +32,9 @@
             <i class="fas fa-cog"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header"><?php echo $tesista['nombre_usuario'];?></span>
+            <span class="dropdown-item dropdown-header"><?php echo $profesor['nombre_usuario'];?></span>
             <div class="dropdown-divider"></div>
-            <a href="tesista-perfil" class="dropdown-item">
+            <a href="profesor-perfil" class="dropdown-item">
               <i class="fas fa-user"></i> Perfil
             </a>
             <div class="dropdown-divider"></div>
@@ -73,7 +72,7 @@
               <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-              <a href="tesista-perfil" class="d-block"><?php echo $tesista['nombre_usuario'];?></a>
+              <a href="profesor-perfil" class="d-block"><?php echo $profesor['nombre_usuario'];?></a>
             </div>
           </div>   
 
@@ -82,7 +81,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
               <li class="nav-item">
-                <a href="tesistas" class="nav-link">
+                <a href="profesores" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                     Panel de Control
@@ -92,7 +91,7 @@
 
 
               <li class="nav-item">
-                <a href="tesista-propuestas-aprobadas" class="nav-link">
+                <a href="profesor-propuestas-aprobadas" class="nav-link">
                   <i class="nav-icon fas fa-table"></i>
                   <p>
                     Propuestas Aprobadas
@@ -214,7 +213,7 @@
                                   <img src="../../dist/img/avatar.png"
                                       class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
                                   <h4 class="h3">
-                                        <?php echo $tesista['nombre_usuario'];?>
+                                        <?php echo $profesor['nombre_usuario'];?>
                                   </h4>
                                   <h5 class="fw-normal">Tesista</h5>
                                   <p class="text-gray">Ucab Guayana</p>

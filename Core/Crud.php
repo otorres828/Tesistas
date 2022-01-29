@@ -18,7 +18,7 @@ class Crud {
             $this->sql = "SELECT * FROM {$this->tabla} {$this->wheres}";
             $query = $this->conexion->prepare($this->sql);
             $query->execute();
-            return $query->fetchAll(PDO::FETCH_ASSOC);
+            return $query->fetchAll(PDO::FETCH_OBJ);
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }

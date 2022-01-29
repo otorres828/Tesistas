@@ -1,6 +1,8 @@
 <?php
 
 $router = new Core\Router();
+$router->add('', ['controller' => 'autenticacion\AuthController', 'method' => 'index']);
+
 //ERRORES
 $router->add('error', ['controller' => 'autenticacion\AuthController', 'method' => 'error']);
 //LOGIN
@@ -21,6 +23,7 @@ $router->add('tesista-propuestas-aprobadas',['controller' => 'tesistas\TesistasC
 
 //PROFESORES
 $router->add('profesores',['controller'=>'profesores\ProfesorController','method'=>'index']);
+$router->add('profesor-perfil',['controller'=>'profesores\ProfesorController','method'=>'perfil']);
 
 
 $router->dispatch($_SERVER['QUERY_STRING']);

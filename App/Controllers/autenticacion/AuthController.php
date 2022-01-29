@@ -7,22 +7,21 @@ use \Core\View;
 
 class AuthController extends \Core\Controller{
 
-    public function index() {
+    public function index() {       
         View::render('autenticacion/login.php');
     }
 
     public function comprobarLogin() {
         session_start();
-    
         $autenticar = new Auth();
         if (!empty($_POST['correo']) && !empty($_POST['clave'])) {
             $resultado=$autenticar->correo($_POST['correo']);
             if($resultado>0){
                 if($autenticar->clave($_POST['correo'], $_POST['clave'])){ 
                     $resultado=(new Auth())->where('correo','=',$_POST['correo'])->getOb();
-                    $_SESSION['modelo'] = $resultado['modelo'];
-                    $_SESSION['cedula'] = $resultado['cedula'];
                     
+                    $_SESSION['modelo'] = $resultado['modelo'];
+                    $_SESSION['cedula'] = $resultado['cedula'];         
                     $modelo = $_SESSION['modelo'];
                     if($modelo=='Tesistas'){
                         header("Location: tesistas");                    

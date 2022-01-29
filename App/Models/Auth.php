@@ -47,4 +47,8 @@ class Auth extends ModeloGenerico{
             if($_SESSION['modelo']!=$tabla)
                 header("Location: error");                   
     }
+
+    public function autenticado(){
+        return $this->where('cedula','=',$_SESSION['cedula'])->getOb();
+    }
 }

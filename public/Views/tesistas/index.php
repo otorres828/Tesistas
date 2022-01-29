@@ -13,9 +13,9 @@
 
   <div class="wrapper">
       <!-- Preloader -->
-      <!-- <div class="preloader flex-column justify-content-center align-items-center">
+      <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-      </div> -->
+      </div>
 
       <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->

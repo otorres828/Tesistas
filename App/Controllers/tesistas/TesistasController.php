@@ -20,7 +20,7 @@ class TesistasController extends \Core\Controller{
 
     public function perfil(){
         $this->autenticar();
-        $tesista=(new Auth())->where('cedula','=',$_SESSION['cedula'])->getOb();
+        $tesista=(new Auth())->autenticado();
         View::render('tesistas/perfil.php',['tesista'=>$tesista]); 
     }
 
