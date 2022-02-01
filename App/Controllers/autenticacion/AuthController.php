@@ -5,50 +5,53 @@ namespace App\Controllers\autenticacion;
 use App\Models\Auth;
 use \Core\View;
 
-class AuthController extends \Core\Controller{
+class AuthController extends \Core\Controller
+{
 
-    public function index() {       
+    public function index()
+    {
         View::render('autenticacion/login.php');
     }
 
-    public function comprobarLogin() {
+    public function comprobarLogin()
+    {
         session_start();
         $autenticar = new Auth();
         if (!empty($_POST['correo']) && !empty($_POST['clave'])) {
-            $resultado=$autenticar->correo($_POST['correo']);
-            if($resultado>0){
-                if($autenticar->clave($_POST['correo'], $_POST['clave'])){ 
-                    $resultado=(new Auth())->where('correo','=',$_POST['correo'])->getOb();
-                    
+            $resultado = $autenticar->correo($_POST['correo']);
+            if ($resultado > 0) {
+                if ($autenticar->clave($_POST['correo'], $_POST['clave'])) {
+                    $resultado = (new Auth())->where('correo', '=', $_POST['correo'])->getOb();
+
                     $_SESSION['modelo'] = $resultado['modelo'];
-                    $_SESSION['cedula'] = $resultado['cedula'];         
+                    $_SESSION['cedula'] = $resultado['cedula'];
                     $modelo = $_SESSION['modelo'];
-                    if($modelo=='Tesistas'){
-                        header("Location: tesistas");                    
-                    }else if($modelo=='Profesores'){
-                        header("Location: profesores");                    
-                    }else{
-                        header("Location: escuela");                    
+                    if ($modelo == 'Tesistas') {
+                        header("Location: tesistas");
+                    } else if ($modelo == 'Profesores') {
+                        header("Location: profesores");
+                    } else {
+                        header("Location: escuela");
                     }
-                }else{
+                } else {
                     $_SESSION['mensaje'] = "CLAVE ERRONEA";
                     $_SESSION['colorcito'] = "danger";
-                    header("Location: login");                       
+                    header("Location: login");
                 }
-            }else{
+            } else {
                 $_SESSION['mensaje'] = "USUARIO NO REGISTRADO";
                 $_SESSION['colorcito'] = "danger";
-                header("Location: login");                    
-
+                header("Location: login");
             }
-        }else{
+        } else {
             $_SESSION['mensaje'] = "COMPLETE TODOS LOS CAMPOS";
             $_SESSION['colorcito'] = "danger";
-            header("Location: login");            
+            header("Location: login");
         }
     }
 
-    public function cerrarSesion(){
+    public function cerrarSesion()
+    {
         session_start();
         if (isset($_SESSION['cedula'])) {
             session_unset();
@@ -58,7 +61,23 @@ class AuthController extends \Core\Controller{
         }
     }
 
-    public function error(){
+    public function error()
+    {
         View::render('errores\404.php');
+    }
+
+    public function redirect()
+    {
+        session_start();
+        $usuario = (new Auth())->autenticado();
+        if ( $usuario['modelo'] == 'Tesistas') {
+            header("Location: tesistas");
+        } else if ( $usuario['modelo'] == 'Profesores') {
+            header("Location: profesores");
+        } else if ( $usuario['modelo'] == 'Escuela') {
+            header("Location: escuela");
+        }else{
+            header("Location: login");
+        }
     }
 }

@@ -5,6 +5,8 @@ $router->add('', ['controller' => 'autenticacion\AuthController', 'method' => 'i
 
 //ERRORES
 $router->add('error', ['controller' => 'autenticacion\AuthController', 'method' => 'error']);
+$router->add('error-redirect', ['controller' => 'autenticacion\AuthController', 'method' => 'redirect']);
+
 //LOGIN
 $router->add('login', ['controller' => 'autenticacion\AuthController', 'method' => 'index']);
 $router->add('login-iniciar', ['controller' => 'autenticacion\AuthController', 'method' => 'comprobarLogin']);
