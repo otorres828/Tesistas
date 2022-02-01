@@ -190,17 +190,17 @@
                   <div class="col-md-12 mb-3">
                     <div>
                       <label for="last_name">Biografia</label>
-                      <p class="form-control h-100" placeholder="Also your last name" disabled></p>
+                      <p class="form-control h-100"  disabled><?php echo $tesista['comentario'];?></p>
                     </div>
                   </div>
                 </div>
                 <h2 class="h5">Seguridad</h2>
-                <div class="row">
+                <div class="row mx-auto">
                   <div data-bs-toggle="modal" data-bs-target="#modificarCorreo" data-bs-whatever="@mdo" class="btn btn-info m-1">Modificar Correo Personal</div>
                   <div data-bs-toggle="modal" data-bs-target="#modificarClave" data-bs-whatever="@mdo" class="btn btn-info m-1">Modificar Clave</div>
                   <div data-bs-toggle="modal" data-bs-target="#modificarTelefono" data-bs-whatever="@mdo" class="btn btn-info m-1">Modificar Telefono</div>
                   <form action="tesista-perfil-modificarCodigo" method="POST" enctype="multipart/form-data">
-                    <button class="btn btn-warning m-1" name="modificarcodigo" type="submit">Generar Codigo Seguridad</button>
+                    <button class="btn btn-warning m-1" name="modificarcodigo" type="submit">Generar Codigo</button>
                   </form>
 
                 </div>
