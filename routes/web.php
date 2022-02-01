@@ -20,6 +20,7 @@ $router->add('tesistas-guardar-propuesta',['controller' => 'tesistas\TesistasCon
 $router->add('tesista-perfil',['controller' => 'tesistas\TesistasController','method'=>'perfil']);
 $router->add('tesista-perfil-modificarTelefono',['controller' => 'tesistas\TesistasController','method'=>'modificarTelefono']);
 $router->add('tesista-perfil-modificarCodigo',['controller' => 'tesistas\TesistasController','method'=>'modificarCodigo']);
+$router->add('tesista-perfil-modificarCorreo',['controller' => 'tesistas\TesistasController','method'=>'modificarCorreo']);
 
 $router->add('tesista-propuestas-aprobadas',['controller' => 'tesistas\TesistasController','method'=>'propuestasaprobadas']);
 

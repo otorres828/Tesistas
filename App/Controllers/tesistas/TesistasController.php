@@ -44,6 +44,15 @@ class TesistasController extends \Core\Controller{
             }
         }
     }
+    public function modificarCorreo(){
+        
+        if(isset($_POST['modificarcorreo'])){
+            if(isset($_POST['correo'])){
+                (new Tesistas())->modificarCorreo($_POST['correo']);
+                header('location:tesista-perfil');
+            }
+        }
+    }
 
     public function modificarTelefono(){
         session_start();
@@ -55,6 +64,7 @@ class TesistasController extends \Core\Controller{
             }
         }
     }
+
     public function modificarCodigo(){
         if(isset($_POST['modificarcodigo'])){
                 $key = "";
@@ -67,6 +77,8 @@ class TesistasController extends \Core\Controller{
                 header('location:tesista-perfil');
         }
     }
+  
+    
     private function autenticar(){
         $autenticacion= new Auth();
         $autenticacion->verificado();

@@ -21,6 +21,13 @@ class Tesistas extends ModeloGenerico{
                                     AND u.cedula='.$cedula['cedula']);
     }
 
+    public function modificarCorreo($correo){
+        session_start();
+        $cedula = (new Auth())->autenticado();
+        $this->sentenciaObj("UPDATE tesistas SET correoparticular="."'".$correo."'"." WHERE cedula=".$cedula['cedula']);
+        $this->sentenciaObj("UPDATE usuarios SET correo="."'".$correo."'"." WHERE cedula=".$cedula['cedula']);
+    }
+
     public function modificartelefono($telefono){
         session_start();
         $cedula = (new Auth())->autenticado();
@@ -30,9 +37,6 @@ class Tesistas extends ModeloGenerico{
     public function modificarcodigo($codigo){
         session_start();
         $cedula = (new Auth())->autenticado();
-         $sql = "UPDATE usuarios SET codigo="."'".$codigo."'"." WHERE cedula=".$cedula['cedula'];
-        $query = $this->conexion->prepare($sql);
-        $query->execute();
-       
+        return $this->sentenciaObj("UPDATE usuarios SET codigo="."'".$codigo."'"." WHERE cedula=".$cedula['cedula']);
     }
 }

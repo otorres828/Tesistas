@@ -1,4 +1,4 @@
-<!-- MODAL MODIFICAR CORREO -->
+<!-- MODAL MODIFICAR CLAVE -->
 <div class="modal fade" id="modificarClave" tabindex="-1" role="dialog" aria-labelledby="modificarClave" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -42,7 +42,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="address">Nueva Correo personal</label>
-                            <input  class="form-control" type="text" placeholder="Ingrese su nuevo correo personal">
+                            <input  class="form-control" type="email" name="correo"placeholder="Ingrese su nuevo correo personal"required>
                         </div>
                     </div> 
                     <button name="modificarcorreo" type="submit" class="btn btn-primary" required>Modificar Correo</button>
