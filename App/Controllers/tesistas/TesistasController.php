@@ -11,7 +11,7 @@ class TesistasController extends \Core\Controller{
 
     public function index() {
         $this->autenticar();
-        
+        $this->modificarCodigo();
         $tesista=(new Auth())->where('cedula','=',$_SESSION['cedula'])->getOb();
         $mispropuestas=(new PropuestaTG())->mispropuestas($_SESSION['cedula']);
         View::render('tesistas/index.php',['tesista'=>$tesista,
@@ -49,17 +49,20 @@ class TesistasController extends \Core\Controller{
         if(isset($_POST['modificarcorreo'])){
             if(isset($_POST['correo'])){
                 (new Tesistas())->modificarCorreo($_POST['correo']);
+                $_SESSION['mensaje']="Se modifico el correo con exito";
+                $_SESSION['colorcito']="success";
                 header('location:tesista-perfil');
             }
         }
     }
 
     public function modificarTelefono(){
-        session_start();
-        $this->autenticar();
+        
         if(isset($_POST['modificartelefono'])){
             if(isset($_POST['telefono'])){
                 (new Tesistas())->modificarTelefono($_POST['telefono']);
+                $_SESSION['mensaje']="Se modifico el telefono con exito";
+                $_SESSION['colorcito']="success";
                 header('location:tesista-perfil');
             }
         }
@@ -74,6 +77,8 @@ class TesistasController extends \Core\Controller{
                     $key .= substr($pattern, mt_rand(0,$max), 1);
                 }
                 (new Tesistas())->modificarcodigo($key);
+                $_SESSION['mensaje']="Se modifico el codigo con exito";
+                $_SESSION['colorcito']="info";
                 header('location:tesista-perfil');
         }
     }
