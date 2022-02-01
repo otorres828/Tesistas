@@ -43,15 +43,34 @@ class TesistasController extends \Core\Controller
         ]);
     }
 
-    public function modificarClave()
-    {
-        $this->autenticar();
+    public function modificarClave(){
         if (isset($_POST['modificarclave'])) {
             if (isset($_POST['claveactual']) && isset($_POST['nuevaclave'])) {
-                echo "existen las claves;";
+                session_start();
+         
+                $autenticado = (new Auth());
+                $usuario=$autenticado->autenticado();
+
+                $actual = password_verify($_POST['claveactual'], $usuario['contraseña']);
+                if ($actual > 0) {
+
+                    $nueva = password_hash($_POST['nuevaclave'], PASSWORD_BCRYPT);
+                    
+                    $autenticado->cambiarcontraseña($nueva,$usuario['cedula']);
+                    
+                    $_SESSION['mensaje'] = "contraseña cambiada con exito";
+                    $_SESSION['colorcito'] =  "success";
+                } else {
+                    $_SESSION['mensaje'] = "la contraseña que ingreso no coincide con la registrada";
+                    $_SESSION['colorcito'] =  "danger";
+                }
+
             }
         }
+        header("Location: tesista-perfil");
+
     }
+
     public function modificarCorreo()
     {
 

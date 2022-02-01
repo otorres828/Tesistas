@@ -51,4 +51,10 @@ class Auth extends ModeloGenerico{
     public function autenticado(){
         return $this->where('cedula','=',$_SESSION['cedula'])->getOb();
     }
+    
+    public function cambiarcontraseña($contraseña,$cedula){
+       
+        return $this->sentenciaObj("UPDATE usuarios SET contraseña="."'".$contraseña."'"." WHERE cedula=".$cedula);
+ 
+    }
 }
