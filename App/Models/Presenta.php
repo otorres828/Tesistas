@@ -6,7 +6,7 @@ use Exception;
 use ModeloGenerico;
 use PDO;
 
-require '../Core/ModeloGenerico.php';
+require_once '../Core/ModeloGenerico.php';
 class Presenta extends ModeloGenerico{
   
     public function __construct($propiedades = null) {

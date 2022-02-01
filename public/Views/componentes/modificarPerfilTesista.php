@@ -68,10 +68,10 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="address">Nuevo Telefono</label>
-                            <input  class="form-control" type="text" placeholder="Ingrese su nuevo correo personal">
+                            <input  class="form-control" type="text" name="telefono"placeholder="Ingrese su nuevo numero de Telefono"required>
                         </div>
                     </div> 
-                    <button name="modificarcorreo" type="submit" class="btn btn-primary" required>Modificar Telefono</button>
+                    <button name="modificartelefono" type="submit" class="btn btn-primary" required>Modificar Telefono</button>
                     <button type="button"  class="ml-1 btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
         
                 </form>

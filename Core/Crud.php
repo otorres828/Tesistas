@@ -18,7 +18,7 @@ class Crud {
             $this->sql = "SELECT * FROM {$this->tabla} {$this->wheres}";
             $query = $this->conexion->prepare($this->sql);
             $query->execute();
-            return $query->fetchAll(PDO::FETCH_OBJ);
+            return $query->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
@@ -117,7 +117,7 @@ class Crud {
         $this->sql = null;
     }
 
-    public function sentencia($obj){
+    public function sentenciaAll($obj){
         try {
             $query = $this->conexion->prepare($obj);
             $query->execute();
@@ -126,5 +126,13 @@ class Crud {
             echo $exc->getTraceAsString();
         }  
     }
-
+    public function sentenciaObj($obj){
+        try {
+            $query = $this->conexion->prepare($obj);
+            $query->execute();
+            return $query->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
+        }  
+    }
 }

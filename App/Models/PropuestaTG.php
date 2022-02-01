@@ -14,7 +14,7 @@ class PropuestaTG extends ModeloGenerico{
 
     public function mispropuestas($cedula){
         $this->sql = "SELECT num_c,titulo,modalidad,observaciones FROM propuestatg WHERE Num_C = ANY(SELECT Num_C FROM Presentan WHERE Cedula =$cedula)";             
-        return $this->sentencia($this->sql);
+        return $this->sentenciaAll($this->sql);
     }
 
 }
