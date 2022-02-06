@@ -14,9 +14,9 @@
 	<div class="wrapper">
 
 		<!-- PRECARGA -->
-		<!-- <div class="preloader flex-column justify-content-center align-items-center">
+		<div class="preloader flex-column justify-content-center align-items-center">
 			<img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-		</div> -->
+		</div>
 
 		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 			<!-- Left navbar links -->
@@ -136,19 +136,19 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="pages/tables/simple.html" class="nav-link">
+									<a href="escuela-profesor-revisor" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Revisores</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/tables/data.html" class="nav-link">
+									<a href="escuela-profesor-tutor" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Tutores</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/tables/jsgrid.html" class="nav-link">
+									<a href="escuela-profesor-jurado" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Jurados</p>
 									</a>
@@ -281,7 +281,7 @@
 									<i class="ion ion-person-add"></i>
 
 								</div>
-								<a href="#" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
+								<a href="escuela-profesor-revisor" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 						<!-- ./col -->
@@ -296,7 +296,7 @@
 								<div class="icon">
 									<i class="ion ion-person-add"></i>
 								</div>
-								<a href="#" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
+								<a href="escuela-profesor-revisor" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 						<!-- ./col -->
@@ -311,7 +311,7 @@
 								<div class="icon">
 									<i class="ion ion-bag"></i>
 								</div>
-								<a href="#" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
+								<a href="escuela-propuestastg" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
 							</div>
 						</div>
 

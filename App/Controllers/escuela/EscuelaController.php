@@ -32,6 +32,33 @@ class EscuelaController extends \Core\Controller
     }
 
 
+    // Ver todos los profesores revidores en profesor-revisor.php
+    public function profesoresRevisores()
+    {
+        $this->autenticar();
+        $profesores = (new Profesores())->revisores();
+
+        View::render('escuela/profesor-revisor.php', ['profesores' => $profesores]);
+    }
+    // Ver todos los profesores revidores en profesor-tutor.php
+    public function profesoresTutores()
+    {
+        $this->autenticar();
+        $profesores = (new Profesores())->tutores();
+
+        View::render('escuela/profesor-tutor.php', ['profesores' => $profesores]);
+    }
+    // Ver todos los profesores revidores en profesor-tutor.php
+    public function profesoresJurados()
+    {
+        $this->autenticar();
+        $profesores = (new Profesores())->jurados();
+
+        View::render('escuela/profesor-jurado.php', ['profesores' => $profesores]);
+    }
+
+
+
     // Ver todos los tesistas en escuela-tesistas
     public function tesistasTodos()
     {

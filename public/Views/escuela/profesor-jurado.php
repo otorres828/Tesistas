@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela| PropuestasTG - Todas las propuestas de trabajo de grado </title>
+	<title>Escuela | Profesores Jurado </title>
 	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -126,8 +126,8 @@
 							</ul>
 						</li>
 
-						<li class="nav-item">
-							<a href="#" class="nav-link">
+						<li class="nav-item menu-open">
+							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-table"></i>
 								<p>
 									Profesores
@@ -136,19 +136,19 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-profesor-revisor" class="nav-link">
+									<a href="escuela-profesor-revisor" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Revisores</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-profesor-tutor" class="nav-link">
+									<a href="escuela-profesor-tutor" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Tutores</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-profesor-jurado" class="nav-link">
+									<a href="escuela-profesor-jurado" class="nav-link active">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Jurados</p>
 									</a>
@@ -232,7 +232,7 @@
 
 						<li class="nav-header">Propuestas de TG</li>
 						<li class="nav-item">
-							<a href="escuela-propuestastg" class="nav-link active">
+							<a href="escuela-propuestastg" class="nav-link ">
 								<i class="nav-icon fab fa-buffer"></i>
 								<p>
 									Todas
@@ -261,12 +261,12 @@
 					<div class="container-fluid">
 						<div class="row mb-2">
 							<div class="col-sm-6">
-								<h1 class="m-0">Propuestas TG - Listar PropuestasTG</h1>
+								<h1 class="m-0">Profesores - Jurados</h1>
 							</div><!-- /.col -->
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">PropuestasTG</a></li>
-									<li class="breadcrumb-item active">Listar propuestas de trabajo de grado </li>
+									<li class="breadcrumb-item"><a href="#">Escuela</a></li>
+									<li class="breadcrumb-item active">Listar profesores Jurados </li>
 								</ol>
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -279,42 +279,26 @@
 					<section class="col-lg-12 connectedSortable">
 						<div class="card table-responsive py-4 p-4">
 							<div class="card-header">
-								<h1>Lista de propuestas de trabajo de grado </h1>
+								<h1>Profesores - Lista de profesores jurados</h1>
 							</div>
 							<table class="card-body table table-flush" id="example">
 								<thead class="thead-light">
 									<tr>
-
-										<th>NumC</th>
-										<th>Titulo</th>
-										<th>Observaciones</th>
-										<th>Modalidad</th>
-										<th>id_comite</th>
-										<th>Nro consejo</th>
-										<th>Cedula revisor</th>
-										<th>Cedula tutor</th>
-										<th>Slug</th>
+										<!-- <th>id_usuario</th> -->
+										<th>Cedula</th>
+										<th>Nombre</th>
+										<th>Correo</th>
+										<th>Codigo</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($propuestasTG as $propuestaTG) : ?>
+									<?php foreach ($profesores as $profesor) : ?>
 										<tr>
-											<td><?php echo $propuestaTG['num_c']; ?></td>
-											<td><?php echo $propuestaTG['titulo']; ?></td>
-											<td><?php echo $propuestaTG['observaciones']; ?></td>
-											<td class="text-center">
-												<?php if ($propuestaTG['modalidad'] == 'I') { ?>
-													<h2 class="badge bg-primary">Instrumental</h2>
-												<?php } else { ?>
-													<h2 class="badge bg-success">Experimental</h2>
-												<?php } ?>
-											</td>
-
-											<td><?php echo $propuestaTG['id_comite']; ?></td>
-											<td><?php echo $propuestaTG['nro_consejo']; ?></td>
-											<td><?php echo $propuestaTG['cedula_revisor']; ?></td>
-											<td><?php echo $propuestaTG['cedula_tutor']; ?></td>
-											<td><?php echo $propuestaTG['slug']; ?></td>
+											<!-- <td><?php echo $profesor['id_usuario']; ?></td> -->
+											<td><?php echo $profesor['cedula']; ?></td>
+											<td><?php echo $profesor['nombre_usuario']; ?></td>
+											<td><?php echo $profesor['correo']; ?></td>
+											<td><?php echo $profesor['codigo']; ?></td>
 										</tr>
 									<?php endforeach; ?>
 
