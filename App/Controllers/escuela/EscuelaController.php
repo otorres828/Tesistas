@@ -5,6 +5,7 @@ namespace App\Controllers\escuela;
 use App\Models\Auth;
 use \Core\View;
 use App\Models\Tesistas;
+use App\Models\Profesores;
 
 
 
@@ -14,7 +15,10 @@ class EscuelaController extends \Core\Controller
     public function index()
     {
         $this->autenticar();
-        View::render('escuela/index.php');
+
+        // Listar todos los profesores 
+        $profesores = (new Profesores())->get();
+        View::render('escuela/index.php', ['profesores' => $profesores]);
     }
 
 
@@ -24,6 +28,13 @@ class EscuelaController extends \Core\Controller
         $this->autenticar();
         $tesistas = (new Tesistas())->get();
         View::render('escuela/tesistas-todos.php', ['tesistas' => $tesistas]);
+    }
+
+    // Cargar tesistas mediante csv 
+    public function tesistasCargar()
+    {
+        $this->autenticar();
+        View::render('escuela/tesistas-cargar.php',);
     }
 
 

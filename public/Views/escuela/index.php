@@ -93,7 +93,7 @@
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
 						<li class="nav-item">
-							<a href="pages/widgets.html" class="nav-link">
+							<a href="pages/widgets.html" class="nav-link active">
 								<i class="nav-icon fas fa-th"></i>
 								<p>
 									Panel de Control
@@ -112,7 +112,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela/tesistas" class="nav-link">
+									<a href="escuela-tesistas" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
@@ -341,33 +341,29 @@
 							</div>
 							<table class="card-body table table-flush" id="example">
 								<thead class="thead-light">
+
 									<tr>
 
-										<th>Name</th>
-										<th>Position</th>
-										<th>Office</th>
-										<th>Age</th>
-										<th>Start date</th>
-										<th>Salary</th>
+										<th>Cedula</th>
+										<th>Nombre</th>
+										<th>Direccion</th>
+										<th>Correo particular</th>
+										<th>Telefono</th>
+										<th>Tipo</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td>61</td>
-										<td>2011/04/25</td>
-										<td>$320,800</td>
-									</tr>
-									<tr>
-										<td>Garrett Winters</td>
-										<td>Accountant</td>
-										<td>Tokyo</td>
-										<td>63</td>
-										<td>2011/07/25</td>
-										<td>$170,750</td>
-									</tr>
+									<?php foreach ($profesores as $profesor) : ?>
+										<tr>
+											<td><?php echo $profesor['cedula']; ?></td>
+											<td><?php echo $profesor['nombre']; ?></td>
+											<td><?php echo $profesor['direccion']; ?></td>
+											<td><?php echo $profesor['correoparticular']; ?></td>
+											<td><?php echo $profesor['telefono']; ?></td>
+											<td><?php echo $profesor['tipo']; ?></td>
+										</tr>
+									<?php endforeach; ?>
+
 
 								</tbody>
 							</table>
@@ -382,12 +378,15 @@
 								<thead class="thead-light">
 									<tr>
 
-										<th>Name</th>
-										<th>Position</th>
-										<th>Office</th>
-										<th>Age</th>
-										<th>Start date</th>
-										<th>Salary</th>
+										<th>NumC</th>
+										<th>Titulo</th>
+										<th>Observaciones</th>
+										<th>Modalidad</th>
+										<th>id_comite</th>
+										<th>Nro consejo</th>
+										<th>Cedula revisor</th>
+										<th>Cedula tutor</th>
+										<th>Slug</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -398,15 +397,11 @@
 										<td>61</td>
 										<td>2011/04/25</td>
 										<td>$320,800</td>
+										<td>$320,800</td>
+										<td>$320,800</td>
+										<td>$320,800</td>
 									</tr>
-									<tr>
-										<td>Garrett Winters</td>
-										<td>Accountant</td>
-										<td>Tokyo</td>
-										<td>63</td>
-										<td>2011/07/25</td>
-										<td>$170,750</td>
-									</tr>
+
 
 								</tbody>
 							</table>
