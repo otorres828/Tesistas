@@ -30,7 +30,7 @@
         </div>
     </div>
 </div>
-</div>
+
 <!-- MODAL MODIFICAR CORREO -->
 <div class="modal fade" id="modificarCorreo" tabindex="-1" aria-labelledby="modificarCorreo" aria-hidden="true">
     <div class="modal-dialog">
@@ -56,7 +56,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- MODAL MODIFICAR TELEFONO -->
@@ -84,5 +83,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>

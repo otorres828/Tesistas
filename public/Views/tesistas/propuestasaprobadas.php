@@ -102,10 +102,10 @@
       </div>
       <!-- /.sidebar -->
     </aside>
-    <?php foreach($propuestasaprobadas as $propuestas){?>
       <div class="content-wrapper">
         <div class="content-header">
           <div class="container-fluid">
+          <?php foreach($propuestasaprobadas as $propuestas){?>
 
             <div class="row">
               <div class="col-12 col-xl-8">
@@ -191,12 +191,13 @@
               <?php include_once('../public/Views/componentes/modificarPerfilTesista.php'); ?>
 
             </div>
+            <?php }?>
+
           </div>
         </div>
 
 
       </div>
-    <?php }?>
     <?php include_once('../public/Views/componentes/footer.php'); ?>
 
   </div>

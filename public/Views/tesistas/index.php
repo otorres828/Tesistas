@@ -5,7 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tesista | Panel de Control</title>
-  <?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
+  <?php
+
+use App\Models\PropuestaTG;
+
+include_once('../public/Views/componentes/cssadminlte.php'); ?>
   <!-- DATATABLES -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -222,22 +226,40 @@
                     <?php  }else{ echo $propuesta['observaciones']; }?>
                   </td>
                   <td class="text-center">
-                    <?php if(is_null($propuesta['estatus'])){?>
+                    <?php if(is_null($propuesta['estatusc'])){?>
                       <h2 class="badge bg-warning">PENDIENTE</h2> 
-                      <?php }else{ if($propuesta['estatus']=='REPROBADO'){ ?>
-                        <h2 class="badge bg-danger">REPROBADO</h2> 
-                      <?php } else{  ?>
-                        <h2 class="badge bg-success">APROBADO</h2> 
-                        <?php }} ?>
+                      <?php }else{
+                        $cedula=$propuesta['cedula'];
+                        $num_c=$propuesta['num_c'];
+                        $sql="SELECT estatus
+                              FROM evaluacioncomite 
+                              WHERE num_c=$num_c";
+                        $valor=(new PropuestaTG())->sentenciaObj($sql);
+                        $valor=$valor['estatus'];
+                        if($valor=='REPROBADO'){ ?>
+                          <h2 class="badge bg-danger">REPROBADO</h2> 
+                        <?php }else{ ?>
+                          <h2 class="badge bg-success">APROBADO</h2> 
+
+                        <?php }}?>
                   </td>
                   <td class="text-center">
                     <?php if(is_null($propuesta['estatusc'])){?>
                       <h2 class="badge bg-warning">PENDIENTE</h2> 
-                      <?php }else{ if($propuesta['estatusc']=='REPROBADO'){ ?>
-                        <h2 class="badge bg-danger">REPROBADO</h2> 
-                      <?php } else{  ?>
-                        <h2 class="badge bg-success">APROBADO</h2> 
-                        <?php }} ?>
+                      <?php }else{
+                        $cedula=$propuesta['cedula'];
+                        $num_c=$propuesta['num_c'];
+                        $sql="SELECT estatus
+                              FROM evaluacionconsejo 
+                              WHERE num_c=$num_c";
+                        $valor=(new PropuestaTG())->sentenciaObj($sql);
+                        $valor=$valor['estatus'];
+                        if($valor=='REPROBADO'){ ?>
+                          <h2 class="badge bg-danger">REPROBADO</h2> 
+                        <?php }else{ ?>
+                          <h2 class="badge bg-success">APROBADO</h2> 
+
+                        <?php }}?>
                   </td>
                 </tr>
               <?php } ?>
