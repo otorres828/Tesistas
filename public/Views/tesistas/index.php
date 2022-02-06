@@ -226,7 +226,7 @@ include_once('../public/Views/componentes/cssadminlte.php'); ?>
                     <?php  }else{ echo $propuesta['observaciones']; }?>
                   </td>
                   <td class="text-center">
-                    <?php if(is_null($propuesta['estatusc'])){?>
+                    <?php if(is_null($propuesta['estatus'])){?>
                       <h2 class="badge bg-warning">PENDIENTE</h2> 
                       <?php }else{
                         $cedula=$propuesta['cedula'];
