@@ -32,6 +32,7 @@ $router->add('profesor-perfil', ['controller' => 'profesores\ProfesorController'
 $router->add('escuela', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);
 $router->add('escuela-tesistas', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasTodos']);
 $router->add('escuela-tesistas-cargar', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasCargar']);
+$router->add('escuela-propuestastg', ['controller' => 'escuela\EscuelaController', 'method' => 'propuestastgTodas']);
 
 
 $router->dispatch($_SERVER['QUERY_STRING']);

@@ -36,6 +36,17 @@ class EscuelaController extends \Core\Controller
         View::render('escuela/tesistas-todos.php', ['tesistas' => $tesistas]);
     }
 
+    // ver todas las propuestas tg  en escuela-propuestastg
+    public function propuestastgTodas()
+    {
+        $this->autenticar();
+        $propuestasTG = (new PropuestaTG())->get();
+
+        View::render('escuela/propuestastg-todos.php', [
+            'propuestasTG' => $propuestasTG
+        ]);
+    }
+
     // Cargar tesistas mediante csv 
     public function tesistasCargar()
     {
