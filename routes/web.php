@@ -3,16 +3,16 @@
 $router = new Core\Router();
 $router->add('', ['controller' => 'autenticacion\AuthController', 'method' => 'index']);
 
-//ERRORES
+//=====================================ERRORES
 $router->add('error', ['controller' => 'autenticacion\AuthController', 'method' => 'error']);
 $router->add('error-redirect', ['controller' => 'autenticacion\AuthController', 'method' => 'redirect']);
 
-//LOGIN
+//=====================================LOGIN
 $router->add('login', ['controller' => 'autenticacion\AuthController', 'method' => 'index']);
 $router->add('login-iniciar', ['controller' => 'autenticacion\AuthController', 'method' => 'comprobarLogin']);
 $router->add('login-cerrarsesion', ['controller' => 'autenticacion\AuthController', 'method' => 'cerrarSesion']);
 
-//TESISTAS
+//=====================================TESISTAS
 $router->add('tesistas', ['controller' => 'tesistas\TesistasController', 'method' => 'index']);
 $router->add('tesista-perfil', ['controller' => 'tesistas\TesistasController', 'method' => 'perfil']);
 $router->add('tesista-perfil-modificarTelefono', ['controller' => 'tesistas\TesistasController', 'method' => 'modificarTelefono']);
@@ -23,16 +23,22 @@ $router->add('tesistas-guardar-propuesta', ['controller' => 'tesistas\TesistasCo
 
 $router->add('tesista-propuestas-aprobadas', ['controller' => 'tesistas\TesistasController', 'method' => 'propuestasaprobadas']);
 
-//PROFESORES
+//=====================================PROFESORES
 $router->add('profesores', ['controller' => 'profesores\ProfesorController', 'method' => 'index']);
 $router->add('profesor-perfil', ['controller' => 'profesores\ProfesorController', 'method' => 'perfil']);
 
 
-//ESCUELA
+//=====================================ESCUELA
 $router->add('escuela', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);
+
 $router->add('escuela-tesistas', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasTodos']);
 $router->add('escuela-tesistas-cargar', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasCargar']);
+
 $router->add('escuela-propuestastg', ['controller' => 'escuela\EscuelaController', 'method' => 'propuestastgTodas']);
 
+
+
+
+//=====================================ESCUELA
 
 $router->dispatch($_SERVER['QUERY_STRING']);

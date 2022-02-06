@@ -14,9 +14,9 @@
 	<div class="wrapper">
 
 		<!-- PRECARGA -->
-		<div class="preloader flex-column justify-content-center align-items-center">
+		<!-- <div class="preloader flex-column justify-content-center align-items-center">
 			<img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-		</div>
+		</div> -->
 
 		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 			<!-- Left navbar links -->
@@ -273,7 +273,7 @@
 							<!-- small box -->
 							<div class="small-box bg-info">
 								<div class="inner">
-									<h3>150</h3>
+									<h3><?php echo $estadisticas['cantidad-tesistas']['cantidadtesistas']; ?></h3>
 
 									<p>Tesistas</p>
 								</div>
@@ -289,7 +289,7 @@
 							<!-- small box -->
 							<div class="small-box bg-success">
 								<div class="inner">
-									<h3>53<sup style="font-size: 20px"></sup></h3>
+									<h3><?php echo $estadisticas['cantidad-profesores']['cantidadprofesores']; ?><sup style="font-size: 20px"></sup></h3>
 
 									<p>Profesores</p>
 								</div>
@@ -304,7 +304,7 @@
 							<!-- small box -->
 							<div class="small-box bg-warning">
 								<div class="inner">
-									<h3>44</h3>
+									<h3><?php echo $estadisticas['cantidad-propuestasTG']['cantidadpropuestastg']; ?></h3>
 
 									<p>Propuestas TG</p>
 								</div>
@@ -323,8 +323,8 @@
 							</div><!-- /.col -->
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">Home</a></li>
-									<li class="breadcrumb-item active">Starter Page</li>
+									<li class="breadcrumb-item"><a href="#">Escuela</a></li>
+									<li class="breadcrumb-item active">Dashboard</li>
 								</ol>
 							</div><!-- /.col -->
 						</div><!-- /.row -->

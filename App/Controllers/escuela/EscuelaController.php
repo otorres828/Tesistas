@@ -7,6 +7,7 @@ use \Core\View;
 use App\Models\Tesistas;
 use App\Models\Profesores;
 use App\Models\PropuestaTG;
+use App\Models\Escuela;
 
 
 
@@ -19,11 +20,14 @@ class EscuelaController extends \Core\Controller
         $this->autenticar();
         $profesores = (new Profesores())->get();         // Listar todos los profesores 
         $propuestasTG = (new PropuestaTG())->get();      // Listar todas las propuestas de TG 
+        $estadisticas = (new Escuela())->estadisticas();  // Estadisticas de la escuela
 
-
+        // var_dump($estadisticas['cantidad-tesistas']['cantidadtesistas']);
+        // echo $estadisticas['cantidad-tesistas']['cantidadtesistas'] . '<br>';
         View::render('escuela/index.php', [
             'profesores' => $profesores,
-            'propuestasTG' => $propuestasTG
+            'propuestasTG' => $propuestasTG,
+            'estadisticas' => $estadisticas
         ]);
     }
 
