@@ -86,4 +86,21 @@ class PropuestaTG extends ModeloGenerico{
         return $this->sentenciaObj($this->sql);           
     }
 
+    public function contar_propuestas_compañero($cedula){
+        $this->sql = "SELECT COUNT (num_c) AS cuenta 
+                      FROM presentan 
+                      WHERE cedula=$cedula
+                      GROUP BY(cedula)"; 
+        return $this->sentenciaObj($this->sql);  
+    }
+
+    public function contar_por_evaluacion_comite_compañero($cedula){
+        $this->sql = "SELECT COUNT  (e.num_c) AS cuenta 
+                      FROM evaluacioncomite AS e,propuestatg as ptg, presentan AS p
+                      WHERE e.num_c=ptg.num_c
+                        AND  p.num_c=ptg.num_c
+                        AND p.cedula=$cedula
+                      GROUP BY (p.cedula)";
+        return $this->sentenciaObj($this->sql);  
+    }
 }

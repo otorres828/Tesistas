@@ -142,9 +142,23 @@ class TesistasController extends \Core\Controller
                 } else {
                     $valor = $tesista->comprobar_codigo($_POST['cedula'], $_POST['codigo']);
                     if ($valor > 0) {
-                        $tesista->guardar_propuesta_pareja($slug,$_POST['nombrepropuesta'], $_POST['modalidad'], $_POST['cedula']);
-                        $_SESSION['mensaje'] = "Propuesta registrada con exito";
-                        $_SESSION['colorcito'] = "success";
+                        $validar = $this->validarregistro();
+                        if($validar){
+                            $validar = $this->validarregistro_pareja($_POST['cedula']);
+                            if($validar){
+                                $tesista->guardar_propuesta_pareja($slug,$_POST['nombrepropuesta'], $_POST['modalidad'], $_POST['cedula']);
+                                $_SESSION['mensaje'] = "Propuesta registrada con exito";
+                                $_SESSION['colorcito'] = "success";
+                            }else{
+                                $_SESSION['mensaje'] = "No puede su compañero ya tiene una propuesta activa. Escoja otro compañero";
+                                $_SESSION['colorcito'] = "danger";                               
+                            }
+
+                        }else{
+                            $_SESSION['mensaje'] = "No puede crear la propuesta porque ya tiene otra activa. Espere a que la propuesta anterior sea rechazada";
+                            $_SESSION['colorcito'] = "danger";
+                        }
+
                     } else {
                         $_SESSION['mensaje'] = "la cedula o el codigo de su compañero no coinciden";
                         $_SESSION['colorcito'] = "danger";
@@ -163,7 +177,7 @@ class TesistasController extends \Core\Controller
                         $_SESSION['mensaje'] = "Propuesta registrada con exito";
                         $_SESSION['colorcito'] = "success";
                     }else{
-                        $_SESSION['mensaje'] = "No puede crear una propuesta porque ya tiene otra activa. Espere a que la propuesta anterior sea rechazada";
+                        $_SESSION['mensaje'] = "No puede crear la propuesta porque ya tiene otra activa. Espere a que la propuesta anterior sea rechazada";
                         $_SESSION['colorcito'] = "danger";
                     }
                 }
@@ -183,6 +197,69 @@ class TesistasController extends \Core\Controller
         $cuenta1=$propuesta->contar_mis_propuestas();
         if($cuenta1){
             $cuenta2=$propuesta->contar_por_evaluacion_comite();
+            if ($cuenta1['cuenta']==$cuenta2['cuenta']){  
+                $reprobados=$propuesta->contar_reprobados_evaluacion_comite();
+                if($reprobados){
+                    if ($reprobados['cuenta']==$cuenta1['cuenta']) {
+                        return 1;
+                    }else {               
+                        $cuenta3=$propuesta->contar_por_evaluacion_consejo();      
+                        if($cuenta3){
+                            if($cuenta1['cuenta']==$cuenta3['cuenta']){
+                                $reprobados=$propuesta->contar_reprobados_evaluacion_consejo();
+                                if($reprobados){
+                                    if($reprobados['cuenta']==$cuenta1['cuenta']){
+                                        return 1;
+                                    }else{
+                                        return 0;
+                                    }
+                                }else{
+                                    return 0;
+                                }
+         
+                            }else{
+                                return 0;
+                            }                            
+                        }else{
+                            return 0;
+                        }  
+
+                    }
+                }else{
+                    $cuenta3=$propuesta->contar_por_evaluacion_consejo();      
+                    if($cuenta3){
+                        if($cuenta1['cuenta']==$cuenta3['cuenta']){
+                            $reprobados=$propuesta->contar_reprobados_evaluacion_consejo();
+                            if($reprobados){
+                                if($reprobados['cuenta']==$cuenta1['cuenta']){
+                                    return 1;
+                                }else{
+                                    return 0;
+                                }
+                            }else{
+                                return 0;
+                            }
+     
+                        }else{
+                            return 0;
+                        }                            
+                    }else{
+                        return 0;
+                    }  
+                }             
+            }else{
+                return 0;
+            } 
+        }else{
+            return 1;
+        }
+    }
+
+    public function validarregistro_pareja($cedula){
+        $propuesta = new PropuestaTG();
+        $cuenta1=$propuesta->contar_propuestas_compañero($cedula);
+        if($cuenta1){
+            $cuenta2=$propuesta->contar_por_evaluacion_comite_compañero($cedula);
             if ($cuenta1['cuenta']==$cuenta2['cuenta']){  
                 $reprobados=$propuesta->contar_reprobados_evaluacion_comite();
                 if($reprobados){
