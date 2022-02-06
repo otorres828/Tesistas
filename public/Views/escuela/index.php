@@ -390,17 +390,19 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>Tiger Nixon</td>
-										<td>System Architect</td>
-										<td>Edinburgh</td>
-										<td>61</td>
-										<td>2011/04/25</td>
-										<td>$320,800</td>
-										<td>$320,800</td>
-										<td>$320,800</td>
-										<td>$320,800</td>
-									</tr>
+									<?php foreach ($propuestasTG as $propuestaTG) : ?>
+										<tr>
+											<td><?php echo $propuestaTG['num_c']; ?></td>
+											<td><?php echo $propuestaTG['titulo']; ?></td>
+											<td><?php echo $propuestaTG['observaciones']; ?></td>
+											<td><?php echo $propuestaTG['modalidad']; ?></td>
+											<td><?php echo $propuestaTG['id_comite']; ?></td>
+											<td><?php echo $propuestaTG['nro_consejo']; ?></td>
+											<td><?php echo $propuestaTG['cedula_revisor']; ?></td>
+											<td><?php echo $propuestaTG['cedula_tutor']; ?></td>
+											<td><?php echo $propuestaTG['slug']; ?></td>
+										</tr>
+									<?php endforeach; ?>
 
 
 								</tbody>

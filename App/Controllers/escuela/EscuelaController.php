@@ -6,6 +6,7 @@ use App\Models\Auth;
 use \Core\View;
 use App\Models\Tesistas;
 use App\Models\Profesores;
+use App\Models\PropuestaTG;
 
 
 
@@ -18,7 +19,12 @@ class EscuelaController extends \Core\Controller
 
         // Listar todos los profesores 
         $profesores = (new Profesores())->get();
-        View::render('escuela/index.php', ['profesores' => $profesores]);
+        $propuestasTG = (new PropuestaTG())->get();
+
+        View::render('escuela/index.php', [
+            'profesores' => $profesores,
+            'propuestasTG' => $propuestasTG
+        ]);
     }
 
 
