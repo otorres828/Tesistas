@@ -18,12 +18,12 @@ $router->add('escuela', ['controller' => 'escuela\EscuelaController', 'method' =
 
 //TESISTAS
 $router->add('tesistas',['controller' => 'tesistas\TesistasController','method'=>'index']);
-$router->add('tesistas-guardar-propuesta',['controller' => 'tesistas\TesistasController','method'=>'guardarpropuesta']);
 $router->add('tesista-perfil',['controller' => 'tesistas\TesistasController','method'=>'perfil']);
 $router->add('tesista-perfil-modificarTelefono',['controller' => 'tesistas\TesistasController','method'=>'modificarTelefono']);
 $router->add('tesista-perfil-modificarCodigo',['controller' => 'tesistas\TesistasController','method'=>'modificarCodigo']);
 $router->add('tesista-perfil-modificarCorreo',['controller' => 'tesistas\TesistasController','method'=>'modificarCorreo']);
 $router->add('tesista-perfil-modificarClave',['controller' => 'tesistas\TesistasController','method'=>'modificarClave']);
+$router->add('tesistas-guardar-propuesta',['controller' => 'tesistas\TesistasController','method'=>'guardarpropuesta']);
 
 $router->add('tesista-propuestas-aprobadas',['controller' => 'tesistas\TesistasController','method'=>'propuestasaprobadas']);
 

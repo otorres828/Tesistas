@@ -174,35 +174,23 @@
                         <input type="text" name="nombrepropuesta" placeholder="nombre de la propuesta" class="form-control" required>
                       </div>
                       <div class="form-group flex">
-                        <label>Tipo de Propuesta</label>
-                        <div class="form-check ">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                          <label class="form-check-label" for="flexRadioDefault1">
-                            Instrumental
-                          </label>
-                        </div>
-                        <div class="form-check">
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                          <label class="form-check-label" for="flexRadioDefault2">
-                            Experimental
-                          </label>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label>Descripcion</label>
-                        <input type="textarea" name="descripcion" placeholder="descripcion" class="form-control" required>
+                        <label>Tipo de Propuesta</label></br>
+                        <select class="custom-select" name="modalidad">
+                          <option value="instrumental">Instrumental</option>
+                          <option value="experimental">Experimental</option>
+                        </select>
                       </div>
                       <div class="row align-items-center">
                         <div class="col-md-6 mb-3">
                           <div class="form-group">
                             <label>Cedula del Compañero</label>
-                            <input class="form-control" type="number" placeholder="cedula del compañero">
+                            <input class="form-control" type="number" placeholder="cedula del compañero" name="cedula">
                           </div>
                         </div>
                         <div class="col-md-6 mb-3">
                           <div class="form-group">
                             <label>Codigo de Seguridad</label>
-                            <input class="form-control" type="text" placeholder="Codigo de seguridad">
+                            <input class="form-control" type="text" placeholder="Codigo de seguridad" name="codigo">
                           </div>
                         </div>
                       </div>
@@ -219,6 +207,18 @@
         </div>
 
         <div class="p-4 card table-responsive py-4">
+          <?php
+          if (isset($_SESSION['mensaje'])) { ?>
+            <div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
+              <?php echo $_SESSION['mensaje']; ?>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+          <?php unset($_SESSION['mensaje']);
+          }
+          ?>
           <table class="table table-flush" id="example">
             <thead class="thead-light">
               <tr class="text-center">

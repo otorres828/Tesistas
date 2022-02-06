@@ -24,11 +24,8 @@ class TesistasController extends \Core\Controller
     public function perfil()
     {
         $this->autenticar();
-
-        $tesista = (new Tesistas())->query();
-
+        $tesista = (new Tesistas())->perfil();
         View::render('tesistas/perfil.php', ['tesista' => $tesista]);
-        
     }
 
     public function propuestasaprobadas()
@@ -45,20 +42,21 @@ class TesistasController extends \Core\Controller
         ]);
     }
 
-    public function modificarClave(){
+    public function modificarClave()
+    {
         if (isset($_POST['modificarclave'])) {
             if (isset($_POST['claveactual']) && isset($_POST['nuevaclave'])) {
                 session_start();
-         
+
                 $autenticado = (new Auth());
-                $usuario=$autenticado->autenticado();
+                $usuario = $autenticado->autenticado();
 
                 $actual = password_verify($_POST['claveactual'], $usuario['contraseña']);
                 if ($actual > 0) {
 
                     $nueva = password_hash($_POST['nuevaclave'], PASSWORD_BCRYPT);
-                    $autenticado->cambiarcontraseña($nueva,$usuario['cedula']);
-                    
+                    $autenticado->cambiarcontraseña($nueva, $usuario['cedula']);
+
                     $_SESSION['mensaje'] = "contraseña cambiada con exito";
                     $_SESSION['colorcito'] =  "success";
                 } else {
@@ -67,11 +65,12 @@ class TesistasController extends \Core\Controller
                 }
                 header("Location: tesista-perfil");
             }
-        }else
+        } else
             header("Location: error");
     }
 
-    public function modificarCorreo(){
+    public function modificarCorreo()
+    {
 
         if (isset($_POST['modificarcorreo'])) {
             if (isset($_POST['correo'])) {
@@ -87,13 +86,13 @@ class TesistasController extends \Core\Controller
                     $_SESSION['colorcito'] = "success";
                 }
                 header('location:tesista-perfil');
-
             }
-        }else
+        } else
             header('location:error');
     }
 
-    public function modificarTelefono() {
+    public function modificarTelefono()
+    {
         if (isset($_POST['modificartelefono'])) {
             if (isset($_POST['telefono'])) {
                 $resultado = (new Tesistas())->where('telefono', '=', $_POST['telefono'])->getOb();
@@ -108,29 +107,78 @@ class TesistasController extends \Core\Controller
                 }
             }
             header('location:tesista-perfil');
-        }else
+        } else
             header('location:error');
     }
 
-    public function modificarCodigo() {
+    public function modificarCodigo()
+    {
         if (isset($_POST['modificarcodigo'])) {
             $key = "";
             $pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
             $max = strlen($pattern) - 1;
-            for ($i = 0; $i < 26; $i++) {
+            for ($i = 0; $i <26; $i++) {
                 $key .= substr($pattern, mt_rand(0, $max), 1);
             }
             (new Tesistas())->modificarcodigo($key);
             $_SESSION['mensaje'] = "Se modifico el codigo con exito";
             $_SESSION['colorcito'] = "info";
             header('location:tesista-perfil');
-
-        }else
+        } else
             header('location:error');
     }
 
+    public function guardarpropuesta()
+    {
+        session_start();
+        if (isset($_POST['nuevapropuesta'])) {
+            $tesista = (new Tesistas());
+            if (($_POST['cedula']!='')  && ($_POST['codigo']!='') && isset($_POST['nombrepropuesta']) && isset($_POST['modalidad'])) {
+                $valor = $tesista->comprobar_nombre_propuesta($_POST['nombrepropuesta']);
+                if ($valor > 0) {
+                    $_SESSION['mensaje'] = "El nombre de la propuesta ya existe";
+                    $_SESSION['colorcito'] = "danger";
+                } else {
+                    $valor = $tesista->comprobar_codigo($_POST['cedula'], $_POST['codigo']);
+                    if ($valor > 0) {
+                        $tesista->guardar_propuesta($_POST['nombrepropuesta'], $_POST['modalidad'], $_POST['cedula']);
+                        $_SESSION['mensaje'] = "Propuesta registrada con exito";
+                        $_SESSION['colorcito'] = "success";
+                    } else {
+                        $_SESSION['mensaje'] = "la cedula o el codigo de su compañero no coinciden";
+                        $_SESSION['colorcito'] = "danger";
+                    }
+                }
+            } else if (($_POST['cedula']=='') && ($_POST['codigo']=='') ) {
+                $valor = $tesista->comprobar_nombre_propuesta($_POST['nombrepropuesta']);
+                if ($valor > 0) {
+                    $_SESSION['mensaje'] = "El nombre de la propuesta ya existe";
+                    $_SESSION['colorcito'] = "danger";
+                }else{
+                    $tesista->guardarpropuesta($_POST['nombrepropuesta'],$_POST['modalidad']);
+                    $_SESSION['mensaje'] = "Propuesta registrada con exito";
+                    $_SESSION['colorcito'] = "success";
+                }
+            } else {
+                $_SESSION['mensaje'] = "No ha llenado los campos necesarios para avanzar";
+                $_SESSION['colorcito'] = "danger";
+            }
+        } else {
+            header('location:error');
+        }
 
-    private function autenticar() {
+        header('location:tesistas');
+
+    }
+
+
+    public function crearpropuesta($propuesta)
+    {
+        return $propuesta = str_replace(' ', '_', strtolower(preg_replace('([^A-Za-z0-9 ])', '', trim($propuesta))));
+    }
+
+    private function autenticar()
+    {
         $autenticacion = new Auth();
         $autenticacion->verificado();
         $autenticacion->rol('Tesistas');

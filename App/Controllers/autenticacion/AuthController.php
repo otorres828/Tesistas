@@ -13,8 +13,7 @@ class AuthController extends \Core\Controller
         View::render('autenticacion/login.php');
     }
 
-    public function comprobarLogin()
-    {
+    public function comprobarLogin(){
         session_start();
         $autenticar = new Auth();
         if (!empty($_POST['correo']) && !empty($_POST['clave'])) {
@@ -66,18 +65,24 @@ class AuthController extends \Core\Controller
         View::render('errores\404.php');
     }
 
-    public function redirect()
-    {
+    public function redirect()  {
         session_start();
-        $usuario = (new Auth())->autenticado();
-        if ( $usuario['modelo'] == 'Tesistas') {
-            header("Location: tesistas");
-        } else if ( $usuario['modelo'] == 'Profesores') {
-            header("Location: profesores");
-        } else if ( $usuario['modelo'] == 'Escuela') {
-            header("Location: escuela");
+        if(isset($_SESSION['cedula'])){
+            $usuario = (new Auth())->autenticado();
+            if (isset($usuario['modelo'])) {
+                if ($usuario['modelo'] == 'Tesistas') {
+                    header("Location: tesistas");
+                } else if ($usuario['modelo'] == 'Profesores') {
+                    header("Location: profesores");
+                } else if ($usuario['modelo'] == 'Escuela') {
+                    header("Location: escuela");
+                } 
+            }
         }else{
+            echo "hola";
             header("Location: login");
+
         }
+        
     }
 }
