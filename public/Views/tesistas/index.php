@@ -176,8 +176,8 @@
                       <div class="form-group flex">
                         <label>Tipo de Propuesta</label></br>
                         <select class="custom-select" name="modalidad">
-                          <option value="instrumental">Instrumental</option>
-                          <option value="experimental">Experimental</option>
+                          <option value="I">Instrumental</option>
+                          <option value="E">Experimental</option>
                         </select>
                       </div>
                       <div class="row align-items-center">

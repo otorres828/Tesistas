@@ -14,7 +14,7 @@
     if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
       localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
       // eslint-disable-next-line no-alert
-      alert('¡Felicidades! Haz ingresado con exito al panel de control de Tesistas.com')
+      // alert('¡Felicidades! Haz ingresado con exito al panel de control de Tesistas.com')
     }
   }, 1000)
 

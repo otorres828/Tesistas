@@ -131,17 +131,19 @@ class TesistasController extends \Core\Controller
     public function guardarpropuesta()
     {
         session_start();
+        $slug="";
         if (isset($_POST['nuevapropuesta'])) {
             $tesista = (new Tesistas());
             if (($_POST['cedula']!='')  && ($_POST['codigo']!='') && isset($_POST['nombrepropuesta']) && isset($_POST['modalidad'])) {
-                $valor = $tesista->comprobar_nombre_propuesta($_POST['nombrepropuesta']);
+                $slug=$this->slug($_POST['nombrepropuesta']);
+                $valor = $tesista->comprobar_nombre_propuesta($slug);
                 if ($valor > 0) {
                     $_SESSION['mensaje'] = "El nombre de la propuesta ya existe";
                     $_SESSION['colorcito'] = "danger";
                 } else {
                     $valor = $tesista->comprobar_codigo($_POST['cedula'], $_POST['codigo']);
                     if ($valor > 0) {
-                        $tesista->guardar_propuesta($_POST['nombrepropuesta'], $_POST['modalidad'], $_POST['cedula']);
+                        $tesista->guardar_propuesta_pareja($slug,$_POST['nombrepropuesta'], $_POST['modalidad'], $_POST['cedula']);
                         $_SESSION['mensaje'] = "Propuesta registrada con exito";
                         $_SESSION['colorcito'] = "success";
                     } else {
@@ -150,12 +152,13 @@ class TesistasController extends \Core\Controller
                     }
                 }
             } else if (($_POST['cedula']=='') && ($_POST['codigo']=='') ) {
-                $valor = $tesista->comprobar_nombre_propuesta($_POST['nombrepropuesta']);
+                $slug=$this->slug($_POST['nombrepropuesta']);
+                $valor = $tesista->comprobar_nombre_propuesta($slug);
                 if ($valor > 0) {
                     $_SESSION['mensaje'] = "El nombre de la propuesta ya existe";
                     $_SESSION['colorcito'] = "danger";
                 }else{
-                    $tesista->guardarpropuesta($_POST['nombrepropuesta'],$_POST['modalidad']);
+                    $tesista->guardarpropuesta_solo($slug,$_POST['nombrepropuesta'],$_POST['modalidad']);
                     $_SESSION['mensaje'] = "Propuesta registrada con exito";
                     $_SESSION['colorcito'] = "success";
                 }
@@ -166,15 +169,14 @@ class TesistasController extends \Core\Controller
         } else {
             header('location:error');
         }
-
         header('location:tesistas');
 
     }
 
 
-    public function crearpropuesta($propuesta)
+    public function slug($propuesta)
     {
-        return $propuesta = str_replace(' ', '_', strtolower(preg_replace('([^A-Za-z0-9 ])', '', trim($propuesta))));
+        return $propuesta = str_replace(' ', '-', strtolower(preg_replace('([^A-Za-z0-9 ])', '', trim($propuesta))));
     }
 
     private function autenticar()

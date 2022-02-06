@@ -41,18 +41,17 @@ class Tesistas extends ModeloGenerico{
     }
 
     public function comprobar_nombre_propuesta($nombre_propuesta){
-        return $this->sentenciaObj("SELECT titulo FROM propuestatg WHERE titulo="."'".$nombre_propuesta."'");
-
+        return $this->sentenciaObj("SELECT slug FROM propuestatg WHERE slug="."'".$nombre_propuesta."'");
     }
-
+    
     public function comprobar_codigo($cedula,$codigo){
         return $this->sentenciaObj("SELECT cedula,codigo FROM usuarios WHERE cedula="."'".$cedula."'" . "AND codigo="."'".$codigo."'");
     }
 
-    public function guardar_propuesta($nombrepropuesta,$modalidad,$cedula){
-
+    public function guardar_propuesta_pareja($slug,$nombrepropuesta,$modalidad,$cedula){ 
+        $this->sentenciaObj("INSERT INTO propuestatg (titulo,modalidad,slug) VALUES ('$nombrepropuesta','$modalidad','$slug')");
     }
-    public function guardarpropuesta($nombrepropuesta,$modalidad){
-
+    public function guardarpropuesta_solo($slug,$nombrepropuesta,$modalidad){
+        $this->sentenciaObj("INSERT INTO propuestatg (titulo,modalidad,slug) VALUES ('$nombrepropuesta','$modalidad','$slug')");
     }
 }
