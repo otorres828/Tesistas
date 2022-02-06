@@ -13,8 +13,66 @@ class PropuestaTG extends ModeloGenerico{
     }
 
     public function mispropuestas($cedula){
-        $this->sql = "SELECT num_c,titulo,modalidad,observaciones FROM propuestatg WHERE Num_C = ANY(SELECT Num_C FROM Presentan WHERE Cedula =$cedula)";             
+        $this->sql = "SELECT ptg.num_c,ptg.titulo,ptg.modalidad,ptg.observaciones,ec.estatus,ptg.nro_consejo 
+                      FROM propuestatg AS ptg,evaluacioncomite AS ec
+                      WHERE ptg.num_c=ec.num_c
+                      AND ptg.num_c = ANY(SELECT Num_C FROM Presentan WHERE Cedula =$cedula)";             
         return $this->sentenciaAll($this->sql);
+    }
+
+    public function contar_mis_propuestas(){
+        $cedula= $_SESSION['cedula'];
+        $this->sql = "SELECT COUNT (num_c) AS cuenta 
+                      FROM presentan 
+                      WHERE cedula=$cedula
+                      GROUP BY(cedula)"; 
+        return $this->sentenciaObj($this->sql);          
+    }
+
+    public function contar_por_evaluacion_comite(){
+        $cedula= $_SESSION['cedula'];
+        $this->sql = "SELECT COUNT  (e.num_c) AS cuenta 
+                      FROM evaluacioncomite AS e,propuestatg as ptg, presentan AS p
+                      WHERE e.num_c=ptg.num_c
+                        AND  p.num_c=ptg.num_c
+                        AND p.cedula=$cedula
+                      GROUP BY (p.cedula)";
+        return $this->sentenciaObj($this->sql);          
+    }
+
+    public function contar_reprobados_evaluacion_comite(){
+         $cedula= $_SESSION['cedula'];
+        $this->sql = "SELECT COUNT  (e.num_c) AS cuenta 
+                      FROM evaluacioncomite AS e,propuestatg as ptg, presentan AS p
+                      WHERE e.num_c=ptg.num_c
+                        AND  p.num_c=ptg.num_c
+                        AND e.estatus='REPROBADO'
+                        AND p.cedula=$cedula
+                      GROUP BY (p.cedula)";
+        return $this->sentenciaObj($this->sql);           
+    }
+
+    public function contar_por_evaluacion_consejo(){
+        $cedula= $_SESSION['cedula'];
+        $this->sql = "SELECT COUNT  (e.num_c) AS cuenta 
+                      FROM evaluacionconsejo AS e,propuestatg as ptg, presentan AS p
+                      WHERE e.num_c=ptg.num_c
+                        AND  p.num_c=ptg.num_c
+                        AND p.cedula=$cedula
+                      GROUP BY (p.cedula)";
+        return $this->sentenciaObj($this->sql);     
+    }
+
+    public function contar_reprobados_evaluacion_consejo(){
+        $cedula= $_SESSION['cedula'];
+        $this->sql = "SELECT COUNT  (e.num_c) AS cuenta 
+                      FROM evaluacionconsejo AS e,propuestatg as ptg, presentan AS p
+                      WHERE e.num_c=ptg.num_c
+                        AND  p.num_c=ptg.num_c
+                        AND e.estatus='REPROBADO'
+                        AND p.cedula=$cedula
+                      GROUP BY (p.cedula)";
+        return $this->sentenciaObj($this->sql);           
     }
 
 }

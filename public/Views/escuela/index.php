@@ -280,7 +280,7 @@
                 <i class="ion ion-person-add"></i>
 
                 </div>
-                <a href="#" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="escuela-profesores" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->

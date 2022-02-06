@@ -30,6 +30,7 @@ $router->add('profesor-perfil',['controller'=>'profesores\ProfesorController','m
 
 //ESCUELA
 $router->add('escuela', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);
+$router->add('escuela-profesores', ['controller' => 'escuela\EscuelaController', 'method' => 'profesores']);
 
 
 $router->dispatch($_SERVER['QUERY_STRING']);

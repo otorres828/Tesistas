@@ -11,7 +11,8 @@ class EscuelaController extends \Core\Controller{
         $this->autenticar();
         View::render('escuela/index.php');
     }
-
+    public function profesores(){
+    }
     private function autenticar()
     {
         $autenticacion = new Auth();

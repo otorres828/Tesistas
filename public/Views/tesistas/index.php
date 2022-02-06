@@ -13,7 +13,6 @@
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
 
   <div class="wrapper">
-    <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
     </div>
@@ -228,16 +227,39 @@
                 <th>Observaciones</th>
                 <th>E.Comite</th>
                 <th>E.Consejo</th>
-
               </tr>
             </thead>
             <tbody>
               <?php foreach ($mispropuestas as $propuesta) { ?>
                 <tr>
-                  <td><?php echo $propuesta['num_c']; ?></td>
-                  <td><?php echo $propuesta['titulo']; ?></td>
-                  <td><?php echo $propuesta['modalidad']; ?></td>
-                  <td><?php echo $propuesta['observaciones']; ?></td>
+                  <td class="text-center"><?php echo $propuesta['num_c']; ?></td>
+                  <td> <?php echo $propuesta['titulo']; ?></td>
+                  <td class="text-center">
+                    <?php if ($propuesta['modalidad']=='I'){ ?>
+                      <h2 class="badge bg-primary">Instrumental</h2> 
+                    <?php }else{?>
+                    <h2 class="badge bg-success">Experimental</h2> 
+                    <?php }?>
+                  </td>
+                  <td class="text-center">
+                    <?php if(is_null($propuesta['observaciones'])){?>
+                      <h2 class="badge bg-warning">PENDIENTE</h2> 
+                    <?php  }else{ echo $propuesta['observaciones']; }?>
+                  </td>
+                  <td class="text-center">
+                    <?php if(is_null($propuesta['estatus'])){?>
+                      <h2 class="badge bg-warning">PENDIENTE</h2> 
+                      <?php }else{ if($propuesta['estatus']=='REPROBADO'){ ?>
+                        <h2 class="badge bg-danger">REPROBADO</h2> 
+                      <?php } else{  ?>
+                        <h2 class="badge bg-success">APROBADO</h2> 
+                        <?php }} ?>
+                  </td>
+                  <td class="text-center">
+                    <?php if(is_null($propuesta['nro_consejo'])){?>
+                      <h2 class="badge bg-warning">PENDIENTE</h2> 
+                      <?php }else{ echo $propuesta['nro_consejo'];} ?>
+                  </td>
                 </tr>
               <?php } ?>
             </tbody>
