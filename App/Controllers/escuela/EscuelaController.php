@@ -13,13 +13,13 @@ use App\Models\PropuestaTG;
 class EscuelaController extends \Core\Controller
 {
 
+    // Vista del dashboard para la escuela
     public function index()
     {
         $this->autenticar();
+        $profesores = (new Profesores())->get();         // Listar todos los profesores 
+        $propuestasTG = (new PropuestaTG())->get();      // Listar todas las propuestas de TG 
 
-        // Listar todos los profesores 
-        $profesores = (new Profesores())->get();
-        $propuestasTG = (new PropuestaTG())->get();
 
         View::render('escuela/index.php', [
             'profesores' => $profesores,
@@ -28,26 +28,26 @@ class EscuelaController extends \Core\Controller
     }
 
 
-    // ver todos los tesistas en escuela/tesistas
+    // Ver todos los tesistas en escuela-tesistas
     public function tesistasTodos()
     {
         $this->autenticar();
-        $tesistas = (new Tesistas())->get();
+        $tesistas = (new Tesistas())->get();        // Listar todos los Tesisistas 
         View::render('escuela/tesistas-todos.php', ['tesistas' => $tesistas]);
     }
 
-    // ver todas las propuestas tg  en escuela-propuestastg
+    // Ver todas las propuestas tg  en escuela-propuestastg
     public function propuestastgTodas()
     {
         $this->autenticar();
-        $propuestasTG = (new PropuestaTG())->get();
+        $propuestasTG = (new PropuestaTG())->get();   // Listar todas las propuestas de TG 
 
         View::render('escuela/propuestastg-todos.php', [
             'propuestasTG' => $propuestasTG
         ]);
     }
 
-    // Cargar tesistas mediante csv 
+    // POR HACER Cargar tesistas mediante csv 
     public function tesistasCargar()
     {
         $this->autenticar();
