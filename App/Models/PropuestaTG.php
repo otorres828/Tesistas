@@ -12,10 +12,21 @@ class PropuestaTG extends ModeloGenerico{
         parent::__construct("propuestatg", PropuestaTG::class, $propiedades);
     }
 
-    public function mispropuestas($cedula){
-        $this->sql = "SELECT ptg.num_c,ptg.titulo,ptg.modalidad,ptg.observaciones,ec.estatus,ptg.nro_consejo 
-                      FROM propuestatg AS ptg,evaluacioncomite AS ec
+    public function mispropuestasaprobadas(){
+        $cedula=$_SESSION['cedula'];
+        $this->sql = "SELECT ptg.num_c,ptg.titulo,ptg.modalidad,ptg.observaciones,ec.estatus,ecj.estatus as estatusc 
+                      FROM propuestatg AS ptg,evaluacioncomite AS ec,evaluacionconsejo AS ecj
                       WHERE ptg.num_c=ec.num_c
+                      AND ptg.num_c=ecj.num_c
+                      AND ptg.num_c = ANY(SELECT Num_C FROM Presentan WHERE Cedula =$cedula)";             
+        return $this->sentenciaAll($this->sql);        
+    }
+
+    public function mispropuestas($cedula){
+        $this->sql = "SELECT ptg.num_c,ptg.titulo,ptg.modalidad,ptg.observaciones,ec.estatus,ecj.estatus as estatusc 
+                      FROM propuestatg AS ptg,evaluacioncomite AS ec,evaluacionconsejo AS ecj
+                      WHERE ptg.num_c=ec.num_c
+                      AND ptg.num_c=ecj.num_c
                       AND ptg.num_c = ANY(SELECT Num_C FROM Presentan WHERE Cedula =$cedula)";             
         return $this->sentenciaAll($this->sql);
     }

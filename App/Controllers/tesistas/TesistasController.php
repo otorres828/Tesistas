@@ -28,18 +28,17 @@ class TesistasController extends \Core\Controller
         View::render('tesistas/perfil.php', ['tesista' => $tesista]);
     }
 
-    public function propuestasaprobadas()
+    public function mispropuestasaprobadas()
     {
         $autenticacion = new Auth();
         $autenticacion->verificado();
         $autenticacion->rol('Tesistas');
 
         $tesista = (new Auth())->where('cedula', '=', $_SESSION['cedula'])->getOb();
-        $propuestasaprobadas = "";
-        View::render('tesistas/propuestasaprobadas.php', [
-            'tesista' => $tesista,
-            'propuestasaprobadas' => $propuestasaprobadas
-        ]);
+        $propuestasaprobadas=(new PropuestaTG())->mispropuestasaprobadas();
+        View::render('tesistas/propuestasaprobadas.php', [ 'tesista' => $tesista,
+                                                         'propuestasaprobadas' => $propuestasaprobadas
+                                                         ]);
     }
 
     public function modificarClave()

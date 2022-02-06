@@ -21,7 +21,7 @@ $router->add('tesista-perfil-modificarCorreo',['controller' => 'tesistas\Tesista
 $router->add('tesista-perfil-modificarClave',['controller' => 'tesistas\TesistasController','method'=>'modificarClave']);
 $router->add('tesistas-guardar-propuesta',['controller' => 'tesistas\TesistasController','method'=>'guardarpropuesta']);
 
-$router->add('tesista-propuestas-aprobadas',['controller' => 'tesistas\TesistasController','method'=>'propuestasaprobadas']);
+$router->add('tesista-propuestas-aprobadas',['controller' => 'tesistas\TesistasController','method'=>'mispropuestasaprobadas']);
 
 //PROFESORES
 $router->add('profesores',['controller'=>'profesores\ProfesorController','method'=>'index']);
