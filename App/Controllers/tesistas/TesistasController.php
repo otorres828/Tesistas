@@ -38,6 +38,15 @@ class TesistasController extends \Core\Controller
                                                          ]);
     }
 
+    public function reporte()
+    {
+        $this->autenticar();
+        $tesista = (new Auth())->where('cedula', '=', $_SESSION['cedula'])->getOb();
+        $propuestasaprobadas=(new PropuestaTG())->mispropuestasaprobadas();
+        View::render('tesistas/reporte_propuestas_aprobadas.php', [ 'tesista' => $tesista,
+                                                         'propuestasaprobadas' => $propuestasaprobadas
+                                                         ]);
+    }
     public function modificarClave()
     {
         if (isset($_POST['modificarclave'])) {
