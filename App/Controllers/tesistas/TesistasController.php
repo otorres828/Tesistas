@@ -30,12 +30,10 @@ class TesistasController extends \Core\Controller
 
     public function mispropuestasaprobadas()
     {
-        $autenticacion = new Auth();
-        $autenticacion->verificado();
-        $autenticacion->rol('Tesistas');
-
+        $this->autenticar();
         $tesista = (new Auth())->where('cedula', '=', $_SESSION['cedula'])->getOb();
         $propuestasaprobadas=(new PropuestaTG())->mispropuestasaprobadas();
+        $compañero=(new PropuestaTG())->compañero();
         View::render('tesistas/propuestasaprobadas.php', [ 'tesista' => $tesista,
                                                          'propuestasaprobadas' => $propuestasaprobadas
                                                          ]);

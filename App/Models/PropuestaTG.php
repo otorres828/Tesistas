@@ -156,4 +156,8 @@ class PropuestaTG extends ModeloGenerico
     return $this->sentenciaObj($this->sql);
   }
 
+  //validar si existe compañero
+  public function compañero(){
+    $this->sql="SELECT COUNT ()";
+  }
 }

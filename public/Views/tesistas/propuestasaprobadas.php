@@ -5,7 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tesista | Propuestas Aprobadas</title>
-  <?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
+  <?php
+
+use App\Models\PropuestaTG;
+
+include_once('../public/Views/componentes/cssadminlte.php'); ?>
   <!-- DATATABLES -->
 </head>
 
@@ -159,6 +163,63 @@
                       <input class="form-control w-20" disabled></input>
                     </div>
                   </div>
+                   <?php
+                   $num_c=$propuestas['num_c'];
+                   $sql="SELECT COUNT(p.num_c) as cuenta
+                          FROM presentan as p, evaluacioncomite as ec,evaluacionconsejo as ecj
+                          where p.num_c=$num_c
+                            and p.num_c=ecj.num_c
+                            and p.num_C=ec.num_c
+                            and ec.estatus='APROBADO'
+                            and ecj.estatus='APROBADO'
+                   ";
+                   $valor=(new PropuestaTG())->sentenciaObj($sql);
+                   $valor=$valor['cuenta'];
+                   if($valor==2){
+                       $cedula=$_SESSION['cedula'];
+                       $sql="SELECT (p.cedula)
+                              FROM presentan as p, evaluacioncomite as ec,evaluacionconsejo as ecj
+                              where p.num_c=$num_c
+                                and p.cedula!=$cedula
+                                and p.num_c=ecj.num_c
+                                and p.num_C=ec.num_c
+                                and ec.estatus='APROBADO'
+                                and ecj.estatus='APROBADO'";
+                       $valor=(new PropuestaTG())->sentenciaObj($sql);
+                       $valor=$valor['cedula'];
+                       $sql="SELECT cedula,nombre,correoucab,telefono FROM tesistas WHERE cedula=".$valor."";
+                       $valor=(new PropuestaTG())->sentenciaObj($sql);
+                       ?>
+                        <h2 class="h5 mb-4 mt-4">Datos del Compañero</h2>
+                        <div class="row align-items-center">
+                    <div class="col-md-6 mb-3">
+                      <div class="form-group">
+                        <label>Cedula</label>
+                       <input class="form-control" value="<?php echo $valor['cedula'];?>" disabled>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="form-group">
+                        <label for="email">Nombre</label>
+                        <input class="form-control" value="<?php echo $valor['nombre'];?>" disabled>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="form-group">
+                        <label>Correo Ucab</label>
+                       <input class="form-control" value="<?php echo $valor['correoucab'];?>" disabled>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <div class="form-group">
+                        <label for="email">Telefono</label>
+                        <input class="form-control" value="<?php echo $valor['telefono'];?>" disabled>
+                      </div>
+                    </div>
+                    
+                  </div>
+                   <?php }?>         
+                 
 
                 </div>
               </div>
