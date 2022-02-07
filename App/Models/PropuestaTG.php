@@ -74,7 +74,7 @@ class PropuestaTG extends ModeloGenerico
                       GROUP BY (p.cedula)";
     return $this->sentenciaObj($this->sql);
   }
-  
+
   public function ultimo_estatus_comite()
   {
     $cedula = $_SESSION['cedula'];
@@ -100,6 +100,60 @@ class PropuestaTG extends ModeloGenerico
                       GROUP BY (p.cedula)";
     return $this->sentenciaObj($this->sql);
   }
-
+  //REGISTRO DE PAREJA
+  public function contar_mis_propuestas_pareja($cedula)
+  {
+    $this->sql = "SELECT COUNT (num_c) AS cuenta 
+                      FROM presentan 
+                      WHERE cedula=$cedula
+                      GROUP BY(cedula)";
+    return $this->sentenciaObj($this->sql);
+  }
  
+  public function contar_por_evaluacion_comite_pareja($cedula)
+  {
+    $this->sql = "SELECT COUNT  (e.num_c) AS cuenta 
+                      FROM evaluacioncomite AS e,propuestatg as ptg, presentan AS p
+                      WHERE e.num_c=ptg.num_c
+                        AND  p.num_c=ptg.num_c
+                        AND p.cedula=$cedula
+                      GROUP BY (p.cedula)";
+    return $this->sentenciaObj($this->sql);
+  }
+
+  public function ultimo_estatus_comite_pareja($cedula)
+  {
+    $this->sql = "SELECT e.estatus 
+                  FROM evaluacioncomite AS e,propuestatg as ptg, presentan AS p
+                  WHERE e.num_c=ptg.num_c
+                    AND  p.num_c=ptg.num_c
+                    AND p.cedula=$cedula
+                  GROUP BY (e.num_c,e.id_comite)
+                  ORDER BY(e.num_c) DESC
+                  limit 1";
+    return $this->sentenciaObj($this->sql);
+  }
+
+  public function contar_por_evaluacion_consejo_pareja($cedula)
+  {
+    $this->sql = "SELECT COUNT  (e.num_c) AS cuenta 
+                      FROM evaluacionconsejo AS e,propuestatg as ptg, presentan AS p
+                      WHERE e.num_c=ptg.num_c
+                        AND  p.num_c=ptg.num_c
+                        AND p.cedula=$cedula
+                      GROUP BY (p.cedula)";
+    return $this->sentenciaObj($this->sql);
+  }
+
+  public function ultimo_estatus_consejo_pareja($cedula)
+  {
+    $this->sql = "SELECT COUNT  (e.num_c) AS cuenta 
+                      FROM evaluacionconsejo AS e,propuestatg as ptg, presentan AS p
+                      WHERE e.num_c=ptg.num_c
+                        AND  p.num_c=ptg.num_c
+                        AND p.cedula=$cedula
+                      GROUP BY (p.cedula)";
+    return $this->sentenciaObj($this->sql);
+  }
+
 }

@@ -144,7 +144,7 @@ class TesistasController extends \Core\Controller
                     if ($valor > 0) {
                         $validar = $this->validarregistro_solo();
                         if($validar){
-                            // $validar = $this->validarregistro_pareja($_POST['cedula']);
+                            $validar = $this->validarregistro_pareja($_POST['cedula']);
                             if($validar){
                                 $tesista->guardar_propuesta_pareja($slug,$_POST['nombrepropuesta'], $_POST['modalidad'], $_POST['cedula']);
                                 $_SESSION['mensaje'] = "Propuesta registrada con exito";
@@ -208,6 +208,54 @@ class TesistasController extends \Core\Controller
                             if($cuenta3){
                                 if($cuenta1['cuenta']==$cuenta3['cuenta']){
                                     $estatus=$propuesta->ultimo_estatus_consejo();
+                                    if($estatus){
+                                        if($estatus['estatus']==$cuenta1['REPROBADO']){
+                                            return 1;
+                                        }else{
+                                            return 0;
+                                        }
+                                    }else{
+                                        return 0;
+                                    }
+             
+                                }else{
+                                    return 0;
+                                }                            
+                            }else{
+                                return 0;
+                            }  
+    
+                        }
+                    } 
+                }             
+                else{
+                    return 0;
+                } 
+            }else{
+                return 1;
+            }
+
+        }else{
+            return 1;
+        }
+    }
+
+    public function validarregistro_pareja($cedula){
+        $propuesta = new PropuestaTG();
+        $cuenta1=$propuesta->contar_mis_propuestas_pareja($cedula);
+        if($cuenta1){
+            $cuenta2=$propuesta->contar_por_evaluacion_comite_pareja($cedula);
+            if($cuenta2){
+                if ($cuenta1['cuenta']==$cuenta2['cuenta']){  
+                    $estatus=$propuesta->ultimo_estatus_comite_pareja($cedula);
+                    if($estatus){
+                        if ($estatus['estatus']=='REPROBADO') {
+                            return 1;
+                        }else {               
+                            $cuenta3=$propuesta->contar_por_evaluacion_consejo_pareja($cedula);      
+                            if($cuenta3){
+                                if($cuenta1['cuenta']==$cuenta3['cuenta']){
+                                    $estatus=$propuesta->ultimo_estatus_consejo_pareja($cedula);
                                     if($estatus){
                                         if($estatus['estatus']==$cuenta1['REPROBADO']){
                                             return 1;
