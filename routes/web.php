@@ -20,9 +20,9 @@ $router->add('tesista-perfil-modificarCodigo', ['controller' => 'tesistas\Tesist
 $router->add('tesista-perfil-modificarCorreo', ['controller' => 'tesistas\TesistasController', 'method' => 'modificarCorreo']);
 $router->add('tesista-perfil-modificarClave', ['controller' => 'tesistas\TesistasController', 'method' => 'modificarClave']);
 $router->add('tesistas-guardar-propuesta', ['controller' => 'tesistas\TesistasController', 'method' => 'guardarpropuesta']);
-
 $router->add('tesista-propuestas-aprobadas',['controller' => 'tesistas\TesistasController','method'=>'mispropuestasaprobadas']);
 $router->add('propuestas-aprobadas-imprimir',['controller' => 'tesistas\TesistasController','method'=>'reporte']);
+
 
 //=====================================PROFESORES
 $router->add('profesores', ['controller' => 'profesores\ProfesorController', 'method' => 'index']);
@@ -45,6 +45,5 @@ $router->add('escuela-comites', ['controller' => 'escuela\EscuelaController', 'm
 $router->add('escuela-comites-up', ['controller' => 'escuela\EscuelaController', 'method' => 'comitesCargar']);
 
 $router->add('escuela-propuestastg', ['controller' => 'escuela\EscuelaController', 'method' => 'propuestastgTodas']);
-//=====================================ESCUELA
 
 $router->dispatch($_SERVER['QUERY_STRING']);

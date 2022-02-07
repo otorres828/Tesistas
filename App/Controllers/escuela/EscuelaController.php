@@ -52,6 +52,7 @@ class EscuelaController extends \Core\Controller
     }
     public function profesores(){
     }
+
     // Ver todos los profesores revidores en profesor-tutor.php
     public function profesoresJurados()
     {
