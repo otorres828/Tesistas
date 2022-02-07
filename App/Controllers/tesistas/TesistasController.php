@@ -33,7 +33,6 @@ class TesistasController extends \Core\Controller
         $this->autenticar();
         $tesista = (new Auth())->where('cedula', '=', $_SESSION['cedula'])->getOb();
         $propuestasaprobadas=(new PropuestaTG())->mispropuestasaprobadas();
-        $compañero=(new PropuestaTG())->compañero();
         View::render('tesistas/propuestasaprobadas.php', [ 'tesista' => $tesista,
                                                          'propuestasaprobadas' => $propuestasaprobadas
                                                          ]);

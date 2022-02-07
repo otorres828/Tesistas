@@ -13,7 +13,7 @@ class PropuestaTG extends ModeloGenerico
   {
     parent::__construct("propuestatg", PropuestaTG::class, $propiedades);
   }
-
+  //PERFIL PROPUESTAS APROBADAS
   public function mispropuestasaprobadas()
   {
     $cedula = $_SESSION['cedula'];
@@ -156,8 +156,6 @@ class PropuestaTG extends ModeloGenerico
     return $this->sentenciaObj($this->sql);
   }
 
-  //validar si existe compañero
-  public function compañero(){
-    $this->sql="SELECT COUNT ()";
-  }
+  
+
 }
