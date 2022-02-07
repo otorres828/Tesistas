@@ -142,9 +142,9 @@ class TesistasController extends \Core\Controller
                 } else {
                     $valor = $tesista->comprobar_codigo($_POST['cedula'], $_POST['codigo']);
                     if ($valor > 0) {
-                        $validar = $this->validarregistro();
+                        $validar = $this->validarregistro_solo();
                         if($validar){
-                            $validar = $this->validarregistro_pareja($_POST['cedula']);
+                            // $validar = $this->validarregistro_pareja($_POST['cedula']);
                             if($validar){
                                 $tesista->guardar_propuesta_pareja($slug,$_POST['nombrepropuesta'], $_POST['modalidad'], $_POST['cedula']);
                                 $_SESSION['mensaje'] = "Propuesta registrada con exito";
@@ -171,7 +171,7 @@ class TesistasController extends \Core\Controller
                     $_SESSION['mensaje'] = "El nombre de la propuesta ya existe";
                     $_SESSION['colorcito'] = "danger";
                 }else{
-                    $validar = $this->validarregistro();
+                    $validar = $this->validarregistro_solo();
                     if($validar>0){
                         $tesista->guardarpropuesta_solo($slug,$_POST['nombrepropuesta'],$_POST['modalidad']);
                         $_SESSION['mensaje'] = "Propuesta registrada con exito";
@@ -192,127 +192,49 @@ class TesistasController extends \Core\Controller
 
     }
 
-    public function validarregistro(){
+    public function validarregistro_solo(){
         $propuesta = new PropuestaTG();
         $cuenta1=$propuesta->contar_mis_propuestas();
         if($cuenta1){
             $cuenta2=$propuesta->contar_por_evaluacion_comite();
-            if ($cuenta1['cuenta']==$cuenta2['cuenta']){  
-                $reprobados=$propuesta->contar_reprobados_evaluacion_comite();
-                if($reprobados){
-                    if ($reprobados['cuenta']==$cuenta1['cuenta']) {
-                        return 1;
-                    }else {               
-                        $cuenta3=$propuesta->contar_por_evaluacion_consejo();      
-                        if($cuenta3){
-                            if($cuenta1['cuenta']==$cuenta3['cuenta']){
-                                $reprobados=$propuesta->contar_reprobados_evaluacion_consejo();
-                                if($reprobados){
-                                    if($reprobados['cuenta']==$cuenta1['cuenta']){
-                                        return 1;
+            if($cuenta2){
+                if ($cuenta1['cuenta']==$cuenta2['cuenta']){  
+                    $estatus=$propuesta->ultimo_estatus_comite();
+                    if($estatus){
+                        if ($estatus['estatus']=='REPROBADO') {
+                            return 1;
+                        }else {               
+                            $cuenta3=$propuesta->contar_por_evaluacion_consejo();      
+                            if($cuenta3){
+                                if($cuenta1['cuenta']==$cuenta3['cuenta']){
+                                    $estatus=$propuesta->ultimo_estatus_consejo();
+                                    if($estatus){
+                                        if($estatus['estatus']==$cuenta1['REPROBADO']){
+                                            return 1;
+                                        }else{
+                                            return 0;
+                                        }
                                     }else{
                                         return 0;
                                     }
+             
                                 }else{
                                     return 0;
-                                }
-         
+                                }                            
                             }else{
                                 return 0;
-                            }                            
-                        }else{
-                            return 0;
-                        }  
-
-                    }
-                }else{
-                    $cuenta3=$propuesta->contar_por_evaluacion_consejo();      
-                    if($cuenta3){
-                        if($cuenta1['cuenta']==$cuenta3['cuenta']){
-                            $reprobados=$propuesta->contar_reprobados_evaluacion_consejo();
-                            if($reprobados){
-                                if($reprobados['cuenta']==$cuenta1['cuenta']){
-                                    return 1;
-                                }else{
-                                    return 0;
-                                }
-                            }else{
-                                return 0;
-                            }
-     
-                        }else{
-                            return 0;
-                        }                            
-                    }else{
-                        return 0;
-                    }  
+                            }  
+    
+                        }
+                    } 
                 }             
+                else{
+                    return 0;
+                } 
             }else{
-                return 0;
-            } 
-        }else{
-            return 1;
-        }
-    }
+                return 1;
+            }
 
-    public function validarregistro_pareja($cedula){
-        $propuesta = new PropuestaTG();
-        $cuenta1=$propuesta->contar_propuestas_compañero($cedula);
-        if($cuenta1){
-            $cuenta2=$propuesta->contar_por_evaluacion_comite_compañero($cedula);
-            if ($cuenta1['cuenta']==$cuenta2['cuenta']){  
-                $reprobados=$propuesta->contar_reprobados_evaluacion_comite();
-                if($reprobados){
-                    if ($reprobados['cuenta']==$cuenta1['cuenta']) {
-                        return 1;
-                    }else {               
-                        $cuenta3=$propuesta->contar_por_evaluacion_consejo();      
-                        if($cuenta3){
-                            if($cuenta1['cuenta']==$cuenta3['cuenta']){
-                                $reprobados=$propuesta->contar_reprobados_evaluacion_consejo();
-                                if($reprobados){
-                                    if($reprobados['cuenta']==$cuenta1['cuenta']){
-                                        return 1;
-                                    }else{
-                                        return 0;
-                                    }
-                                }else{
-                                    return 0;
-                                }
-         
-                            }else{
-                                return 0;
-                            }                            
-                        }else{
-                            return 0;
-                        }  
-
-                    }
-                }else{
-                    $cuenta3=$propuesta->contar_por_evaluacion_consejo();      
-                    if($cuenta3){
-                        if($cuenta1['cuenta']==$cuenta3['cuenta']){
-                            $reprobados=$propuesta->contar_reprobados_evaluacion_consejo();
-                            if($reprobados){
-                                if($reprobados['cuenta']==$cuenta1['cuenta']){
-                                    return 1;
-                                }else{
-                                    return 0;
-                                }
-                            }else{
-                                return 0;
-                            }
-     
-                        }else{
-                            return 0;
-                        }                            
-                    }else{
-                        return 0;
-                    }  
-                }             
-            }else{
-                return 0;
-            } 
         }else{
             return 1;
         }
