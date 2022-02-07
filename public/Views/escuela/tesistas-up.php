@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela | Profesores Jurado </title>
+	<title>Escuela| Tesistas - Cargar tesistas </title>
 	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -93,7 +93,7 @@
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
 						<li class="nav-item">
-							<a href="escuela" class="nav-link">
+							<a href="../escuela/" class="nav-link">
 								<i class="nav-icon fas fa-th"></i>
 								<p>
 									Panel de Control
@@ -101,8 +101,8 @@
 							</a>
 						</li>
 
-						<li class="nav-item">
-							<a href="#" class="nav-link ">
+						<li class="nav-item menu-open">
+							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
 									Tesistas
@@ -112,7 +112,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-tesistas" class="nav-link ">
+									<a href="escuela/tesistas" class="nav-link active">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
@@ -126,8 +126,8 @@
 							</ul>
 						</li>
 
-						<li class="nav-item menu-open">
-							<a href="#" class="nav-link active">
+						<li class="nav-item">
+							<a href="#" class="nav-link">
 								<i class="nav-icon fas fa-table"></i>
 								<p>
 									Profesores
@@ -136,19 +136,19 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-profesor-revisor" class="nav-link ">
+									<a href="pages/tables/simple.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Revisores</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-profesor-tutor" class="nav-link ">
+									<a href="pages/tables/data.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Tutores</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-profesor-jurado" class="nav-link active">
+									<a href="pages/tables/jsgrid.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Jurados</p>
 									</a>
@@ -232,7 +232,7 @@
 
 						<li class="nav-header">Propuestas de TG</li>
 						<li class="nav-item">
-							<a href="escuela-propuestastg" class="nav-link ">
+							<a href="pages/calendar.html" class="nav-link">
 								<i class="nav-icon fab fa-buffer"></i>
 								<p>
 									Todas
@@ -261,12 +261,12 @@
 					<div class="container-fluid">
 						<div class="row mb-2">
 							<div class="col-sm-6">
-								<h1 class="m-0">Profesores - Jurados</h1>
+								<h1 class="m-0">Tesistas - Listar tesistas</h1>
 							</div><!-- /.col -->
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">Escuela</a></li>
-									<li class="breadcrumb-item active">Listar profesores Jurados </li>
+									<li class="breadcrumb-item"><a href="#">Tesistas</a></li>
+									<li class="breadcrumb-item active">Listar tesistas</li>
 								</ol>
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -279,29 +279,32 @@
 					<section class="col-lg-12 connectedSortable">
 						<div class="card table-responsive py-4 p-4">
 							<div class="card-header">
-								<h1>Profesores - Lista de profesores jurados</h1>
+								<h1>Lista de Tesistas</h1>
 							</div>
 							<table class="card-body table table-flush" id="example">
 								<thead class="thead-light">
 									<tr>
-										<!-- <th>id_usuario</th> -->
+
 										<th>Cedula</th>
 										<th>Nombre</th>
-										<th>Correo</th>
-										<th>Codigo</th>
+										<th>Correo Ucab</th>
+										<th>Correo particular</th>
+										<th>Telefono</th>
+										<th>Comentario</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($profesores as $profesor) : ?>
+
+									<?php foreach ($tesistas as $tesista) : ?>
 										<tr>
-											<!-- <td><?php echo $profesor['id_usuario']; ?></td> -->
-											<td><?php echo $profesor['cedula']; ?></td>
-											<td><?php echo $profesor['nombre_usuario']; ?></td>
-											<td><?php echo $profesor['correo']; ?></td>
-											<td><?php echo $profesor['codigo']; ?></td>
+											<td><?php echo $tesista['cedula']; ?></td>
+											<td><?php echo $tesista['nombre']; ?></td>
+											<td><?php echo $tesista['correoucab']; ?></td>
+											<td><?php echo $tesista['correoparticular']; ?></td>
+											<td><?php echo $tesista['telefono']; ?></td>
+											<td><?php echo $tesista['comentario']; ?></td>
 										</tr>
 									<?php endforeach; ?>
-
 
 								</tbody>
 							</table>

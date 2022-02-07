@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela| Tesistas - Cargar tesistas </title>
+	<title>Escuela | Comites - Todos los Comites</title>
 	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -93,7 +93,7 @@
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
 						<li class="nav-item">
-							<a href="../escuela/" class="nav-link">
+							<a href="escuela" class="nav-link">
 								<i class="nav-icon fas fa-th"></i>
 								<p>
 									Panel de Control
@@ -101,8 +101,8 @@
 							</a>
 						</li>
 
-						<li class="nav-item menu-open">
-							<a href="#" class="nav-link active">
+						<li class="nav-item ">
+							<a href="#" class="nav-link ">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
 									Tesistas
@@ -112,7 +112,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela/tesistas" class="nav-link active">
+									<a href="escuela/tesistas" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
@@ -156,8 +156,8 @@
 							</ul>
 						</li>
 
-						<li class="nav-item">
-							<a href="#" class="nav-link">
+						<li class="nav-item menu-open">
+							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-balance-scale"></i>
 								<p>
 									Comites
@@ -166,13 +166,13 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="pages/search/simple.html" class="nav-link">
+									<a href="escuela-comites" class="nav-link active">
 										<i class=" far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/search/enhanced.html" class="nav-link">
+									<a href="escuela-comites-up" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Comites</p>
 									</a>
@@ -232,7 +232,7 @@
 
 						<li class="nav-header">Propuestas de TG</li>
 						<li class="nav-item">
-							<a href="pages/calendar.html" class="nav-link">
+							<a href="escuela-propuestastg" class="nav-link">
 								<i class="nav-icon fab fa-buffer"></i>
 								<p>
 									Todas
@@ -261,12 +261,12 @@
 					<div class="container-fluid">
 						<div class="row mb-2">
 							<div class="col-sm-6">
-								<h1 class="m-0">Tesistas - Listar tesistas</h1>
+								<h1 class="m-0">Comites - Listar Comites</h1>
 							</div><!-- /.col -->
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">Tesistas</a></li>
-									<li class="breadcrumb-item active">Listar tesistas</li>
+									<li class="breadcrumb-item"><a href="#">Comites</a></li>
+									<li class="breadcrumb-item active">Listar Comites</li>
 								</ol>
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -279,30 +279,23 @@
 					<section class="col-lg-12 connectedSortable">
 						<div class="card table-responsive py-4 p-4">
 							<div class="card-header">
-								<h1>Lista de Tesistas</h1>
+								<h1>Lista de Comites</h1>
 							</div>
 							<table class="card-body table table-flush" id="example">
 								<thead class="thead-light">
 									<tr>
 
-										<th>Cedula</th>
-										<th>Nombre</th>
-										<th>Correo Ucab</th>
-										<th>Correo particular</th>
-										<th>Telefono</th>
-										<th>Comentario</th>
+										<th>id_comite</th>
+										<th>Fecha de comite</th>
+
 									</tr>
 								</thead>
 								<tbody>
 
-									<?php foreach ($tesistas as $tesista) : ?>
+									<?php foreach ($comites as $comite) : ?>
 										<tr>
-											<td><?php echo $tesista['cedula']; ?></td>
-											<td><?php echo $tesista['nombre']; ?></td>
-											<td><?php echo $tesista['correoucab']; ?></td>
-											<td><?php echo $tesista['correoparticular']; ?></td>
-											<td><?php echo $tesista['telefono']; ?></td>
-											<td><?php echo $tesista['comentario']; ?></td>
+											<td><?php echo $comite['id_comite']; ?></td>
+											<td><?php echo $comite['fecha']; ?></td>
 										</tr>
 									<?php endforeach; ?>
 

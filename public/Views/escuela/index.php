@@ -93,7 +93,7 @@
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
 						<li class="nav-item">
-							<a href="pages/widgets.html" class="nav-link active">
+							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-th"></i>
 								<p>
 									Panel de Control
@@ -166,13 +166,13 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="pages/search/simple.html" class="nav-link">
+									<a href="escuela-comites" class="nav-link">
 										<i class=" far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/search/enhanced.html" class="nav-link">
+									<a href="escuela-comites-up" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Comites</p>
 									</a>

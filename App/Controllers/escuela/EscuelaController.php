@@ -8,6 +8,8 @@ use App\Models\Tesistas;
 use App\Models\Profesores;
 use App\Models\PropuestaTG;
 use App\Models\Escuela;
+use App\Models\Comites;
+
 
 
 
@@ -65,6 +67,20 @@ class EscuelaController extends \Core\Controller
         $this->autenticar();
         $tesistas = (new Tesistas())->get();        // Listar todos los Tesisistas 
         View::render('escuela/tesistas-todos.php', ['tesistas' => $tesistas]);
+    }
+
+    // Ver todos los tesistas en escuela-tesistas
+    public function comitesTodos()
+    {
+        $this->autenticar();
+        $comites = (new Comites())->get();        // Listar todos los Tesisistas 
+        View::render('escuela/comites-todos.php', ['comites' => $comites]);
+    }
+    // Cargar comites 
+    public function comitesCargar()
+    {
+        $this->autenticar();
+        View::render('escuela/comites-up.php');
     }
 
     // Ver todas las propuestas tg  en escuela-propuestastg

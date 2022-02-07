@@ -31,12 +31,16 @@ $router->add('profesor-perfil', ['controller' => 'profesores\ProfesorController'
 //=====================================ESCUELA
 $router->add('escuela', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);
 
+
 $router->add('escuela-tesistas', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasTodos']);
 $router->add('escuela-tesistas-cargar', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasCargar']);
 
 $router->add('escuela-profesor-revisor', ['controller' => 'escuela\EscuelaController', 'method' => 'profesoresRevisores']);
 $router->add('escuela-profesor-tutor', ['controller' => 'escuela\EscuelaController', 'method' => 'profesoresTutores']);
 $router->add('escuela-profesor-jurado', ['controller' => 'escuela\EscuelaController', 'method' => 'profesoresJurados']);
+
+$router->add('escuela-comites', ['controller' => 'escuela\EscuelaController', 'method' => 'comitesTodos']);
+$router->add('escuela-comites-up', ['controller' => 'escuela\EscuelaController', 'method' => 'comitesCargar']);
 
 $router->add('escuela-propuestastg', ['controller' => 'escuela\EscuelaController', 'method' => 'propuestastgTodas']);
 
