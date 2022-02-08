@@ -272,8 +272,7 @@ include_once('../public/Views/componentes/cssadminlte.php'); ?>
 					</thead>
 					<tbody>
 					<?php 
-					$rows=0;
-					while ($datos = fgetcsv($fp, 5000, ";")) { $i++; 
+					$rows=0; while ($datos = fgetcsv($fp, 5000, ";")) { $i++; 
 						$cedula=$datos[0];
 						$nombre=$datos[1];
 						$correoucab=$datos[2];
@@ -286,9 +285,9 @@ include_once('../public/Views/componentes/cssadminlte.php'); ?>
 						<?php
 						$valor=null; 
 						if($rows>1){
-						 $query ="INSERT INTO tesistas (cedula,nombre,correoucab,correoparticular,telefono,comentario) VALUES(".$cedula.",'$nombre','$correoucab','$correoparticular',$telefono,'$comentario')"."</br>";
-						 $valor=(new Tesistas())->sentenciaObj($query);
-						}
+						 $query ="INSERT INTO  tesistas (cedula,nombre,correoucab,correoparticular,telefono,comentario) VALUES($cedula,'$nombre','$correoucab','$correoparticular',$telefono,'$comentario')";
+						 $valor= (new Tesistas())->sentenciaObj($query);
+						
 						 if($valor>0){
 						?>
 							
@@ -299,7 +298,7 @@ include_once('../public/Views/componentes/cssadminlte.php'); ?>
 							<td class="bg-danger">NO SE INSERTO</td>
 						<?php } ?>
 						</tr>
-					<?php } ?>
+					<?php }} ?>
 
 					</tbody>
 				</table>
