@@ -241,10 +241,53 @@
 
 		<div class="content-wrapper p-5">
 			<div class="container">
-				<form action="escuela-tesistas-cargar-archivo" method="POST" enctype="multipart/form-data">
+				<form action="escuela-tesistas-cargar" method="POST" enctype="multipart/form-data">
 					<input type="file" value="Subir Archivo" name="archivo" required>
 					<button type="submit" name="enviar" class="btn btn-primary">Cargar </button>
 				</form>
+				<?php
+				if (isset($_POST['enviar'])) {
+					$archivo = $_FILES["archivo"]["name"];
+					$archivo_copiado = $_FILES["archivo"]["tmp_name"];
+					$archivo_guardado = "copia_" . $archivo;
+					if (copy($archivo_copiado, $archivo_guardado)) {
+						echo "se copio correctamente " . "</br>";
+					} else {
+						header('location:error');
+					}
+					if (file_exists($archivo_guardado)) {
+						$fp = fopen($archivo_guardado, "r");
+						$i = 0;
+				?>
+						<table class="card-body table table-flush" id="example">
+							<thead class="thead-light">
+								<tr>
+									<th>Nº Fila</th>
+									<th>Resultado</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								while ($datos = fgetcsv($fp, 5000, ";")) {
+									$i++; ?>
+
+									<tr>
+
+										<td><?php echo $i; ?></td>
+										<td>Se inserto Correctamente></td>
+									</tr>
+
+								<?php } ?>
+
+							</tbody>
+						</table>
+				<?php
+
+					} else {
+						header('location:error');
+					}
+				}
+				?>
 			</div>
 		</div>
 	</div>
