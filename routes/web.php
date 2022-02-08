@@ -6,6 +6,7 @@ $router->add('', ['controller' => 'autenticacion\AuthController', 'method' => 'i
 //=====================================ERRORES
 $router->add('error', ['controller' => 'autenticacion\AuthController', 'method' => 'error']);
 $router->add('error-redirect', ['controller' => 'autenticacion\AuthController', 'method' => 'redirect']);
+$router->add('test', ['controller' => 'autenticacion\AuthController', 'method' => 'test']);
 
 //=====================================LOGIN
 $router->add('login', ['controller' => 'autenticacion\AuthController', 'method' => 'index']);
