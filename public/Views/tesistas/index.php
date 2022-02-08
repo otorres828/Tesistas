@@ -86,7 +86,7 @@ include_once('../public/Views/componentes/cssadminlte.php'); ?>
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
             <li class="nav-item">
-              <a href="tesistas" class="nav-link">
+              <a href="tesistas" class="nav-link active">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Panel de Control

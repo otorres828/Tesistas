@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela | Comites - Todos los Comites</title>
+	<title>Escuela| Tesistas - Cargar Tesistas</title>
 	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -13,10 +13,10 @@
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
 	<div class="wrapper">
 
-		<!-- PRECARGA -->
+		<!-- PRECARGA
 		<div class="preloader flex-column justify-content-center align-items-center">
 			<img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-		</div>
+		</div> -->
 
 		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 			<!-- Left navbar links -->
@@ -106,13 +106,13 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-tesistas" class="nav-link active">
+									<a href="escuela-tesistas" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-tesistas-cargar" class="nav-link">
+									<a href="escuela-tesistas-cargar" class="nav-link active">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Tesistas</p>
 									</a>
@@ -239,71 +239,57 @@
 
 		</aside>
 
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
+		<div class="content-wrapper p-5">
+			<div class="container">
+				<form action="escuela-tesistas-cargar" method="POST" enctype="multipart/form-data">
+					<input type="file" value="Subir Archivo" name="archivo" required>
+					<button type="submit" name="enviar" class="btn btn-primary">Cargar </button>
+				</form>
+				<?php
+				if (isset($_POST['enviar'])) {
+					$archivo = $_FILES["archivo"]["name"];
+					$archivo_copiado = $_FILES["archivo"]["tmp_name"];
+					$archivo_guardado = "copia_" . $archivo;
+					if (copy($archivo_copiado, $archivo_guardado)) {
+						echo "se copio correctamente " . "</br>";
+					} else {
+						header('location:error');
+					}
+					if (file_exists($archivo_guardado)) {
+						$fp = fopen($archivo_guardado, "r");
+						$i = 0;
+				?>
+						<table class="card-body table table-flush" id="example">
+							<thead class="thead-light">
+								<tr>
+									<th>Nº Fila</th>
+									<th>Resultado</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								while ($datos = fgetcsv($fp, 5000, ";")) {
+									$i++; ?>
 
-			<!-- /.content-header -->
-
-			<!-- Main content -->
-			<section class="content">
-				<div class="container-fluid">
-
-					<div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1 class="m-0">Comites - Listar Comites</h1>
-							</div><!-- /.col -->
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">Comites</a></li>
-									<li class="breadcrumb-item active">Listar Comites</li>
-								</ol>
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div>
-				</div>
-				<!-- /.row -->
-				<!-- Main row -->
-				<div class="row">
-					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable">
-						<div class="card table-responsive py-4 p-4">
-							<div class="card-header">
-								<h1>Lista de Comites</h1>
-							</div>
-							<table class="card-body table table-flush" id="example">
-								<thead class="thead-light">
 									<tr>
 
-										<th>id_comite</th>
-										<th>Fecha de comite</th>
-
+										<td><?php echo $i; ?></td>
+										<td>Se inserto Correctamente></td>
 									</tr>
-								</thead>
-								<tbody>
 
-									<?php foreach ($comites as $comite) : ?>
-										<tr>
-											<td><?php echo $comite['id_comite']; ?></td>
-											<td><?php echo $comite['fecha']; ?></td>
-										</tr>
-									<?php endforeach; ?>
+								<?php } ?>
 
-								</tbody>
-							</table>
-						</div>
+							</tbody>
+						</table>
+				<?php
 
-						<!-- /.card -->
-					</section>
-					<!-- /.Left col -->
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-					<!-- right col -->
-				</div>
-				<!-- /.row (main row) -->
-		</div><!-- /.container-fluid -->
-		</section>
-		<!-- /.content -->
+					} else {
+						header('location:error');
+					}
+				}
+				?>
+			</div>
+		</div>
 	</div>
 
 	<?php include_once('../public/Views/componentes/footer.php'); ?>

@@ -50,6 +50,10 @@ class EscuelaController extends \Core\Controller
 
         View::render('escuela/profesor-tutor.php', ['profesores' => $profesores]);
     }
+    public function profesores()
+    {
+    }
+
     // Ver todos los profesores revidores en profesor-tutor.php
     public function profesoresJurados()
     {
@@ -94,14 +98,14 @@ class EscuelaController extends \Core\Controller
         ]);
     }
 
-    // POR HACER Cargar tesistas mediante csv 
+    // VISTA PARA CARGAR ARCHIVO
     public function tesistasCargar()
     {
         $this->autenticar();
-        View::render('escuela/tesistas-cargar.php',);
+        View::render('escuela/cargar-tesistas.php',);
     }
 
-
+  
     private function autenticar()
     {
         $autenticacion = new Auth();

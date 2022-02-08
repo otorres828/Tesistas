@@ -21,9 +21,8 @@ $router->add('tesista-perfil-modificarCodigo', ['controller' => 'tesistas\Tesist
 $router->add('tesista-perfil-modificarCorreo', ['controller' => 'tesistas\TesistasController', 'method' => 'modificarCorreo']);
 $router->add('tesista-perfil-modificarClave', ['controller' => 'tesistas\TesistasController', 'method' => 'modificarClave']);
 $router->add('tesistas-guardar-propuesta', ['controller' => 'tesistas\TesistasController', 'method' => 'guardarpropuesta']);
-
-$router->add('tesista-propuestas-aprobadas', ['controller' => 'tesistas\TesistasController', 'method' => 'mispropuestasaprobadas']);
-$router->add('propuestas-aprobadas-imprimir', ['controller' => 'tesistas\TesistasController', 'method' => 'reporte']);
+$router->add('tesista-propuestas-aprobadas',['controller' => 'tesistas\TesistasController','method'=>'mispropuestasaprobadas']);
+$router->add('propuestas-aprobadas-imprimir',['controller' => 'tesistas\TesistasController','method'=>'reporte']);
 
 
 //=====================================PROFESORES
@@ -38,6 +37,7 @@ $router->add('escuela-profesores', ['controller' => 'escuela\EscuelaController',
 
 $router->add('escuela-tesistas', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasTodos']);
 $router->add('escuela-tesistas-cargar', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasCargar']);
+$router->add('escuela-tesistas-cargar-archivo', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasCargarArchivo']);
 
 $router->add('escuela-profesor-revisor', ['controller' => 'escuela\EscuelaController', 'method' => 'profesoresRevisores']);
 $router->add('escuela-profesor-tutor', ['controller' => 'escuela\EscuelaController', 'method' => 'profesoresTutores']);
@@ -47,10 +47,5 @@ $router->add('escuela-comites', ['controller' => 'escuela\EscuelaController', 'm
 $router->add('escuela-comites-up', ['controller' => 'escuela\EscuelaController', 'method' => 'comitesCargar']);
 
 $router->add('escuela-propuestastg', ['controller' => 'escuela\EscuelaController', 'method' => 'propuestastgTodas']);
-
-
-
-
-//=====================================ESCUELA
 
 $router->dispatch($_SERVER['QUERY_STRING']);
