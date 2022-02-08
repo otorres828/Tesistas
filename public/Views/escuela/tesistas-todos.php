@@ -13,10 +13,10 @@
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
 	<div class="wrapper">
 
-		<!-- PRECARGA -->
+		<!-- PRECARGA
 		<div class="preloader flex-column justify-content-center align-items-center">
 			<img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-		</div>
+		</div> -->
 
 		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 			<!-- Left navbar links -->
@@ -24,12 +24,7 @@
 				<li class="nav-item">
 					<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
 				</li>
-				<li class="nav-item d-none d-sm-inline-block">
-					<a href="index3.html" class="nav-link">Home</a>
-				</li>
-				<li class="nav-item d-none d-sm-inline-block">
-					<a href="#" class="nav-link">Contact</a>
-				</li>
+
 			</ul>
 
 			<!-- Right navbar links -->
@@ -66,7 +61,6 @@
 			</ul>
 		</nav>
 
-		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
 			<a href="index3.html" class="brand-link">
@@ -239,45 +233,16 @@
 								</p>
 							</a>
 						</li>
-
-
-
 					</ul>
 				</nav>
-				<!-- /.sidebar-menu -->
 			</div>
-			<!-- /.sidebar -->
+
 		</aside>
 
-		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
-
-			<!-- /.content-header -->
-
-			<!-- Main content -->
-			<section class="content">
-				<div class="container-fluid">
-
-					<div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1 class="m-0">Tesistas - Listar tesistas</h1>
-							</div><!-- /.col -->
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">Tesistas</a></li>
-									<li class="breadcrumb-item active">Listar tesistas</li>
-								</ol>
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div>
-				</div>
-				<!-- /.row -->
-				<!-- Main row -->
 				<div class="row">
-					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable">
-						<div class="card table-responsive py-4 p-4">
+					<section class="col-lg-12 connectedSortable p-4">
+						<div class="card table-responsive p-2">
 							<div class="card-header">
 								<h1>Lista de Tesistas</h1>
 							</div>
@@ -312,15 +277,8 @@
 
 						<!-- /.card -->
 					</section>
-					<!-- /.Left col -->
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-					<!-- right col -->
 				</div>
-				<!-- /.row (main row) -->
-		</div><!-- /.container-fluid -->
-		</section>
-		<!-- /.content -->
+		</div>
 	</div>
 
 	<?php include_once('../public/Views/componentes/footer.php'); ?>
