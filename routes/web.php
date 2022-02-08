@@ -36,6 +36,7 @@ $router->add('escuela-profesores', ['controller' => 'escuela\EscuelaController',
 
 $router->add('escuela-tesistas', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasTodos']);
 $router->add('escuela-tesistas-cargar', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasCargar']);
+$router->add('escuela-tesistas-cargar-archivo', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasCargarArchivo']);
 
 $router->add('escuela-profesor-revisor', ['controller' => 'escuela\EscuelaController', 'method' => 'profesoresRevisores']);
 $router->add('escuela-profesor-tutor', ['controller' => 'escuela\EscuelaController', 'method' => 'profesoresTutores']);

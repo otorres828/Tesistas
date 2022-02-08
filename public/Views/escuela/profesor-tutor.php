@@ -24,12 +24,7 @@
 				<li class="nav-item">
 					<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
 				</li>
-				<li class="nav-item d-none d-sm-inline-block">
-					<a href="index3.html" class="nav-link">Home</a>
-				</li>
-				<li class="nav-item d-none d-sm-inline-block">
-					<a href="#" class="nav-link">Contact</a>
-				</li>
+
 			</ul>
 
 			<!-- Right navbar links -->
@@ -66,7 +61,6 @@
 			</ul>
 		</nav>
 
-		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
 			<a href="index3.html" class="brand-link">
@@ -101,8 +95,8 @@
 							</a>
 						</li>
 
-						<li class="nav-item">
-							<a href="#" class="nav-link ">
+						<li class="nav-item menu-open">
+							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
 									Tesistas
@@ -112,13 +106,13 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-tesistas" class="nav-link ">
+									<a href="escuela/tesistas" class="nav-link active">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/search/enhanced.html" class="nav-link">
+									<a href="escuela-tesistas-cargar" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Tesistas</p>
 									</a>
@@ -126,8 +120,8 @@
 							</ul>
 						</li>
 
-						<li class="nav-item menu-open">
-							<a href="#" class="nav-link active">
+						<li class="nav-item">
+							<a href="#" class="nav-link">
 								<i class="nav-icon fas fa-table"></i>
 								<p>
 									Profesores
@@ -136,19 +130,19 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-profesor-revisor" class="nav-link ">
+									<a href="pages/tables/simple.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Revisores</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-profesor-tutor" class="nav-link active">
+									<a href="pages/tables/data.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Tutores</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-profesor-jurado" class="nav-link">
+									<a href="pages/tables/jsgrid.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Jurados</p>
 									</a>
@@ -232,21 +226,17 @@
 
 						<li class="nav-header">Propuestas de TG</li>
 						<li class="nav-item">
-							<a href="escuela-propuestastg" class="nav-link ">
+							<a href="escuela-propuestastg" class="nav-link">
 								<i class="nav-icon fab fa-buffer"></i>
 								<p>
 									Todas
 								</p>
 							</a>
 						</li>
-
-
-
 					</ul>
 				</nav>
-				<!-- /.sidebar-menu -->
 			</div>
-			<!-- /.sidebar -->
+
 		</aside>
 
 		<!-- Content Wrapper. Contains page content -->

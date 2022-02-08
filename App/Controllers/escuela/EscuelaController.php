@@ -50,7 +50,8 @@ class EscuelaController extends \Core\Controller
 
         View::render('escuela/profesor-tutor.php', ['profesores' => $profesores]);
     }
-    public function profesores(){
+    public function profesores()
+    {
     }
 
     // Ver todos los profesores revidores en profesor-tutor.php
@@ -97,14 +98,36 @@ class EscuelaController extends \Core\Controller
         ]);
     }
 
-    // POR HACER Cargar tesistas mediante csv 
+    // VISTA PARA CARGAR ARCHIVO
     public function tesistasCargar()
     {
         $this->autenticar();
-        View::render('escuela/tesistas-cargar.php',);
+        View::render('escuela/cargar-tesistas.php',);
     }
 
-
+    public function tesistasCargarArchivo()
+    {
+        if (isset($_POST['enviar'])) {
+            $archivo = $_FILES["archivo"]["name"];
+            $archivo_copiado=$_FILES["archivo"]["tmp_name"];
+            $archivo_guardado="copia_".$archivo;
+            if(copy($archivo_copiado,$archivo_guardado)){
+                echo "se copio correctamente";
+            }else{
+                header('location:error');
+            }
+            if(file_exists( $archivo_guardado)){
+                $fp=fopen($archivo_guardado,"r");
+                while($datos=fgetcsv($fp,5000,";")){
+                    echo $datos[0]. " ". $datos[1]. " ". $datos[3]. "</br>";
+                }
+            }else{
+                header('location:error');
+            }
+        } else {
+            header('location:error');
+        }
+    }
     private function autenticar()
     {
         $autenticacion = new Auth();

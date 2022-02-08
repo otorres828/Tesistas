@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela| PropuestasTG - Todas las propuestas de trabajo de grado </title>
+	<title>Escuela| Tesistas - Cargar Tesistas</title>
 	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -13,10 +13,10 @@
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
 	<div class="wrapper">
 
-		<!-- PRECARGA -->
+		<!-- PRECARGA
 		<div class="preloader flex-column justify-content-center align-items-center">
 			<img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-		</div>
+		</div> -->
 
 		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 			<!-- Left navbar links -->
@@ -112,7 +112,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-tesistas-cargar" class="nav-link">
+									<a href="pages/search/enhanced.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Tesistas</p>
 									</a>
@@ -239,91 +239,14 @@
 
 		</aside>
 
-		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
-
-			<!-- /.content-header -->
-
-			<!-- Main content -->
-			<section class="content">
-				<div class="container-fluid">
-
-					<div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1 class="m-0">Propuestas TG - Listar PropuestasTG</h1>
-							</div><!-- /.col -->
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">PropuestasTG</a></li>
-									<li class="breadcrumb-item active">Listar propuestas de trabajo de grado </li>
-								</ol>
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div>
-				</div>
-				<!-- /.row -->
-				<!-- Main row -->
-				<div class="row">
-					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable">
-						<div class="card table-responsive py-4 p-4">
-							<div class="card-header">
-								<h1>Lista de propuestas de trabajo de grado </h1>
-							</div>
-							<table class="card-body table table-flush" id="example">
-								<thead class="thead-light">
-									<tr>
-
-										<th>NumC</th>
-										<th>Titulo</th>
-										<th>Observaciones</th>
-										<th>Modalidad</th>
-										<th>id_comite</th>
-										<th>Nro consejo</th>
-										<th>Cedula revisor</th>
-										<th>Cedula tutor</th>
-										<th>Slug</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach ($propuestasTG as $propuestaTG) : ?>
-										<tr>
-											<td><?php echo $propuestaTG['num_c']; ?></td>
-											<td><?php echo $propuestaTG['titulo']; ?></td>
-											<td><?php echo $propuestaTG['observaciones']; ?></td>
-											<td class="text-center">
-												<?php if ($propuestaTG['modalidad'] == 'I') { ?>
-													<h2 class="badge bg-primary">Instrumental</h2>
-												<?php } else { ?>
-													<h2 class="badge bg-success">Experimental</h2>
-												<?php } ?>
-											</td>
-
-											<td><?php echo $propuestaTG['id_comite']; ?></td>
-											<td><?php echo $propuestaTG['nro_consejo']; ?></td>
-											<td><?php echo $propuestaTG['cedula_revisor']; ?></td>
-											<td><?php echo $propuestaTG['cedula_tutor']; ?></td>
-											<td><?php echo $propuestaTG['slug']; ?></td>
-										</tr>
-									<?php endforeach; ?>
-
-
-								</tbody>
-							</table>
-						</div>
-
-						<!-- /.card -->
-					</section>
-					<!-- /.Left col -->
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-					<!-- right col -->
-				</div>
-				<!-- /.row (main row) -->
-		</div><!-- /.container-fluid -->
-		</section>
-		<!-- /.content -->
+			<div class="container">
+				<form action="escuela-tesistas-cargar-archivo" method="POST" enctype="multipart/form-data">
+					<input type="file" value="Subir Archivo" name="archivo" required>
+					<button type="submit" name="enviar" class="btn btn-primary">Cargar </button>
+				</form>
+			</div>
+		</div>
 	</div>
 
 	<?php include_once('../public/Views/componentes/footer.php'); ?>
