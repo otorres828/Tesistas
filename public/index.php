@@ -1,7 +1,7 @@
 <?php
 
 
-require dirname(__DIR__) . '/vendor/autoload.php';
+include_once dirname(__DIR__) . '/vendor/autoload.php';
 
 /*
    ERRORES Y EXCEPCIONES

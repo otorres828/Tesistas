@@ -132,7 +132,7 @@ class Crud {
             $query->execute();
             return $query->fetch(PDO::FETCH_ASSOC);
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
+           
         }  
     }
 }

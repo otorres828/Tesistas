@@ -64,4 +64,7 @@ class Tesistas extends ModeloGenerico{
         $nc=$num_c['num_c'];
         $this->sentenciaObj("INSERT INTO presentan (num_c,cedula) VALUES ($nc,$cedula_log)");  
     }
+
+
+    
 }

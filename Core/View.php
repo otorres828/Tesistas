@@ -10,7 +10,7 @@ class View
 
         $file = dirname(__DIR__) . "/public/Views/$view";  // relative to Core directory
         if (is_readable($file)) {
-            require $file;
+            require_once $file;
         } else {
             throw new \Exception("$file not found");
         }

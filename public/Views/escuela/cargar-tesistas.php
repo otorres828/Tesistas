@@ -5,7 +5,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Escuela| Tesistas - Cargar Tesistas</title>
-	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
+	<?php
+
+use App\Models\Tesistas;
+
+include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -259,35 +263,48 @@
 						$fp = fopen($archivo_guardado, "r");
 						$i = 0;
 				?>
-						<table class="card-body table table-flush" id="example">
-							<thead class="thead-light">
-								<tr>
-									<th>Nº Fila</th>
-									<th>Resultado</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								while ($datos = fgetcsv($fp, 5000, ";")) {
-									$i++; ?>
+				<table class="card-body table table-flush" id="example">
+					<thead class="thead-light">
+						<tr>
+							<th>Nº Fila</th>
+							<th>Resultado</th>
+						</tr>
+					</thead>
+					<tbody>
+					<?php 
+					$rows=0;
+					while ($datos = fgetcsv($fp, 5000, ";")) { $i++; 
+						$cedula=$datos[0];
+						$nombre=$datos[1];
+						$correoucab=$datos[2];
+						$correoparticular=$datos[3];
+						$telefono=$datos[4];
+						$comentario=$datos[5];
+						$rows++;
+						?>
+						<tr>
+						<?php
+						$valor=null; 
+						if($rows>1){
+						 $query ="INSERT INTO tesistas (cedula,nombre,correoucab,correoparticular,telefono,comentario) VALUES(".$cedula.",'$nombre','$correoucab','$correoparticular',$telefono,'$comentario')"."</br>";
+						 $valor=(new Tesistas())->sentenciaObj($query);
+						}
+						 if($valor>0){
+						?>
+							
+							<td><?php echo $i; ?></td>
+							<td>SE INSERTO CORRECTAMENTE</td>
+						<?php } else{?>
+							<td><?php echo $i; ?></td>
+							<td class="bg-danger">NO SE INSERTO</td>
+						<?php } ?>
+						</tr>
+					<?php } ?>
 
-									<tr>
-
-										<td><?php echo $i; ?></td>
-										<td>Se inserto Correctamente></td>
-									</tr>
-
-								<?php } ?>
-
-							</tbody>
-						</table>
-				<?php
-
-					} else {
-						header('location:error');
-					}
-				}
-				?>
+					</tbody>
+				</table>
+				<?php } else { header('location:error'); }
+				}?>
 			</div>
 		</div>
 	</div>
