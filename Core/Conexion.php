@@ -36,7 +36,7 @@ class Conexion
 
             $contraseña = "admin";
             $usuario = "postgres";
-            $nombreBaseDeDatos = "Tesistas";
+            $nombreBaseDeDatos = "tesistas";
             $rutaServidor = "localhost";
             $puerto = "5432";
             try {
