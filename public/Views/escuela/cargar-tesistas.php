@@ -106,13 +106,13 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela/tesistas" class="nav-link active">
+									<a href="escuela-tesistas" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/search/enhanced.html" class="nav-link">
+									<a href="escuela-tesistas-cargar" class="nav-link active">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Tesistas</p>
 									</a>
@@ -239,7 +239,7 @@
 
 		</aside>
 
-		<div class="content-wrapper">
+		<div class="content-wrapper p-5">
 			<div class="container">
 				<form action="escuela-tesistas-cargar-archivo" method="POST" enctype="multipart/form-data">
 					<input type="file" value="Subir Archivo" name="archivo" required>

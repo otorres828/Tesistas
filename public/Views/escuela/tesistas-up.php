@@ -106,7 +106,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela/tesistas" class="nav-link active">
+									<a href="escuela-tesistas" class="nav-link active">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
@@ -246,22 +246,7 @@
 
 			<!-- Main content -->
 			<section class="content">
-				<div class="container-fluid">
-
-					<div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1 class="m-0">Tesistas - Listar tesistas</h1>
-							</div><!-- /.col -->
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">Tesistas</a></li>
-									<li class="breadcrumb-item active">Listar tesistas</li>
-								</ol>
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div>
-				</div>
+				
 				<!-- /.row -->
 				<!-- Main row -->
 				<div class="row">

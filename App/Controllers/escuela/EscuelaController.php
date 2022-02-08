@@ -119,7 +119,7 @@ class EscuelaController extends \Core\Controller
             if(file_exists( $archivo_guardado)){
                 $fp=fopen($archivo_guardado,"r");
                 while($datos=fgetcsv($fp,5000,";")){
-                    echo $datos[0]. " ". $datos[1]. " ". $datos[3]. "</br>";
+                    echo $datos[0]. " ". $datos[1]. " ". $datos[3]."  ". $datos[4]."  ". $datos[5]."</br>";
                 }
             }else{
                 header('location:error');

@@ -93,7 +93,7 @@
 
 
             <li class="nav-item">
-              <a href="tesista-propuestas-aprobadas" class="nav-link">
+              <a href="tesista-propuestas-aprobadas" class="nav-link active">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
                   Propuestas Aprobadas
