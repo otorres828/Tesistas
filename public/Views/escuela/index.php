@@ -402,7 +402,7 @@
               <div class="card-header">
                 <h1>Lista de Profesores</h1>
               </div>
-              <table class="card-body table table-flush" id="example">
+              <table class="card-body table table-flush" id="profesor">
                 <thead class="thead-light">
 
                   <tr>
@@ -494,6 +494,8 @@
   </div>
   <?php include_once('../public/Views/componentes/adminlte.php'); ?>
   <?php include_once('../public/Views/componentes/scripdatatable.php'); ?>
+  <?php include_once('../public/Views/componentes/scripdatatableIndex.php'); ?>
+
 
 </body>
 
