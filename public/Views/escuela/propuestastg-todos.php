@@ -280,7 +280,6 @@
 										<th>Nro consejo</th>
 										<th>Cedula revisor</th>
 										<th>Cedula tutor</th>
-										<th>Slug</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -301,7 +300,6 @@
 											<td><?php echo $propuestaTG['nro_consejo']; ?></td>
 											<td><?php echo $propuestaTG['cedula_revisor']; ?></td>
 											<td><?php echo $propuestaTG['cedula_tutor']; ?></td>
-											<td><?php echo $propuestaTG['slug']; ?></td>
 										</tr>
 									<?php endforeach; ?>
 
