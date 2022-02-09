@@ -7,9 +7,9 @@
   <title>Tesista | Panel de Control</title>
   <?php
 
-use App\Models\PropuestaTG;
+  use App\Models\PropuestaTG;
 
-include_once('../public/Views/componentes/cssadminlte.php'); ?>
+  include_once('../public/Views/componentes/cssadminlte.php'); ?>
   <!-- DATATABLES -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -214,57 +214,95 @@ include_once('../public/Views/componentes/cssadminlte.php'); ?>
                   <td class="text-center"><?php echo $propuesta['num_c']; ?></td>
                   <td> <?php echo $propuesta['titulo']; ?></td>
                   <td class="text-center">
-                    <?php if ($propuesta['modalidad']=='I'){ ?>
-                      <h2 class="badge bg-primary">Instrumental</h2> 
-                    <?php }else{?>
-                    <h2 class="badge bg-success">Experimental</h2> 
-                    <?php }?>
+                    <?php if ($propuesta['modalidad'] == 'I') { ?>
+                      <h2 class="badge bg-primary">Instrumental</h2>
+                    <?php } else { ?>
+                      <h2 class="badge bg-success">Experimental</h2>
+                    <?php } ?>
                   </td>
                   <td class="text-center">
-                    <?php if(is_null($propuesta['observaciones'])){?>
-                      <h2 class="badge bg-warning">PENDIENTE</h2> 
-                    <?php  }else{ echo $propuesta['observaciones']; }?>
+                    <?php if (is_null($propuesta['observaciones'])) { ?>
+                      <h2 class="badge bg-warning">PENDIENTE</h2>
+                    <?php  } else {
+                      echo $propuesta['observaciones'];
+                    } ?>
                   </td>
                   <td class="text-center">
-                    <?php if(is_null($propuesta['estatus'])){?>
-                      <h2 class="badge bg-warning">PENDIENTE</h2> 
-                      <?php }else{
-                        $cedula=$propuesta['cedula'];
-                        $num_c=$propuesta['num_c'];
-                        $sql="SELECT estatus
+                    <?php if (is_null($propuesta['estatus'])) { ?>
+                      <h2 class="badge bg-warning">PENDIENTE</h2>
+                      <?php } else {
+                      $cedula = $propuesta['cedula'];
+                      $num_c = $propuesta['num_c'];
+                      $sql = "SELECT estatus
                               FROM evaluacioncomite 
                               WHERE num_c=$num_c";
-                        $valor=(new PropuestaTG())->sentenciaObj($sql);
-                        $valor=$valor['estatus'];
-                        if($valor=='REPROBADO'){ ?>
-                          <h2 class="badge bg-danger">REPROBADO</h2> 
-                        <?php }else{ ?>
-                          <h2 class="badge bg-success">APROBADO</h2> 
+                      $valor = (new PropuestaTG())->sentenciaObj($sql);
+                      $valor = $valor['estatus'];
+                      if ($valor == 'REPROBADO') { ?>
+                        <h2 class="badge bg-danger">REPROBADO</h2>
+                      <?php } else { ?>
+                        <h2 class="badge bg-success">APROBADO</h2>
 
-                        <?php }}?>
+                    <?php }
+                    } ?>
                   </td>
                   <td class="text-center">
-                    <?php if(is_null($propuesta['estatusc'])){?>
-                      <h2 class="badge bg-warning">PENDIENTE</h2> 
-                      <?php }else{
-                        $cedula=$propuesta['cedula'];
-                        $num_c=$propuesta['num_c'];
-                        $sql="SELECT estatus
+                    <?php if (is_null($propuesta['estatusc'])) { ?>
+                      <h2 class="badge bg-warning">PENDIENTE</h2>
+                      <?php } else {
+                      $cedula = $propuesta['cedula'];
+                      $num_c = $propuesta['num_c'];
+                      $sql = "SELECT estatus
                               FROM evaluacionconsejo 
                               WHERE num_c=$num_c";
-                        $valor=(new PropuestaTG())->sentenciaObj($sql);
-                        $valor=$valor['estatus'];
-                        if($valor=='REPROBADO'){ ?>
-                          <h2 class="badge bg-danger">REPROBADO</h2> 
-                        <?php }else{ ?>
-                          <h2 class="badge bg-success">APROBADO</h2> 
+                      $valor = (new PropuestaTG())->sentenciaObj($sql);
+                      $valor = $valor['estatus'];
+                      if ($valor == 'REPROBADO') { ?>
+                        <h2 class="badge bg-danger">REPROBADO</h2>
+                      <?php } else { ?>
+                        <h2 class="badge bg-success">APROBADO</h2>
 
-                        <?php }}?>
+                    <?php }
+                    } ?>
                   </td>
                 </tr>
               <?php } ?>
             </tbody>
           </table>
+        </div>
+
+        <div class="row">
+          <section class="col-lg-7 connectedSortable">
+            <div class="card">
+              <div class="card-header  bg-info">
+                <h3 class="card-title">
+                  <i class="ion ion-clipboard mr-1"></i>
+                  Pongamos nuestro granito de arena
+                </h3>
+              </div>
+              <div class="card">
+                <iframe width="w-full" height="315" src="https://www.youtube.com/embed/fQMkX9UU-rY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+
+
+          </section>
+          <section class="col-lg-5 connectedSortable">
+
+            <div class="card">
+              <div class="card-header  bg-warning">
+                <h3 class="card-title">
+                  <i class="ion ion-clipboard mr-1"></i>
+                  CUIDAR EL AMBIENTE ES TRABAJO DE TODOS
+                </h3>
+
+
+              </div>
+
+              <img src="../../dist/img/conservacionambiental.jpg" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
+            </div>
+           
+          </section>
         </div>
       </section>
     </div>
