@@ -67,4 +67,61 @@ class Profesores extends ModeloGenerico
         $query = "INSERT INTO  profesores (cedula,nombre,direccion,correoparticular,telefono,tipo) VALUES($cedula,'$nombre','$direccion','$correoparticular','$telefono','$tipo')";
 		$this->insertarObj($query);
     }
+
+    public function validarEliminarRevisor($cedula){
+        $query = "SELECT COUNT (cedula_revisor) AS CEDULA 
+                    FROM propuestatg 
+                    WHERE cedula_revisor=$cedula
+                    GROUP BY(cedula_revisor)";
+        $resultado= $this->sentenciaObj($query);
+        if($resultado){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public function validarEliminarTutorA($cedula){
+        $query = "SELECT COUNT (cedula_tutor) AS CEDULA 
+                    FROM propuestatg 
+                    WHERE cedula_tutor=$cedula
+                    GROUP BY(cedula_tutor)";
+        $resultado= $this->sentenciaObj($query);
+        if($resultado){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public function validarEliminarJuradoE($cedula){
+        $query = "SELECT COUNT (cedula) AS CEDULA 
+                    FROM es_jurado_experimental 
+                    WHERE cedula=$cedula
+                    GROUP BY(cedula)";
+        $resultado= $this->sentenciaObj($query);
+        if($resultado){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public function validarEliminarJuradoI($cedula){
+        $query = "SELECT COUNT (cedula) AS CEDULA 
+                    FROM es_jurado_instrumental
+                    WHERE cedula=$cedula
+                    GROUP BY(cedula)";
+        $resultado= $this->sentenciaObj($query);
+        if($resultado){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+
+    public function eliminarProfesor($cedula){
+        $this->sentenciaObj("DELETE FROM profesores WHERE cedula=$cedula");
+    }
 }

@@ -20,7 +20,7 @@ class ProfesorController extends \Core\Controller
         $this->autenticar();
         $profesores = (new Profesores())->get();         // Listar todos los profesores
         View::render('escuela/profesores/profesores-todos.php', [
-                                'profesores' => $profesores
+            'profesores' => $profesores
         ]);
     }
 
@@ -43,7 +43,8 @@ class ProfesorController extends \Core\Controller
     public function profesorCargar()
     {
         $this->autenticar();
-        View::render('escuela/profesores/cargar-profesores.php',);    }
+        View::render('escuela/profesores/cargar-profesores.php',);
+    }
 
     // Ver todos los profesores revidores en profesor-tutor.php
     public function profesoresJurados()
@@ -54,44 +55,79 @@ class ProfesorController extends \Core\Controller
         View::render('escuela/profesores/profesor-jurado.php', ['profesores' => $profesores]);
     }
 
-    public function crearProfesor(){
+    public function crearProfesor()
+    {
         if (isset($_POST['nuevoprofesor'])) {
             session_start();
-           if (isset($_POST['nombre']) && isset($_POST['cedula']) && isset($_POST['correoparticular']) && isset($_POST['direccion']) && isset($_POST['telefono'])   ) {
-               $validacion = (new Profesores())->validarcedula($_POST['cedula']);
-               if($validacion){
+            if (isset($_POST['nombre']) && isset($_POST['cedula']) && isset($_POST['correoparticular']) && isset($_POST['direccion']) && isset($_POST['telefono'])) {
+                $validacion = (new Profesores())->validarcedula($_POST['cedula']);
+                if ($validacion) {
                     $_SESSION['mensaje'] = "Cedula ya registrada";
                     $_SESSION['colorcito'] = "danger";
-               }else{
-                    $validacion= (new Profesores())->validarcorreoparticular($_POST['correoparticular']);
-                    if($validacion){
+                } else {
+                    $validacion = (new Profesores())->validarcorreoparticular($_POST['correoparticular']);
+                    if ($validacion) {
                         $_SESSION['mensaje'] = "Correo particular ya registrado";
-                        $_SESSION['colorcito'] = "danger"; 
-                    }else{
-                        $validacion= (new Profesores())->validartelefono($_POST['telefono']);
+                        $_SESSION['colorcito'] = "danger";
+                    } else {
+                        $validacion = (new Profesores())->validartelefono($_POST['telefono']);
                         if ($validacion) {
                             $_SESSION['mensaje'] = "Telefono ya registrada";
-                            $_SESSION['colorcito'] = "danger";                         
+                            $_SESSION['colorcito'] = "danger";
                         } else {
-                             (new Profesores())->insertarprofesor($_POST['cedula'],$_POST['nombre'],$_POST['direccion'],$_POST['correoparticular'],$_POST['telefono'],$_POST['tipo']);
-                          
-                             $_SESSION['mensaje'] = "Profesor Registrado con Exito";
-                             $_SESSION['colorcito'] = "success";  
-                             
-            
-                        }              
+                            (new Profesores())->insertarprofesor($_POST['cedula'], $_POST['nombre'], $_POST['direccion'], $_POST['correoparticular'], $_POST['telefono'], $_POST['tipo']);
+
+                            $_SESSION['mensaje'] = "Profesor Registrado con Exito";
+                            $_SESSION['colorcito'] = "success";
+                        }
                     }
-               }
-               header('location:escuela-profesores');
+                }
+                header('location:escuela-profesores');
             } else {
                 $_SESSION['mensaje'] = "Hay campos que no han sido llenados";
                 $_SESSION['colorcito'] = "warning";
-           }
-           
+            }
         } else {
             header('location:error');
-        }    }
-  
+        }
+    }
+
+    public function eliminarProfesor()
+    {
+        if (isset($_POST['eliminarprofesor'])) {
+            session_start();
+            $validar = (new Profesores())->validarEliminarRevisor($_POST['eliminarprofesor']);
+            if ($validar) {
+                $_SESSION['mensaje'] = "No se puede Eliminar el Profesor porque tiene registros guardados de PROFESOR REVISOR";
+                $_SESSION['colorcito'] = "danger";
+            } else {
+                $validar = (new Profesores())->validarEliminarTutorA($_POST['eliminarprofesor']);
+                if ($validar) {
+                    $_SESSION['mensaje'] = "No se puede Eliminar el Profesor porque tiene registros guardados de TUTOR ACADEMICO";
+                    $_SESSION['colorcito'] = "danger";
+                } else {
+                    $validar = (new Profesores())->validarEliminarJuradoE($_POST['eliminarprofesor']);
+                    if ($validar) {
+                        $_SESSION['mensaje'] = "No se puede Eliminar el Profesor porque tiene registros guardados de Jurado Experimental";
+                        $_SESSION['colorcito'] = "danger";
+                    } else {
+                        $validar = (new Profesores())->validarEliminarJuradoI($_POST['eliminarprofesor']);
+                        if ($validar) {
+                            $_SESSION['mensaje'] = "No se puede Eliminar el Profesor porque tiene registros guardados de Jurado Experimental";
+                            $_SESSION['colorcito'] = "danger";
+                        } else {
+                            (new Profesores())->eliminarProfesor($_POST['eliminarprofesor']);
+                            $_SESSION['mensaje'] = "El Profesor se elimino con exito";
+                            $_SESSION['colorcito'] = "success";
+                        }
+                    }
+                }
+            }
+            header('location:escuela-profesores');
+        } else {
+            header('location:error');
+        }
+    }
     private function autenticar()
     {
         $autenticacion = new Auth();

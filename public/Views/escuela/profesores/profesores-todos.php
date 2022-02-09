@@ -118,6 +118,7 @@
 										<th>Correo particular</th>
 										<th>Telefono</th>
 										<th>Tipo</th>
+										<th>Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -135,6 +136,11 @@
 													<h2 class="badge bg-success">EXTERNO</h2>
 												<?php } ?>
 											</td>
+											<td class="d-flex">
+											<form action="escuela-profesores-eliminar" method="POST">
+												<button class="btn btn-danger" value="<?php echo $profesor['cedula']; ?>" name="eliminarprofesor"><i class="far fa-trash-alt"></i></button>
+											</form>
+										</td>
 										</tr>
 									<?php endforeach; ?>
 
