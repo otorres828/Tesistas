@@ -7,7 +7,7 @@
 	<title>Escuela| Comites - Cargar Comites</title>
 	<?php
 
-use App\Models\Comites;
+	use App\Models\Comites;
 
 	include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
@@ -191,7 +191,29 @@ use App\Models\Comites;
 								</li>
 							</ul>
 						</li>
-
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<i class="nav-icon fas fa-balance-scale"></i>
+								<p>
+									Consejos
+									<i class="fas fa-angle-left right"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="escuela-consejos" class="nav-link">
+										<i class=" far fa-circle nav-icon"></i>
+										<p>Todos</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="escuela-consejos-cargar" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Cargar Consejos</p>
+									</a>
+								</li>
+							</ul>
+						</li>
 						<li class="nav-header">Criterios</li>
 
 						<li class="nav-item">
@@ -290,7 +312,7 @@ use App\Models\Comites;
 									$i++;
 									$id_comite = $datos[0];
 									$fecha = $datos[1];
-									
+
 									$rows++; ?>
 
 									<?php $valor = null;
@@ -309,7 +331,6 @@ use App\Models\Comites;
 											</tr>
 										<?php } ?>
 								<?php }
-									
 								} ?>
 
 							</tbody>
@@ -317,7 +338,7 @@ use App\Models\Comites;
 				<?php } else {
 						header('location:error');
 					}
-				} 
+				}
 				if (isset($archivo_guardado)) {
 					unlink($archivo_guardado);
 				}

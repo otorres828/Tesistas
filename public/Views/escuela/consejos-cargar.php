@@ -4,8 +4,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela| PropuestasTG - Todas las propuestas de trabajo de grado </title>
-	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
+	<title>Escuela| Consejos - Cargar Consejos</title>
+	<?php
+
+	use App\Models\Consejos;
+
+	include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -13,10 +17,10 @@
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
 	<div class="wrapper">
 
-		<!-- PRECARGA -->
+		<!-- PRECARGA
 		<div class="preloader flex-column justify-content-center align-items-center">
 			<img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-		</div>
+		</div> -->
 
 		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 			<!-- Left navbar links -->
@@ -96,7 +100,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a href="#" class="nav-link ">
+							<a href="#" class="nav-link">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
 									Tesistas
@@ -112,7 +116,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-tesistas-cargar" class="nav-link">
+									<a href="escuela-tesistas-cargar" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Tesistas</p>
 									</a>
@@ -164,8 +168,8 @@
 							</ul>
 						</li>
 
-						<li class="nav-item">
-							<a href="#" class="nav-link">
+						<li class="nav-item ">
+							<a href="#" class="nav-link ">
 								<i class="nav-icon fas fa-balance-scale"></i>
 								<p>
 									Comites
@@ -180,15 +184,15 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-comites-up" class="nav-link">
+									<a href="escuela-comites-up" class="nav-link active">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Comites</p>
 									</a>
 								</li>
 							</ul>
 						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link">
+						<li class="nav-item menu-open">
+							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-balance-scale"></i>
 								<p>
 									Consejos
@@ -203,7 +207,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-consejos-cargar" class="nav-link">
+									<a href="escuela-consejos-cargar" class="nav-link active">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Consejos</p>
 									</a>
@@ -260,9 +264,9 @@
 							</ul>
 						</li>
 
-						<li class="nav-header ">Propuestas de TG</li>
-						<li class="nav-item ">
-							<a href="escuela-propuestastg" class="nav-link active">
+						<li class="nav-header">Propuestas de TG</li>
+						<li class="nav-item">
+							<a href="escuela-propuestastg" class="nav-link">
 								<i class="nav-icon fab fa-buffer"></i>
 								<p>
 									Todas
@@ -275,72 +279,72 @@
 
 		</aside>
 
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
+		<div class="content-wrapper p-5">
+			<div class="container">
+				<form action="escuela-consejos-cargar" method="POST" enctype="multipart/form-data">
+					<input type="file" value="Subir Archivo" name="archivo" required>
+					<button type="submit" name="enviar" class="btn btn-primary">Cargar </button>
+				</form>
+				<?php
+				if (isset($_POST['enviar'])) {
+					$archivo = $_FILES["archivo"]["name"];
+					$archivo_copiado = $_FILES["archivo"]["tmp_name"];
+					$archivo_guardado = "copia_" . $archivo;
+					if (copy($archivo_copiado, $archivo_guardado)) {
+						echo "se copio correctamente " . "</br>";
+					} else {
+						header('location:error');
+					}
+					if (file_exists($archivo_guardado)) {
+						$fp = fopen($archivo_guardado, "r");
+						$i = 0;
+				?>
+						<table class="card-body table table-flush" id="example">
+							<thead class="thead-light">
+								<tr>
+									<th>Nº Fila</th>
+									<th>Resultado</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php $rows = 0;
+								while ($datos = fgetcsv($fp, 5000, ";")) {
+									$i++;
+									$id_comite = $datos[0];
+									$fecha = $datos[1];
 
-			<!-- /.content-header -->
+									$rows++; ?>
 
-			<!-- Main content -->
-			<section class="content">
+									<?php $valor = null;
+									if ($rows > 1) {
+										$query = "INSERT INTO  consejoescuela (nro_consejo,fecha) VALUES($id_comite,'$fecha')";
+										$valor = (new Consejos())->insertarObj($query);
 
-				<div class="row">
-					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable p-2">
-						<div class="card table-responsive  p-4">
-							<div class="card-header">
-								<h1>Lista de propuestas de trabajo de grado </h1>
-							</div>
-							<table class="card-body table table-flush" id="example">
-								<thead class="thead-light">
-									<tr>
+										if ($valor > 0) {
+									?>
+											<tr>
+												<td><?php echo $i; ?></td>
+												<td>SE INSERTO CORRECTAMENTE</td>
+											<?php } else { ?>
+												<td><?php echo $i; ?></td>
+												<td class="bg-danger">NO SE INSERTO</td>
+											</tr>
+										<?php } ?>
+								<?php }
+								} ?>
 
-										<th>NumC</th>
-										<th>Titulo</th>
-										<th>Observaciones</th>
-										<th>Modalidad</th>
-										<th>id_comite</th>
-										<th>Nro consejo</th>
-										<th>Cedula revisor</th>
-										<th>Cedula tutor</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach ($propuestasTG as $propuestaTG) : ?>
-										<tr>
-											<td><?php echo $propuestaTG['num_c']; ?></td>
-											<td><?php echo $propuestaTG['titulo']; ?></td>
-											<td><?php echo $propuestaTG['observaciones']; ?></td>
-											<td class="text-center">
-												<?php if ($propuestaTG['modalidad'] == 'I') { ?>
-													<h2 class="badge bg-primary">Instrumental</h2>
-												<?php } else { ?>
-													<h2 class="badge bg-success">Experimental</h2>
-												<?php } ?>
-											</td>
-
-											<td><?php echo $propuestaTG['id_comite']; ?></td>
-											<td><?php echo $propuestaTG['nro_consejo']; ?></td>
-											<td><?php echo $propuestaTG['cedula_revisor']; ?></td>
-											<td><?php echo $propuestaTG['cedula_tutor']; ?></td>
-										</tr>
-									<?php endforeach; ?>
-
-
-								</tbody>
-							</table>
-						</div>
-
-						<!-- /.card -->
-					</section>
-					<!-- /.Left col -->
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-					<!-- right col -->
-				</div>
-				<!-- /.row (main row) -->
-		</div><!-- /.container-fluid -->
-		</section>
-		<!-- /.content -->
+							</tbody>
+						</table>
+				<?php } else {
+						header('location:error');
+					}
+				}
+				if (isset($archivo_guardado)) {
+					unlink($archivo_guardado);
+				}
+				?>
+			</div>
+		</div>
 	</div>
 
 	<?php include_once('../public/Views/componentes/footer.php'); ?>

@@ -187,7 +187,29 @@
 								</li>
 							</ul>
 						</li>
-
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<i class="nav-icon fas fa-balance-scale"></i>
+								<p>
+									Consejos
+									<i class="fas fa-angle-left right"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="escuela-consejos" class="nav-link">
+										<i class=" far fa-circle nav-icon"></i>
+										<p>Todos</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="escuela-consejos-cargar" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Cargar Consejos</p>
+									</a>
+								</li>
+							</ul>
+						</li>
 						<li class="nav-header">Criterios</li>
 
 						<li class="nav-item">

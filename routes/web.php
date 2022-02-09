@@ -46,6 +46,9 @@ $router->add('escuela-profesores-cargar', ['controller' => 'escuela\ProfesorCont
 $router->add('escuela-comites', ['controller' => 'escuela\ComiteController', 'method' => 'comitesTodos']);
 $router->add('escuela-comites-up', ['controller' => 'escuela\ComiteController', 'method' => 'comitesCargar']);
 
+$router->add('escuela-consejos', ['controller' => 'escuela\ConsejoController', 'method' => 'index']);
+$router->add('escuela-consejos-cargar', ['controller' => 'escuela\ConsejoController', 'method' => 'cargarconsejo']);
+
 $router->add('escuela-propuestastg', ['controller' => 'escuela\EscuelaController', 'method' => 'propuestastgTodas']);
 
 $router->dispatch($_SERVER['QUERY_STRING']);

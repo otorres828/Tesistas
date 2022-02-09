@@ -186,7 +186,29 @@
 								</li>
 							</ul>
 						</li>
-
+						<li class="nav-item">
+							<a href="#" class="nav-link">
+								<i class="nav-icon fas fa-balance-scale"></i>
+								<p>
+									Consejos
+									<i class="fas fa-angle-left right"></i>
+								</p>
+							</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="escuela-consejos" class="nav-link">
+										<i class=" far fa-circle nav-icon"></i>
+										<p>Todos</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="escuela-consejos-cargar" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Cargar Consejos</p>
+									</a>
+								</li>
+							</ul>
+						</li>
 						<li class="nav-header">Criterios</li>
 
 						<li class="nav-item">
@@ -253,43 +275,43 @@
 		</aside>
 
 		<div class="content-wrapper">
-				<div class="row">
-					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable p-4">
-						<div class="card table-responsive  p-2">
-							<div class="card-header">
-								<h1>Lista de Comites</h1>
-							</div>
-							<table class="card-body table table-flush" id="example">
-								<thead class="thead-light">
-									<tr>
-
-										<th>id_comite</th>
-										<th>Fecha de comite</th>
-
-									</tr>
-								</thead>
-								<tbody>
-
-									<?php foreach ($comites as $comite) : ?>
-										<tr>
-											<td><?php echo $comite['id_comite']; ?></td>
-											<td><?php echo $comite['fecha']; ?></td>
-										</tr>
-									<?php endforeach; ?>
-
-								</tbody>
-							</table>
+			<div class="row">
+				<!-- Left col -->
+				<section class="col-lg-12 connectedSortable p-4">
+					<div class="card table-responsive  p-2">
+						<div class="card-header">
+							<h1>Lista de Comites</h1>
 						</div>
+						<table class="card-body table table-flush" id="example">
+							<thead class="thead-light">
+								<tr>
 
-						<!-- /.card -->
-					</section>
-					<!-- /.Left col -->
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
+									<th>id_comite</th>
+									<th>Fecha de comite</th>
 
-					<!-- right col -->
-				</div>
-				<!-- /.row (main row) -->
+								</tr>
+							</thead>
+							<tbody>
+
+								<?php foreach ($comites as $comite) : ?>
+									<tr>
+										<td><?php echo $comite['id_comite']; ?></td>
+										<td><?php echo $comite['fecha']; ?></td>
+									</tr>
+								<?php endforeach; ?>
+
+							</tbody>
+						</table>
+					</div>
+
+					<!-- /.card -->
+				</section>
+				<!-- /.Left col -->
+				<!-- right col (We are only adding the ID to make the widgets sortable)-->
+
+				<!-- right col -->
+			</div>
+			<!-- /.row (main row) -->
 		</div><!-- /.container-fluid -->
 		<!-- /.content -->
 	</div>
