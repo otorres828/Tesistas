@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela | Criterios Experimentales</title>
+	<title>Escuela | Criterios Instrumentales</title>
 	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -176,8 +176,8 @@
 
 						<li class="nav-header">Criterios</li>
 
-						<li class="nav-item menu-open">
-							<a href="#" class="nav-link active">
+						<li class="nav-item">
+							<a href="#" class="nav-link ">
 								<i class="nav-icon fas fa-search"></i>
 								<p>
 									Experimental
@@ -186,7 +186,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-criterios-exp-todos" class="nav-link active">
+									<a href="escuela-criterios-exp-todos" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
@@ -200,8 +200,8 @@
 							</ul>
 						</li>
 
-						<li class="nav-item">
-							<a href="#" class="nav-link">
+						<li class="nav-item menu-open">
+							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-search"></i>
 								<p>
 									Instrumental
@@ -210,7 +210,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-criterios-ins-todos" class="nav-link">
+									<a href="escuela-criterios-ins-todos" class="nav-link active">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
@@ -251,12 +251,12 @@
 					<div class="container-fluid">
 						<div class="row mb-2">
 							<div class="col-sm-6">
-								<h1 class="m-0">Criterios - Listar Criterios experimentales</h1>
+								<h1 class="m-0">Criterios - Listar Criterios instrumentales</h1>
 							</div><!-- /.col -->
 							<div class="col-sm-6">
 								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">Criterios</a></li>
-									<li class="breadcrumb-item active">Listar Criterios experimentales</li>
+									<li class="breadcrumb-item"><a href="#">Criterios instrumentales </a></li>
+									<li class="breadcrumb-item active">Listar Criterios instrumentales </li>
 								</ol>
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -269,7 +269,7 @@
 					<section class="col-lg-12 connectedSortable">
 						<div class="card table-responsive py-4 p-4">
 							<div class="card-header">
-								<h1>Lista de Criterios experimentales</h1>
+								<h1>Lista de criterios instrumentales</h1>
 							</div>
 							<table class="card-body table table-flush" id="example">
 								<thead class="thead-light">
@@ -284,45 +284,15 @@
 									</tr>
 								</thead>
 								<tbody>
-									<!-- Criterios experimentales REVISOR -->
+									<!-- Criterios Instrumentales REVISOR -->
 									<?php
-									foreach ($criteriosRevisoresExp as $criterioRevisorExperimental) : ?>
+									foreach ($criteriosRevisoresIns as $criterioRevisorInstrumental) : ?>
 										<tr>
-											<td><?php echo $criterioRevisorExperimental['id_criterio']; ?></td>
-											<td><?php echo $criterioRevisorExperimental['notamax']; ?></td>
-											<td><?php echo $criterioRevisorExperimental['descripcion']; ?></td>
+											<td><?php echo $criterioRevisorInstrumental['id_criterio']; ?></td>
+											<td><?php echo $criterioRevisorInstrumental['notamax']; ?></td>
+											<td><?php echo $criterioRevisorInstrumental['descripcion']; ?></td>
 											<td class="text-center">
-												<?php if ($criterioRevisorExperimental['estatus'] == 'ACTIVO') { ?>
-													<h2 class="badge bg-success">ACTIVO</h2>
-												<?php } else { ?>
-													<h2 class="badge bg-danger">INACTIVO</h2>
-												<?php } ?>
-											</td>
-											<!-- Buton  -->
-											<form action="escuela-habilitar" method="POST">
-												<td class="text-center">
-													<?php $valores = $criterioRevisorExperimental['id_criterio'] . ",Exp,Rev"; ?>
-													<?php if ($criterioRevisorExperimental['estatus'] == 'ACTIVO') { ?>
-														<?php $valores .= ",INACTIVO"; ?>
-														<button value="<?php echo $valores ?>" name="habilitar-revExp" type="submit" class="badge bg-secondary">DESHABILITAR</button>
-													<?php } else {
-													?>
-														<?php $valores .= ",ACTIVO"; ?>
-														<button value="<?php echo $valores ?>" name="habilitar-revExp" type="submit" class="badge bg-secondary">HABILITAR</button>
-													<?php } ?>
-												</td>
-											</form>
-										</tr>
-									<?php endforeach; ?>
-									<!-- Criterios experimentales TUTOR -->
-									<?php
-									foreach ($criteriosTutoresExp as $criterioTutorExperimental) : ?>
-										<tr>
-											<td><?php echo $criterioTutorExperimental['id_criterio']; ?></td>
-											<td><?php echo $criterioTutorExperimental['notamax']; ?></td>
-											<td><?php echo $criterioTutorExperimental['descripcion']; ?></td>
-											<td class="text-center">
-												<?php if ($criterioTutorExperimental['estatus'] == 'ACTIVO') { ?>
+												<?php if ($criterioRevisorInstrumental['estatus'] == 'ACTIVO') { ?>
 													<h2 class="badge bg-success">ACTIVO</h2>
 												<?php } else { ?>
 													<h2 class="badge bg-danger">INACTIVO</h2>
@@ -331,15 +301,32 @@
 											<td><a href="#">Deshabilitar</a> </td>
 										</tr>
 									<?php endforeach; ?>
-									<!-- Criterios experimentales JURADO -->
+									<!-- Criterios Instrumentales TUTOR -->
 									<?php
-									foreach ($criteriosJuradosExp as $criterioJuradoExperimental) : ?>
+									foreach ($criteriosTutoresIns as $criterioTutorInstrumental) : ?>
 										<tr>
-											<td><?php echo $criterioJuradoExperimental['id_criterio']; ?></td>
-											<td><?php echo $criterioJuradoExperimental['notamax']; ?></td>
-											<td><?php echo $criterioJuradoExperimental['descripcion']; ?></td>
+											<td><?php echo $criterioTutorInstrumental['id_criterio']; ?></td>
+											<td><?php echo $criterioTutorInstrumental['notamax']; ?></td>
+											<td><?php echo $criterioTutorInstrumental['descripcion']; ?></td>
 											<td class="text-center">
-												<?php if ($criterioJuradoExperimental['estatus'] == 'ACTIVO') { ?>
+												<?php if ($criterioTutorInstrumental['estatus'] == 'ACTIVO') { ?>
+													<h2 class="badge bg-success">ACTIVO</h2>
+												<?php } else { ?>
+													<h2 class="badge bg-danger">INACTIVO</h2>
+												<?php } ?>
+											</td>
+											<td><a href="#">Deshabilitar</a> </td>
+										</tr>
+									<?php endforeach; ?>
+									<!-- Criterios Instrumentales JURADO -->
+									<?php
+									foreach ($criteriosJuradosIns as $criterioJuradoInstrumental) : ?>
+										<tr>
+											<td><?php echo $criterioJuradoInstrumental['id_criterio']; ?></td>
+											<td><?php echo $criterioJuradoInstrumental['notamax']; ?></td>
+											<td><?php echo $criterioJuradoInstrumental['descripcion']; ?></td>
+											<td class="text-center">
+												<?php if ($criterioJuradoInstrumental['estatus'] == 'ACTIVO') { ?>
 													<h2 class="badge bg-success">ACTIVO</h2>
 												<?php } else { ?>
 													<h2 class="badge bg-danger">INACTIVO</h2>

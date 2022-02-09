@@ -1,19 +1,22 @@
 <?php
 require_once 'Conexion.php';
 
-class Crud {
+class Crud
+{
 
     protected $tabla;
     protected $conexion;
     protected $wheres = "";
     protected $sql = null;
 
-    public function __construct($tabla = null) {
+    public function __construct($tabla = null)
+    {
         $this->conexion = (new Conexion())->conectar();
         $this->tabla = $tabla;
     }
     // Devuelve un array que contiene todas las filas del conjunto de resultados
-    public function get() {
+    public function get()
+    {
         try {
             $this->sql = "SELECT * FROM {$this->tabla} {$this->wheres}";
             $query = $this->conexion->prepare($this->sql);
@@ -23,8 +26,9 @@ class Crud {
             echo $exc->getTraceAsString();
         }
     }
-     // Devuelve la siguiente fila de un conjunto de resultados
-     public function getOb() {
+    // Devuelve la siguiente fila de un conjunto de resultados
+    public function getOb()
+    {
         try {
             $this->sql = "SELECT * FROM {$this->tabla} {$this->wheres}";
             $query = $this->conexion->prepare($this->sql);
@@ -33,9 +37,10 @@ class Crud {
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
         }
-    }   
+    }
 
-    public function first() {
+    public function first()
+    {
         $lista = $this->get();
         if (count($lista) > 0) {
             return $lista[0];
@@ -44,7 +49,8 @@ class Crud {
         }
     }
 
-    public function insert($obj) {
+    public function insert($obj)
+    {
         try {
             $campos = implode("`, `", array_keys($obj)); //nombre`, `apellido`, `edad
             $valores = ":" . implode(", :", array_keys($obj)); //:nombre, :apellido, :edad
@@ -57,7 +63,8 @@ class Crud {
         }
     }
 
-    public function update($obj) {
+    public function update($obj)
+    {
         try {
             $campos = "";
             foreach ($obj as $llave => $valor) {
@@ -72,7 +79,8 @@ class Crud {
         }
     }
 
-    public function delete() {
+    public function delete()
+    {
         try {
             $this->sql = "DELETE FROM {$this->tabla} {$this->wheres}";
             $filesAfectadas = $this->ejecutar();
@@ -82,22 +90,25 @@ class Crud {
         }
     }
     //strpos = encuentra la posicion de la primera ocurrencia
-    public function where($llave, $condicion, $valor) {
+    public function where($llave, $condicion, $valor)
+    {
         $this->wheres .= (strpos($this->wheres, "WHERE")) ? " AND " : " WHERE ";
-        $valor = "'" .$valor."'";
+        $valor = "'" . $valor . "'";
         $this->wheres .= "$llave $condicion  $valor  ";
         return $this;
     }
 
-    public function orWhere($llave, $condicion, $valor) {
+    public function orWhere($llave, $condicion, $valor)
+    {
         $this->wheres .= (strpos($this->wheres, "WHERE")) ? " OR " : " WHERE ";
         //"\"$valor\"" 
-        $valor = "'" .$valor."'";
-        $this->wheres .= "$llave $condicion " . ((is_string($valor)) ? $valor: $valor) . " ";
+        $valor = "'" . $valor . "'";
+        $this->wheres .= "$llave $condicion " . ((is_string($valor)) ? $valor : $valor) . " ";
         return $this;
     }
 
-    private function ejecutar($obj = null) {
+    private function ejecutar($obj = null)
+    {
         $sth = $this->conexion->prepare($this->sql);
         if ($obj !== null) {
             foreach ($obj as $llave => $valor) {
@@ -112,35 +123,39 @@ class Crud {
         return $sth->rowCount();
     }
 
-    private function reiniciarValores() {
+    private function reiniciarValores()
+    {
         $this->wheres = "";
         $this->sql = null;
     }
 
-    public function sentenciaAll($obj){
+    public function sentenciaAll($obj)
+    {
         try {
             $query = $this->conexion->prepare($obj);
             $query->execute();
             return $query->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $exc) {
             echo $exc->getTraceAsString();
-        }  
+        }
     }
-    public function sentenciaObj($obj){
+    public function sentenciaObj($obj)
+    {
         try {
             $query = $this->conexion->prepare($obj);
             $query->execute();
             return $query->fetch(PDO::FETCH_ASSOC);
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
-        }  
+            // echo $exc->getTraceAsString();
+        }
     }
-    public function insertarObj($obj){
+    public function insertarObj($obj)
+    {
         try {
             $query = $this->conexion->prepare($obj);
             $query->execute();
             return $query->fetch(PDO::FETCH_ASSOC);
         } catch (Exception $exc) {
-        }  
+        }
     }
 }

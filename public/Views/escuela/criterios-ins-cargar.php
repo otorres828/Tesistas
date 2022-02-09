@@ -4,8 +4,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela | Criterios Experimentales</title>
-	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
+	<title>Escuela| Criterios experimentales - Cargar</title>
+	<?php
+
+	use App\Models\Tesistas;
+
+	include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -13,8 +17,8 @@
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
 	<div class="wrapper">
 
-		<!-- PRECARGA -->
-		<!-- <div class="preloader flex-column justify-content-center align-items-center">
+		<!-- PRECARGA
+		<div class="preloader flex-column justify-content-center align-items-center">
 			<img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
 		</div> -->
 
@@ -96,7 +100,7 @@
 						</li>
 
 						<li class="nav-item ">
-							<a href="#" class="nav-link ">
+							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
 									Tesistas
@@ -106,13 +110,13 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-tesistas" class="nav-link">
+									<a href="escuela-tesistas" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-tesistas-cargar" class="nav-link">
+									<a href="escuela-tesistas-cargar" class="nav-link active">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Tesistas</p>
 									</a>
@@ -130,28 +134,23 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="pages/tables/simple.html" class="nav-link">
+									<a href="escuela-profesores" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Revisores</p>
+										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/tables/data.html" class="nav-link">
+
+									<a href="escuela-profesores-cargar" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Tutores</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="pages/tables/jsgrid.html" class="nav-link">
-										<i class="far fa-circle nav-icon"></i>
-										<p>Jurados</p>
+										<p>Cargar Profesores</p>
 									</a>
 								</li>
 							</ul>
 						</li>
 
 						<li class="nav-item">
-							<a href="#" class="nav-link ">
+							<a href="#" class="nav-link">
 								<i class="nav-icon fas fa-balance-scale"></i>
 								<p>
 									Comites
@@ -160,7 +159,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-comites" class="nav-link ">
+									<a href="escuela-comites" class="nav-link">
 										<i class=" far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
@@ -176,8 +175,8 @@
 
 						<li class="nav-header">Criterios</li>
 
-						<li class="nav-item menu-open">
-							<a href="#" class="nav-link active">
+						<li class="nav-item">
+							<a href="#" class="nav-link">
 								<i class="nav-icon fas fa-search"></i>
 								<p>
 									Experimental
@@ -186,13 +185,13 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-criterios-exp-todos" class="nav-link active">
+									<a href="pages/search/simple.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-criterios-exp-cargar" class="nav-link">
+									<a href="pages/search/enhanced.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Experimental</p>
 									</a>
@@ -210,13 +209,13 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-criterios-ins-todos" class="nav-link">
+									<a href="pages/search/simple.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-criterios-ins-cargar" class="nav-link">
+									<a href="pages/search/enhanced.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Instrumental</p>
 									</a>
@@ -239,130 +238,75 @@
 
 		</aside>
 
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
+		<div class="content-wrapper p-5">
+			<div class="container">
+				<form action="escuela-tesistas-cargar" method="POST" enctype="multipart/form-data">
+					<input type="file" value="Subir Archivo" name="archivo" required>
+					<button type="submit" name="enviar" class="btn btn-primary">Cargar </button>
+				</form>
+				<?php
+				if (isset($_POST['enviar'])) {
+					$archivo = $_FILES["archivo"]["name"];
+					$archivo_copiado = $_FILES["archivo"]["tmp_name"];
+					$archivo_guardado = "copia_" . $archivo;
+					if (copy($archivo_copiado, $archivo_guardado)) {
+						echo "se copio correctamente " . "</br>";
+					} else {
+						header('location:error');
+					}
+					if (file_exists($archivo_guardado)) {
+						$fp = fopen($archivo_guardado, "r");
+						$i = 0;
+				?>
+						<table class="card-body table table-flush" id="example">
+							<thead class="thead-light">
+								<tr>
+									<th>Nº Fila</th>
+									<th>Resultado</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php $rows = 0;
+								while ($datos = fgetcsv($fp, 5000, ";")) {
+									$i++;
+									$cedula = $datos[0];
+									$nombre = $datos[1];
+									$correoucab = $datos[2];
+									$correoparticular = $datos[3];
+									$telefono = $datos[4];
+									$comentario = $datos[5];
+									$rows++; ?>
 
-			<!-- /.content-header -->
+									<?php $valor = null;
+									if ($rows > 1) {
+										$query = "INSERT INTO  tesistas (cedula,nombre,correoucab,correoparticular,telefono,comentario) VALUES($cedula,'$nombre','$correoucab','$correoparticular','$telefono','$comentario')";
+										$valor = (new Tesistas())->insertarObj($query);
 
-			<!-- Main content -->
-			<section class="content">
-				<div class="container-fluid">
+										if ($valor > 0) {
+									?>
+											<tr>
+												<td><?php echo $i; ?></td>
+												<td>SE INSERTO CORRECTAMENTE</td>
+											<?php } else { ?>
+												<td><?php echo $i; ?></td>
+												<td class="bg-danger">NO SE INSERTO</td>
+											</tr>
+										<?php } ?>
+								<?php }
+								} ?>
 
-					<div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1 class="m-0">Criterios - Listar Criterios experimentales</h1>
-							</div><!-- /.col -->
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">Criterios</a></li>
-									<li class="breadcrumb-item active">Listar Criterios experimentales</li>
-								</ol>
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div>
-				</div>
-				<!-- /.row -->
-				<!-- Main row -->
-				<div class="row">
-					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable">
-						<div class="card table-responsive py-4 p-4">
-							<div class="card-header">
-								<h1>Lista de Criterios experimentales</h1>
-							</div>
-							<table class="card-body table table-flush" id="example">
-								<thead class="thead-light">
-									<tr>
-
-										<th>id_criterio</th>
-										<th>Nota max</th>
-										<th>Descripcion</th>
-										<th>Estatus</th>
-										<th>Accciones </th>
-
-									</tr>
-								</thead>
-								<tbody>
-									<!-- Criterios experimentales REVISOR -->
-									<?php
-									foreach ($criteriosRevisoresExp as $criterioRevisorExperimental) : ?>
-										<tr>
-											<td><?php echo $criterioRevisorExperimental['id_criterio']; ?></td>
-											<td><?php echo $criterioRevisorExperimental['notamax']; ?></td>
-											<td><?php echo $criterioRevisorExperimental['descripcion']; ?></td>
-											<td class="text-center">
-												<?php if ($criterioRevisorExperimental['estatus'] == 'ACTIVO') { ?>
-													<h2 class="badge bg-success">ACTIVO</h2>
-												<?php } else { ?>
-													<h2 class="badge bg-danger">INACTIVO</h2>
-												<?php } ?>
-											</td>
-											<!-- Buton  -->
-											<form action="escuela-habilitar" method="POST">
-												<td class="text-center">
-													<?php $valores = $criterioRevisorExperimental['id_criterio'] . ",Exp,Rev"; ?>
-													<?php if ($criterioRevisorExperimental['estatus'] == 'ACTIVO') { ?>
-														<?php $valores .= ",INACTIVO"; ?>
-														<button value="<?php echo $valores ?>" name="habilitar-revExp" type="submit" class="badge bg-secondary">DESHABILITAR</button>
-													<?php } else {
-													?>
-														<?php $valores .= ",ACTIVO"; ?>
-														<button value="<?php echo $valores ?>" name="habilitar-revExp" type="submit" class="badge bg-secondary">HABILITAR</button>
-													<?php } ?>
-												</td>
-											</form>
-										</tr>
-									<?php endforeach; ?>
-									<!-- Criterios experimentales TUTOR -->
-									<?php
-									foreach ($criteriosTutoresExp as $criterioTutorExperimental) : ?>
-										<tr>
-											<td><?php echo $criterioTutorExperimental['id_criterio']; ?></td>
-											<td><?php echo $criterioTutorExperimental['notamax']; ?></td>
-											<td><?php echo $criterioTutorExperimental['descripcion']; ?></td>
-											<td class="text-center">
-												<?php if ($criterioTutorExperimental['estatus'] == 'ACTIVO') { ?>
-													<h2 class="badge bg-success">ACTIVO</h2>
-												<?php } else { ?>
-													<h2 class="badge bg-danger">INACTIVO</h2>
-												<?php } ?>
-											</td>
-											<td><a href="#">Deshabilitar</a> </td>
-										</tr>
-									<?php endforeach; ?>
-									<!-- Criterios experimentales JURADO -->
-									<?php
-									foreach ($criteriosJuradosExp as $criterioJuradoExperimental) : ?>
-										<tr>
-											<td><?php echo $criterioJuradoExperimental['id_criterio']; ?></td>
-											<td><?php echo $criterioJuradoExperimental['notamax']; ?></td>
-											<td><?php echo $criterioJuradoExperimental['descripcion']; ?></td>
-											<td class="text-center">
-												<?php if ($criterioJuradoExperimental['estatus'] == 'ACTIVO') { ?>
-													<h2 class="badge bg-success">ACTIVO</h2>
-												<?php } else { ?>
-													<h2 class="badge bg-danger">INACTIVO</h2>
-												<?php } ?>
-											</td>
-											<td><a href="#">Deshabilitar</a> </td>
-										</tr>
-									<?php endforeach; ?>
-								</tbody>
-							</table>
-						</div>
-
-						<!-- /.card -->
-					</section>
-					<!-- /.Left col -->
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-					<!-- right col -->
-				</div>
-				<!-- /.row (main row) -->
-		</div><!-- /.container-fluid -->
-		</section>
-		<!-- /.content -->
+							</tbody>
+						</table>
+				<?php } else {
+						header('location:error');
+					}
+				}
+				if (isset($archivo_guardado)) {
+					unlink($archivo_guardado);
+				}
+				?>
+			</div>
+		</div>
 	</div>
 
 	<?php include_once('../public/Views/componentes/footer.php'); ?>
