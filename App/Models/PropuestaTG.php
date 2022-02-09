@@ -26,7 +26,13 @@ class PropuestaTG extends ModeloGenerico
                         AND ptg.num_c = ANY(SELECT Num_C FROM Presentan WHERE Cedula =$cedula)";
     return $this->sentenciaAll($this->sql);
   }
-
+  public function obtenerdatos(){
+    // $this->sql = "SELECT p.cedula,ptg.num_c,ptg.titulo,ptg.modalidad,ptg.observaciones,ptg.id_comite as estatus,ptg.nro_consejo as estatusc 
+    // FROM propuestatg AS ptg,  presentan AS p 
+    // WHERE  ptg.num_c=p.num_c
+    // AND cedula =$cedula";
+    return $this->sentenciaAll($this->sql);
+  }
   public function mispropuestas($cedula)
   {
     // $this->sql = "SELECT ptg.num_c,ptg.titulo,ptg.modalidad,ptg.observaciones,ec.estatus,ecj.estatus as estatusc 

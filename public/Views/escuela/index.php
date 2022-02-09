@@ -5,7 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Escuela| Panel de Control</title>
-  <?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
+  <?php
+
+  use App\Models\PropuestaTG;
+
+  include_once('../public/Views/componentes/cssadminlte.php'); ?>
   <!-- DATATABLES -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -102,8 +106,6 @@
                     <th>Modalidad</th>
                     <th>id_comite</th>
                     <th>Nro consejo</th>
-                    <th>Cedula revisor</th>
-                    <th>Cedula tutor</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -125,10 +127,43 @@
                           <h2 class="badge bg-success">Experimental</h2>
                         <?php } ?>
                       </td>
-                      <td><?php echo $propuestaTG['id_comite']; ?></td>
-                      <td><?php echo $propuestaTG['nro_consejo']; ?></td>
-                      <td><?php echo $propuestaTG['cedula_revisor']; ?></td>
-                      <td><?php echo $propuestaTG['cedula_tutor']; ?></td>
+                      <td class="text-center">
+                        <?php if (is_null($propuestaTG['id_comite'])) { ?>
+                          <h2 class="badge bg-warning">PENDIENTE</h2>
+                          <?php } else {
+                          $num_c = $propuestaTG['num_c'];
+                          $sql = "SELECT estatus
+                              FROM evaluacioncomite 
+                              WHERE num_c=$num_c";
+                          $valor = (new PropuestaTG())->sentenciaObj($sql);
+                          $valor = $valor['estatus'];
+                          if ($valor == 'REPROBADO') { ?>
+                            <h2 class="badge bg-danger">REPROBADO</h2>
+                          <?php } else { ?>
+                            <h2 class="badge bg-success">APROBADO</h2>
+
+                        <?php }
+                        } ?>
+                      </td>
+                      <td class="text-center">
+                        <?php if (is_null($propuestaTG['nro_consejo'])) { ?>
+                          <h2 class="badge bg-warning">PENDIENTE</h2>
+                          <?php } else {
+                          $num_c = $propuestaTG['num_c'];
+                          $sql = "SELECT estatus
+                              FROM evaluacionconsejo 
+                              WHERE num_c=$num_c";
+                          $valor = (new PropuestaTG())->sentenciaObj($sql);
+                          $valor = $valor['estatus'];
+                          if ($valor == 'REPROBADO') { ?>
+                            <h2 class="badge bg-danger">REPROBADO</h2>
+                          <?php } else { ?>
+                            <h2 class="badge bg-success">APROBADO</h2>
+
+                        <?php }
+                        } ?>
+                      </td>
+
                     </tr>
                   <?php endforeach; ?>
 
@@ -219,9 +254,10 @@
               </div>
 
               <div class="card">
-                
 
-                <iframe width="w-full" height="315" src="https://www.youtube.com/embed/fQMkX9UU-rY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>              </div>
+
+                <iframe width="w-full" height="315" src="https://www.youtube.com/embed/fQMkX9UU-rY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
             </div>
           </section>
         </div>

@@ -4,14 +4,8 @@ namespace App\Controllers\escuela;
 
 use App\Models\Auth;
 use \Core\View;
-use App\Models\Tesistas;
-use App\Models\Profesores;
 use App\Models\PropuestaTG;
 use App\Models\Escuela;
-use App\Models\Comites;
-
-
-
 
 class EscuelaController extends \Core\Controller
 {
@@ -31,7 +25,6 @@ class EscuelaController extends \Core\Controller
         ]);
     }
 
-
     // Ver todas las propuestas tg  en escuela-propuestastg
     public function propuestastgTodas()
     {
@@ -42,8 +35,6 @@ class EscuelaController extends \Core\Controller
             'propuestasTG' => $propuestasTG
         ]);
     }
-
-
   
     private function autenticar()
     {
