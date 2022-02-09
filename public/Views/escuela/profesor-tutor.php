@@ -13,7 +13,7 @@
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
 	<div class="wrapper">
 
-		<?php include_once('../public/Views/componentes/profesorSidebar.php'); ?>
+	<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 
 
 		<!-- Content Wrapper. Contains page content -->
