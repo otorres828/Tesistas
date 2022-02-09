@@ -87,6 +87,7 @@ class EscuelaController extends \Core\Controller
         View::render('escuela/comites-up.php');
     }
 
+   
     // Ver todas las propuestas tg  en escuela-propuestastg
     public function propuestastgTodas()
     {

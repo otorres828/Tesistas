@@ -156,7 +156,7 @@
 							</ul>
 						</li>
 
-						<li class="nav-item">
+						<li class="nav-item  menu-open">
 							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-balance-scale"></i>
 								<p>
@@ -165,7 +165,7 @@
 								</p>
 							</a>
 							<ul class="nav nav-treeview">
-								<li class="nav-item">
+								<li class="nav-item ">
 									<a href="escuela-comites" class="nav-link active">
 										<i class=" far fa-circle nav-icon"></i>
 										<p>Todos</p>

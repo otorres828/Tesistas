@@ -7,7 +7,7 @@
 	<title>Escuela| Comites - Cargar Comites</title>
 	<?php
 
-	use App\Models\Tesistas;
+use App\Models\Comites;
 
 	include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
@@ -159,7 +159,7 @@
 							</ul>
 						</li>
 
-						<li class="nav-item">
+						<li class="nav-item menu-open">
 							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-balance-scale"></i>
 								<p>
@@ -250,7 +250,7 @@
 
 		<div class="content-wrapper p-5">
 			<div class="container">
-				<form action="escuela-tesistas-cargar" method="POST" enctype="multipart/form-data">
+				<form action="escuela-comites-up" method="POST" enctype="multipart/form-data">
 					<input type="file" value="Subir Archivo" name="archivo" required>
 					<button type="submit" name="enviar" class="btn btn-primary">Cargar </button>
 				</form>
@@ -279,18 +279,15 @@
 								<?php $rows = 0;
 								while ($datos = fgetcsv($fp, 5000, ";")) {
 									$i++;
-									$cedula = $datos[0];
-									$nombre = $datos[1];
-									$correoucab = $datos[2];
-									$correoparticular = $datos[3];
-									$telefono = $datos[4];
-									$comentario = $datos[5];
+									$id_comite = $datos[0];
+									$fecha = $datos[1];
+									
 									$rows++; ?>
 
 									<?php $valor = null;
 									if ($rows > 1) {
-										$query = "INSERT INTO  tesistas (cedula,nombre,correoucab,correoparticular,telefono,comentario) VALUES($cedula,'$nombre','$correoucab','$correoparticular','$telefono','$comentario')";
-										$valor = (new Tesistas())->insertarObj($query);
+										$query = "INSERT INTO  comites (id_comite,fecha) VALUES($id_comite,'$fecha')";
+										$valor = (new Comites())->insertarObj($query);
 
 										if ($valor > 0) {
 									?>
