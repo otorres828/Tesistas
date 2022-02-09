@@ -2,6 +2,7 @@
 
 namespace App\Controllers\escuela;
 
+use App\Models\AreasComiteConsejo;
 use App\Models\Auth;
 use \Core\View;
 use App\Models\Comites;
@@ -15,7 +16,7 @@ class ComiteController extends \Core\Controller
     public function comitesTodos()
     {
         $this->autenticar();
-        $comites = (new Comites())->get();        // Listar todos los Tesisistas 
+        $comites = (new Comites())->get();        // Listar todos los comites 
         View::render('escuela/comites-todos.php', ['comites' => $comites]);
     }
     // Cargar comites 

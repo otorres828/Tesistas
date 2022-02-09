@@ -11,6 +11,6 @@ class Comites extends ModeloGenerico
 
     public function __construct($propiedades = null)
     {
-        parent::__construct("Comites", Comites::class, $propiedades);
+        parent::__construct("comites", Comites::class, $propiedades);
     }
 }

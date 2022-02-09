@@ -51,4 +51,14 @@ $router->add('escuela-consejos-cargar', ['controller' => 'escuela\ConsejoControl
 
 $router->add('escuela-propuestastg', ['controller' => 'escuela\EscuelaController', 'method' => 'propuestastgTodas']);
 
+$router->add('escuela-areas', ['controller' => 'escuela\AreasController', 'method' => 'todasAreas']);
+$router->add('escuela-areas-crear', ['controller' => 'escuela\AreasController', 'method' => 'crearArea']);
+$router->add('escuela-areas-modificar', ['controller' => 'escuela\AreasController', 'method' => 'modificarArea']);
+$router->add('escuela-areas-eliminar', ['controller' => 'escuela\AreasController', 'method' => 'eliminarArea']);
+
+
+
+
+
+
 $router->dispatch($_SERVER['QUERY_STRING']);

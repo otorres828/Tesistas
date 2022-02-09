@@ -275,7 +275,7 @@
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="escuela-tesistas" class="nav-link ">
+                              <a href="escuela-areas" class="nav-link ">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Todas las Areas</p>
                               </a>
