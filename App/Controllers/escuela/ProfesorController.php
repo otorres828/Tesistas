@@ -4,16 +4,14 @@ namespace App\Controllers\escuela;
 
 use App\Models\Auth;
 use \Core\View;
-use App\Models\Tesistas;
 use App\Models\Profesores;
 use App\Models\PropuestaTG;
 use App\Models\Escuela;
-use App\Models\Comites;
 
 
 
 
-class EscuelaController extends \Core\Controller
+class ProfesorController extends \Core\Controller
 {
 
     // Vista del dashboard para la escuela
@@ -33,7 +31,6 @@ class EscuelaController extends \Core\Controller
         ]);
     }
 
-
     // Ver todos los profesores revidores en profesor-revisor.php
     public function profesoresRevisores()
     {
@@ -50,8 +47,9 @@ class EscuelaController extends \Core\Controller
 
         View::render('escuela/profesor-tutor.php', ['profesores' => $profesores]);
     }
-    public function profesores()
+    public function profesorCargar()
     {
+        echo "hola";
     }
 
     // Ver todos los profesores revidores en profesor-tutor.php
@@ -61,22 +59,6 @@ class EscuelaController extends \Core\Controller
         $profesores = (new Profesores())->jurados();
 
         View::render('escuela/profesor-jurado.php', ['profesores' => $profesores]);
-    }
-
-
-
-
-
-
-    // Ver todas las propuestas tg  en escuela-propuestastg
-    public function propuestastgTodas()
-    {
-        $this->autenticar();
-        $propuestasTG = (new PropuestaTG())->get();   // Listar todas las propuestas de TG 
-
-        View::render('escuela/propuestastg-todos.php', [
-            'propuestasTG' => $propuestasTG
-        ]);
     }
 
 

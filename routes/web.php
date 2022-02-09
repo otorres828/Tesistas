@@ -32,18 +32,18 @@ $router->add('profesor-perfil', ['controller' => 'profesores\ProfesorController'
 
 //=====================================ESCUELA
 $router->add('escuela', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);
-$router->add('escuela-profesores', ['controller' => 'escuela\EscuelaController', 'method' => 'profesores']);
+
+$router->add('escuela-tesistas', ['controller' => 'escuela\TesistaController', 'method' => 'tesistasTodos']);
+$router->add('escuela-tesistas-cargar', ['controller' => 'escuela\TesistaController', 'method' => 'tesistasCargar']);
+
+$router->add('escuela-profesor-revisor', ['controller' => 'escuela\ProfesorController', 'method' => 'profesoresRevisores']);
+$router->add('escuela-profesor-tutor', ['controller' => 'escuela\ProfesorController', 'method' => 'profesoresTutores']);
+$router->add('escuela-profesor-jurado', ['controller' => 'escuela\ProfesorController', 'method' => 'profesoresJurados']);
+$router->add('escuela-profesores-cargar', ['controller' => 'escuela\ProfesorController', 'method' => 'profesorCargar']);
 
 
-$router->add('escuela-tesistas', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasTodos']);
-$router->add('escuela-tesistas-cargar', ['controller' => 'escuela\EscuelaController', 'method' => 'tesistasCargar']);
-
-$router->add('escuela-profesor-revisor', ['controller' => 'escuela\EscuelaController', 'method' => 'profesoresRevisores']);
-$router->add('escuela-profesor-tutor', ['controller' => 'escuela\EscuelaController', 'method' => 'profesoresTutores']);
-$router->add('escuela-profesor-jurado', ['controller' => 'escuela\EscuelaController', 'method' => 'profesoresJurados']);
-
-$router->add('escuela-comites', ['controller' => 'escuela\EscuelaController', 'method' => 'comitesTodos']);
-$router->add('escuela-comites-up', ['controller' => 'escuela\EscuelaController', 'method' => 'comitesCargar']);
+$router->add('escuela-comites', ['controller' => 'escuela\ComiteController', 'method' => 'comitesTodos']);
+$router->add('escuela-comites-up', ['controller' => 'escuela\ComiteController', 'method' => 'comitesCargar']);
 
 $router->add('escuela-propuestastg', ['controller' => 'escuela\EscuelaController', 'method' => 'propuestastgTodas']);
 
