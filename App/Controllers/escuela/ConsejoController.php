@@ -12,13 +12,13 @@ class ConsejoController extends \Core\Controller
     public function index()
     {
         $consejos = (new Consejos())->get();        // Listar todos los consejos de escuela 
-        View::render('escuela/consejos-todos.php', ['consejos' => $consejos]);
+        View::render('escuela/consejos/consejos-todos.php', ['consejos' => $consejos]);
     }
 
     public function cargarconsejo()
     {
         $this->autenticar();
-        View::render('escuela/consejos-cargar.php');
+        View::render('escuela/consejos/consejos-cargar.php');
     }
   
     private function autenticar()

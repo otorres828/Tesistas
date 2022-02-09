@@ -12,7 +12,7 @@ class AreasController extends \Core\Controller
     {
         $this->autenticar();
         $areas = (new Areas())->get();        // Listar todos las areas 
-        View::render('escuela/areas-todos.php', ['areas' => $areas]);
+        View::render('escuela/areas/areas-todos.php', ['areas' => $areas]);
     }
 
     public function crearArea(){
@@ -80,7 +80,7 @@ class AreasController extends \Core\Controller
     public function cargarArea(){
         
         $this->autenticar();
-        View::render('escuela/cargar-areas.php');
+        View::render('escuela/areas/cargar-areas.php');
     }
 
  

@@ -15,14 +15,14 @@ class TesistaController extends \Core\Controller
     {
         $this->autenticar();
         $tesistas = (new Tesistas())->get();        // Listar todos los Tesisistas 
-        View::render('escuela/tesistas-todos.php', ['tesistas' => $tesistas]);
+        View::render('escuela/tesistas/tesistas-todos.php', ['tesistas' => $tesistas]);
     }
 
     // VISTA PARA CARGAR ARCHIVO
     public function tesistasCargar()
     {
         $this->autenticar();
-        View::render('escuela/cargar-tesistas.php',);
+        View::render('escuela/tesistas/cargar-tesistas.php',);
     }
   
     private function autenticar()

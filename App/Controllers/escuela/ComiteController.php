@@ -17,13 +17,13 @@ class ComiteController extends \Core\Controller
     {
         $this->autenticar();
         $comites = (new Comites())->get();        // Listar todos los comites 
-        View::render('escuela/comites-todos.php', ['comites' => $comites]);
+        View::render('escuela/comites/comites-todos.php', ['comites' => $comites]);
     }
     // Cargar comites 
     public function comitesCargar()
     {
         $this->autenticar();
-        View::render('escuela/comites-up.php');
+        View::render('escuela/comites/cargar-comites.php');
     }
   
     private function autenticar()

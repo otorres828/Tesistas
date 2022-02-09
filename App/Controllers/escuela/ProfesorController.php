@@ -19,7 +19,7 @@ class ProfesorController extends \Core\Controller
     {
         $this->autenticar();
         $profesores = (new Profesores())->get();         // Listar todos los profesores
-        View::render('escuela/profesores-todos.php', [
+        View::render('escuela/profesores/profesores-todos.php', [
                                 'profesores' => $profesores
         ]);
     }
@@ -30,7 +30,7 @@ class ProfesorController extends \Core\Controller
         $this->autenticar();
         $profesores = (new Profesores())->revisores();
 
-        View::render('escuela/profesor-revisor.php', ['profesores' => $profesores]);
+        View::render('escuela/profesores/profesor-revisor.php', ['profesores' => $profesores]);
     }
     // Ver todos los profesores revidores en profesor-tutor.php
     public function profesoresTutores()
@@ -38,12 +38,12 @@ class ProfesorController extends \Core\Controller
         $this->autenticar();
         $profesores = (new Profesores())->tutores();
 
-        View::render('escuela/profesor-tutor.php', ['profesores' => $profesores]);
+        View::render('escuela/profesores/profesor-tutor.php', ['profesores' => $profesores]);
     }
     public function profesorCargar()
     {
         $this->autenticar();
-        View::render('escuela/cargar-profesores.php',);    }
+        View::render('escuela/profesores/cargar-profesores.php',);    }
 
     // Ver todos los profesores revidores en profesor-tutor.php
     public function profesoresJurados()
@@ -51,7 +51,7 @@ class ProfesorController extends \Core\Controller
         $this->autenticar();
         $profesores = (new Profesores())->jurados();
 
-        View::render('escuela/profesor-jurado.php', ['profesores' => $profesores]);
+        View::render('escuela/profesores/profesor-jurado.php', ['profesores' => $profesores]);
     }
 
 
