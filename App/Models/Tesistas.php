@@ -93,6 +93,7 @@ class Tesistas extends ModeloGenerico{
             return 0;
         }
     }
+    
     public function validartelefono($telefono){
         $resultado=$this->sentenciaObj("SELECT telefono FROM tesistas WHERE telefono='$telefono'");
         if($resultado){

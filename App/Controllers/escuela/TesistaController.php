@@ -25,7 +25,7 @@ class TesistaController extends \Core\Controller
         View::render('escuela/tesistas/cargar-tesistas.php',);
     }
   
-    public function crearCargar(){
+    public function crearTesista(){
         if (isset($_POST['nuevotesista'])) {
             session_start();
            if (isset($_POST['nombre']) && isset($_POST['cedula']) && isset($_POST['correoucab']) && isset($_POST['correoparticular']) && isset($_POST['telefono'])   ) {

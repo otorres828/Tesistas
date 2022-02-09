@@ -54,7 +54,43 @@ class ProfesorController extends \Core\Controller
         View::render('escuela/profesores/profesor-jurado.php', ['profesores' => $profesores]);
     }
 
-
+    public function crearProfesor(){
+        if (isset($_POST['nuevoprofesor'])) {
+            session_start();
+           if (isset($_POST['nombre']) && isset($_POST['cedula']) && isset($_POST['correoparticular']) && isset($_POST['direccion']) && isset($_POST['telefono'])   ) {
+               $validacion = (new Profesores())->validarcedula($_POST['cedula']);
+               if($validacion){
+                    $_SESSION['mensaje'] = "Cedula ya registrada";
+                    $_SESSION['colorcito'] = "danger";
+               }else{
+                    $validacion= (new Profesores())->validarcorreoparticular($_POST['correoparticular']);
+                    if($validacion){
+                        $_SESSION['mensaje'] = "Correo particular ya registrado";
+                        $_SESSION['colorcito'] = "danger"; 
+                    }else{
+                        $validacion= (new Profesores())->validartelefono($_POST['telefono']);
+                        if ($validacion) {
+                            $_SESSION['mensaje'] = "Telefono ya registrada";
+                            $_SESSION['colorcito'] = "danger";                         
+                        } else {
+                             (new Profesores())->insertarprofesor($_POST['cedula'],$_POST['nombre'],$_POST['direccion'],$_POST['correoparticular'],$_POST['telefono'],$_POST['tipo']);
+                          
+                             $_SESSION['mensaje'] = "Profesor Registrado con Exito";
+                             $_SESSION['colorcito'] = "success";  
+                             
+            
+                        }              
+                    }
+               }
+               header('location:escuela-profesores');
+            } else {
+                $_SESSION['mensaje'] = "Hay campos que no han sido llenados";
+                $_SESSION['colorcito'] = "warning";
+           }
+           
+        } else {
+            header('location:error');
+        }    }
   
     private function autenticar()
     {
