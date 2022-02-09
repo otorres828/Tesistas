@@ -7,9 +7,9 @@
 	<title>Escuela| Tesistas - Cargar Tesistas</title>
 	<?php
 
-use App\Models\Tesistas;
+	use App\Models\Tesistas;
 
-include_once('../public/Views/componentes/cssadminlte.php'); ?>
+	include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -263,47 +263,49 @@ include_once('../public/Views/componentes/cssadminlte.php'); ?>
 						$fp = fopen($archivo_guardado, "r");
 						$i = 0;
 				?>
-				<table class="card-body table table-flush" id="example">
-					<thead class="thead-light">
-						<tr>
-							<th>Nº Fila</th>
-							<th>Resultado</th>
-						</tr>
-					</thead>
-					<tbody>
-					<?php 
-					$rows=0; while ($datos = fgetcsv($fp, 5000, ";")) { $i++; 
-						$cedula=$datos[0];
-						$nombre=$datos[1];
-						$correoucab=$datos[2];
-						$correoparticular=$datos[3];
-						$telefono=$datos[4];
-						$comentario=$datos[5];
-						$rows++;
-						?>
-						<tr>
-						<?php
-						$valor=null; 
-						if($rows>1){
-						 $query ="INSERT INTO  tesistas (cedula,nombre,correoucab,correoparticular,telefono,comentario) VALUES($cedula,'$nombre','$correoucab','$correoparticular',$telefono,'$comentario')";
-						 $valor= (new Tesistas())->sentenciaObj($query);
-						
-						 if($valor>0){
-						?>
-							
-							<td><?php echo $i; ?></td>
-							<td>SE INSERTO CORRECTAMENTE</td>
-						<?php } else{?>
-							<td><?php echo $i; ?></td>
-							<td class="bg-danger">NO SE INSERTO</td>
-						<?php } ?>
-						</tr>
-					<?php }} ?>
+						<table class="card-body table table-flush" id="example">
+							<thead class="thead-light">
+								<tr>
+									<th>Nº Fila</th>
+									<th>Resultado</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php $rows = 0;
+								while ($datos = fgetcsv($fp, 5000, ";")) {
+									$i++;
+									$cedula = $datos[0];
+									$nombre = $datos[1];
+									$correoucab = $datos[2];
+									$correoparticular = $datos[3];
+									$telefono = $datos[4];
+									$comentario = $datos[5];
+									$rows++; ?>
 
-					</tbody>
-				</table>
-				<?php } else { header('location:error'); }
-				}?>
+									<?php $valor = null;
+									if ($rows > 1) {
+										$query = "INSERT INTO  tesistas (cedula,nombre,correoucab,correoparticular,telefono,comentario) VALUES($cedula,'$nombre','$correoucab','$correoparticular','$telefono','$comentario')";
+										$valor = (new Tesistas())->insertarObj($query);
+
+										if ($valor > 0) {
+									?>
+											<tr>
+												<td><?php echo $i; ?></td>
+												<td>SE INSERTO CORRECTAMENTE</td>
+											<?php } else { ?>
+												<td><?php echo $i; ?></td>
+												<td class="bg-danger">NO SE INSERTO</td>
+											</tr>
+										<?php } ?>
+								<?php }
+								} ?>
+
+							</tbody>
+						</table>
+				<?php } else {
+						header('location:error');
+					}
+				} ?>
 			</div>
 		</div>
 	</div>
