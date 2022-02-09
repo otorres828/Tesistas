@@ -298,6 +298,7 @@
 											</tr>
 										<?php } ?>
 								<?php }
+								
 								} ?>
 
 							</tbody>
@@ -305,7 +306,9 @@
 				<?php } else {
 						header('location:error');
 					}
-				} ?>
+				} 
+				unlink($archivo_guardado);
+				?>
 			</div>
 		</div>
 	</div>
