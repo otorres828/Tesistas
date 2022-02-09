@@ -17,7 +17,11 @@ class ProfesorController extends \Core\Controller
     // Vista del dashboard para la escuela
     public function index()
     {
-        
+        $this->autenticar();
+        $profesores = (new Profesores())->get();         // Listar todos los profesores
+        View::render('escuela/profesores-todos.php', [
+                                'profesores' => $profesores
+        ]);
     }
 
     // Ver todos los profesores revidores en profesor-revisor.php

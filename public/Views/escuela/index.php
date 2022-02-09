@@ -398,40 +398,7 @@
 
           </section>
           <section class="col-lg-5 connectedSortable">
-            <div class="card table-responsive py-4 p-4">
-              <div class="card-header">
-                <h1>Lista de Profesores</h1>
-              </div>
-              <table class="card-body table table-flush" id="profesor">
-                <thead class="thead-light">
-
-                  <tr>
-
-                    <th>Cedula</th>
-                    <th>Nombre</th>
-                    <th>Direccion</th>
-                    <th>Correo particular</th>
-                    <th>Telefono</th>
-                    <th>Tipo</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($profesores as $profesor) : ?>
-                    <tr>
-                      <td><?php echo $profesor['cedula']; ?></td>
-                      <td><?php echo $profesor['nombre']; ?></td>
-                      <td><?php echo $profesor['direccion']; ?></td>
-                      <td><?php echo $profesor['correoparticular']; ?></td>
-                      <td><?php echo $profesor['telefono']; ?></td>
-                      <td><?php echo $profesor['tipo']; ?></td>
-                    </tr>
-                  <?php endforeach; ?>
-
-
-                </tbody>
-              </table>
-            </div>
-
+            
             <div class="card bg-gradient-success">
               <div class="card-header border-0">
 
@@ -494,7 +461,6 @@
   </div>
   <?php include_once('../public/Views/componentes/adminlte.php'); ?>
   <?php include_once('../public/Views/componentes/scripdatatable.php'); ?>
-  <?php include_once('../public/Views/componentes/scripdatatableIndex.php'); ?>
 
 
 </body>
