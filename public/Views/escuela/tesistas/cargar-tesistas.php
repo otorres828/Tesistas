@@ -16,14 +16,7 @@
 
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
 	<div class="wrapper">
-
-		<!-- PRECARGA
-		<div class="preloader flex-column justify-content-center align-items-center">
-			<img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-		</div> -->
-
 		<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
-
 
 		<div class="content-wrapper p-5">
 			<div class="container">

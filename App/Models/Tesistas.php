@@ -65,6 +65,51 @@ class Tesistas extends ModeloGenerico{
         $this->sentenciaObj("INSERT INTO presentan (num_c,cedula) VALUES ($nc,$cedula_log)");  
     }
 
+    //CREAR TESISTAS 
+    //validar cedula
+    public function validarcedula($cedula){
+        $resultado=$this->sentenciaObj("SELECT cedula FROM tesistas WHERE cedula=$cedula");
+        if($resultado){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
 
+    public function validarcorreoucab($correoucab){
+        $resultado=$this->sentenciaObj("SELECT correoucab FROM tesistas WHERE correoucab='$correoucab'");
+        if($resultado){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public function validarcorreoparticular($correoparticular){
+        $resultado=$this->sentenciaObj("SELECT correoparticular FROM tesistas WHERE correoparticular='$correoparticular'");
+        if($resultado){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+    public function validartelefono($telefono){
+        $resultado=$this->sentenciaObj("SELECT telefono FROM tesistas WHERE telefono='$telefono'");
+        if($resultado){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+    public function insertartesista($cedula,$nombre,$correoucab,$correoparticular,$telefono){
+        $query = "INSERT INTO  tesistas (cedula,nombre,correoucab,correoparticular,telefono) VALUES($cedula,'$nombre','$correoucab','$correoparticular','$telefono')";
+										$valor = (new Tesistas())->insertarObj($query);
+    }
+
+    public function insertartesistaconcomentario($cedula,$nombre,$correoucab,$correoparticular,$telefono,$comentario){
+        $query = "INSERT INTO  tesistas (cedula,nombre,correoucab,correoparticular,telefono,comentario) VALUES($cedula,'$nombre','$correoucab','$correoparticular','$telefono','$comentario')";
+		$this->insertarObj($query);
+    }
     
 }
+

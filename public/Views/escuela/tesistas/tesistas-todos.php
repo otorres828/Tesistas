@@ -13,16 +13,87 @@
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
 	<div class="wrapper">
 
-	<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
-
+		<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 
 		<div class="content-wrapper">
 			<div class="row">
 				<section class="col-lg-12 connectedSortable p-4">
-					<div class="card table-responsive p-2">
-						<div class="card-header">
-							<h1>Lista de Tesistas</h1>
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<div class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#creartesista" data-bs-whatever="@mdo">Crear Tesista</div>
+								<a class="btn btn-warning " href="escuela-tesistas-cargar">Cargar Tesista</a>
+
+							</div>
+
+							<div class="col-sm-6">
+								<h1 class="float-sm-right"><strong>Lista de Tesistas</strong></h1>
+							</div>
 						</div>
+					</div>
+					<!-- MODAL CREAR AREA -->
+					<div class="modal fade" id="creartesista" tabindex="-1" aria-labelledby="creartesista" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="staticBackdropLabel">Crear Nuevo Tesista</h5>
+									<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+
+								</div>
+
+								<div class="modal-body">
+									<div class="card">
+										<div class="card-body">
+											<form action="escuela-tesistas-crear" method="POST" enctype="multipart/form-data">
+												<div class="form-group">
+													<label>Nombre del Bachiller</label>
+													<input type="text" name="nombre" placeholder="nombre del bachiller" class="form-control" required>
+												</div>
+												<div class="form-group">
+													<label>Cedula </label>
+													<input type="number" name="cedula" placeholder="cedula" class="form-control" required>
+												</div>
+												<div class="form-group">
+													<label>Correo Ucab</label>
+													<input type="email" name="correoucab" placeholder="correo ucab" class="form-control" required>
+												</div>
+												<div class="form-group">
+													<label>Correo Particular</label>
+													<input type="email" name="correoparticular" placeholder="correo particular" class="form-control" required>
+												</div>
+												<div class="form-group">
+													<label>Telefono</label>
+													<input type="number" name="telefono" placeholder="telefono" class="form-control" required>
+												</div>
+												<div class="form-group">
+													<label>Comentario</label>
+													<input type="text" name="comentario" placeholder="comentario" class="form-control">
+												</div>
+
+												<div class="d-flex justify-content-end align-items-baseline">
+													<button name="nuevotesista" type="submit" class="btn btn-success" required>Agregar Bachiller</button>
+													<button type="button" class="ml-1 btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card table-responsive p-2">
+						<?php
+						if (isset($_SESSION['mensaje'])) { ?>
+							<div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
+								<?php echo $_SESSION['mensaje']; ?>
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						<?php unset($_SESSION['mensaje']);
+						} ?>
 						<table class="card-body table table-flush" id="example">
 							<thead class="thead-light">
 								<tr>

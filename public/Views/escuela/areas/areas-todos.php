@@ -14,10 +14,8 @@
 	<div class="wrapper">
 
 		<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
-
 		<div class="content-wrapper">
 			<div class="row">
-				<!-- Left col -->
 				<section class="col-lg-12 connectedSortable p-4">
 					<div class="container-fluid">
 						<div class="row mb-2">
@@ -133,16 +131,9 @@
 						</table>
 					</div>
 
-					<!-- /.card -->
 				</section>
-				<!-- /.Left col -->
-				<!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-				<!-- right col -->
 			</div>
-			<!-- /.row (main row) -->
-		</div><!-- /.container-fluid -->
-		<!-- /.content -->
+		</div>
 	</div>
 
 	<?php include_once('../public/Views/componentes/footer.php'); ?>
