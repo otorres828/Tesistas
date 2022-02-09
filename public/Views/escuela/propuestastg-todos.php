@@ -95,8 +95,8 @@
 							</a>
 						</li>
 
-						<li class="nav-item menu-open">
-							<a href="#" class="nav-link active">
+						<li class="nav-item">
+							<a href="#" class="nav-link ">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
 									Tesistas
@@ -106,7 +106,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-tesistas" class="nav-link active">
+									<a href="escuela-tesistas" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
@@ -121,7 +121,7 @@
 						</li>
 
 
-						<li class="nav-item menu-open">
+						<li class="nav-item">
 							<a href="#" class="nav-link ">
 								<i class="nav-icon fas fa-table"></i>
 								<p>
@@ -238,9 +238,9 @@
 							</ul>
 						</li>
 
-						<li class="nav-header">Propuestas de TG</li>
-						<li class="nav-item">
-							<a href="escuela-propuestastg" class="nav-link">
+						<li class="nav-header ">Propuestas de TG</li>
+						<li class="nav-item ">
+							<a href="escuela-propuestastg" class="nav-link active">
 								<i class="nav-icon fab fa-buffer"></i>
 								<p>
 									Todas
