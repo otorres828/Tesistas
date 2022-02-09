@@ -147,6 +147,12 @@
 										<p>Jurados</p>
 									</a>
 								</li>
+								<li class="nav-link ">
+									<a href="escuela-profesores-cargar" class="nav-link ">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Cargar Profesores</p>
+									</a>
+								</li>
 							</ul>
 						</li>
 

@@ -97,7 +97,7 @@
 							</a>
 						</li>
 
-						<li class="nav-item menu-open">
+						<li class="nav-item ">
 							<a href="#" class="nav-link ">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
@@ -147,6 +147,12 @@
 									<a href="pages/tables/jsgrid.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Jurados</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="escuela-profesores-cargar" class="nav-link ">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Cargar Profesores</p>
 									</a>
 								</li>
 							</ul>

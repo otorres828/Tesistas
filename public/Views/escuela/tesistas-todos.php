@@ -95,7 +95,7 @@
 							</a>
 						</li>
 
-						<li class="nav-item menu-open">
+						<li class="nav-item">
 							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
@@ -145,6 +145,12 @@
 									<a href="pages/tables/jsgrid.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Jurados</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="escuela-profesores-cargar" class="nav-link ">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Cargar Profesores</p>
 									</a>
 								</li>
 							</ul>
@@ -240,44 +246,44 @@
 		</aside>
 
 		<div class="content-wrapper">
-				<div class="row">
-					<section class="col-lg-12 connectedSortable p-4">
-						<div class="card table-responsive p-2">
-							<div class="card-header">
-								<h1>Lista de Tesistas</h1>
-							</div>
-							<table class="card-body table table-flush" id="example">
-								<thead class="thead-light">
-									<tr>
-
-										<th>Cedula</th>
-										<th>Nombre</th>
-										<th>Correo Ucab</th>
-										<th>Correo particular</th>
-										<th>Telefono</th>
-										<th>Comentario</th>
-									</tr>
-								</thead>
-								<tbody>
-
-									<?php foreach ($tesistas as $tesista) : ?>
-										<tr>
-											<td><?php echo $tesista['cedula']; ?></td>
-											<td><?php echo $tesista['nombre']; ?></td>
-											<td><?php echo $tesista['correoucab']; ?></td>
-											<td><?php echo $tesista['correoparticular']; ?></td>
-											<td><?php echo $tesista['telefono']; ?></td>
-											<td><?php echo $tesista['comentario']; ?></td>
-										</tr>
-									<?php endforeach; ?>
-
-								</tbody>
-							</table>
+			<div class="row">
+				<section class="col-lg-12 connectedSortable p-4">
+					<div class="card table-responsive p-2">
+						<div class="card-header">
+							<h1>Lista de Tesistas</h1>
 						</div>
+						<table class="card-body table table-flush" id="example">
+							<thead class="thead-light">
+								<tr>
 
-						<!-- /.card -->
-					</section>
-				</div>
+									<th>Cedula</th>
+									<th>Nombre</th>
+									<th>Correo Ucab</th>
+									<th>Correo particular</th>
+									<th>Telefono</th>
+									<th>Comentario</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<?php foreach ($tesistas as $tesista) : ?>
+									<tr>
+										<td><?php echo $tesista['cedula']; ?></td>
+										<td><?php echo $tesista['nombre']; ?></td>
+										<td><?php echo $tesista['correoucab']; ?></td>
+										<td><?php echo $tesista['correoparticular']; ?></td>
+										<td><?php echo $tesista['telefono']; ?></td>
+										<td><?php echo $tesista['comentario']; ?></td>
+									</tr>
+								<?php endforeach; ?>
+
+							</tbody>
+						</table>
+					</div>
+
+					<!-- /.card -->
+				</section>
+			</div>
 		</div>
 	</div>
 

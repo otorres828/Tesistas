@@ -99,7 +99,7 @@
 							</a>
 						</li>
 
-						<li class="nav-item menu-open">
+						<li class="nav-item ">
 							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
@@ -149,6 +149,11 @@
 									<a href="pages/tables/jsgrid.html" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Jurados</p>
+									</a>
+								</li>
+								<a href="escuela-profesores-cargar" class="nav-link ">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Cargar Profesores</p>
 									</a>
 								</li>
 							</ul>
@@ -298,7 +303,7 @@
 											</tr>
 										<?php } ?>
 								<?php }
-								
+									
 								} ?>
 
 							</tbody>
@@ -307,7 +312,9 @@
 						header('location:error');
 					}
 				} 
-				unlink($archivo_guardado);
+				if (isset($archivo_guardado)) {
+					unlink($archivo_guardado);
+				}
 				?>
 			</div>
 		</div>

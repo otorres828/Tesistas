@@ -4,8 +4,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela | Comites - Cargar comites </title>
-	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
+	<title>Escuela| Comites - Cargar Comites</title>
+	<?php
+
+	use App\Models\Tesistas;
+
+	include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -13,10 +17,10 @@
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
 	<div class="wrapper">
 
-		<!-- PRECARGA -->
+		<!-- PRECARGA
 		<div class="preloader flex-column justify-content-center align-items-center">
 			<img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-		</div>
+		</div> -->
 
 		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 			<!-- Left navbar links -->
@@ -95,8 +99,8 @@
 							</a>
 						</li>
 
-						<li class="nav-item menu-open">
-							<a href="#" class="nav-link active">
+						<li class="nav-item">
+							<a href="#" class="nav-link">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
 									Tesistas
@@ -106,13 +110,13 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-tesistas" class="nav-link active">
+									<a href="escuela-tesistas" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-tesistas-cargar" class="nav-link">
+									<a href="escuela-tesistas-cargar" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Tesistas</p>
 									</a>
@@ -147,11 +151,16 @@
 										<p>Jurados</p>
 									</a>
 								</li>
+								<a href="escuela-profesores-cargar" class="nav-link ">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Cargar Profesores</p>
+									</a>
+								</li>
 							</ul>
 						</li>
 
 						<li class="nav-item">
-							<a href="#" class="nav-link">
+							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-balance-scale"></i>
 								<p>
 									Comites
@@ -166,7 +175,7 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-comites-up" class="nav-link">
+									<a href="escuela-comites-up" class="nav-link active">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Comites</p>
 									</a>
@@ -238,52 +247,77 @@
 			</div>
 
 		</aside>
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
 
-			<!-- /.content-header -->
+		<div class="content-wrapper p-5">
+			<div class="container">
+				<form action="escuela-tesistas-cargar" method="POST" enctype="multipart/form-data">
+					<input type="file" value="Subir Archivo" name="archivo" required>
+					<button type="submit" name="enviar" class="btn btn-primary">Cargar </button>
+				</form>
+				<?php
+				if (isset($_POST['enviar'])) {
+					$archivo = $_FILES["archivo"]["name"];
+					$archivo_copiado = $_FILES["archivo"]["tmp_name"];
+					$archivo_guardado = "copia_" . $archivo;
+					if (copy($archivo_copiado, $archivo_guardado)) {
+						echo "se copio correctamente " . "</br>";
+					} else {
+						header('location:error');
+					}
+					if (file_exists($archivo_guardado)) {
+						$fp = fopen($archivo_guardado, "r");
+						$i = 0;
+				?>
+						<table class="card-body table table-flush" id="example">
+							<thead class="thead-light">
+								<tr>
+									<th>Nº Fila</th>
+									<th>Resultado</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php $rows = 0;
+								while ($datos = fgetcsv($fp, 5000, ";")) {
+									$i++;
+									$cedula = $datos[0];
+									$nombre = $datos[1];
+									$correoucab = $datos[2];
+									$correoparticular = $datos[3];
+									$telefono = $datos[4];
+									$comentario = $datos[5];
+									$rows++; ?>
 
-			<!-- Main content -->
-			<section class="content">
-				<div class="container-fluid">
+									<?php $valor = null;
+									if ($rows > 1) {
+										$query = "INSERT INTO  tesistas (cedula,nombre,correoucab,correoparticular,telefono,comentario) VALUES($cedula,'$nombre','$correoucab','$correoparticular','$telefono','$comentario')";
+										$valor = (new Tesistas())->insertarObj($query);
 
-					<div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1 class="m-0">Comites - Cargar Comites</h1>
-							</div><!-- /.col -->
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">Comites</a></li>
-									<li class="breadcrumb-item active">Cargar Comites</li>
-								</ol>
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div>
-				</div>
-				<!-- /.row -->
-				<!-- Main row -->
-				<div class="row">
-					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable">
-						<div class="card table-responsive py-4 p-4">
-							<div class="card-header">
-								<h1>Carga de Comites</h1>
-							</div>
+										if ($valor > 0) {
+									?>
+											<tr>
+												<td><?php echo $i; ?></td>
+												<td>SE INSERTO CORRECTAMENTE</td>
+											<?php } else { ?>
+												<td><?php echo $i; ?></td>
+												<td class="bg-danger">NO SE INSERTO</td>
+											</tr>
+										<?php } ?>
+								<?php }
+									
+								} ?>
 
-						</div>
-
-						<!-- /.card -->
-					</section>
-					<!-- /.Left col -->
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-					<!-- right col -->
-				</div>
-				<!-- /.row (main row) -->
-		</div><!-- /.container-fluid -->
-		</section>
-		<!-- /.content -->
+							</tbody>
+						</table>
+				<?php } else {
+						header('location:error');
+					}
+				} 
+				if (isset($archivo_guardado)) {
+					unlink($archivo_guardado);
+				}
+				?>
+			</div>
+		</div>
 	</div>
 
 	<?php include_once('../public/Views/componentes/footer.php'); ?>
