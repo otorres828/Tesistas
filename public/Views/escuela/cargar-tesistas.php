@@ -5,7 +5,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Escuela| Tesistas - Cargar Tesistas</title>
-	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
+	<?php
+
+	use App\Models\Tesistas;
+
+	include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -95,7 +99,7 @@
 							</a>
 						</li>
 
-						<li class="nav-item menu-open">
+						<li class="nav-item ">
 							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
@@ -130,21 +134,16 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="pages/tables/simple.html" class="nav-link">
+									<a href="escuela-profesores" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Revisores</p>
+										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/tables/data.html" class="nav-link">
+									
+									<a href="escuela-profesores-cargar" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Tutores</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="pages/tables/jsgrid.html" class="nav-link">
-										<i class="far fa-circle nav-icon"></i>
-										<p>Jurados</p>
+										<p>Cargar Profesores</p>
 									</a>
 								</li>
 							</ul>
@@ -267,25 +266,44 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php
+								<?php $rows = 0;
 								while ($datos = fgetcsv($fp, 5000, ";")) {
-									$i++; ?>
+									$i++;
+									$cedula = $datos[0];
+									$nombre = $datos[1];
+									$correoucab = $datos[2];
+									$correoparticular = $datos[3];
+									$telefono = $datos[4];
+									$comentario = $datos[5];
+									$rows++; ?>
 
-									<tr>
+									<?php $valor = null;
+									if ($rows > 1) {
+										$query = "INSERT INTO  tesistas (cedula,nombre,correoucab,correoparticular,telefono,comentario) VALUES($cedula,'$nombre','$correoucab','$correoparticular','$telefono','$comentario')";
+										$valor = (new Tesistas())->insertarObj($query);
 
-										<td><?php echo $i; ?></td>
-										<td>Se inserto Correctamente></td>
-									</tr>
-
-								<?php } ?>
+										if ($valor > 0) {
+									?>
+											<tr>
+												<td><?php echo $i; ?></td>
+												<td>SE INSERTO CORRECTAMENTE</td>
+											<?php } else { ?>
+												<td><?php echo $i; ?></td>
+												<td class="bg-danger">NO SE INSERTO</td>
+											</tr>
+										<?php } ?>
+								<?php }
+									
+								} ?>
 
 							</tbody>
 						</table>
-				<?php
-
-					} else {
+				<?php } else {
 						header('location:error');
 					}
+				} 
+				if (isset($archivo_guardado)) {
+					unlink($archivo_guardado);
 				}
 				?>
 			</div>

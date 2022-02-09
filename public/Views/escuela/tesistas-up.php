@@ -95,7 +95,7 @@
 							</a>
 						</li>
 
-						<li class="nav-item menu-open">
+						<li class="nav-item">
 							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
@@ -120,8 +120,9 @@
 							</ul>
 						</li>
 
+
 						<li class="nav-item">
-							<a href="#" class="nav-link">
+							<a href="#" class="nav-link ">
 								<i class="nav-icon fas fa-table"></i>
 								<p>
 									Profesores
@@ -130,23 +131,36 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="pages/tables/simple.html" class="nav-link">
+									<a href="escuela-profesores" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Revisores</p>
+										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/tables/data.html" class="nav-link">
+									<a href="escuela-profesor-revisor" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Tutores</p>
+										<p>Revisor</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/tables/jsgrid.html" class="nav-link">
+									<a href="escuela-profesor-tutor" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Jurados</p>
+										<p>Tutor Academico</p>
 									</a>
 								</li>
+								<li class="nav-item">
+									<a href="escuela-profesor-jurado" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Jurado</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="escuela-profesores-cargar" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Cargar Profesores</p>
+									</a>
+								</li>
+
 							</ul>
 						</li>
 
@@ -246,7 +260,7 @@
 
 			<!-- Main content -->
 			<section class="content">
-				
+
 				<!-- /.row -->
 				<!-- Main row -->
 				<div class="row">

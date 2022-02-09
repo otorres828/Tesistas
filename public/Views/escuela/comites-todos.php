@@ -95,8 +95,8 @@
 							</a>
 						</li>
 
-						<li class="nav-item menu-open">
-							<a href="#" class="nav-link active">
+						<li class="nav-item">
+							<a href="#" class="nav-link ">
 								<i class="nav-icon fas fa-users"></i>
 								<p>
 									Tesistas
@@ -106,7 +106,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="escuela-tesistas" class="nav-link active">
+									<a href="escuela-tesistas" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
@@ -121,7 +121,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a href="#" class="nav-link">
+							<a href="#" class="nav-link ">
 								<i class="nav-icon fas fa-table"></i>
 								<p>
 									Profesores
@@ -130,28 +130,41 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="pages/tables/simple.html" class="nav-link">
+									<a href="escuela-profesores" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Revisores</p>
+										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/tables/data.html" class="nav-link">
+									<a href="escuela-profesor-revisor" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Tutores</p>
+										<p>Revisor</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="pages/tables/jsgrid.html" class="nav-link">
+									<a href="escuela-profesor-tutor" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Jurados</p>
+										<p>Tutor Academico</p>
 									</a>
 								</li>
+								<li class="nav-item">
+									<a href="escuela-profesor-jurado" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Jurado</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="escuela-profesores-cargar" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Cargar Profesores</p>
+									</a>
+								</li>
+
 							</ul>
 						</li>
 
-						<li class="nav-item">
-							<a href="#" class="nav-link">
+						<li class="nav-item  menu-open">
+							<a href="#" class="nav-link active">
 								<i class="nav-icon fas fa-balance-scale"></i>
 								<p>
 									Comites
@@ -159,14 +172,14 @@
 								</p>
 							</a>
 							<ul class="nav nav-treeview">
-								<li class="nav-item">
-									<a href="escuela-comites" class="nav-link">
+								<li class="nav-item ">
+									<a href="escuela-comites" class="nav-link active">
 										<i class=" far fa-circle nav-icon"></i>
 										<p>Todos</p>
 									</a>
 								</li>
 								<li class="nav-item">
-									<a href="escuela-comites-up" class="nav-link">
+									<a href="escuela-comites-up" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Comites</p>
 									</a>
@@ -246,28 +259,12 @@
 
 			<!-- Main content -->
 			<section class="content">
-				<div class="container-fluid">
 
-					<div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1 class="m-0">Comites - Listar Comites</h1>
-							</div><!-- /.col -->
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">Comites</a></li>
-									<li class="breadcrumb-item active">Listar Comites</li>
-								</ol>
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div>
-				</div>
-				<!-- /.row -->
-				<!-- Main row -->
+
 				<div class="row">
 					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable">
-						<div class="card table-responsive py-4 p-4">
+					<section class="col-lg-12 connectedSortable p-2">
+						<div class="card table-responsive  p-4">
 							<div class="card-header">
 								<h1>Lista de Comites</h1>
 							</div>

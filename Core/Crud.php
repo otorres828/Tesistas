@@ -135,4 +135,12 @@ class Crud {
             echo $exc->getTraceAsString();
         }  
     }
+    public function insertarObj($obj){
+        try {
+            $query = $this->conexion->prepare($obj);
+            $query->execute();
+            return $query->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $exc) {
+        }  
+    }
 }

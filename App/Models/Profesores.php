@@ -12,7 +12,7 @@ class Profesores extends ModeloGenerico
 
     public function __construct($propiedades = null)
     {
-        parent::__construct("Profesores", Auth::class, $propiedades);
+        parent::__construct("Profesores", Profesores::class, $propiedades);
     }
 
     // Traer todos los profesores revisores
