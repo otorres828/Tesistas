@@ -15,7 +15,7 @@
 
   <div class="wrapper">
 
-  	<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
+    <?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -160,7 +160,7 @@
 
           </section>
           <section class="col-lg-5 connectedSortable">
-            
+
             <div class="card bg-gradient-success">
               <div class="card-header border-0">
 
@@ -197,21 +197,31 @@
               <!-- /.card-body -->
             </div>
             <div class="card">
-              <div class="card-header">
+              <div class="card-header  bg-warning">
                 <h3 class="card-title">
                   <i class="ion ion-clipboard mr-1"></i>
-                  AQUI PUEDES METER ALGO
+                  CUIDAR EL AMBIENTE ES TRABAJO DE TODOS
                 </h3>
 
 
               </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                CUERPO
+
+              <img src="../../dist/img/conservacionambiental.jpg" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
+            </div>
+            <div class="card">
+              <div class="card-header  bg-info">
+                <h3 class="card-title">
+                  <i class="ion ion-clipboard mr-1"></i>
+                  Pongamos nuestro granito de arena
+                </h3>
+
+
               </div>
-              <div class="card-footer clearfix">
-                BOTONES
-              </div>
+
+              <div class="card">
+                
+
+                <iframe width="w-full" height="315" src="https://www.youtube.com/embed/fQMkX9UU-rY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>              </div>
             </div>
           </section>
         </div>
