@@ -130,23 +130,12 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="pages/tables/simple.html" class="nav-link">
+									<a href="escuela-profesores" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Revisores</p>
+										<p>Todos</p>
 									</a>
 								</li>
-								<li class="nav-item">
-									<a href="pages/tables/data.html" class="nav-link">
-										<i class="far fa-circle nav-icon"></i>
-										<p>Tutores</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="pages/tables/jsgrid.html" class="nav-link">
-										<i class="far fa-circle nav-icon"></i>
-										<p>Jurados</p>
-									</a>
-								</li>
+							
 								<li class="nav-link ">
 									<a href="escuela-profesores-cargar" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
@@ -252,28 +241,11 @@
 
 			<!-- Main content -->
 			<section class="content">
-				<div class="container-fluid">
-
-					<div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1 class="m-0">Propuestas TG - Listar PropuestasTG</h1>
-							</div><!-- /.col -->
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">PropuestasTG</a></li>
-									<li class="breadcrumb-item active">Listar propuestas de trabajo de grado </li>
-								</ol>
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div>
-				</div>
-				<!-- /.row -->
-				<!-- Main row -->
+			
 				<div class="row">
 					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable">
-						<div class="card table-responsive py-4 p-4">
+					<section class="col-lg-12 connectedSortable p-2">
+						<div class="card table-responsive  p-4">
 							<div class="card-header">
 								<h1>Lista de propuestas de trabajo de grado </h1>
 							</div>

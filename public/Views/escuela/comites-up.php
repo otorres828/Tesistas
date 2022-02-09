@@ -133,24 +133,14 @@ use App\Models\Comites;
 								</p>
 							</a>
 							<ul class="nav nav-treeview">
+								
 								<li class="nav-item">
-									<a href="pages/tables/simple.html" class="nav-link">
+									<a href="escuela-profesores" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
-										<p>Revisores</p>
+										<p>Todos</p>
 									</a>
 								</li>
-								<li class="nav-item">
-									<a href="pages/tables/data.html" class="nav-link">
-										<i class="far fa-circle nav-icon"></i>
-										<p>Tutores</p>
-									</a>
-								</li>
-								<li class="nav-item">
-									<a href="pages/tables/jsgrid.html" class="nav-link">
-										<i class="far fa-circle nav-icon"></i>
-										<p>Jurados</p>
-									</a>
-								</li>
+								
 								<a href="escuela-profesores-cargar" class="nav-link ">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Profesores</p>

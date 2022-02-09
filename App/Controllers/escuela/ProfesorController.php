@@ -17,18 +17,7 @@ class ProfesorController extends \Core\Controller
     // Vista del dashboard para la escuela
     public function index()
     {
-        $this->autenticar();
-        $profesores = (new Profesores())->get();         // Listar todos los profesores 
-        $propuestasTG = (new PropuestaTG())->get();      // Listar todas las propuestas de TG 
-        $estadisticas = (new Escuela())->estadisticas();  // Estadisticas de la escuela
-
-        // var_dump($estadisticas['cantidad-tesistas']['cantidadtesistas']);
-        // echo $estadisticas['cantidad-tesistas']['cantidadtesistas'] . '<br>';
-        View::render('escuela/index.php', [
-            'profesores' => $profesores,
-            'propuestasTG' => $propuestasTG,
-            'estadisticas' => $estadisticas
-        ]);
+        
     }
 
     // Ver todos los profesores revidores en profesor-revisor.php
@@ -49,8 +38,8 @@ class ProfesorController extends \Core\Controller
     }
     public function profesorCargar()
     {
-        echo "hola";
-    }
+        $this->autenticar();
+        View::render('escuela/cargar-profesores.php',);    }
 
     // Ver todos los profesores revidores en profesor-tutor.php
     public function profesoresJurados()

@@ -34,9 +34,6 @@ class EscuelaController extends \Core\Controller
     }
 
 
- 
-
-
     // Ver todas las propuestas tg  en escuela-propuestastg
     public function propuestastgTodas()
     {
