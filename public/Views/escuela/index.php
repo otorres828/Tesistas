@@ -104,8 +104,8 @@
                     <th>Titulo</th>
                     <th>Observaciones</th>
                     <th>Modalidad</th>
-                    <th>id_comite</th>
-                    <th>Nro consejo</th>
+                    <th>Comite</th>
+                    <th>Consejo</th>
                   </tr>
                 </thead>
                 <tbody>

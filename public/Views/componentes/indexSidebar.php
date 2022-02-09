@@ -1,10 +1,9 @@
   <!-- PRECARGA -->
-  <div class="preloader flex-column justify-content-center align-items-center">
+  <!-- <div class="preloader flex-column justify-content-center align-items-center">
       <img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-  </div>
+  </div> -->
 
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <!-- Left navbar links -->
       <ul class="navbar-nav">
           <li class="nav-item">
               <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -12,10 +11,8 @@
 
       </ul>
 
-      <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
 
-          <!-- Notifications Dropdown Menu -->
           <li class="nav-item dropdown">
               <a class="nav-link" data-toggle="dropdown" href="#">
                   <i class="fas fa-cog"></i>
@@ -153,48 +150,61 @@
                       <a href="#" class="nav-link">
                           <i class="nav-icon fas fa-balance-scale"></i>
                           <p>
-                              Comites
-                              <i class="fas fa-angle-left right"></i>
+                              Consejos y Comites
+                              <i class="right fas fa-angle-left"></i>
                           </p>
                       </a>
-                      <ul class="nav nav-treeview">
+                      <ul class="nav nav-treeview" style="display: none">
                           <li class="nav-item">
-                              <a href="escuela-comites" class="nav-link">
-                                  <i class=" far fa-circle nav-icon"></i>
-                                  <p>Todos</p>
+                              <a href="#" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>
+                                      Consejos
+                                      <i class="right fas fa-angle-left"></i>
+                                  </p>
                               </a>
+                              <ul class="nav nav-treeview" style="display: none">
+                                  <li class="nav-item">
+                                      <a href="escuela-consejos" class="nav-link">
+                                          <i class="far fa-dot-circle nav-icon"></i>
+                                          <p>Todos</p>
+                                      </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a href="escuela-consejos-cargar" class="nav-link">
+                                          <i class="far fa-dot-circle nav-icon"></i>
+                                          <p>Cargar Consejo</p>
+                                      </a>
+                                  </li>
+                              </ul>
                           </li>
                           <li class="nav-item">
-                              <a href="escuela-comites-up" class="nav-link">
+                              <a href="#" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
-                                  <p>Cargar Comites</p>
+                                  <p>
+                                      Comites
+                                      <i class="right fas fa-angle-left"></i>
+                                  </p>
                               </a>
+                              <ul class="nav nav-treeview" style="display: none">
+                                  <li class="nav-item">
+                                      <a href="escuela-comites" class="nav-link">
+                                          <i class="far fa-dot-circle nav-icon"></i>
+                                          <p>Todos</p>
+                                      </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a href="escuela-comites-up" class="nav-link">
+                                          <i class="far fa-dot-circle nav-icon"></i>
+                                          <p>Cargar Comite</p>
+                                      </a>
+                                  </li>
+                              </ul>
                           </li>
                       </ul>
                   </li>
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="nav-icon fas fa-balance-scale"></i>
-                          <p>
-                              Consejos
-                              <i class="fas fa-angle-left right"></i>
-                          </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="escuela-consejos" class="nav-link">
-                                  <i class=" far fa-circle nav-icon"></i>
-                                  <p>Todos</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="escuela-consejos-cargar" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Cargar Consejos</p>
-                              </a>
-                          </li>
-                      </ul>
-                  </li>
+
+
                   <li class="nav-header">Criterios</li>
 
                   <li class="nav-item">
@@ -253,6 +263,32 @@
                               Todas
                           </p>
                       </a>
+                  </li>
+                  <li class="nav-header">Extras</li>
+
+                  <li class="nav-item ">
+                      <a href="#" class="nav-link ">
+                          <i class="nav-icon fas fa-users"></i>
+                          <p>
+                              Tesistas
+
+                              <i class="fas fa-angle-left right"></i>
+                          </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                              <a href="escuela-tesistas" class="nav-link ">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Todos</p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="escuela-tesistas-cargar" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Cargar Tesistas</p>
+                              </a>
+                          </li>
+                      </ul>
                   </li>
               </ul>
           </nav>
