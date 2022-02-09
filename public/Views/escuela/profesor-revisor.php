@@ -21,28 +21,12 @@
 
 			<!-- Main content -->
 			<section class="content">
-				<div class="container-fluid">
-
-					<div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1 class="m-0">Profesores - Revisores</h1>
-							</div><!-- /.col -->
-							<div class="col-sm-6">
-								<ol class="breadcrumb float-sm-right">
-									<li class="breadcrumb-item"><a href="#">Escuela</a></li>
-									<li class="breadcrumb-item active">Listar profesores revisores </li>
-								</ol>
-							</div><!-- /.col -->
-						</div><!-- /.row -->
-					</div>
-				</div>
-				<!-- /.row -->
+				
 				<!-- Main row -->
 				<div class="row">
 					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable">
-						<div class="card table-responsive py-4 p-4">
+					<section class="col-lg-12 connectedSortable p-2">
+						<div class="card table-responsive  p-4">
 							<div class="card-header">
 								<h1>Profesores - Lista de profesores revisores</h1>
 							</div>

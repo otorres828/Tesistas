@@ -122,8 +122,9 @@
 							</ul>
 						</li>
 
-						<li class="nav-item">
-							<a href="#" class="nav-link">
+
+						<li class="nav-item menu-open">
+							<a href="#" class="nav-link ">
 								<i class="nav-icon fas fa-table"></i>
 								<p>
 									Profesores
@@ -137,13 +138,31 @@
 										<p>Todos</p>
 									</a>
 								</li>
-								
 								<li class="nav-item">
-									<a href="escuela-profesores-cargar" class="nav-link ">
+									<a href="escuela-profesor-revisor" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Revisor</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="escuela-profesor-tutor" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Tutor Academico</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="escuela-profesor-jurado" class="nav-link">
+										<i class="far fa-circle nav-icon"></i>
+										<p>Jurado</p>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a href="escuela-profesores-cargar" class="nav-link">
 										<i class="far fa-circle nav-icon"></i>
 										<p>Cargar Profesores</p>
 									</a>
 								</li>
+
 							</ul>
 						</li>
 
