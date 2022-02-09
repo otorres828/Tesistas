@@ -73,6 +73,24 @@ class TesistaController extends \Core\Controller
         
     }
 
+    public function eliminarTesista(){
+        if(isset($_POST['eliminartesista'])){
+            session_start();
+            $validar = (new Tesistas())->validarEliminar($_POST['eliminartesista']);
+            if($validar){
+                $_SESSION['mensaje'] = "No se puede Eliminar el Bachiller porque ya tiene registros guardados de Propuestas de Trabajo de Grado";
+                $_SESSION['colorcito'] = "danger";
+            }else{
+                (new Tesistas())->eliminarTesista($_POST['eliminartesista']);
+                $_SESSION['mensaje'] = "El Bachiller se elimino con exito";
+                $_SESSION['colorcito'] = "success"; 
+            }
+            header('location:escuela-tesistas');
+
+        }else{
+            header('location:error');
+        }
+    }
     private function autenticar()
     {
         $autenticacion = new Auth();

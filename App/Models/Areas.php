@@ -25,6 +25,7 @@ class Areas extends ModeloGenerico
             $this->sentenciaObj("INSERT INTO areas VALUES(1,'$nombre','$slug'");
         }
     }
+    
     public function modificarArea($nombre, $slug, $id)
     {
         return $this->sentenciaObj("UPDATE areas set nombre='$nombre', slug='$slug'

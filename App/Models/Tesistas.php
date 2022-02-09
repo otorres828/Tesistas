@@ -110,6 +110,24 @@ class Tesistas extends ModeloGenerico{
         $query = "INSERT INTO  tesistas (cedula,nombre,correoucab,correoparticular,telefono,comentario) VALUES($cedula,'$nombre','$correoucab','$correoparticular','$telefono','$comentario')";
 		$this->insertarObj($query);
     }
+
+
+    public function validarEliminar($cedula){
+        $this->sql = "SELECT COUNT (num_c) AS cuenta 
+                          FROM presentan 
+                          WHERE cedula=$cedula
+                          GROUP BY(cedula)";
+        $resultado= $this->sentenciaObj($this->sql);
+        if($resultado){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public function eliminarTesista($cedula){
+         $this->sentenciaObj("DELETE FROM tesistas WHERE cedula=$cedula");
+    }
     
 }
 

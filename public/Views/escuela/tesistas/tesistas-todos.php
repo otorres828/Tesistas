@@ -104,6 +104,7 @@
 									<th>Correo particular</th>
 									<th>Telefono</th>
 									<th>Comentario</th>
+									<th>Acciones</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -116,6 +117,11 @@
 										<td><?php echo $tesista['correoparticular']; ?></td>
 										<td><?php echo $tesista['telefono']; ?></td>
 										<td><?php echo $tesista['comentario']; ?></td>
+										<td class="d-flex">
+											<form action="escuela-tesistas-eliminar" method="POST">
+												<button class="btn btn-danger" value="<?php echo $tesista['cedula']; ?>" name="eliminartesista"><i class="far fa-trash-alt"></i></button>
+											</form>
+										</td>
 									</tr>
 								<?php endforeach; ?>
 
