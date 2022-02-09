@@ -256,60 +256,47 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 
-			<!-- /.content-header -->
 
-			<!-- Main content -->
-			<section class="content">
-
-				<!-- /.row -->
-				<!-- Main row -->
-				<div class="row">
-					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable">
-						<div class="card table-responsive py-4 p-4">
-							<div class="card-header">
-								<h1>Lista de Tesistas</h1>
-							</div>
-							<table class="card-body table table-flush" id="example">
-								<thead class="thead-light">
-									<tr>
-
-										<th>Cedula</th>
-										<th>Nombre</th>
-										<th>Correo Ucab</th>
-										<th>Correo particular</th>
-										<th>Telefono</th>
-										<th>Comentario</th>
-									</tr>
-								</thead>
-								<tbody>
-
-									<?php foreach ($tesistas as $tesista) : ?>
-										<tr>
-											<td><?php echo $tesista['cedula']; ?></td>
-											<td><?php echo $tesista['nombre']; ?></td>
-											<td><?php echo $tesista['correoucab']; ?></td>
-											<td><?php echo $tesista['correoparticular']; ?></td>
-											<td><?php echo $tesista['telefono']; ?></td>
-											<td><?php echo $tesista['comentario']; ?></td>
-										</tr>
-									<?php endforeach; ?>
-
-								</tbody>
-							</table>
+			<div class="row">
+				<!-- Left col -->
+				<section class="col-lg-12 connectedSortable p-4">
+					<div class="card table-responsive p-2">
+						<div class="card-header">
+							<h1>Lista de Tesistas</h1>
 						</div>
+						<table class="card-body table table-flush" id="example">
+							<thead class="thead-light">
+								<tr>
 
-						<!-- /.card -->
-					</section>
-					<!-- /.Left col -->
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
+									<th>Cedula</th>
+									<th>Nombre</th>
+									<th>Correo Ucab</th>
+									<th>Correo particular</th>
+									<th>Telefono</th>
+									<th>Comentario</th>
+								</tr>
+							</thead>
+							<tbody>
 
-					<!-- right col -->
-				</div>
-				<!-- /.row (main row) -->
+								<?php foreach ($tesistas as $tesista) : ?>
+									<tr>
+										<td><?php echo $tesista['cedula']; ?></td>
+										<td><?php echo $tesista['nombre']; ?></td>
+										<td><?php echo $tesista['correoucab']; ?></td>
+										<td><?php echo $tesista['correoparticular']; ?></td>
+										<td><?php echo $tesista['telefono']; ?></td>
+										<td><?php echo $tesista['comentario']; ?></td>
+									</tr>
+								<?php endforeach; ?>
+
+							</tbody>
+						</table>
+					</div>
+
+					<!-- /.card -->
+				</section>
+			</div>
 		</div><!-- /.container-fluid -->
-		</section>
-		<!-- /.content -->
 	</div>
 
 	<?php include_once('../public/Views/componentes/footer.php'); ?>

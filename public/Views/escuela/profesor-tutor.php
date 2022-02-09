@@ -19,52 +19,47 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 
-			<section class="content">
-				
-				<div class="row">
-					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable p-2">
-						<div class="card table-responsive  p-4">
-							<div class="card-header">
-								<h1>Profesores - Lista de profesores tutores</h1>
-							</div>
-							<table class="card-body table table-flush" id="example">
-								<thead class="thead-light">
-									<tr>
-										<!-- <th>id_usuario</th> -->
-										<th>Cedula</th>
-										<th>Nombre</th>
-										<th>Correo</th>
-										<th>Codigo</th>
-									</tr>
-								</thead>
-								<tbody>
-									<?php foreach ($profesores as $profesor) : ?>
-										<tr>
-											<!-- <td><?php echo $profesor['id_usuario']; ?></td> -->
-											<td><?php echo $profesor['cedula']; ?></td>
-											<td><?php echo $profesor['nombre_usuario']; ?></td>
-											<td><?php echo $profesor['correo']; ?></td>
-											<td><?php echo $profesor['codigo']; ?></td>
-										</tr>
-									<?php endforeach; ?>
-
-
-								</tbody>
-							</table>
+			<div class="row">
+				<!-- Left col -->
+				<section class="col-lg-12 connectedSortable p-4">
+					<div class="card table-responsive  p-2">
+						<div class="card-header">
+							<h1>Profesores - Lista de profesores tutores</h1>
 						</div>
+						<table class="card-body table table-flush" id="example">
+							<thead class="thead-light">
+								<tr>
+									<!-- <th>id_usuario</th> -->
+									<th>Cedula</th>
+									<th>Nombre</th>
+									<th>Correo</th>
+									<th>Codigo</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach ($profesores as $profesor) : ?>
+									<tr>
+										<!-- <td><?php echo $profesor['id_usuario']; ?></td> -->
+										<td><?php echo $profesor['cedula']; ?></td>
+										<td><?php echo $profesor['nombre_usuario']; ?></td>
+										<td><?php echo $profesor['correo']; ?></td>
+										<td><?php echo $profesor['codigo']; ?></td>
+									</tr>
+								<?php endforeach; ?>
 
-						<!-- /.card -->
-					</section>
-					<!-- /.Left col -->
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
 
-					<!-- right col -->
-				</div>
-				<!-- /.row (main row) -->
+							</tbody>
+						</table>
+					</div>
+
+					<!-- /.card -->
+				</section>
+				<!-- /.Left col -->
+				<!-- right col (We are only adding the ID to make the widgets sortable)-->
+
+				<!-- right col -->
+			</div>
 		</div><!-- /.container-fluid -->
-		</section>
-		<!-- /.content -->
 	</div>
 
 	<?php include_once('../public/Views/componentes/footer.php'); ?>

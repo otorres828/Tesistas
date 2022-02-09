@@ -252,19 +252,11 @@
 
 		</aside>
 
-		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
-
-			<!-- /.content-header -->
-
-			<!-- Main content -->
-			<section class="content">
-
-
 				<div class="row">
 					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable p-2">
-						<div class="card table-responsive  p-4">
+					<section class="col-lg-12 connectedSortable p-4">
+						<div class="card table-responsive  p-2">
 							<div class="card-header">
 								<h1>Lista de Comites</h1>
 							</div>
@@ -299,7 +291,6 @@
 				</div>
 				<!-- /.row (main row) -->
 		</div><!-- /.container-fluid -->
-		</section>
 		<!-- /.content -->
 	</div>
 

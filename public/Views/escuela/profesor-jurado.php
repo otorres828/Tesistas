@@ -19,15 +19,9 @@
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">
 
-			<!-- /.content-header -->
-
-			<!-- Main content -->
-			<section class="content">
-				
 				<div class="row">
-					<!-- Left col -->
-					<section class="col-lg-12 connectedSortable p-2">
-						<div class="card table-responsive p-4">
+					<section class="col-lg-12 connectedSortable p-4">
+						<div class="card table-responsive p-2">
 							<div class="card-header">
 								<h1>Profesores - Lista de profesores jurados</h1>
 							</div>
@@ -59,15 +53,8 @@
 
 						<!-- /.card -->
 					</section>
-					<!-- /.Left col -->
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-					<!-- right col -->
 				</div>
-				<!-- /.row (main row) -->
 		</div><!-- /.container-fluid -->
-		</section>
-		<!-- /.content -->
 	</div>
 
 	<?php include_once('../public/Views/componentes/footer.php'); ?>
