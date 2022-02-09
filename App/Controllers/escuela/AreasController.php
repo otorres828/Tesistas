@@ -39,6 +39,7 @@ class AreasController extends \Core\Controller
             header('location:error');
         }
     }
+
     public function modificarArea()
     {
         if(isset($_POST['modificararea'])){
@@ -76,10 +77,19 @@ class AreasController extends \Core\Controller
         }
     }
 
+    public function cargarArea(){
+        
+        $this->autenticar();
+        View::render('escuela/cargar-areas.php');
+    }
+
+ 
+
     public function slug($area)
     {
         return $area = str_replace(' ', '-', strtolower(preg_replace('([^A-Za-z0-9 ])', '', trim($area))));
     }
+
     private function autenticar()
     {
         $autenticacion = new Auth();

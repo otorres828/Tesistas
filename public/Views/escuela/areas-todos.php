@@ -23,7 +23,10 @@
 						<div class="row mb-2">
 							<div class="col-sm-6">
 								<div class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#creararea" data-bs-whatever="@mdo">Crear Area</div>
+								<a class="btn btn-warning "href="escuela-areas-cargar">Cargar Area</a>
+
 							</div>
+	
 							<div class="col-sm-6">
 								<h1 class="float-sm-right"><strong>Lista de Areas</strong></h1>
 							</div>
@@ -38,7 +41,9 @@
 									<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
+									
 								</div>
+								
 								<div class="modal-body">
 									<div class="card">
 										<div class="card-body">

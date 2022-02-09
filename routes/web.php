@@ -55,6 +55,7 @@ $router->add('escuela-areas', ['controller' => 'escuela\AreasController', 'metho
 $router->add('escuela-areas-crear', ['controller' => 'escuela\AreasController', 'method' => 'crearArea']);
 $router->add('escuela-areas-modificar', ['controller' => 'escuela\AreasController', 'method' => 'modificarArea']);
 $router->add('escuela-areas-eliminar', ['controller' => 'escuela\AreasController', 'method' => 'eliminarArea']);
+$router->add('escuela-areas-cargar', ['controller' => 'escuela\AreasController', 'method' => 'cargarArea']);
 
 
 

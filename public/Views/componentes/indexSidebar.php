@@ -277,7 +277,7 @@
                           <li class="nav-item">
                               <a href="escuela-areas" class="nav-link ">
                                   <i class="far fa-circle nav-icon"></i>
-                                  <p>Todas las Areas</p>
+                                  <p>Areas</p>
                               </a>
                           </li>
                           <li class="nav-item">
