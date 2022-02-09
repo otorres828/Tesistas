@@ -58,3 +58,5 @@ class Auth extends ModeloGenerico{
  
     }
 }
+
+ 

@@ -204,7 +204,6 @@
                       </ul>
                   </li>
 
-
                   <li class="nav-header">Criterios</li>
 
                   <li class="nav-item">
@@ -270,8 +269,7 @@
                       <a href="#" class="nav-link ">
                           <i class="nav-icon fas fa-users"></i>
                           <p>
-                              Tesistas
-
+                            Especializacion
                               <i class="fas fa-angle-left right"></i>
                           </p>
                       </a>
@@ -279,13 +277,13 @@
                           <li class="nav-item">
                               <a href="escuela-tesistas" class="nav-link ">
                                   <i class="far fa-circle nav-icon"></i>
-                                  <p>Todos</p>
+                                  <p>Todas las Areas</p>
                               </a>
                           </li>
                           <li class="nav-item">
                               <a href="escuela-tesistas-cargar" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
-                                  <p>Cargar Tesistas</p>
+                                  <p>Cargar Areas</p>
                               </a>
                           </li>
                       </ul>
