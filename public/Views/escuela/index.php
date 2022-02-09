@@ -52,7 +52,7 @@
                   <i class="ion ion-person-add"></i>
 
                 </div>
-                <a href="escuela-profesor-revisor" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="escuela-tesistas" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -67,7 +67,7 @@
                 <div class="icon">
                   <i class="ion ion-person-add"></i>
                 </div>
-                <a href="escuela-profesor-revisor" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="escuela-profesores" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->

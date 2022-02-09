@@ -13,7 +13,7 @@
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
 	<div class="wrapper">
 
-	<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
+		<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 
 
 		<!-- Content Wrapper. Contains page content -->
@@ -46,7 +46,13 @@
 											<td><?php echo $profesor['direccion']; ?></td>
 											<td><?php echo $profesor['correoparticular']; ?></td>
 											<td><?php echo $profesor['telefono']; ?></td>
-											<td><?php echo $profesor['tipo']; ?></td>
+											<td class="text-center">
+												<?php if ($profesor['tipo'] == 'I') { ?>
+													<h2 class="badge bg-primary">INTERNO</h2>
+												<?php } else { ?>
+													<h2 class="badge bg-success">EXTERNO</h2>
+												<?php } ?>
+											</td>
 										</tr>
 									<?php endforeach; ?>
 
@@ -57,7 +63,7 @@
 
 					</section>
 				</div>
-				
+
 		</div>
 		<!-- /.content -->
 	</div>
