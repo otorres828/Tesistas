@@ -11,19 +11,7 @@ use App\Models\Criterios;
 
 class CriteriosController extends \Core\Controller
 {
-    public function criteriosExperimentalesTodos()
-    {
-        $this->autenticar();
-        $criteriosRevisores = (new Criterios())->criteriosRevExp();
-        $criteriosTutores = (new Criterios())->criteriosTutExp();
-        $criteriosJurados = (new Criterios())->criteriosJurExp();
-        View::render('escuela/criterios/criterios-experimentales-todos.php', [
-            'criteriosRevisoresExp' => $criteriosRevisores,
-            'criteriosTutoresExp' => $criteriosTutores,
-            'criteriosJuradosExp' => $criteriosJurados,
 
-        ]);
-    }
     public function criteriosModificarEstatus()
     {
         if (isset($_POST['modificarEstatus'])) {
@@ -107,8 +95,9 @@ class CriteriosController extends \Core\Controller
             echo "tabla:" . $descripcion . "<br>";
             echo "Notamax:" . $notamax . "<br>";
             echo "======================================<br>";
-            // $resultado = (new Criterios())->where('descripcion', '=', $descripcion)->getOb();
+
             (new Criterios())->insertarCriterio($notamax, $descripcion, $tipo, $modalidad);
+
             $_SESSION['mensaje'] = "Se creo el criterio con exito";
             $_SESSION['colorcito'] = "success";
             if ($modalidad == "Experimental") {
@@ -120,7 +109,34 @@ class CriteriosController extends \Core\Controller
             header('location:error');
         }
     }
+    // ================================================Experimentales
+    public function criteriosExperimentalesTodos()
+    {
+        $this->autenticar();
+        $criteriosRevisores = (new Criterios())->criteriosRevExp();
+        $criteriosTutores = (new Criterios())->criteriosTutExp();
+        $criteriosJurados = (new Criterios())->criteriosJurExp();
+        View::render('escuela/criterios/criterios-experimentales-todos.php', [
+            'criteriosRevisores' => $criteriosRevisores,
+            'criteriosTutores' => $criteriosTutores,
+            'criteriosJurados' => $criteriosJurados,
 
+        ]);
+    }
+    // ================================================Instrumentales
+    public function criteriosInstrumentalesTodos()
+    {
+        $this->autenticar();
+        $criteriosRevisores = (new Criterios())->criteriosRevIns();
+        $criteriosTutores = (new Criterios())->criteriosTutIns();
+        $criteriosJurados = (new Criterios())->criteriosJurIns();
+        View::render('escuela/criterios/criterios-instrumentales-todos.php', [
+            'criteriosRevisores' => $criteriosRevisores,
+            'criteriosTutores' => $criteriosTutores,
+            'criteriosJurados' => $criteriosJurados,
+
+        ]);
+    }
 
     private function autenticar()
     {

@@ -30,7 +30,7 @@ class Criterios extends ModeloGenerico
                     case "Revisor":
                         $tabla = "criterios_rev_exp";
                         $sql = "INSERT INTO $tabla(notamax,descripcion,estatus) VALUES($notamax,'$descripcion','INACTIVO')";
-                        echo "<br><br>$sql<br><br>";
+                        // echo "<br><br>$sql<br><br>";
                         $this->sentenciaObj($sql);
                         break;
                     case "Tutor":
@@ -69,6 +69,7 @@ class Criterios extends ModeloGenerico
                 }
                 break;
         }
+        echo "<br><br>$sql<br><br>";
     }
 
     //========================================== CRITERIOS EXPERIMENTALES
@@ -87,6 +88,24 @@ class Criterios extends ModeloGenerico
     {
 
         $sql = "SELECT * FROM criterios_experimental_jurado";
+        return $this->sentenciaAll($sql);
+    }
+    //========================================== CRITERIOS Instrumentales
+    public function criteriosRevIns()
+    {
+        $sql = "SELECT * FROM criterios_rev_ins";
+        return $this->sentenciaAll($sql);
+    }
+
+    public function criteriosTutIns()
+    {
+        $sql = "SELECT * FROM criterios_tutor_ins";
+        return $this->sentenciaAll($sql);
+    }
+    public function criteriosJurIns()
+    {
+
+        $sql = "SELECT * FROM criterios_instrumental_jurado";
         return $this->sentenciaAll($sql);
     }
 }

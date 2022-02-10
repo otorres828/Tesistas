@@ -47,6 +47,7 @@ $router->add('escuela-profesores-crear', ['controller' => 'escuela\ProfesorContr
 $router->add('escuela-profesores-eliminar', ['controller' => 'escuela\ProfesorController', 'method' => 'eliminarProfesor']);
 // Criterios
 $router->add('escuela-criterios-experimentales-todos', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosExperimentalesTodos']);
+$router->add('escuela-criterios-instrumentales-todos', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosInstrumentalesTodos']);
 $router->add('escuela-criterios-modificar-estatus', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosModificarEstatus']);
 $router->add('escuela-criterios-crear', ['controller' => 'escuela\CriteriosController', 'method' => 'crearCriterio']);
 // Comites

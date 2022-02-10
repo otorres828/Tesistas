@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Profesores| Todos los profesores </title>
+	<title>Criterios| Todos los criterios instrumentales </title>
 	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -24,22 +24,21 @@
 						<div class="container-fluid">
 							<div class="row mb-2">
 								<div class="col-sm-6">
-									<div class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#crearprofesor" data-bs-whatever="@mdo">Crear Profesor</div>
-									<a class="btn btn-warning " href="escuela-profesores-cargar">Cargar Profesores</a>
+									<div class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#crearCriterio" data-bs-whatever="@mdo">Crear Criterio </div>
 
 								</div>
 
 								<div class="col-sm-6">
-									<h1 class="float-sm-right"><strong>Lista de Profesores</strong></h1>
+									<h1 class="float-sm-right"><strong>Lista de Criterios Instrumentales</strong></h1>
 								</div>
 							</div>
 						</div>
-						<!-- MODAL CREAR AREA -->
-						<div class="modal fade" id="crearprofesor" tabindex="-1" aria-labelledby="crearprofesor" aria-hidden="true">
+						<!-- MODAL CREAR Criterio -->
+						<div class="modal fade" id="crearCriterio" tabindex="-1" aria-labelledby="crearCriterio" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title" id="staticBackdropLabel">Crear Nuevo Profesor</h5>
+										<h5 class="modal-title" id="staticBackdropLabel">Crear nuevo criterio</h5>
 										<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
@@ -49,43 +48,29 @@
 									<div class="modal-body">
 										<div class="card">
 											<div class="card-body">
-												<form action="escuela-profesores-crear" method="POST" enctype="multipart/form-data">
+												<form action="escuela-criterios-crear" method="POST" enctype="multipart/form-data">
 													<div class="form-group">
-														<label>Nombre del profesor</label>
-														<input type="text" name="nombre" placeholder="nombre del profesor" class="form-control" required>
+														<label>Descripcion del criterio</label>
+														<input type="text" name="descripcion" placeholder="Escriba la descripcion del criterio" class="form-control" required>
 													</div>
 													<div class="form-group">
-														<label>Cedula </label>
-														<input type="number" name="cedula" placeholder="cedula del profesor" class="form-control" required>
-													</div>
-													<div class="form-group">
-														<label>Direccion</label>
-														<input type="text" name="direccion" placeholder="direccion de vivienda" class="form-control" required>
-													</div>
-													<div class="row align-items-center">
-														<div class="col-md-6 mb-3">
-															<div class="form-group">
-																<label>Correo Particular</label>
-																<input class="form-control" type="email" placeholder="correo particular" name="correoparticular" required>
-															</div>
-														</div>
-														<div class="col-md-6 mb-3">
-															<div class="form-group">
-																<label>Telefono</label>
-																<input class="form-control" type="number" placeholder="numero de telefono" name="telefono" required>
-															</div>
-														</div>
+														<label>Nota maxima</label>
+														<input type="number" name="notamax" placeholder="Escriba la nota maxima que puede recibir el criterio" class="form-control" required>
 													</div>
 													<div class="form-group flex">
-														<label>Tipo de Profesor</label></br>
-														<select class="custom-select" name="tipo">
-															<option value="I">Interno</option>
-															<option value="E">Externo</option>
+														<label>Tipo</label></br>
+														<select class="custom-select" name="tipo" type required>
+															<option value="Revisor" selected>Revisor</option>
+															<option value="Tutor">Tutor</option>
+															<option value="Jurado">Jurado</option>
 														</select>
 													</div>
+													<!-- Informacion  hidded de modal  -->
+													<!-- Modalidad: Experimental/instrumental-->
+													<input id="modalidadId" name="modalidad" type="hidden" value="Instrumental">
 
 													<div class="d-flex justify-content-end align-items-baseline">
-														<button name="nuevoprofesor" type="submit" class="btn btn-success" required>Agregar Profesor</button>
+														<button name="nuevoCriterio" type="submit" class="btn btn-success" required>Agregar criterio</button>
 														<button type="button" class="ml-1 btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
 													</div>
 												</form>
@@ -112,39 +97,227 @@
 
 									<tr>
 
-										<th>Cedula</th>
-										<th>Nombre</th>
-										<th>Direccion</th>
-										<th>Correo particular</th>
-										<th>Telefono</th>
-										<th>Tipo</th>
+										<th>id_criterio</th>
+										<th>Nota maxima </th>
+										<th>Descripcion</th>
+										<th>Estatus</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($profesores as $profesor) : ?>
+									<!-- CRITERIOS REVISORES -->
+									<?php foreach ($criteriosRevisores as $c) : ?>
+										<?php
+										// Variables para actualizar estatus
+										$tipoProfe = "Revisor";
+										$modalidad = "Instrumental";
+										?>
 										<tr>
-											<td><?php echo $profesor['cedula']; ?></td>
-											<td><?php echo $profesor['nombre']; ?></td>
-											<td><?php echo $profesor['direccion']; ?></td>
-											<td><?php echo $profesor['correoparticular']; ?></td>
-											<td><?php echo $profesor['telefono']; ?></td>
-											<td class="text-center">
-												<?php if ($profesor['tipo'] == 'I') { ?>
-													<h2 class="badge bg-primary">INTERNO</h2>
-												<?php } else { ?>
-													<h2 class="badge bg-success">EXTERNO</h2>
-												<?php } ?>
-											</td>
-											<td class="d-flex">
-												<form action="escuela-profesores-eliminar" method="POST">
-													<button class="btn btn-danger" value="<?php echo $profesor['cedula']; ?>" name="eliminarprofesor"><i class="far fa-trash-alt"></i></button>
-												</form>
-											</td>
+											<td><?php echo $c['id_criterio']; ?></td>
+											<td><?php echo $c['notamax']; ?></td>
+											<td><?php echo $c['descripcion']; ?></td>
+											<?php if ($c['estatus'] == 'ACTIVO') {
+												$accion = 'deshabilitar'; ?>
+												<td class="text-center">
+													<h2 class="badge bg-success">ACTIVO</h2>
+												</td>
+												<td class="d-flex justify-content-center">
+													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-danger" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Deshabilitar"></i></button>
+												</td>
+											<?php } else {
+												$accion = 'habilitar'; ?>
+												<td class="text-center">
+													<h2 class="badge bg-danger">INACTIVO</h2>
+												</td>
+												<td class="d-flex justify-content-center">
+													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-success" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Habilitar"></i></button>
+												</td>
+											<?php } ?>
+
 										</tr>
+
+										<!-- Modal habilitar/deshabilitar -->
+										<!-- MODAL modificar estatus  -->
+										<div class="modal fade" id="modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" tabindex="-1" aria-labelledby="modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="staticBackdropLabel">Confirmacion</h5>
+														<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+
+													</div>
+
+													<div class="modal-body">
+														<div class="card">
+															<div class="card-body">
+																<p>Esta seguro de <b><?php echo $accion; ?></b> el criterio : <?php echo $c['descripcion']; ?></p>
+																<form action="escuela-criterios-modificar-estatus" method="POST" enctype="multipart/form-data">
+																	<!-- Informacion  hidded de modal  -->
+																	<!-- ID del criterio: n -->
+																	<input id="id_criterioId" name="id_criterio" type="hidden" value="<?php echo $c['id_criterio']; ?>">
+																	<!-- Estatus del criterio: INACTIVO / ACTIVO -->
+																	<input id="estatusId" name="estatus" type="hidden" value="<?php echo $c['estatus']; ?>">
+																	<!-- Tipo de profesor: REVISOR / TUTOR / JURADO -->
+																	<input id="tipoProfesorId" name="tipoProfesor" type="hidden" value="<?php echo $tipoProfe; ?>">
+																	<!-- Tipo de modalidad: Experimental / Instrumental  -->
+																	<input id="modalidadId" name="modalidad" type="hidden" value="<?php echo $modalidad; ?>">
+
+																	<div class="d-flex justify-content-end align-items-baseline">
+																		<button name="modificarEstatus" type="submit" class="btn btn-success" required>Continuar</button>
+																		<button type="button" class="ml-1 btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+																	</div>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									<?php endforeach; ?>
+									<!-- Criterios Tutores -->
+									<?php foreach ($criteriosTutores as $c) : ?>
+										<?php
+										// Variables para actualizar estatus
+										$tipoProfe = "Tutor";
+										$modalidad = "Instrumental";
+										?>
+										<tr>
+											<td><?php echo $c['id_criterio']; ?></td>
+											<td><?php echo $c['notamax']; ?></td>
+											<td><?php echo $c['descripcion']; ?></td>
+											<?php if ($c['estatus'] == 'ACTIVO') {
+												$accion = 'deshabilitar'; ?>
+												<td class="text-center">
+													<h2 class="badge bg-success">ACTIVO</h2>
+												</td>
+												<td class="d-flex justify-content-center">
+													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-danger" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Deshabilitar"></i></button>
+												</td>
+											<?php } else {
+												$accion = 'habilitar'; ?>
+												<td class="text-center">
+													<h2 class="badge bg-danger">INACTIVO</h2>
+												</td>
+												<td class="d-flex justify-content-center">
+													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-success" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Habilitar"></i></button>
+												</td>
+											<?php } ?>
 
+										</tr>
 
+										<!-- Modal habilitar/deshabilitar -->
+										<!-- MODAL modificar estatus  -->
+										<div class="modal fade" id="modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" tabindex="-1" aria-labelledby="modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="staticBackdropLabel">Confirmacion</h5>
+														<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+
+													</div>
+
+													<div class="modal-body">
+														<div class="card">
+															<div class="card-body">
+																<p>Esta seguro de <b><?php echo $accion; ?></b> el criterio : <?php echo $c['descripcion']; ?></p>
+																<form action="escuela-criterios-modificar-estatus" method="POST" enctype="multipart/form-data">
+																	<!-- Informacion  hidded de modal  -->
+																	<!-- ID del criterio: n -->
+																	<input id="id_criterioId" name="id_criterio" type="hidden" value="<?php echo $c['id_criterio']; ?>">
+																	<!-- Estatus del criterio: INACTIVO / ACTIVO -->
+																	<input id="estatusId" name="estatus" type="hidden" value="<?php echo $c['estatus']; ?>">
+																	<!-- Tipo de profesor: REVISOR / TUTOR / JURADO -->
+																	<input id="tipoProfesorId" name="tipoProfesor" type="hidden" value="<?php echo $tipoProfe; ?>">
+																	<!-- Tipo de modalidad: Experimental / Instrumental  -->
+																	<input id="modalidadId" name="modalidad" type="hidden" value="<?php echo $modalidad; ?>">
+
+																	<div class="d-flex justify-content-end align-items-baseline">
+																		<button name="modificarEstatus" type="submit" class="btn btn-success" required>Continuar</button>
+																		<button type="button" class="ml-1 btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+																	</div>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									<?php endforeach; ?>
+									<!-- Criterios Jurado -->
+									<?php foreach ($criteriosJurados as $c) : ?>
+										<?php
+										// Variables para actualizar estatus
+										$tipoProfe = "Jurado";
+										$modalidad = "Instrumental";
+										?>
+										<tr>
+											<td><?php echo $c['id_criterio']; ?></td>
+											<td><?php echo $c['notamax']; ?></td>
+											<td><?php echo $c['descripcion']; ?></td>
+											<?php if ($c['estatus'] == 'ACTIVO') {
+												$accion = 'deshabilitar'; ?>
+												<td class="text-center">
+													<h2 class="badge bg-success">ACTIVO</h2>
+												</td>
+												<td class="d-flex justify-content-center">
+													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-danger" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Deshabilitar"></i></button>
+												</td>
+											<?php } else {
+												$accion = 'habilitar'; ?>
+												<td class="text-center">
+													<h2 class="badge bg-danger">INACTIVO</h2>
+												</td>
+												<td class="d-flex justify-content-center">
+													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-success" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Habilitar"></i></button>
+												</td>
+											<?php } ?>
+
+										</tr>
+
+										<!-- Modal habilitar/deshabilitar -->
+										<!-- MODAL modificar estatus  -->
+										<div class="modal fade" id="modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" tabindex="-1" aria-labelledby="modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="staticBackdropLabel">Confirmacion</h5>
+														<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														</button>
+
+													</div>
+
+													<div class="modal-body">
+														<div class="card">
+															<div class="card-body">
+																<p>Esta seguro de <b><?php echo $accion; ?></b> el criterio : <?php echo $c['descripcion']; ?></p>
+																<form action="escuela-criterios-modificar-estatus" method="POST" enctype="multipart/form-data">
+																	<!-- Informacion  hidded de modal  -->
+																	<!-- ID del criterio: n -->
+																	<input id="id_criterioId" name="id_criterio" type="hidden" value="<?php echo $c['id_criterio']; ?>">
+																	<!-- Estatus del criterio: INACTIVO / ACTIVO -->
+																	<input id="estatusId" name="estatus" type="hidden" value="<?php echo $c['estatus']; ?>">
+																	<!-- Tipo de profesor: REVISOR / TUTOR / JURADO -->
+																	<input id="tipoProfesorId" name="tipoProfesor" type="hidden" value="<?php echo $tipoProfe; ?>">
+																	<!-- Tipo de modalidad: Experimental / Instrumental  -->
+																	<input id="modalidadId" name="modalidad" type="hidden" value="<?php echo $modalidad; ?>">
+
+																	<div class="d-flex justify-content-end align-items-baseline">
+																		<button name="modificarEstatus" type="submit" class="btn btn-success" required>Continuar</button>
+																		<button type="button" class="ml-1 btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+																	</div>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									<?php endforeach; ?>
 								</tbody>
 							</table>
 						</div>

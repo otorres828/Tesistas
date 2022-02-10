@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Criterios| Todos los criterios </title>
+	<title>Criterios| Todos los criterios experimentales</title>
 	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -106,7 +106,7 @@
 								</thead>
 								<tbody>
 									<!-- CRITERIOS REVISORES -->
-									<?php foreach ($criteriosRevisoresExp as $c) : ?>
+									<?php foreach ($criteriosRevisores as $c) : ?>
 										<?php
 										// Variables para actualizar estatus
 										$tipoProfe = "Revisor";
@@ -177,7 +177,7 @@
 										</div>
 									<?php endforeach; ?>
 									<!-- Criterios Tutores -->
-									<?php foreach ($criteriosTutoresExp as $c) : ?>
+									<?php foreach ($criteriosTutores as $c) : ?>
 										<?php
 										// Variables para actualizar estatus
 										$tipoProfe = "Tutor";
@@ -248,7 +248,7 @@
 										</div>
 									<?php endforeach; ?>
 									<!-- Criterios Jurado -->
-									<?php foreach ($criteriosJuradosExp as $c) : ?>
+									<?php foreach ($criteriosJurados as $c) : ?>
 										<?php
 										// Variables para actualizar estatus
 										$tipoProfe = "Jurado";
