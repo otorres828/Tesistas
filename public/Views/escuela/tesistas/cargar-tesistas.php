@@ -63,6 +63,9 @@
 										$valor = (new Tesistas())->insertarObj($query);
 
 										if ($valor > 0) {
+											$contraseña = password_hash($cedula, PASSWORD_BCRYPT);
+        									$sql = "INSERT INTO  usuarios (cedula,nombre_usuario,correo,contraseña,modelo,codigo) VALUES($cedula,'$nombre','$correoucab','$contraseña','Tesistas','$contraseña')";
+											(new Tesistas())->insertarObj($sql);
 									?>
 											<tr>
 												<td><?php echo $i; ?></td>
