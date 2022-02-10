@@ -216,13 +216,13 @@
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="pages/search/simple.html" class="nav-link">
+                              <a href="escuela-criterios-experimentales-todos" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Todos</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="pages/search/enhanced.html" class="nav-link">
+                              <a href="escuela-criterios-experimentales-cargar" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Cargar Experimental</p>
                               </a>
@@ -240,13 +240,13 @@
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="pages/search/simple.html" class="nav-link">
+                              <a href="escuela-criterios-instrumentales-todos" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Todos</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="pages/search/enhanced.html" class="nav-link">
+                              <a href="escuela-criterios-instrumentales-cargar" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Cargar Instrumental</p>
                               </a>
@@ -269,7 +269,7 @@
                       <a href="#" class="nav-link ">
                           <i class="nav-icon fas fa-users"></i>
                           <p>
-                            Especializacion
+                              Especializacion
                               <i class="fas fa-angle-left right"></i>
                           </p>
                       </a>

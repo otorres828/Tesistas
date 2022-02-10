@@ -21,22 +21,9 @@ class Conexion
     public function conectar()
     {
         try {
-            // $CONTROLADOR = $this->configuracion["driver"];
-            // $SERVIDOR = $this->configuracion["host"];
-            // $BASE_DATOS = $this->configuracion["database"];
-            // $PUERTO = $this->configuracion["port"];
-            // $USUARIO = $this->configuracion["username"];
-            // $CLAVE = $this->configuracion["password"];
-            // $CODIFICACION = $this->configuracion["charset"];
-
-            // $url = "{$CONTROLADOR}:host={$SERVIDOR}:{$PUERTO};"
-            //         . "dbname={$BASE_DATOS};charset={$CODIFICACION}";
-            // //Se crea la conexión.
-            // $this->conexion = new PDO($url, $USUARIO, $CLAVE);
-
             $contraseña = "26269828";
             $usuario = "postgres";
-            $nombreBaseDeDatos = "Tesistas";
+            $nombreBaseDeDatos = "mansion-de-cristo";
             $rutaServidor = "localhost";
             $puerto = "5432";
             try {
