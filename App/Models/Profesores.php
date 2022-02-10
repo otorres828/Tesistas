@@ -65,7 +65,10 @@ class Profesores extends ModeloGenerico
 
     public function insertarprofesor($cedula,$nombre,$direccion,$correoparticular,$telefono,$tipo){
         $query = "INSERT INTO  profesores (cedula,nombre,direccion,correoparticular,telefono,tipo) VALUES($cedula,'$nombre','$direccion','$correoparticular','$telefono','$tipo')";
-		$this->insertarObj($query);
+        $contraseña = password_hash($cedula, PASSWORD_BCRYPT);
+        $sql = "INSERT INTO  usuarios (cedula,nombre_usuario,correo,contraseña,modelo,codigo) VALUES($cedula,'$nombre','$correoparticular','$contraseña','Profesores','$contraseña')";
+        $this->insertarObj($query);
+        $this->insertarObj($sql);
     }
 
     public function validarEliminarRevisor($cedula){
@@ -123,5 +126,6 @@ class Profesores extends ModeloGenerico
 
     public function eliminarProfesor($cedula){
         $this->sentenciaObj("DELETE FROM profesores WHERE cedula=$cedula");
+        $this->sentenciaObj("DELETE FROM usuarios WHERE cedula=$cedula");
     }
 }

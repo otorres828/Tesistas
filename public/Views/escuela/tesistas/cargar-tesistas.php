@@ -73,8 +73,8 @@
 											<?php } else { ?>
 												<td><?php echo $i; ?></td>
 												<td class="bg-danger">NO SE INSERTO</td>
-											</tr>
-										<?php } ?>
+											
+										<?php } ?></tr>
 								<?php }
 								} ?>
 
