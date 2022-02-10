@@ -37,6 +37,7 @@ $router->add('escuela-tesistas', ['controller' => 'escuela\TesistaController', '
 $router->add('escuela-tesistas-cargar', ['controller' => 'escuela\TesistaController', 'method' => 'tesistasCargar']);
 $router->add('escuela-tesistas-crear', ['controller' => 'escuela\TesistaController', 'method' => 'crearTesista']);
 $router->add('escuela-tesistas-eliminar', ['controller' => 'escuela\TesistaController', 'method' => 'eliminarTesista']);
+$router->add('escuela-tesistas-mostrar-tesista', ['controller' => 'escuela\TesistaController', 'method' => 'mostrarTesista']);
 
 $router->add('escuela-profesores', ['controller' => 'escuela\ProfesorController', 'method' => 'index']);
 $router->add('escuela-profesor-revisor', ['controller' => 'escuela\ProfesorController', 'method' => 'profesoresRevisores']);

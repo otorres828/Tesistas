@@ -3,6 +3,7 @@
 namespace App\Controllers\escuela;
 
 use App\Models\Auth;
+use App\Models\PropuestaTG;
 use \Core\View;
 use App\Models\Tesistas;
 
@@ -91,6 +92,29 @@ class TesistaController extends \Core\Controller
             header('location:error');
         }
     }
+
+    public function mostrarTesista(){
+        $this->autenticar();
+        if(isset($_POST['cedula']) || isset($_POST['modificarcedula'])){
+            if(isset($_POST['modificarclave'])){
+                if(isset($_POST['cedula'])){
+                    $autenticado = (new Auth());
+                    $nueva = password_hash($_POST['nuevaclave'], PASSWORD_BCRYPT);
+                    $autenticado->cambiarcontraseña($nueva, $_POST['cedula']);
+                    $_SESSION['mensaje'] = "contraseña cambiada con exito";
+                    $_SESSION['colorcito'] =  "success";
+                }
+               
+            }
+           $tesista= (new Tesistas())->perfilEscuelaTesista($_POST['cedula']);
+           $propuestastesista = (new PropuestaTG())->mispropuestas($_POST['cedula']);
+            View::render('escuela/tesistas/perfil.php',['tesista'=>$tesista,
+                                                         'propuestastesista'=>$propuestastesista]);
+        }else{
+            header('location:error');
+        }
+    }
+
     private function autenticar()
     {
         $autenticacion = new Auth();

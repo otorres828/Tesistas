@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela| Tesistas - Todos los tesistas</title>
+	<title>Escuela| Tesistas - Informacion</title>
 	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -111,7 +111,12 @@
 
 								<?php foreach ($tesistas as $tesista) : ?>
 									<tr>
-										<td><?php echo $tesista['cedula']; ?></td>
+										<form action="escuela-tesistas-mostrar-tesista" method="POST">
+											<td>
+												<button type="submit" name="cedula" value="<?php echo $tesista['cedula']; ?>"><?php echo $tesista['cedula']; ?></button>
+											</td>
+										</form>
+
 										<td><?php echo $tesista['nombre']; ?></td>
 										<td><?php echo $tesista['correoucab']; ?></td>
 										<td><?php echo $tesista['correoparticular']; ?></td>

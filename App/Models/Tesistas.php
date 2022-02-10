@@ -24,6 +24,14 @@ class Tesistas extends ModeloGenerico
                                     AND u.cedula=' . $cedula['cedula']);
     }
 
+    public function perfilEscuelaTesista($cedula)
+    {
+        return $this->sentenciaObj('SELECT u.cedula,u.nombre_usuario,t.correoparticular as correo,u.codigo,t.correoucab,t.telefono,t.comentario 
+                                    FROM usuarios AS u, tesistas AS t 
+                                    WHERE t.cedula=u.cedula 
+                                    AND u.cedula=' . $cedula);
+    }
+
     public function modificarCorreo($correo)
     {
         session_start();
@@ -116,6 +124,7 @@ class Tesistas extends ModeloGenerico
             return 0;
         }
     }
+
     public function insertartesista($cedula, $nombre, $correoucab, $correoparticular, $telefono)
     {
         $query = "INSERT INTO  tesistas (cedula,nombre,correoucab,correoparticular,telefono) VALUES($cedula,'$nombre','$correoucab','$correoparticular','$telefono')";
@@ -134,7 +143,6 @@ class Tesistas extends ModeloGenerico
         $this->insertarObj($query);
         $this->insertarObj($sql);
     }
-
 
     public function validarEliminar($cedula)
     {
