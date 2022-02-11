@@ -40,6 +40,7 @@ class ProfesorController extends \Core\Controller
 
         View::render('escuela/profesores/profesor-tutor.php', ['profesores' => $profesores]);
     }
+
     public function profesorCargar()
     {
         $this->autenticar();
@@ -55,6 +56,25 @@ class ProfesorController extends \Core\Controller
         View::render('escuela/profesores/profesor-jurado.php', ['profesores' => $profesores]);
     }
 
+    public function mostrarPerfilProfesor(){
+        $this->autenticar();
+        if(isset($_POST['cedula'])  || isset($_POST['modificarclave'])){
+            if(isset($_POST['modificarclave'])){
+                if(isset($_POST['cedula'])){
+                    $autenticado = (new Auth());
+                    $nueva = password_hash($_POST['nuevaclave'], PASSWORD_BCRYPT);
+                    $autenticado->cambiarcontraseña($nueva, $_POST['cedula']);
+                    $_SESSION['mensaje'] = "contraseña cambiada con exito";
+                    $_SESSION['colorcito'] =  "success";
+                }
+            }
+            $profesor = (new Profesores())->where('cedula', '=', $_POST['cedula'])->getOb();
+            View::render('escuela/profesores/perfil.php',['profesor'=>$profesor]);
+        }else{
+            header('location:error');
+        }
+    }
+    
     public function crearProfesor()
     {
         if (isset($_POST['nuevoprofesor'])) {
@@ -128,6 +148,10 @@ class ProfesorController extends \Core\Controller
             header('location:error');
         }
     }
+
+
+
+
     private function autenticar()
     {
         $autenticacion = new Auth();

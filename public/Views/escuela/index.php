@@ -22,55 +22,50 @@
     <?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 
     <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
       <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0">Panel de Control</h1>
-            </div><!-- /.col -->
-
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- /.content-header -->
 
-      <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <!-- Small boxes (Stat box) -->
-          <div class="row">
+          <div class="row ">
             <div class="col-lg-4 col-6">
-              <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
                   <h3><?php echo $estadisticas['cantidad-tesistas']['cantidadtesistas']; ?></h3>
-
                   <p>Tesistas</p>
                 </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-
-                </div>
+                <a href="escuela-tesistas">
+                  <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                  </div>
+                </a>
                 <a href="escuela-tesistas" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-            <!-- ./col -->
+
             <div class="col-lg-4 col-6">
-              <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
                   <h3><?php echo $estadisticas['cantidad-profesores']['cantidadprofesores']; ?><sup style="font-size: 20px"></sup></h3>
-
                   <p>Profesores</p>
                 </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
+                <a href="escuela-profesores">
+
+                  <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                  </div>
+                </a>
                 <a href="escuela-profesores" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
               </div>
+
             </div>
-            <!-- ./col -->
             <div class="col-lg-4 col-6">
               <!-- small box -->
               <div class="small-box bg-warning">
@@ -79,9 +74,11 @@
 
                   <p>Propuestas TG</p>
                 </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
+                <a href="escuela-propuestastg">
+                  <div class="icon">
+                    <i class="ion ion-bag"></i>
+                  </div>
+                </a>
                 <a href="escuela-propuestastg" class="small-box-footer">Mas Informacion <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
@@ -262,7 +259,6 @@
           </section>
         </div>
     </div>
-
 
     <?php include_once('../public/Views/componentes/footer.php'); ?>
 

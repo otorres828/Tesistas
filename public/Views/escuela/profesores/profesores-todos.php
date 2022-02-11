@@ -26,15 +26,13 @@
 								<div class="col-sm-6">
 									<div class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#crearprofesor" data-bs-whatever="@mdo">Crear Profesor</div>
 									<a class="btn btn-warning " href="escuela-profesores-cargar">Cargar Profesores</a>
-
 								</div>
-
 								<div class="col-sm-6">
 									<h1 class="float-sm-right"><strong>Lista de Profesores</strong></h1>
 								</div>
 							</div>
 						</div>
-						<!-- MODAL CREAR AREA -->
+						<!-- MODAL CREAR PROFESOR -->
 						<div class="modal fade" id="crearprofesor" tabindex="-1" aria-labelledby="crearprofesor" aria-hidden="true">
 							<div class="modal-dialog">
 								<div class="modal-content">
@@ -43,7 +41,6 @@
 										<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
 										</button>
-
 									</div>
 
 									<div class="modal-body">
@@ -96,7 +93,6 @@
 							</div>
 						</div>
 						<div class="card table-responsive p-2">
-
 							<?php
 							if (isset($_SESSION['mensaje'])) { ?>
 								<div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
@@ -109,9 +105,7 @@
 							} ?>
 							<table class="card-body table table-flush" id="example">
 								<thead class="thead-light">
-
 									<tr>
-
 										<th>Cedula</th>
 										<th>Nombre</th>
 										<th>Direccion</th>
@@ -124,7 +118,11 @@
 								<tbody>
 									<?php foreach ($profesores as $profesor) : ?>
 										<tr>
-											<td><?php echo $profesor['cedula']; ?></td>
+											<form action="escuela-profesores-mostrar-profesor" method="POST">
+												<td>
+													<button type="submit" name="cedula" value="<?php echo $profesor['cedula']; ?>"><?php echo $profesor['cedula']; ?></button>
+												</td>
+											</form>
 											<td><?php echo $profesor['nombre']; ?></td>
 											<td><?php echo $profesor['direccion']; ?></td>
 											<td><?php echo $profesor['correoparticular']; ?></td>
@@ -137,10 +135,10 @@
 												<?php } ?>
 											</td>
 											<td class="d-flex">
-											<form action="escuela-profesores-eliminar" method="POST">
-												<button class="btn btn-danger" value="<?php echo $profesor['cedula']; ?>" name="eliminarprofesor"><i class="far fa-trash-alt"></i></button>
-											</form>
-										</td>
+												<form action="escuela-profesores-eliminar" method="POST">
+													<button class="btn btn-danger" value="<?php echo $profesor['cedula']; ?>" name="eliminarprofesor"><i class="far fa-trash-alt"></i></button>
+												</form>
+											</td>
 										</tr>
 									<?php endforeach; ?>
 

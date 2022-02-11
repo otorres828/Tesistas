@@ -7,7 +7,6 @@
     <title>Escuela| Tesistas - Informacion</title>
     <?php
 
-    use App\Models\Auth;
     use App\Models\PropuestaTG;
 
     include_once('../public/Views/componentes/cssadminlte.php'); ?>
