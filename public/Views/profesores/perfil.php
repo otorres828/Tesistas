@@ -147,16 +147,73 @@
               <div class="col-12 col-xl-8">
                   <div class="card card-body border-0 shadow mb-4">
                       <h2 class="h5 mb-4">Informacion General</h2>
-                          <div class="row">
-                              <div class="col-md-12 mb-3">
-                                  <div>
-                                      <label for="first_name">Nombre Completo</label>
-                                      <input  class="form-control" type="text"
-                                          placeholder="Enter your first name" disabled>
-                                  </div>
-                              </div>
-                              
-                          </div>
+                      <div class="col-12 col-xl-8">
+                            <?php
+                            if (isset($_SESSION['mensaje'])) { ?>
+                                <div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
+                                    <?php echo $_SESSION['mensaje']; ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                            <?php unset($_SESSION['mensaje']);
+                            }
+                            ?>
+                            <div class="card card-body border-0 shadow mb-4">
+                                <h2 class="h5 mb-4">Informacion General del Profesor</h2>
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <div>
+                                            <label for="first_name">Nombre Completo</label>
+                                            <input class="form-control" type="text" value="<?php echo $profesor['nombre']; ?>" disabled>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row align-items-center">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <label>cedula</label>
+                                            <input class="form-control" value="<?php echo $profesor['cedula']; ?>" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <label>correoparticular</label>
+                                            <input class="form-control" type="email" value="<?php echo $profesor['correoparticular']; ?>" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <label>Telefono</label>
+                                            <input class="form-control" value="<?php echo $profesor['telefono']; ?>" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-group ">
+                                            <label>Tipo</label>
+                                            <?php if ($profesor['tipo'] == 'I') { ?>
+                                                <input class="form-control" value="INTERNO" disabled>
+                                            <?php } else { ?>
+                                                <input class="form-control" value="EXTERNO" disabled>
+                                            <?php } ?>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <div>
+                                            <label for="last_name">Direccion</label>
+                                            <p class="form-control h-100" disabled><?php echo $profesor['direccion']; ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h2 class="h5">Seguridad</h2>
+                                <div class="row ">
+                                    <div data-bs-toggle="modal" data-bs-target="#modificarClave" data-bs-whatever="@mdo" class="btn btn-info m-1">Modificar Clave</div>
+                                </div>
+                            </div>
+                        </div>
                           <div class="row align-items-center">
                               <div class="col-md-6 mb-3">
                                   <div class="form-group">
@@ -193,6 +250,7 @@
                                   </div>
                               </div>
                           </div>
+
                           <h2 class="h5">Seguridad</h2>
                           <div class="row">
                               <div  data-bs-toggle="modal" data-bs-target="#modificarCorreo" data-bs-whatever="@mdo"  class="btn btn-info m-1">Modificar Correo Personal</div>
