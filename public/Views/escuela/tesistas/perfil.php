@@ -7,15 +7,15 @@
     <title>Escuela| Tesistas - Informacion</title>
     <?php
 
-use App\Models\Auth;
-use App\Models\PropuestaTG;
+    use App\Models\Auth;
+    use App\Models\PropuestaTG;
 
     include_once('../public/Views/componentes/cssadminlte.php'); ?>
     <!-- DATATABLES -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
 
-<body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
+<body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed ">
     <div class="wrapper">
         <?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
         <div class="content-wrapper">
@@ -85,7 +85,7 @@ use App\Models\PropuestaTG;
                                 </div>
                                 <h2 class="h5">Seguridad</h2>
                                 <div class="row ">
-                                    <div data-bs-toggle="modal" data-bs-target="#modificarClave" data-bs-whatever="@mdo" class="btn btn-info m-1">Modificar Clave</div>                                    
+                                    <div data-bs-toggle="modal" data-bs-target="#modificarClave" data-bs-whatever="@mdo" class="btn btn-info m-1">Modificar Clave</div>
                                 </div>
                             </div>
                         </div>
@@ -106,13 +106,13 @@ use App\Models\PropuestaTG;
                             </div>
                         </div>
                         <div class="border-0 shadow p-4 card table-responsive p-4">
-                        <div class="container-fluid">
-						<div class="row mb-2">
-							<div class="col-sm-6">
-								<h1 class=""><strong>Lista de Propuestas del Tesista</strong></h1>
-							</div>
-						</div>
-					</div>
+                            <div class="container-fluid">
+                                <div class="row mb-2">
+                                    <div class="col-sm-6">
+                                        <h1 class=""><strong>Lista de Propuestas del Tesista</strong></h1>
+                                    </div>
+                                </div>
+                            </div>
                             <table class="table table-flush" id="example">
                                 <thead class="thead-light">
                                     <tr class="text-center">
