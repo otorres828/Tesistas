@@ -37,7 +37,6 @@ class Tesistas extends ModeloGenerico
         session_start();
         $cedula = (new Auth())->autenticado();
         $this->sentenciaObj("UPDATE tesistas SET correoparticular=" . "'" . $correo . "'" . " WHERE cedula=" . $cedula['cedula']);
-        $this->sentenciaObj("UPDATE usuarios SET correo=" . "'" . $correo . "'" . " WHERE cedula=" . $cedula['cedula']);
     }
 
     public function modificartelefono($telefono)

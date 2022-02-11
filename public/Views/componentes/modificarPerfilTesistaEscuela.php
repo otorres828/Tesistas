@@ -12,7 +12,7 @@
                 <form action="escuela-tesistas-mostrar-tesista" method="POST" enctype="multipart/form-data">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <input hidden name="cedula"value="<?php echo $propuesta['cedula'];?>">
+                            <input hidden name="cedula"value="<?php echo $tesista['cedula'];?>">
                             <label for="address">Nueva Clave</label>
                             <input class="form-control" name="nuevaclave" type="password" placeholder="Ingrese su nueva clave" required>
                         </div>

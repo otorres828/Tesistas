@@ -92,7 +92,7 @@ class TesistaController extends \Core\Controller
             header('location:error');
         }
     }
-
+    //VER PERFIL Y PROPUESTAS DEL TESISTA
     public function mostrarTesista(){
         $this->autenticar();
         if(isset($_POST['cedula']) || isset($_POST['modificarcedula'])){
@@ -108,7 +108,7 @@ class TesistaController extends \Core\Controller
             }
            $tesista= (new Tesistas())->perfilEscuelaTesista($_POST['cedula']);
            $propuestastesista = (new PropuestaTG())->mispropuestas($_POST['cedula']);
-            View::render('escuela/tesistas/perfil.php',['tesista'=>$tesista,
+           View::render('escuela/tesistas/perfil.php',['tesista'=>$tesista,
                                                          'propuestastesista'=>$propuestastesista]);
         }else{
             header('location:error');

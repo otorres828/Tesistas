@@ -51,7 +51,6 @@
                     </div>
                     <button name="modificarcorreo" type="submit" class="btn btn-primary" required>Modificar Correo</button>
                     <button type="button" class="ml-1 btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-
                 </form>
             </div>
         </div>
