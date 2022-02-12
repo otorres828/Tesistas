@@ -64,6 +64,7 @@ $router->add('escuela-areas-eliminar', ['controller' => 'escuela\AreasController
 $router->add('escuela-areas-cargar', ['controller' => 'escuela\AreasController', 'method' => 'cargarArea']);
 $router->add('escuela-areas-profesores', ['controller' => 'escuela\AreasController', 'method' => 'especializacion']);
 $router->add('escuela-areas-profesores-cargar', ['controller' => 'escuela\AreasController', 'method' => 'Cargarespecializacion']);
+$router->add('escuela-areas-profesores-asignar', ['controller' => 'escuela\AreasController', 'method' => 'AsignarEspecializacion']);
 
 
 

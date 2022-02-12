@@ -24,7 +24,7 @@
 					<div class="container-fluid">
 						<div class="row mb-2">
 							<div class="col-sm-6">
-								<div class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#creararea" data-bs-whatever="@mdo">Crear Especializacion</div>
+								<div class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#asignarespecializacion" data-bs-whatever="@mdo">Asignar Especializacion</div>
 								<a class="btn btn-warning " href="escuela-areas-profesores-cargar">Cargar Especializacion</a>
 
 							</div>
@@ -35,11 +35,11 @@
 						</div>
 					</div>
 					<!-- MODAL CREAR AREA -->
-					<div class="modal fade" id="creararea" tabindex="-1" aria-labelledby="creararea" aria-hidden="true">
+					<div class="modal fade" id="asignarespecializacion" tabindex="-1" aria-labelledby="asignarespecializacion" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
-									<h5 class="modal-title" id="staticBackdropLabel">Crear Area</h5>
+									<h5 class="modal-title" id="staticBackdropLabel">Asignar Especializacion</h5>
 									<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
@@ -49,14 +49,27 @@
 								<div class="modal-body">
 									<div class="card">
 										<div class="card-body">
-											<form action="escuela-areas-crear" method="POST" enctype="multipart/form-data">
-												<div class="form-group">
-													<label>Nombre del Area</label>
-													<input type="text" name="nombrearea" placeholder="nombre de la propuesta" class="form-control" required>
-												</div>
+											<form action="escuela-areas-profesores-asignar" method="POST" enctype="multipart/form-data">
+												<label>Seleccione el Profesor</label></br>
+												<select class="custom-select" name="profesor">
+													<?php foreach ($profes as $p) : ?>
+														<option value="<?php echo $p['cedula'];?>">
+															<?php echo $p['nombre']; ?>
+														</option>
+													<?php endforeach; ?>
+												</select>
+
+												<label>Seleccione el Area</label></br>
+												<select class="custom-select mb-3" name="area">
+													<?php foreach ($areas as $a) : ?>
+														<option value="<?php echo $a['id_area'];?>">
+															<?php echo $a['nombre']; ?>
+														</option>
+													<?php endforeach; ?>
+												</select>
 
 												<div class="d-flex justify-content-end align-items-baseline">
-													<button name="nuevaarea" type="submit" class="btn btn-success" required>Crear Area</button>
+													<button name="nuevaarea" type="submit" class="btn btn-success" required>Asignar Area</button>
 													<button type="button" class="ml-1 btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
 												</div>
 											</form>
@@ -103,8 +116,7 @@
 											?>
 											<ul>
 												<?php foreach ($areas as $area) : ?>
-													<li><?php echo $area['nombre']; ?>
-													</li>
+													<li><?php echo $area['nombre']; ?></li>
 												<?php endforeach; ?>
 											</ul>
 										</td>
