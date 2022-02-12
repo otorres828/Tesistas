@@ -84,14 +84,15 @@ class AreasController extends \Core\Controller
     }
 
     public function especializacion(){
-        $areas="";
-        View::render('escuela/areas/areas-profesores.php', ['areas' => $areas]);
+        $profesores=(new Areas())->especializacion_profesores();
+        View::render('escuela/areas/areas-profesores.php', ['profesores' => $profesores]);
     }
  
     public function Cargarespecializacion(){
         $this->autenticar();
         View::render('escuela/areas/cargar-areas-profesores.php'); 
     }
+
     public function slug($area)
     {
         return $area = str_replace(' ', '-', strtolower(preg_replace('([^A-Za-z0-9 ])', '', trim($area))));
