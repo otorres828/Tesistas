@@ -18,4 +18,9 @@ class Evaluacion extends ModeloGenerico
         $sql = "INSERT INTO evaluacioncomite(num_c,id_comite,estatus) VALUES($num_c,$id_comite,'$estatus')";
         $this->sentenciaObj($sql);
     }
+    public function evaluarComite($num_c, $cedularevisor)
+    {
+        $sql = "UPDATE propuestatg SET cedula_revisor='$cedularevisor' WHERE num_c=$num_c";
+        $this->sentenciaObj($sql);
+    }
 }

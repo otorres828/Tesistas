@@ -6,6 +6,9 @@ use App\Models\AreasComiteConsejo;
 use App\Models\Auth;
 use \Core\View;
 use App\Models\Evaluacion;
+use App\Models\Profesores;
+use App\Models\Comites;
+use App\Models\PropuestaTG;
 
 
 
@@ -27,27 +30,41 @@ class EvaluacionController extends \Core\Controller
     // }
     public function evaluacionComite()
     {
-        View::render('escuela/asignaciones/evaluacion-comite.php');
+        $internos = (new Profesores())->obtenerInternos();
+        $comites = (new Comites())->get();
+        $propuestastg = (new PropuestaTG())->get();
+        View::render('escuela/asignaciones/evaluacion-comite.php', ['internos' => $internos, 'comites' => $comites, 'propuestastg' => $propuestastg]);
+    }
+    // TODO: Aun nohace una berga
+    public function evaluacionConsejo()
+    {
+
+        View::render('escuela/asignaciones/evaluacion-consejo.php');
     }
     public function evaluarComite()
     {
         if (isset($_POST['evaluarComite'])) {
             $estatus = $_POST['estatus'];
             $cedularevisor = $_POST['cedularevisor'];
-            $numeroPropuestaTG = $_POST['numeroPropuestaTG'];
-            $numeroComite = $_POST['numeroComite'];
+            $num_c = $_POST['num_c'];
             $id_comite = $_POST['id_comite'];
-            echo "====Datos recibidos del formulario====<br>";
-            echo "Estatus:" . $estatus . "<br>";
-            echo "Cedula:" . $cedularevisor . "<br>";
-            echo "Numero de propuesta:" . $numeroPropuestaTG . "<br>";
-            echo "Numero de comite:" . $numeroComite . "<br>";
-            echo "Id de comite:" . $id_comite . "<br>";
-            echo "======================================<br>";
+            // echo "====Datos recibidos del formulario====<br>";
+            // echo "Estatus:" . $estatus . "<br>";
+            // echo "Cedula:" . $cedularevisor . "<br>";
+            // echo "Numero de propuesta:" . $num_c . "<br>";
+            // echo "Id de comite:" . $id_comite . "<br>";
+            // echo "======================================<br>";
             if ($estatus == 'APROBADO') {
-                # code...
+                $resultado = (new Evaluacion())->evaluarComite($num_c, $cedularevisor);
+                $_SESSION['mensaje'] = "Se evaluo correctamente la propuesta <b>($num_c)</b>";
+                $_SESSION['colorcito'] = "success";
+                $internos = (new Profesores())->obtenerInternos();
+                $comites = (new Comites())->get();
+                $propuestastg = (new PropuestaTG())->get();
+                View::render('escuela/asignaciones/evaluacion-comite.php', ['internos' => $internos, 'comites' => $comites, 'propuestastg' => $propuestastg]);
             } else {
-                (new Evaluacion())->insertarEvaluacionComite($numeroComite, $id_comite, $estatus);
+                $_SESSION['mensaje'] = "Ras pao es raspao comprade";
+                $_SESSION['colorcito'] = "danger";
             }
         } else {
             header('location:error');

@@ -45,29 +45,29 @@
                             } ?>
                             <div class="col col-6 align-self-center">
                                 <form action="escuela-evaluar-comite" method="POST">
-                                    <!-- Numero de los comites -->
+                                    <!-- Numero correlativo : num_c -->
                                     <div class="form-group flex">
-                                        <label>Numeros de comites</label></br>
-                                        <select class="custom-select" name="numeroComite" type required>
+                                        <label>Numeros correlativo, Trabajo de grado</label></br>
+                                        <select class="custom-select" name="num_c" type required>
                                             <option value="" selected>Seleccione una opcion</option>
+                                            <?php foreach ($propuestastg as $ptg) { ?>
+                                                <option value="<?php echo $ptg['num_c']; ?>"><?php echo "(" . $ptg['num_c'] . ") - " . $ptg['titulo'] . "- " . $ptg['modalidad']; ?></option>
+                                            <?php } ?>
 
-                                            <option value="APROBADO">APROBADO</option>
                                         </select>
                                     </div>
-                                    <!-- Id de los comites -->
+                                    <!-- Numero de los comites : id_comite -->
                                     <div class="form-group flex">
-                                        <label>Id de comites</label></br>
+                                        <label>Numero de los comites</label></br>
                                         <select class="custom-select" name="id_comite" type required>
                                             <option value="" selected>Seleccione una opcion</option>
 
-                                            <option value="APROBADO">APROBADO</option>
+                                            <?php foreach ($comites as $comite) { ?>
+                                                <option value="<?php echo $comite['id_comite']; ?>"><?php echo "N: (" . $comite['id_comite'] . ") -> " . $comite['fecha']; ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
-                                    <!-- Numero de las propuestas de trabajo de grado -->
-                                    <div class="mb-3">
-                                        <label for="numeroPropuestaTG" class="form-label">Numero de propuesta del Trabajo de grado</label>
-                                        <input type="number" class="form-control" id="numeroPropuestaTG" placeholder="Ingrese el Numero de propuesta del Trabajo de grado" min="0" required>
-                                    </div>
+
                                     <!-- Estatus de la evaluacion del comite -->
                                     <div class="form-group flex">
                                         <label>Estatus</label></br>
@@ -81,7 +81,9 @@
                                         <label>Cedula del revisor</label></br>
                                         <select class="custom-select" name="cedularevisor" type required>
                                             <option value="" selected>Seleccione una opcion</option>
-                                            <option value="APROBADO">APROBADO</option>
+                                            <?php foreach ($internos as $interno) { ?>
+                                                <option value="<?php echo $interno['cedula']; ?>"><?php echo $interno['cedula']; ?></option>
+                                            <?php } ?>
                                         </select>
                                     </div>
                                     <button type="submit" class="btn btn-success col-12 name" name="evaluarComite">Enviar evaluacion</button>

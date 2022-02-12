@@ -47,10 +47,11 @@ $router->add('escuela-profesor-jurado', ['controller' => 'escuela\ProfesorContro
 $router->add('escuela-profesores-cargar', ['controller' => 'escuela\ProfesorController', 'method' => 'profesorCargar']);
 $router->add('escuela-profesores-crear', ['controller' => 'escuela\ProfesorController', 'method' => 'crearProfesor']);
 $router->add('escuela-profesores-eliminar', ['controller' => 'escuela\ProfesorController', 'method' => 'eliminarProfesor']);
+$router->add('escuela-profesores-mostrar-profesor', ['controller' => 'escuela\ProfesorController', 'method' => 'mostrarPerfilProfesor']);
 // Asignaciones / evaluaciones
 $router->add('escuela-evaluacion-comite', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluacionComite']);
 $router->add('escuela-evaluar-comite', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluarComite']);
-$router->add('escuela-profesores-mostrar-profesor', ['controller' => 'escuela\ProfesorController', 'method' => 'mostrarPerfilProfesor']);
+$router->add('escuela-evaluacion-consejo', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluacionConsejo']);
 
 // Criterios
 $router->add('escuela-criterios-experimentales-todos', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosExperimentalesTodos']);
