@@ -205,6 +205,26 @@
                   </li>
 
 
+                  <li class="nav-header">Asignaciones </li>
+                  <li class="nav-item">
+                      <a href="escuela-evaluacion-comite" class="nav-link">
+                          <i class="nav-icon  fas fa-search"></i>
+                          <p>
+                              Evaluacion comite
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="escuela-evaluacion-consejo" class="nav-link">
+                          <i class="nav-icon  fas fa-search"></i>
+                          <p>
+                              Evaluacion consejo
+                          </p>
+                      </a>
+                  </li>
+
+
+
                   <li class="nav-header">Criterios </li>
                   <li class="nav-item">
                       <a href="escuela-criterios-experimentales-todos" class="nav-link">
