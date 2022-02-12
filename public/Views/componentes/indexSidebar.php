@@ -281,9 +281,9 @@
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="escuela-tesistas-cargar" class="nav-link">
+                              <a href="escuela-areas-profesores" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
-                                  <p>Cargar Areas</p>
+                                  <p>Profesores</p>
                               </a>
                           </li>
                       </ul>
