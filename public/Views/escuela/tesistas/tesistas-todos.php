@@ -4,13 +4,13 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela| Tesistas - Todos los tesistas</title>
+	<title>Escuela| Tesistas - Informacion</title>
 	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
 
-<body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
+<body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed ">
 	<div class="wrapper">
 
 		<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
@@ -31,7 +31,7 @@
 							</div>
 						</div>
 					</div>
-					<!-- MODAL CREAR AREA -->
+					<!-- MODAL CREAR TESISTA -->
 					<div class="modal fade" id="creartesista" tabindex="-1" aria-labelledby="creartesista" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
@@ -97,7 +97,6 @@
 						<table class="card-body table table-flush" id="example">
 							<thead class="thead-light">
 								<tr>
-
 									<th>Cedula</th>
 									<th>Nombre</th>
 									<th>Correo Ucab</th>
@@ -111,7 +110,11 @@
 
 								<?php foreach ($tesistas as $tesista) : ?>
 									<tr>
-										<td><?php echo $tesista['cedula']; ?></td>
+										<form action="escuela-tesistas-mostrar-tesista" method="POST">
+											<td>
+												<button type="submit" name="cedula" value="<?php echo $tesista['cedula']; ?>"><?php echo $tesista['cedula']; ?></button>
+											</td>
+										</form>
 										<td><?php echo $tesista['nombre']; ?></td>
 										<td><?php echo $tesista['correoucab']; ?></td>
 										<td><?php echo $tesista['correoparticular']; ?></td>
@@ -128,8 +131,6 @@
 							</tbody>
 						</table>
 					</div>
-
-					<!-- /.card -->
 				</section>
 			</div>
 		</div>

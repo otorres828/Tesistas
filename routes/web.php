@@ -38,6 +38,8 @@ $router->add('escuela-tesistas-cargar', ['controller' => 'escuela\TesistaControl
 $router->add('escuela-tesistas-crear', ['controller' => 'escuela\TesistaController', 'method' => 'crearTesista']);
 $router->add('escuela-tesistas-eliminar', ['controller' => 'escuela\TesistaController', 'method' => 'eliminarTesista']);
 // Profesores
+$router->add('escuela-tesistas-mostrar-tesista', ['controller' => 'escuela\TesistaController', 'method' => 'mostrarTesista']);
+
 $router->add('escuela-profesores', ['controller' => 'escuela\ProfesorController', 'method' => 'index']);
 $router->add('escuela-profesor-revisor', ['controller' => 'escuela\ProfesorController', 'method' => 'profesoresRevisores']);
 $router->add('escuela-profesor-tutor', ['controller' => 'escuela\ProfesorController', 'method' => 'profesoresTutores']);
@@ -48,6 +50,7 @@ $router->add('escuela-profesores-eliminar', ['controller' => 'escuela\ProfesorCo
 // Asignaciones / evaluaciones
 $router->add('escuela-evaluacion-comite', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluacionComite']);
 $router->add('escuela-evaluar-comite', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluarComite']);
+$router->add('escuela-profesores-mostrar-profesor', ['controller' => 'escuela\ProfesorController', 'method' => 'mostrarPerfilProfesor']);
 
 // Criterios
 $router->add('escuela-criterios-experimentales-todos', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosExperimentalesTodos']);
@@ -69,6 +72,9 @@ $router->add('escuela-areas-crear', ['controller' => 'escuela\AreasController', 
 $router->add('escuela-areas-modificar', ['controller' => 'escuela\AreasController', 'method' => 'modificarArea']);
 $router->add('escuela-areas-eliminar', ['controller' => 'escuela\AreasController', 'method' => 'eliminarArea']);
 $router->add('escuela-areas-cargar', ['controller' => 'escuela\AreasController', 'method' => 'cargarArea']);
+$router->add('escuela-areas-profesores', ['controller' => 'escuela\AreasController', 'method' => 'especializacion']);
+$router->add('escuela-areas-profesores-cargar', ['controller' => 'escuela\AreasController', 'method' => 'Cargarespecializacion']);
+$router->add('escuela-areas-profesores-asignar', ['controller' => 'escuela\AreasController', 'method' => 'AsignarEspecializacion']);
 
 
 

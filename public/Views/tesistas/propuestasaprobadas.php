@@ -13,7 +13,7 @@
   <!-- DATATABLES -->
 </head>
 
-<body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
+<body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed ">
 
   <div class="wrapper">
 

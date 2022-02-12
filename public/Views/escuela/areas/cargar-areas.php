@@ -7,7 +7,6 @@
 	<title>Escuela| Areas - Cargar Areas</title>
 	<?php
 
-use App\Controllers\escuela\AreasController;
 use App\Models\Areas;
 
 	include_once('../public/Views/componentes/cssadminlte.php'); ?>
@@ -15,7 +14,7 @@ use App\Models\Areas;
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
 
-<body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
+<body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed ">
 	<div class="wrapper">
 
 	<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>

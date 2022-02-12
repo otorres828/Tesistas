@@ -4,6 +4,7 @@ namespace App\Controllers\escuela;
 
 use App\Models\Areas;
 use App\Models\Auth;
+use App\Models\Profesores;
 use \Core\View;
 
 class AreasController extends \Core\Controller
@@ -82,9 +83,26 @@ class AreasController extends \Core\Controller
         $this->autenticar();
         View::render('escuela/areas/cargar-areas.php');
     }
+    //ESPECIALIZACIONES
 
+    public function especializacion(){
+        $profesores=(new Areas())->especializacion_profesores();
+        $profes=(new Profesores())->sentenciaAll("SELECT cedula,nombre FROM profesores");
+        $areas=(new Areas())->get();
+        View::render('escuela/areas/areas-profesores.php', ['profesores' => $profesores,
+                                                            'areas'=>$areas,
+                                                            'profes'=>$profes]);
+    }
  
+    public function Cargarespecializacion(){
+        $this->autenticar();
+        View::render('escuela/areas/cargar-areas-profesores.php'); 
+    }
 
+    public function AsignarEspecializacion(){
+        echo $_POST['profesor'];
+        echo "</br>". $_POST['area'];gi
+    }
     public function slug($area)
     {
         return $area = str_replace(' ', '-', strtolower(preg_replace('([^A-Za-z0-9 ])', '', trim($area))));

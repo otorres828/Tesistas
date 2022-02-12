@@ -4,10 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela| Tesistas - Cargar Tesistas</title>
+	<title>Escuela| Areas - Cargar Profesores</title>
 	<?php
 
-	use App\Models\Tesistas;
+	use App\Models\Areas;
 
 	include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
@@ -16,11 +16,12 @@
 
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed ">
 	<div class="wrapper">
+
 		<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 
 		<div class="content-wrapper p-5">
 			<div class="container">
-				<form action="escuela-tesistas-cargar" method="POST" enctype="multipart/form-data">
+				<form action="escuela-areas-profesores-cargar" method="POST" enctype="multipart/form-data">
 					<input type="file" value="Subir Archivo" name="archivo" required>
 					<button type="submit" name="enviar" class="btn btn-primary">Cargar </button>
 				</form>
@@ -50,29 +51,22 @@
 								while ($datos = fgetcsv($fp, 5000, ";")) {
 									$i++;
 									$cedula = $datos[0];
-									$nombre = $datos[1];
-									$correoucab = $datos[2];
-									$correoparticular = $datos[3];
-									$telefono = $datos[4];
-									$comentario = $datos[5];
+									$id_area = $datos[1];
+
 									$rows++; ?>
 
 									<?php $valor = null;
 									if ($rows > 1) {
-										$query = "INSERT INTO  tesistas (cedula,nombre,correoucab,correoparticular,telefono,comentario) VALUES($cedula,'$nombre','$correoucab','$correoparticular','$telefono','$comentario')";
-										$valor = (new Tesistas())->insertarObj($query);
-
+										$query = "INSERT INTO  se_especializan(cedula,id_area) VALUES($cedula,$id_area)";
+										$valor = (new Areas())->insertarObj($query);
 										if ($valor > 0) {
-											$contraseña = password_hash($cedula, PASSWORD_BCRYPT);
-        									$sql = "INSERT INTO  usuarios (cedula,nombre_usuario,correo,contraseña,modelo,codigo) VALUES($cedula,'$nombre','$correoucab','$contraseña','Tesistas','$contraseña')";
-											(new Tesistas())->insertarObj($sql);
 									?>
 											<tr>
 												<td><?php echo $i; ?></td>
 												<td>SE INSERTO CORRECTAMENTE</td>
 											<?php } else { ?>
 												<td><?php echo $i; ?></td>
-												<td class="bg-danger">NO SE INSERTO</td>
+												<td class="bg-danger">NO SE INSERTO </td>
 											
 										<?php } ?></tr>
 								<?php }

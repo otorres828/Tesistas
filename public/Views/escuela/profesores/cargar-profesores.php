@@ -14,14 +14,10 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
 
-<body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed sidebar-collapse">
+<body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed ">
 	<div class="wrapper">
 
-		<!-- PRECARGA
-		<div class="preloader flex-column justify-content-center align-items-center">
-			<img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-		</div> -->
-
+		
 		<?php include_once('../public/Views/componentes/profesorSidebar.php'); ?>
 
 
@@ -70,6 +66,9 @@
 										$valor = (new Profesores())->insertarObj($query);
 
 										if ($valor > 0) {
+											$contraseña = password_hash($cedula, PASSWORD_BCRYPT);
+        									$sql = "INSERT INTO  usuarios (cedula,nombre_usuario,correo,contraseña,modelo,codigo) VALUES($cedula,'$nombre','$correoparticular','$contraseña','Profesores','$contraseña')";
+											(new Profesores())->insertarObj($sql);
 									?>
 											<tr>
 												<td><?php echo $i; ?></td>
@@ -77,8 +76,8 @@
 											<?php } else { ?>
 												<td><?php echo $i; ?></td>
 												<td class="bg-danger">NO SE INSERTO</td>
-											</tr>
-										<?php } ?>
+											
+										<?php } ?></tr>
 								<?php }
 									
 								} ?>
