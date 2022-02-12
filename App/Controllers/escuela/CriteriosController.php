@@ -109,6 +109,35 @@ class CriteriosController extends \Core\Controller
             header('location:error');
         }
     }
+
+    public function eliminarCriterio()
+    {
+        if (isset($_POST['eliminarcriterio'])) {
+            session_start();
+
+            $id_criterio = $_POST['id_criterio'];
+            $modalidad = $_POST['modalidad'];
+            $tipo = $_POST['tipoprofe'];
+
+            echo "====Datos recibidos del formulario====<br>";
+            echo "Modalidad:" . $modalidad . "<br>";
+            echo "TipoProfesor:" . $tipo . "<br>";
+            echo "IdCriterio:" . $id_criterio . "<br>";
+            echo "======================================<br>";
+
+            (new Criterios())->eliminarCriterio($id_criterio, $modalidad, $tipo);
+            $_SESSION['mensaje'] = "Se elimino el $id_criterio con exito";
+            $_SESSION['colorcito'] = "warning";
+            if ($modalidad == "Experimental") {
+                header('location:escuela-criterios-experimentales-todos');
+            } else {
+                header('location:escuela-criterios-instrumentales-todos');
+            }
+        } else {
+            header('location:error');
+        }
+    }
+
     // ================================================Experimentales
     public function criteriosExperimentalesTodos()
     {

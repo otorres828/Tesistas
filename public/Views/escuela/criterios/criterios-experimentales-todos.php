@@ -122,7 +122,21 @@
 													<h2 class="badge bg-success">ACTIVO</h2>
 												</td>
 												<td class="d-flex justify-content-center">
-													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-danger" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Deshabilitar"></i></button>
+													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-danger mr-1" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Deshabilitar"></i></button>
+													<form action="escuela-criterios-eliminar" method="POST">
+														<!-- ID del criterio: n -->
+														<input id="id_criterioId" name="id_criterio" type="hidden" value="<?php echo $c['id_criterio']; ?>">
+
+														<!-- Modalidad-->
+														<input id="modalidadId" name="modalidad" type="hidden" value="<?php echo $modalidad; ?>">
+														<!-- Tipo de profe -->
+														<input id="tipoProfe" name="tipoprofe" type="hidden" value="<?php echo $tipoProfe; ?>">
+
+														<button class="btn btn-secondary" value="<?php echo $c['id_criterio'] . $tipoProfe; ?>" name="eliminarcriterio">
+															<i class="far fa-trash-alt"></i>
+														</button>
+
+													</form>
 												</td>
 											<?php } else {
 												$accion = 'habilitar'; ?>
@@ -130,7 +144,21 @@
 													<h2 class="badge bg-danger">INACTIVO</h2>
 												</td>
 												<td class="d-flex justify-content-center">
-													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-success" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Habilitar"></i></button>
+													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-danger mr-1" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Deshabilitar"></i></button>
+													<form action="escuela-criterios-eliminar" method="POST">
+														<!-- ID del criterio: n -->
+														<input id="id_criterioId" name="id_criterio" type="hidden" value="<?php echo $c['id_criterio']; ?>">
+
+														<!-- Modalidad-->
+														<input id="modalidadId" name="modalidad" type="hidden" value="<?php echo $modalidad; ?>">
+														<!-- Tipo de profe -->
+														<input id="tipoProfe" name="tipoprofe" type="hidden" value="<?php echo $tipoProfe; ?>">
+
+														<button class="btn btn-secondary" value="<?php echo $c['id_criterio'] . $tipoProfe; ?>" name="eliminarcriterio">
+															<i class="far fa-trash-alt"></i>
+														</button>
+
+													</form>
 												</td>
 											<?php } ?>
 
@@ -193,7 +221,21 @@
 													<h2 class="badge bg-success">ACTIVO</h2>
 												</td>
 												<td class="d-flex justify-content-center">
-													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-danger" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Deshabilitar"></i></button>
+													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-danger mr-1" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Deshabilitar"></i></button>
+													<form action="escuela-criterios-eliminar" method="POST">
+														<!-- ID del criterio: n -->
+														<input id="id_criterioId" name="id_criterio" type="hidden" value="<?php echo $c['id_criterio']; ?>">
+
+														<!-- Modalidad-->
+														<input id="modalidadId" name="modalidad" type="hidden" value="<?php echo $modalidad; ?>">
+														<!-- Tipo de profe -->
+														<input id="tipoProfe" name="tipoprofe" type="hidden" value="<?php echo $tipoProfe; ?>">
+
+														<button class="btn btn-secondary" value="<?php echo $c['id_criterio'] . $tipoProfe; ?>" name="eliminarcriterio">
+															<i class="far fa-trash-alt"></i>
+														</button>
+
+													</form>
 												</td>
 											<?php } else {
 												$accion = 'habilitar'; ?>
@@ -201,7 +243,21 @@
 													<h2 class="badge bg-danger">INACTIVO</h2>
 												</td>
 												<td class="d-flex justify-content-center">
-													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-success" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Habilitar"></i></button>
+													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-danger mr-1" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Deshabilitar"></i></button>
+													<form action="escuela-criterios-eliminar" method="POST">
+														<!-- ID del criterio: n -->
+														<input id="id_criterioId" name="id_criterio" type="hidden" value="<?php echo $c['id_criterio']; ?>">
+
+														<!-- Modalidad-->
+														<input id="modalidadId" name="modalidad" type="hidden" value="<?php echo $modalidad; ?>">
+														<!-- Tipo de profe -->
+														<input id="tipoProfe" name="tipoprofe" type="hidden" value="<?php echo $tipoProfe; ?>">
+
+														<button class="btn btn-secondary" value="<?php echo $c['id_criterio'] . $tipoProfe; ?>" name="eliminarcriterio">
+															<i class="far fa-trash-alt"></i>
+														</button>
+
+													</form>
 												</td>
 											<?php } ?>
 
@@ -264,7 +320,21 @@
 													<h2 class="badge bg-success">ACTIVO</h2>
 												</td>
 												<td class="d-flex justify-content-center">
-													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-danger" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Deshabilitar"></i></button>
+													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-danger mr-1" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Deshabilitar"></i></button>
+													<form action="escuela-criterios-eliminar" method="POST">
+														<!-- ID del criterio: n -->
+														<input id="id_criterioId" name="id_criterio" type="hidden" value="<?php echo $c['id_criterio']; ?>">
+
+														<!-- Modalidad-->
+														<input id="modalidadId" name="modalidad" type="hidden" value="<?php echo $modalidad; ?>">
+														<!-- Tipo de profe -->
+														<input id="tipoProfe" name="tipoprofe" type="hidden" value="<?php echo $tipoProfe; ?>">
+
+														<button class="btn btn-secondary" value="<?php echo $c['id_criterio'] . $tipoProfe; ?>" name="eliminarcriterio">
+															<i class="far fa-trash-alt"></i>
+														</button>
+
+													</form>
 												</td>
 											<?php } else {
 												$accion = 'habilitar'; ?>
@@ -272,7 +342,21 @@
 													<h2 class="badge bg-danger">INACTIVO</h2>
 												</td>
 												<td class="d-flex justify-content-center">
-													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-success" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Habilitar"></i></button>
+													<button data-bs-toggle="modal" data-bs-target="#modificarEstatusCriterio_<?php echo $c['id_criterio'] . $tipoProfe; ?>" class="btn btn-danger mr-1" value="<?php echo $c['id_criterio']; ?>" name="eliminarprofesor"><i class="fas fa-power-off" title="Deshabilitar"></i></button>
+													<form action="escuela-criterios-eliminar" method="POST">
+														<!-- ID del criterio: n -->
+														<input id="id_criterioId" name="id_criterio" type="hidden" value="<?php echo $c['id_criterio']; ?>">
+
+														<!-- Modalidad-->
+														<input id="modalidadId" name="modalidad" type="hidden" value="<?php echo $modalidad; ?>">
+														<!-- Tipo de profe -->
+														<input id="tipoProfe" name="tipoprofe" type="hidden" value="<?php echo $tipoProfe; ?>">
+
+														<button class="btn btn-secondary" value="<?php echo $c['id_criterio'] . $tipoProfe; ?>" name="eliminarcriterio">
+															<i class="far fa-trash-alt"></i>
+														</button>
+
+													</form>
 												</td>
 											<?php } ?>
 

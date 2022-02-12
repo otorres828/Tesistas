@@ -50,6 +50,7 @@ $router->add('escuela-criterios-experimentales-todos', ['controller' => 'escuela
 $router->add('escuela-criterios-instrumentales-todos', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosInstrumentalesTodos']);
 $router->add('escuela-criterios-modificar-estatus', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosModificarEstatus']);
 $router->add('escuela-criterios-crear', ['controller' => 'escuela\CriteriosController', 'method' => 'crearCriterio']);
+$router->add('escuela-criterios-eliminar', ['controller' => 'escuela\CriteriosController', 'method' => 'eliminarCriterio']);
 // Comites
 $router->add('escuela-comites', ['controller' => 'escuela\ComiteController', 'method' => 'comitesTodos']);
 $router->add('escuela-comites-up', ['controller' => 'escuela\ComiteController', 'method' => 'comitesCargar']);

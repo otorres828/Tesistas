@@ -71,7 +71,51 @@ class Criterios extends ModeloGenerico
         }
         echo "<br><br>$sql<br><br>";
     }
+    public function eliminarCriterio($id_criterio, $modalidad, $tipo)
+    {
+        switch ($modalidad) {
+            case "Experimental":
+                switch ($tipo) {
+                    case "Revisor":
+                        $tabla = "criterios_rev_exp";
+                        $sql = "DELETE FROM $tabla WHERE id_criterio=$id_criterio";
+                        $this->sentenciaObj($sql);                        // echo "<br><br>$sql<br><br>";
+                        break;
+                    case "Tutor":
+                        $tabla = "criterios_tutor_exp";
+                        $sql = "DELETE FROM $tabla WHERE id_criterio=$id_criterio";
+                        $this->sentenciaObj($sql);                        // echo "<br><br>$sql<br><br>";
+                        break;
+                    case "Jurado":
+                        $tabla = "criterios_experimental_jurado";
+                        $sql = "DELETE FROM $tabla WHERE id_criterio=$id_criterio";
+                        $this->sentenciaObj($sql);                        // echo "<br><br>$sql<br><br>";
+                        break;
+                }
+                break;
+            case "Instrumental":
+                switch ($tipo) {
+                    case "Revisor":
+                        $tabla = "criterios_rev_ins";
+                        $sql = "DELETE FROM $tabla WHERE id_criterio=$id_criterio";
+                        $this->sentenciaObj($sql);                        // echo "<br><br>$sql<br><br>";
 
+                        break;
+                    case "Tutor":
+                        $tabla = "criterios_tutor_ins";
+                        $sql = "DELETE FROM $tabla WHERE id_criterio=$id_criterio";
+                        $this->sentenciaObj($sql);                        // echo "<br><br>$sql<br><br>";
+
+                        break;
+                    case "Jurado":
+                        $tabla = "criterios_instrumental_jurado";
+                        $sql = "DELETE FROM $tabla WHERE id_criterio=$id_criterio";
+                        $this->sentenciaObj($sql);                        // echo "<br><br>$sql<br><br>";
+                        break;
+                }
+                break;
+        }
+    }
     //========================================== CRITERIOS EXPERIMENTALES
     public function criteriosRevExp()
     {
