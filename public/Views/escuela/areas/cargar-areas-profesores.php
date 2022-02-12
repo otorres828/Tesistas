@@ -4,10 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela| Areas - Cargar Areas</title>
+	<title>Escuela| Areas - Cargar Profesores</title>
 	<?php
 
-use App\Models\Areas;
+	use App\Models\Areas;
 
 	include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
@@ -17,11 +17,11 @@ use App\Models\Areas;
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed ">
 	<div class="wrapper">
 
-	<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
+		<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 
 		<div class="content-wrapper p-5">
 			<div class="container">
-				<form action="escuela-areas-cargar" method="POST" enctype="multipart/form-data">
+				<form action="escuela-areas-profesores-cargar" method="POST" enctype="multipart/form-data">
 					<input type="file" value="Subir Archivo" name="archivo" required>
 					<button type="submit" name="enviar" class="btn btn-primary">Cargar </button>
 				</form>
@@ -50,33 +50,15 @@ use App\Models\Areas;
 								<?php $rows = 0;
 								while ($datos = fgetcsv($fp, 5000, ";")) {
 									$i++;
-									$id_area = $datos[0];
-									$nombre = $datos[1];
+									$cedula = $datos[0];
+									$id_area = $datos[1];
 
 									$rows++; ?>
 
 									<?php $valor = null;
 									if ($rows > 1) {
-										$slug = str_replace(' ', '-', strtolower(preg_replace('([^A-Za-z0-9 ])', '', trim($nombre))));
-										$resultado = (new Areas())->where('slug', '=', $slug)->getOb();
-										if($resultado){
-											$valor=0;
-										}else{
-											$count= (new Areas())->sentenciaObj("SELECT COUNT (id_area) as id FROM areas");
-											$count=$count['id'];
-											if ($count) {
-												$count=$count+1;
-												$query = "INSERT INTO  areas(id_area,nombre,slug) VALUES($count,'$nombre','$slug')";
-												
-											} else {
-
-												$query = "INSERT INTO  aareas(id_area,nombre,slug) VALUES(1,'$nombre','$slug')";
-											}
-											$valor = (new Areas())->insertarObj($query);
-
-										}
-										
-
+										$query = "INSERT INTO  se_especializan(cedula,id_area) VALUES($cedula,$id_area)";
+										$valor = (new Areas())->insertarObj($query);
 										if ($valor > 0) {
 									?>
 											<tr>
@@ -85,8 +67,8 @@ use App\Models\Areas;
 											<?php } else { ?>
 												<td><?php echo $i; ?></td>
 												<td class="bg-danger">NO SE INSERTO </td>
-											</tr>
-										<?php } ?>
+											
+										<?php } ?></tr>
 								<?php }
 								} ?>
 
