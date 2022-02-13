@@ -101,7 +101,7 @@ class AreasController extends \Core\Controller
 
     public function AsignarEspecializacion(){
         echo $_POST['profesor'];
-        echo "</br>". $_POST['area'];gi
+        echo "</br>". $_POST['area'];
     }
     public function slug($area)
     {
