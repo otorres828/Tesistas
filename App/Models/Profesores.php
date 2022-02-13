@@ -24,7 +24,10 @@ class Profesores extends ModeloGenerico
     // Traer todos los profesores cedulas de losinternos
     public function obtenerInternos()
     {
-        return $this->sentenciaAll("SELECT * FROM internos");
+        return $this->sentenciaAll("SELECT cedula,nombre 
+                                    FROM profesores 
+                                    WHERE tipo='I' 
+                                    ORDER BY(nombre)");
     }
     // Traer todos los profesores tutores
     public function tutores()

@@ -18,19 +18,18 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <section class="content ">
+            <section class="content">
                 <div class="row ">
                     <section class="col-lg-12  p-4">
-                        <div class="container-fluid">
+                        <div class="text-center">
                             <div class="row mb-2">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <h1><strong>Evaluacion del comite</strong></h1>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="card table-responsive p-2 ">
-
+                        <div class=" table-responsive p-2 ">
                             <?php
                             if (isset($_SESSION['mensaje'])) { ?>
                                 <div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
@@ -41,7 +40,7 @@
                                 </div>
                             <?php unset($_SESSION['mensaje']);
                             } ?>
-                            <div class="col col-6 align-self-center">
+                            <div class="col-12 col-xl-6  mx-auto">
                                 <form action="escuela-evaluar-comite" method="POST">
                                     <!-- Numero correlativo : num_c -->
                                     <div class="form-group flex">
@@ -80,7 +79,7 @@
                                         <select class="custom-select" name="cedularevisor" type required>
                                             <option value="" selected>Seleccione una opcion</option>
                                             <?php foreach ($internos as $interno) { ?>
-                                                <option value="<?php echo $interno['cedula']; ?>"><?php echo $interno['cedula']; ?></option>
+                                                <option value="<?php echo $interno['cedula']; ?>">(<?php echo $interno['cedula']; ?>)=><?php echo $interno['nombre']; ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
