@@ -13,4 +13,5 @@ class Comites extends ModeloGenerico
     {
         parent::__construct("comites", Comites::class, $propiedades);
     }
+
 }

@@ -6,9 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Escuela | Areas - Todos las Areas</title>
 	<?php
-
 	use App\Models\Areas;
-
 	include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -26,9 +24,7 @@
 							<div class="col-sm-6">
 								<div class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#asignarespecializacion" data-bs-whatever="@mdo">Asignar Especializacion</div>
 								<a class="btn btn-warning " href="escuela-areas-profesores-cargar">Cargar Especializacion</a>
-
 							</div>
-
 							<div class="col-sm-6">
 								<h1 class="float-sm-right"><strong>Lista de Especializaciones</strong></h1>
 							</div>
@@ -53,7 +49,7 @@
 												<label>Seleccione el Profesor</label></br>
 												<select class="custom-select" name="profesor">
 													<?php foreach ($profes as $p) : ?>
-														<option value="<?php echo $p['cedula'];?>">
+														<option value="<?php echo $p['cedula']; ?>">
 															<?php echo $p['nombre']; ?>
 														</option>
 													<?php endforeach; ?>
@@ -62,7 +58,7 @@
 												<label>Seleccione el Area</label></br>
 												<select class="custom-select mb-3" name="area">
 													<?php foreach ($areas as $a) : ?>
-														<option value="<?php echo $a['id_area'];?>">
+														<option value="<?php echo $a['id_area']; ?>">
 															<?php echo $a['nombre']; ?>
 														</option>
 													<?php endforeach; ?>
@@ -80,7 +76,7 @@
 						</div>
 					</div>
 					<div class="card table-responsive  p-2">
-						<?php
+						<?php 
 						if (isset($_SESSION['mensaje'])) { ?>
 							<div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
 								<?php echo $_SESSION['mensaje']; ?>
@@ -133,7 +129,6 @@
 							</tbody>
 						</table>
 					</div>
-
 				</section>
 			</div>
 		</div>

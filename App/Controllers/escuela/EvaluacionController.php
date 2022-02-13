@@ -32,7 +32,7 @@ class EvaluacionController extends \Core\Controller
     {
         $internos = (new Profesores())->obtenerInternos();
         $comites = (new Comites())->get();
-        $propuestastg = (new PropuestaTG())->get();
+        $propuestastg = (new PropuestaTG())->evaluacionComite();
         View::render('escuela/asignaciones/evaluacion-comite.php', ['internos' => $internos, 'comites' => $comites, 'propuestastg' => $propuestastg]);
     }
     // TODO: Aun nohace una berga

@@ -106,11 +106,25 @@ class AreasController extends \Core\Controller
 
     public function AsignarEspecializacion()
     {
-        echo $_POST['profesor'];
-        echo "</br>". $_POST['area'];
+        if(isset($_POST['nuevaarea'])){       
+            session_start();
+            $resultado=(new Areas())->validarEspecializacionProfesor($_POST['profesor'],$_POST['area']);
+            if($resultado>0){
+                $_SESSION['mensaje'] = "El profesor ya tiene la especializacion agregada";
+                $_SESSION['colorcito'] = "danger";
+            }else{
+                (new Areas())->AsignarEspecializacion($_POST['profesor'],$_POST['area']);
+                $_SESSION['mensaje'] = "Se agrego la especializacion con exito";
+                $_SESSION['colorcito'] = "success";
+            }
+            header('location:escuela-areas-profesores');
+        }else{
+            header('location:error');
+        }
 
-        echo "</br>" . $_POST['area'];
     }
+
+
     public function slug($area)
     {
         return $area = str_replace(' ', '-', strtolower(preg_replace('([^A-Za-z0-9 ])', '', trim($area))));

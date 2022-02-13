@@ -44,4 +44,21 @@ class Areas extends ModeloGenerico
                                     AND a.id_area=se.id_area
                                     GROUP BY(p.cedula,p.nombre)');
     }
+
+    public function validarEspecializacionProfesor($cedula,$idarea){
+        $sql="SELECT * FROM se_especializan  
+                        WHERE cedula=$cedula
+                        AND id_area=$idarea";
+        $resultado= $this->sentenciaObj($sql);
+        if($resultado){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public function AsignarEspecializacion($cedula,$idarea){
+        $sql="INSERT INTO se_especializan (cedula,id_area) VALUES($cedula,$idarea)";
+        $this->insertarObj($sql);
+    }
 }
