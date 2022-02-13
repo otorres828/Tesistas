@@ -242,17 +242,33 @@
                       </ul>
                   </li>
 
-
-
                   <li class="nav-header">Propuestas de TG</li>
-                  <li class="nav-item">
-                      <a href="escuela-propuestastg" class="nav-link">
-                          <i class="nav-icon fab fa-buffer"></i>
+                  <li class="nav-item ">
+                      <a href="#" class="nav-link ">
+                          <i class="fas fa-book"></i>
                           <p>
-                              Todas
+                              PropuestasTG
+                              <i class="fas fa-angle-left right"></i>
                           </p>
                       </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                              <a href="escuela-propuestastg" class="nav-link">
+                                  <i class="nav-icon fab fa-buffer"></i>
+                                  <p>
+                                      Todas
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="#" class="nav-link">
+                                  <i class="nav-icon fab fa-buffer"></i>
+                                  <p>Trabjos de Grado</p>
+                              </a>
+                          </li>
+                      </ul>
                   </li>
+
                   <li class="nav-header">Extras</li>
 
                   <li class="nav-item ">

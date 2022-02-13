@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Escuela| Panel de Control</title>
+  <title>Escuela | Panel de Control</title>
   <?php
 
   use App\Models\PropuestaTG;
