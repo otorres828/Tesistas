@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Profesores| Todos los profesores </title>
+	<title>Profesores | Todos los profesores </title>
 	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -14,7 +14,6 @@
 	<div class="wrapper">
 
 	<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
-
 
 		<!-- Content Wrapper. Contains page content -->
 		<div class="content-wrapper">

@@ -7,6 +7,7 @@
     <title>Escuela | Profesor - Informacion</title>
     <?php
 
+    use App\Models\Areas;
     use App\Models\PropuestaTG;
 
     include_once('../public/Views/componentes/cssadminlte.php'); ?>
@@ -16,7 +17,7 @@
 
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed ">
     <div class="wrapper">
-    <?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
+        <?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
         <div class="content-wrapper">
             <div class="content-header">
                 <div class="container-fluid">
@@ -93,31 +94,44 @@
                             <div class="row">
                                 <div class="col-12 mb-4">
                                     <div class="card shadow border-0 text-center p-0">
-                                        <div class="card-body pb-5">
+                                        <div class="card-body pb-2">
                                             <img src="../../dist/img/avatar.png" class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
                                             <h4 class="h3">
                                                 <?php echo $profesor['nombre']; ?>
                                             </h4>
-                                            <h5 class="fw-normal">Profesor</h5>
+                                            <h5 class="fw-normal">Profesor Especializado en:</h5>
+                                            <div class="text-center mb-2">
+                                                <?php
+                                                $cedula = $profesor['cedula'];
+                                                $sql = "SELECT a.nombre FROM se_especializan AS se, profesores AS p,areas AS a
+												WHERE p.cedula=se.cedula
+												AND a.id_area=se.id_area
+												AND p.cedula=$cedula";
+                                                $areas = (new Areas())->sentenciaAll($sql);
+                                                ?>
+
+                                                <?php foreach ($areas as $area) : ?>
+                                                    <?php echo $area['nombre']; ?></br>
+                                                <?php endforeach; ?>
+                                            </div>
                                             <p class="text-gray">Ucab Guayana</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <?php include_once('../public/Views/componentes/modificarPerfilProfesorEscuela .php'); ?>
+
                         </div>
-
-                        <?php include_once('../public/Views/componentes/modificarPerfilProfesorEscuela .php'); ?>
-
                     </div>
                 </div>
-            </div>
 
+
+            </div>
 
         </div>
 
-    </div>
-
-    <?php include_once('../public/Views/componentes/footer.php'); ?>
+        <?php include_once('../public/Views/componentes/footer.php'); ?>
 
     </div>
     <?php include_once('../public/Views/componentes/adminlte.php'); ?>
