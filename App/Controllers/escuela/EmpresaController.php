@@ -68,8 +68,8 @@ class EmpresaController extends \Core\Controller
         if (isset($_POST['eliminarempresa'])) {
             session_start();
             (new Empresas())->eliminar($_POST['eliminarempresa']);
-            $_SESSION['mensaje'] = "Se elimino el area con exito";
-            $_SESSION['colorcito'] = "sucess";
+            $_SESSION['mensaje'] = "Se elimino la empresa con exito";
+            $_SESSION['colorcito'] = "success";
             header('location:escuela-empresas');
         } else {
             header('location:error');
