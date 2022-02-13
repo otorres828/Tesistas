@@ -62,14 +62,14 @@ class EmpresaController extends \Core\Controller
         }
     }
 
-    public function eliminarArea()
+    public function eliminar()
     {
-        if (isset($_POST['eliminararea'])) {
+        if (isset($_POST['eliminarempresa'])) {
             session_start();
-            (new Empresas())->eliminarArea($_POST['eliminararea']);
+            (new Empresas())->eliminar($_POST['eliminarempresa']);
             $_SESSION['mensaje'] = "Se elimino el area con exito";
-            $_SESSION['colorcito'] = "warning";
-            header('location:escuela-areas');
+            $_SESSION['colorcito'] = "sucess";
+            header('location:escuela-empresas');
         } else {
             header('location:error');
         }

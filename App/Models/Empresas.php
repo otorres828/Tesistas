@@ -25,9 +25,9 @@ class Empresas extends ModeloGenerico
                                     WHERE slug='$sluganterior'");
     }
 
-    public function eliminarArea($id)
+    public function eliminar($slug)
     {
-        return $this->sentenciaObj("DELETE FROM areas WHERE id_area=$id");
+        return $this->sentenciaObj("DELETE FROM empresas WHERE slug='$slug'");
     }
 
     public function especializacion_profesores(){

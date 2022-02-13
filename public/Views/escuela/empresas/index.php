@@ -86,8 +86,8 @@
 										<td><?php echo $empresa['nombre']; ?></td>
 										<td class="d-flex">
 											<a class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#<?php echo $empresa['nombre']; ?>" data-bs-whatever="@mdo"><i class="far fa-edit"></i></a>
-											<form action="escuela-empresa-eliminar" method="POST">
-												<button class="btn btn-danger" value="<?php echo $empresa['nombre']; ?>" name="eliminarempresa"><i class="far fa-trash-alt"></i></button>
+											<form action="escuela-empresas-eliminar" method="POST">
+												<button class="btn btn-danger" value="<?php echo $empresa['slug']; ?>" name="eliminarempresa"><i class="far fa-trash-alt"></i></button>
 											</form>
 										</td>
 									</tr>
