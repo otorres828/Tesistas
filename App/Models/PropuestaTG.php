@@ -167,4 +167,5 @@ class PropuestaTG extends ModeloGenerico
     WHERE id_comite is null";
     return $this->sentenciaAll($sql);
   }
+  
 }
