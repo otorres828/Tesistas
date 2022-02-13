@@ -16,13 +16,13 @@ class Areas extends ModeloGenerico
     public function crearArea($nombre, $slug)
     {
         
-        $count= $this->sentenciaObj("SELECT COUNT (id_area) as id FROM areas");
+        $count= $this->sentenciaObj("SELECT MAX (id_area) as id FROM areas");
         $count=$count['id'];
         if ($count) {
             $count=$count+1;
-            $this->sentenciaObj("INSERT INTO areas(id_area,nombre,slug) VALUES($count,'$nombre','$slug')");
+            $this->insertarObj("INSERT INTO areas(id_area,nombre,slug) VALUES($count,'$nombre','$slug')");
         } else {
-            $this->sentenciaObj("INSERT INTO areas VALUES(1,'$nombre','$slug'");
+            $this->insertarObj("INSERT INTO areas VALUES(1,'$nombre','$slug')");
         }
     }
     

@@ -127,7 +127,6 @@ class Crud {
         }  
     }
     public function sentenciaObj($obj){
-        
         try {
             $query = $this->conexion->prepare($obj);
             $query->execute();
