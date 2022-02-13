@@ -67,7 +67,8 @@ $router->add('escuela-consejos', ['controller' => 'escuela\ConsejoController', '
 $router->add('escuela-consejos-cargar', ['controller' => 'escuela\ConsejoController', 'method' => 'cargarconsejo']);
 // propuestastg
 $router->add('escuela-propuestastg', ['controller' => 'escuela\EscuelaController', 'method' => 'propuestastgTodas']);
-// Areas
+
+// AREAS
 $router->add('escuela-areas', ['controller' => 'escuela\AreasController', 'method' => 'todasAreas']);
 $router->add('escuela-areas-crear', ['controller' => 'escuela\AreasController', 'method' => 'crearArea']);
 $router->add('escuela-areas-modificar', ['controller' => 'escuela\AreasController', 'method' => 'modificarArea']);
@@ -76,5 +77,12 @@ $router->add('escuela-areas-cargar', ['controller' => 'escuela\AreasController',
 $router->add('escuela-areas-profesores', ['controller' => 'escuela\AreasController', 'method' => 'especializacion']);
 $router->add('escuela-areas-profesores-cargar', ['controller' => 'escuela\AreasController', 'method' => 'Cargarespecializacion']);
 $router->add('escuela-areas-profesores-eliminar', ['controller' => 'escuela\AreasController', 'method' => 'eliminarespecializacion']);
+
+// EMPRESAS
+$router->add('escuela-empresas', ['controller' => 'escuela\EmpresaController', 'method' => 'index']);
+$router->add('escuela-empresas-crear', ['controller' => 'escuela\EmpresaController', 'method' => 'crear']);
+$router->add('escuela-empresas-modificar', ['controller' => 'escuela\EmpresaController', 'method' => 'modificarArea']);
+$router->add('escuela-empresas-eliminar', ['controller' => 'escuela\EmpresaController', 'method' => 'eliminarArea']);
+$router->add('escuela-empresas-cargar', ['controller' => 'escuela\EmpresaController', 'method' => 'cargarArea']);
 
 $router->dispatch($_SERVER['QUERY_STRING']);

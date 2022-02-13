@@ -293,7 +293,7 @@
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="escuela-areas-empresas" class="nav-link">
+                              <a href="escuela-empresas" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
                                   <p>Empresas</p>
                               </a>
