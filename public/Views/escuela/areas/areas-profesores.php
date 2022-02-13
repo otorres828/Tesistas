@@ -83,7 +83,7 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-						<?php unset($_SESSION['mensaje']);
+						<?php unset($_SESSION['mensaje']); unset($_SESSION['colorcito']);
 						endif; ?>
 						<table class="card-body table table-flush" id="example">
 							<thead class="thead-light">
@@ -119,7 +119,7 @@
 
 										</td>
 									</tr>
-									<!-- MODAL ELIMINAR AREA -->
+									<!-- MODAL ELIMINAR AREA DEL PROFESOR -->
 									<div class="modal fade" id="eliminar<?php echo $cedula;?>" tabindex="-1" aria-labelledby="eliminar<?php echo $cedula;?>" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">

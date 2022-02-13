@@ -126,36 +126,7 @@ class AreasController extends \Core\Controller
         View::render('escuela/areas/cargar-areas-profesores.php');
     }
 
-    public function AsignarEspecializacion()
-    {
 
-        if (isset($_POST['nuevaarea'])) {
-            session_start();
-            $resultado = (new Areas())->validarEspecializacionProfesor($_POST['profesor'], $_POST['area']);
-            if ($resultado > 0) {
-                $_SESSION['mensaje'] = "El profesor ya tiene la especializacion agregada";
-                $_SESSION['colorcito'] = "danger";
-            } else {
-                (new Areas())->AsignarEspecializacion($_POST['profesor'], $_POST['area']);
-                $_SESSION['mensaje'] = "Se agrego la especializacion con exito";
-                $_SESSION['colorcito'] = "success";
-            }
-        } else {
-            header('location:error');
-        }
-    }
-
-    public function eliminarespecializacion()
-    {
-        if (isset($_POST['eliminarEspecializacion'])) {
-            (new Areas())->eliminar_Especializacion_Profesor($_POST['ced'], $_POST['areaaeliminar']);
-            $_SESSION['mensaje'] = "Se elimino la especializacion con exito";
-            $_SESSION['colorcito'] = "success";
-            header('location:escuela-areas-profesores');
-        } else {
-            header('location:error');
-        }
-    }
     public function slug($area)
     {
         return $area = str_replace(' ', '-', strtolower(preg_replace('([^A-Za-z0-9 ])', '', trim($area))));
@@ -168,3 +139,35 @@ class AreasController extends \Core\Controller
         $autenticacion->rol('Escuela');
     }
 }
+
+
+    // public function AsignarEspecializacion()
+    // {
+
+    //     if (isset($_POST['nuevaarea'])) {
+    //         session_start();
+    //         $resultado = (new Areas())->validarEspecializacionProfesor($_POST['profesor'], $_POST['area']);
+    //         if ($resultado > 0) {
+    //             $_SESSION['mensaje'] = "El profesor ya tiene la especializacion agregada";
+    //             $_SESSION['colorcito'] = "danger";
+    //         } else {
+    //             (new Areas())->AsignarEspecializacion($_POST['profesor'], $_POST['area']);
+    //             $_SESSION['mensaje'] = "Se agrego la especializacion con exito";
+    //             $_SESSION['colorcito'] = "success";
+    //         }
+    //     } else {
+    //         header('location:error');
+    //     }
+    // }
+
+    // public function eliminarespecializacion()
+    // {
+    //     if (isset($_POST['eliminarEspecializacion'])) {
+    //         (new Areas())->eliminar_Especializacion_Profesor($_POST['ced'], $_POST['areaaeliminar']);
+    //         $_SESSION['mensaje'] = "Se elimino la especializacion con exito";
+    //         $_SESSION['colorcito'] = "success";
+    //         header('location:escuela-areas-profesores');
+    //     } else {
+    //         header('location:error');
+    //     }
+    // }
