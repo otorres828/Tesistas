@@ -16,92 +16,100 @@ class AreasController extends \Core\Controller
         View::render('escuela/areas/areas-todos.php', ['areas' => $areas]);
     }
 
-    public function crearArea(){
-        if(isset($_POST['nuevaarea'])){
-            if(isset($_POST['nombrearea'])){
+    public function crearArea()
+    {
+        if (isset($_POST['nuevaarea'])) {
+            if (isset($_POST['nombrearea'])) {
                 session_start();
-                $slug=$this->slug($_POST['nombrearea']);
+                $slug = $this->slug($_POST['nombrearea']);
                 $resultado = (new Areas())->where('slug', '=', $slug)->getOb();
                 if ($resultado > 0) {
                     $_SESSION['mensaje'] = "El Area ya existe";
                     $_SESSION['colorcito'] = "danger";
                 } else {
-                    (new Areas())->crearArea($_POST['nombrearea'],$slug);
+                    (new Areas())->crearArea($_POST['nombrearea'], $slug);
                     $_SESSION['mensaje'] = "Se creo el area con exito";
                     $_SESSION['colorcito'] = "success";
-                    
                 }
 
                 header('location:escuela-areas');
-            }else{
+            } else {
                 header('location:error');
             }
-        }else{
+        } else {
             header('location:error');
         }
     }
 
     public function modificarArea()
     {
-        if(isset($_POST['modificararea'])){
-            if(isset($_POST['nuevonombre'])){
+        if (isset($_POST['modificararea'])) {
+            if (isset($_POST['nuevonombre'])) {
                 session_start();
-                $slug=$this->slug($_POST['nuevonombre']);
+                $slug = $this->slug($_POST['nuevonombre']);
                 $resultado = (new Areas())->where('slug', '=', $slug)->getOb();
                 if ($resultado > 0) {
                     $_SESSION['mensaje'] = "El Area ya existe";
                     $_SESSION['colorcito'] = "danger";
                 } else {
-                    (new Areas())->modificarArea($_POST['nuevonombre'],$slug,$_POST['idarea']);
+                    (new Areas())->modificarArea($_POST['nuevonombre'], $slug, $_POST['idarea']);
                     $_SESSION['mensaje'] = "Se modifico el area con exito";
                     $_SESSION['colorcito'] = "success";
-                    
                 }
                 header('location:escuela-areas');
-            }else{
+            } else {
                 header('location:error');
             }
-        }else{
+        } else {
             header('location:error');
         }
     }
 
-    public function eliminarArea(){
-        if(isset($_POST['eliminararea'])){
+    public function eliminarArea()
+    {
+        if (isset($_POST['eliminararea'])) {
             session_start();
             (new Areas())->eliminarArea($_POST['eliminararea']);
             $_SESSION['mensaje'] = "Se elimino el area con exito";
             $_SESSION['colorcito'] = "warning";
             header('location:escuela-areas');
-        }else{
+        } else {
             header('location:error');
         }
     }
 
-    public function cargarArea(){
-        
+    public function cargarArea()
+    {
+
         $this->autenticar();
         View::render('escuela/areas/cargar-areas.php');
     }
     //ESPECIALIZACIONES
 
-    public function especializacion(){
-        $profesores=(new Areas())->especializacion_profesores();
-        $profes=(new Profesores())->sentenciaAll("SELECT cedula,nombre FROM profesores");
-        $areas=(new Areas())->get();
-        View::render('escuela/areas/areas-profesores.php', ['profesores' => $profesores,
-                                                            'areas'=>$areas,
-                                                            'profes'=>$profes]);
-    }
- 
-    public function Cargarespecializacion(){
-        $this->autenticar();
-        View::render('escuela/areas/cargar-areas-profesores.php'); 
+    public function especializacion()
+    {
+        $profesores = (new Areas())->especializacion_profesores();
+        $profes = (new Profesores())->sentenciaAll("SELECT cedula,nombre FROM profesores");
+        $areas = (new Areas())->get();
+        View::render('escuela/areas/areas-profesores.php', [
+            'profesores' => $profesores,
+            'areas' => $areas,
+            'profes' => $profes
+        ]);
     }
 
-    public function AsignarEspecializacion(){
+    public function Cargarespecializacion()
+    {
+        $this->autenticar();
+        View::render('escuela/areas/cargar-areas-profesores.php');
+    }
+
+    public function AsignarEspecializacion()
+    {
         echo $_POST['profesor'];
         echo "</br>". $_POST['area'];
+
+        echo "</br>" . $_POST['area'];
     }
     public function slug($area)
     {

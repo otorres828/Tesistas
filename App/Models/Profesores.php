@@ -21,6 +21,11 @@ class Profesores extends ModeloGenerico
         return $this->sentenciaAll("SELECT * FROM usuarios AS us INNER JOIN roles_usuarios as ru ON ru.id_rol=2 AND ru.id_usuario = us.id_usuario
         ");
     }
+    // Traer todos los profesores cedulas de losinternos
+    public function obtenerInternos()
+    {
+        return $this->sentenciaAll("SELECT * FROM internos");
+    }
     // Traer todos los profesores tutores
     public function tutores()
     {
@@ -35,35 +40,39 @@ class Profesores extends ModeloGenerico
     }
     //CREAR PROFESOR
 
-    public function validarcedula($cedula){
-        $resultado=$this->sentenciaObj("SELECT cedula FROM profesores WHERE cedula=$cedula");
-        if($resultado){
+    public function validarcedula($cedula)
+    {
+        $resultado = $this->sentenciaObj("SELECT cedula FROM profesores WHERE cedula=$cedula");
+        if ($resultado) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
 
-    public function validarcorreoparticular($correoparticular){
-        $resultado=$this->sentenciaObj("SELECT correoparticular FROM profesores WHERE correoparticular='$correoparticular'");
-        if($resultado){
+    public function validarcorreoparticular($correoparticular)
+    {
+        $resultado = $this->sentenciaObj("SELECT correoparticular FROM profesores WHERE correoparticular='$correoparticular'");
+        if ($resultado) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
 
-    public function validartelefono($telefono){
-        $resultado=$this->sentenciaObj("SELECT telefono FROM profesores WHERE telefono='$telefono'");
-        if($resultado){
+    public function validartelefono($telefono)
+    {
+        $resultado = $this->sentenciaObj("SELECT telefono FROM profesores WHERE telefono='$telefono'");
+        if ($resultado) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
 
 
-    public function insertarprofesor($cedula,$nombre,$direccion,$correoparticular,$telefono,$tipo){
+    public function insertarprofesor($cedula, $nombre, $direccion, $correoparticular, $telefono, $tipo)
+    {
         $query = "INSERT INTO  profesores (cedula,nombre,direccion,correoparticular,telefono,tipo) VALUES($cedula,'$nombre','$direccion','$correoparticular','$telefono','$tipo')";
         $contraseña = password_hash($cedula, PASSWORD_BCRYPT);
         $sql = "INSERT INTO  usuarios (cedula,nombre_usuario,correo,contraseña,modelo,codigo) VALUES($cedula,'$nombre','$correoparticular','$contraseña','Profesores','$contraseña')";
@@ -71,60 +80,65 @@ class Profesores extends ModeloGenerico
         $this->insertarObj($sql);
     }
 
-    public function validarEliminarRevisor($cedula){
+    public function validarEliminarRevisor($cedula)
+    {
         $query = "SELECT COUNT (cedula_revisor) AS CEDULA 
                     FROM propuestatg 
                     WHERE cedula_revisor=$cedula
                     GROUP BY(cedula_revisor)";
-        $resultado= $this->sentenciaObj($query);
-        if($resultado){
+        $resultado = $this->sentenciaObj($query);
+        if ($resultado) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
 
-    public function validarEliminarTutorA($cedula){
+    public function validarEliminarTutorA($cedula)
+    {
         $query = "SELECT COUNT (cedula_tutor) AS CEDULA 
                     FROM propuestatg 
                     WHERE cedula_tutor=$cedula
                     GROUP BY(cedula_tutor)";
-        $resultado= $this->sentenciaObj($query);
-        if($resultado){
+        $resultado = $this->sentenciaObj($query);
+        if ($resultado) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
 
-    public function validarEliminarJuradoE($cedula){
+    public function validarEliminarJuradoE($cedula)
+    {
         $query = "SELECT COUNT (cedula) AS CEDULA 
                     FROM es_jurado_experimental 
                     WHERE cedula=$cedula
                     GROUP BY(cedula)";
-        $resultado= $this->sentenciaObj($query);
-        if($resultado){
+        $resultado = $this->sentenciaObj($query);
+        if ($resultado) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
 
-    public function validarEliminarJuradoI($cedula){
+    public function validarEliminarJuradoI($cedula)
+    {
         $query = "SELECT COUNT (cedula) AS CEDULA 
                     FROM es_jurado_instrumental
                     WHERE cedula=$cedula
                     GROUP BY(cedula)";
-        $resultado= $this->sentenciaObj($query);
-        if($resultado){
+        $resultado = $this->sentenciaObj($query);
+        if ($resultado) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
 
 
-    public function eliminarProfesor($cedula){
+    public function eliminarProfesor($cedula)
+    {
         $this->sentenciaObj("DELETE FROM profesores WHERE cedula=$cedula");
         $this->sentenciaObj("DELETE FROM usuarios WHERE cedula=$cedula");
     }

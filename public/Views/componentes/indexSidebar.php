@@ -204,55 +204,45 @@
                       </ul>
                   </li>
 
-                  <li class="nav-header">Criterios</li>
 
+                  <li class="nav-header">Asignaciones </li>
                   <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="nav-icon fas fa-search"></i>
+                      <a href="escuela-evaluacion-comite" class="nav-link">
+                          <i class="nav-icon  fas fa-search"></i>
                           <p>
-                              Experimental
-                              <i class="fas fa-angle-left right"></i>
+                              Evaluacion comite
                           </p>
                       </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="pages/search/simple.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Todos</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="pages/search/enhanced.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Cargar Experimental</p>
-                              </a>
-                          </li>
-                      </ul>
                   </li>
-
                   <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="nav-icon fas fa-search"></i>
+                      <a href="escuela-evaluacion-consejo" class="nav-link">
+                          <i class="nav-icon  fas fa-search"></i>
                           <p>
-                              Instrumental
-                              <i class="fas fa-angle-left right"></i>
+                              Evaluacion consejo
                           </p>
                       </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="pages/search/simple.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Todos</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="pages/search/enhanced.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Cargar Instrumental</p>
-                              </a>
-                          </li>
-                      </ul>
                   </li>
+
+
+
+                  <li class="nav-header">Criterios </li>
+                  <li class="nav-item">
+                      <a href="escuela-criterios-experimentales-todos" class="nav-link">
+                          <i class="nav-icon  fas fa-search"></i>
+                          <p>
+                              Experimentales
+                          </p>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="escuela-criterios-instrumentales-todos" class="nav-link">
+                          <i class="nav-icon  fas fa-search"></i>
+                          <p>
+                              Instrumentales
+                          </p>
+                      </a>
+                  </li>
+
 
                   <li class="nav-header">Propuestas de TG</li>
                   <li class="nav-item">

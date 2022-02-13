@@ -21,8 +21,8 @@ $router->add('tesista-perfil-modificarCodigo', ['controller' => 'tesistas\Tesist
 $router->add('tesista-perfil-modificarCorreo', ['controller' => 'tesistas\TesistasController', 'method' => 'modificarCorreo']);
 $router->add('tesista-perfil-modificarClave', ['controller' => 'tesistas\TesistasController', 'method' => 'modificarClave']);
 $router->add('tesistas-guardar-propuesta', ['controller' => 'tesistas\TesistasController', 'method' => 'guardarpropuesta']);
-$router->add('tesista-propuestas-aprobadas',['controller' => 'tesistas\TesistasController','method'=>'mispropuestasaprobadas']);
-$router->add('propuestas-aprobadas-imprimir',['controller' => 'tesistas\TesistasController','method'=>'reporte']);
+$router->add('tesista-propuestas-aprobadas', ['controller' => 'tesistas\TesistasController', 'method' => 'mispropuestasaprobadas']);
+$router->add('propuestas-aprobadas-imprimir', ['controller' => 'tesistas\TesistasController', 'method' => 'reporte']);
 
 
 //=====================================PROFESORES
@@ -32,11 +32,12 @@ $router->add('profesor-perfil', ['controller' => 'profesores\ProfesorController'
 
 //=====================================ESCUELA
 $router->add('escuela', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);
-
+// Tesistas
 $router->add('escuela-tesistas', ['controller' => 'escuela\TesistaController', 'method' => 'tesistasTodos']);
 $router->add('escuela-tesistas-cargar', ['controller' => 'escuela\TesistaController', 'method' => 'tesistasCargar']);
 $router->add('escuela-tesistas-crear', ['controller' => 'escuela\TesistaController', 'method' => 'crearTesista']);
 $router->add('escuela-tesistas-eliminar', ['controller' => 'escuela\TesistaController', 'method' => 'eliminarTesista']);
+// Profesores
 $router->add('escuela-tesistas-mostrar-tesista', ['controller' => 'escuela\TesistaController', 'method' => 'mostrarTesista']);
 
 $router->add('escuela-profesores', ['controller' => 'escuela\ProfesorController', 'method' => 'index']);
@@ -47,16 +48,26 @@ $router->add('escuela-profesores-cargar', ['controller' => 'escuela\ProfesorCont
 $router->add('escuela-profesores-crear', ['controller' => 'escuela\ProfesorController', 'method' => 'crearProfesor']);
 $router->add('escuela-profesores-eliminar', ['controller' => 'escuela\ProfesorController', 'method' => 'eliminarProfesor']);
 $router->add('escuela-profesores-mostrar-profesor', ['controller' => 'escuela\ProfesorController', 'method' => 'mostrarPerfilProfesor']);
+// Asignaciones / evaluaciones
+$router->add('escuela-evaluacion-comite', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluacionComite']);
+$router->add('escuela-evaluar-comite', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluarComite']);
+$router->add('escuela-evaluacion-consejo', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluacionConsejo']);
 
-
+// Criterios
+$router->add('escuela-criterios-experimentales-todos', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosExperimentalesTodos']);
+$router->add('escuela-criterios-instrumentales-todos', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosInstrumentalesTodos']);
+$router->add('escuela-criterios-modificar-estatus', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosModificarEstatus']);
+$router->add('escuela-criterios-crear', ['controller' => 'escuela\CriteriosController', 'method' => 'crearCriterio']);
+$router->add('escuela-criterios-eliminar', ['controller' => 'escuela\CriteriosController', 'method' => 'eliminarCriterio']);
+// Comites
 $router->add('escuela-comites', ['controller' => 'escuela\ComiteController', 'method' => 'comitesTodos']);
 $router->add('escuela-comites-up', ['controller' => 'escuela\ComiteController', 'method' => 'comitesCargar']);
-
+// Consejo
 $router->add('escuela-consejos', ['controller' => 'escuela\ConsejoController', 'method' => 'index']);
 $router->add('escuela-consejos-cargar', ['controller' => 'escuela\ConsejoController', 'method' => 'cargarconsejo']);
-
+// propuestastg
 $router->add('escuela-propuestastg', ['controller' => 'escuela\EscuelaController', 'method' => 'propuestastgTodas']);
-
+// Areas
 $router->add('escuela-areas', ['controller' => 'escuela\AreasController', 'method' => 'todasAreas']);
 $router->add('escuela-areas-crear', ['controller' => 'escuela\AreasController', 'method' => 'crearArea']);
 $router->add('escuela-areas-modificar', ['controller' => 'escuela\AreasController', 'method' => 'modificarArea']);
