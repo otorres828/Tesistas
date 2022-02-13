@@ -58,7 +58,10 @@ class Areas extends ModeloGenerico
     }
 
     public function AsignarEspecializacion($cedula,$idarea){
-        $sql="INSERT INTO se_especializan (cedula,id_area) VALUES($cedula,$idarea)";
-        $this->insertarObj($sql);
+        $this->insertarObj("INSERT INTO se_especializan (cedula,id_area) VALUES($cedula,$idarea)");
+    }
+    
+    public function eliminar_Especializacion_Profesor($cedula,$idarea){
+        return $this->sentenciaObj("DELETE FROM se_especializan WHERE cedula=$cedula AND id_area=$idarea");
     }
 }

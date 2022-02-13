@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Escuela | Areas - Todos las Areas</title>
+	<title>Escuela | Profesores y sus Areas</title>
 	<?php
 
 	use App\Models\Areas;
@@ -16,7 +16,6 @@
 
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed ">
 	<div class="wrapper">
-
 		<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 		<div class="content-wrapper">
 			<div class="row">
@@ -41,13 +40,11 @@
 									<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
-
 								</div>
-
 								<div class="modal-body">
 									<div class="card">
 										<div class="card-body">
-											<form action="escuela-areas-profesores-asignar" method="POST" enctype="multipart/form-data">
+											<form action="escuela-areas-profesores" method="POST" enctype="multipart/form-data">
 												<label>Seleccione el Profesor</label></br>
 												<select class="custom-select" name="profesor">
 													<?php foreach ($profes as $p) : ?>
@@ -77,10 +74,9 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="card table-responsive  p-2">
-						<?php
-						if (isset($_SESSION['mensaje'])) { ?>
+						<?php if (isset($_SESSION['mensaje'])) : ?>
 							<div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
 								<?php echo $_SESSION['mensaje']; ?>
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -88,7 +84,7 @@
 								</button>
 							</div>
 						<?php unset($_SESSION['mensaje']);
-						} ?>
+						endif; ?>
 						<table class="card-body table table-flush" id="example">
 							<thead class="thead-light">
 								<tr>
@@ -99,7 +95,6 @@
 								</tr>
 							</thead>
 							<tbody>
-
 								<?php foreach ($profesores as $profesor) : ?>
 									<tr>
 										<td><?php echo $profesor['cedula']; ?></td>
@@ -120,13 +115,52 @@
 											</ul>
 										</td>
 										<td class="d-flex">
-											<a class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#edit<?php echo $profesor['cedula']; ?>" data-bs-whatever="@mdo"><i class="far fa-edit"></i></a>
-											<form action="escuela-areas-eliminar" method="POST">
-												<button class="btn btn-danger" value="<?php echo $profesor['cedula']; ?>" name="eliminararea"><i class="far fa-trash-alt"></i></button>
-											</form>
+											<a class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#eliminar<?php echo $cedula ?>" data-bs-whatever="@mdo"><i class="far fa-trash-alt"></i></a>
+
 										</td>
 									</tr>
-
+									<!-- MODAL ELIMINAR AREA -->
+									<div class="modal fade" id="eliminar<?php echo $cedula;?>" tabindex="-1" aria-labelledby="eliminar<?php echo $cedula;?>" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" >Eliminar Especializacion</h5>
+													<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<div class="card">
+														<div class="card-body">
+															<?php 
+															
+															$sql = "SELECT a.id_area,a.nombre FROM se_especializan AS se, profesores AS p,areas AS a
+																WHERE p.cedula=se.cedula
+																AND a.id_area=se.id_area
+																AND p.cedula=$cedula";
+															$areas = (new Areas())->sentenciaAll($sql);
+															?>
+															<form action="escuela-areas-profesores" method="POST" enctype="multipart/form-data">
+																<label>Seleccione el Area a Eliminar</label></br>
+																<input hidden value=<?php echo $cedula?> name="ced">
+																<select class="custom-select" name="areaaeliminar">
+																	<?php foreach ($areas as $p) : ?>
+																		<option value="<?php echo $p['id_area']; ?>">
+																			<?php echo $p['nombre']; ?>
+																		</option>
+																	<?php endforeach; ?>
+																</select>
+																<div class="d-flex justify-content-end align-items-baseline">
+																	<button name="eliminarEspecializacion" type="submit" class="btn btn-success mt-4" required>Eliminar</button>
+																	<button type="button" class="ml-1 btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								<?php endforeach; ?>
 
 							</tbody>
