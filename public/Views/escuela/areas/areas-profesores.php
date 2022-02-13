@@ -6,7 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Escuela | Areas - Todos las Areas</title>
 	<?php
+
 	use App\Models\Areas;
+
 	include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
@@ -18,7 +20,7 @@
 		<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 		<div class="content-wrapper">
 			<div class="row">
-				<section class="col-lg-12 connectedSortable p-4">
+				<section class="col-lg-12  p-4">
 					<div class="container-fluid">
 						<div class="row mb-2">
 							<div class="col-sm-6">
@@ -75,8 +77,9 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="card table-responsive  p-2">
-						<?php 
+						<?php
 						if (isset($_SESSION['mensaje'])) { ?>
 							<div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
 								<?php echo $_SESSION['mensaje']; ?>

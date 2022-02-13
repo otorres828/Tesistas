@@ -12,11 +12,10 @@
 
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed ">
 	<div class="wrapper">
-
 		<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 		<div class="content-wrapper">
 			<div class="row">
-				<section class="col-lg-12 connectedSortable p-4">
+				<section class="col-lg-12  p-4">
 					<div class="container-fluid">
 						<div class="row mb-2">
 							<div class="col-sm-6">
@@ -73,9 +72,7 @@
 							</div>
 						<?php unset($_SESSION['mensaje']);
 						} ?>
-
 						<table class="card-body table table-flush" id="example">
-
 							<thead class="thead-light">
 								<tr>
 									<th>Nº</th>
@@ -84,7 +81,6 @@
 								</tr>
 							</thead>
 							<tbody>
-
 								<?php foreach ($areas as $area) : ?>
 									<tr>
 										<td><?php echo $area['id_area']; ?></td>
