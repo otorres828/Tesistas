@@ -88,6 +88,7 @@ class AreasController extends \Core\Controller
 
     public function especializacion()
     {
+       
         if (isset($_POST['eliminarEspecializacion'])) {
             session_start();
             (new Areas())->eliminar_Especializacion_Profesor($_POST['ced'], $_POST['areaaeliminar']);

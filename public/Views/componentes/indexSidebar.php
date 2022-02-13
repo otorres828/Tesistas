@@ -49,7 +49,6 @@
           <img src="../../dist/img/ucablogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
           <span class="brand-text font-weight-light">UCABG</span>
       </a>
-
       <!-- Sidebar -->
       <div class="sidebar">
           <!-- Sidebar user panel (optional) -->
@@ -61,8 +60,6 @@
                   <a href="#" class="d-block">Escuela</a>
               </div>
           </div>
-
-
 
           <!-- Sidebar Menu -->
           <nav class="mt-2">
@@ -176,6 +173,12 @@
                                           <p>Cargar Consejo</p>
                                       </a>
                                   </li>
+                                  <li class="nav-item">
+                                      <a href="escuela-evaluacion-consejo" class="nav-link">
+                                          <i class="far fa-dot-circle nav-icon"></i>
+                                          <p>Evaluacion Consejos</p>
+                                      </a>
+                                  </li>
                               </ul>
                           </li>
                           <li class="nav-item">
@@ -199,49 +202,46 @@
                                           <p>Cargar Comite</p>
                                       </a>
                                   </li>
+                                  <li class="nav-item">
+                                      <a href="escuela-evaluacion-comite" class="nav-link ">
+                                          <i class="far fa-dot-circle nav-icon"></i>
+                                          <p>Evaluacion Comite</p>
+                                      </a>
+                                  </li>
                               </ul>
                           </li>
                       </ul>
                   </li>
 
-
-                  <li class="nav-header">Asignaciones </li>
-                  <li class="nav-item">
-                      <a href="escuela-evaluacion-comite" class="nav-link">
-                          <i class="nav-icon  fas fa-search"></i>
-                          <p>
-                              Evaluacion comite
-                          </p>
-                      </a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="escuela-evaluacion-consejo" class="nav-link">
-                          <i class="nav-icon  fas fa-search"></i>
-                          <p>
-                              Evaluacion consejo
-                          </p>
-                      </a>
-                  </li>
-
-
-
                   <li class="nav-header">Criterios </li>
                   <li class="nav-item">
-                      <a href="escuela-criterios-experimentales-todos" class="nav-link">
-                          <i class="nav-icon  fas fa-search"></i>
+                      <a href="#" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
                           <p>
-                              Experimentales
+                              Criterios
+                              <i class="right fas fa-angle-left"></i>
                           </p>
                       </a>
+                      <ul class="nav nav-treeview" style="display: none">
+                          <li class="nav-item">
+                              <a href="escuela-criterios-experimentales-todos" class="nav-link">
+                                  <i class="nav-icon  fas fa-search"></i>
+                                  <p>
+                                      Experimentales
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="escuela-criterios-instrumentales-todos" class="nav-link">
+                                  <i class="nav-icon  fas fa-search"></i>
+                                  <p>
+                                      Instrumentales
+                                  </p>
+                              </a>
+                          </li>
+                      </ul>
                   </li>
-                  <li class="nav-item">
-                      <a href="escuela-criterios-instrumentales-todos" class="nav-link">
-                          <i class="nav-icon  fas fa-search"></i>
-                          <p>
-                              Instrumentales
-                          </p>
-                      </a>
-                  </li>
+
 
 
                   <li class="nav-header">Propuestas de TG</li>
@@ -276,33 +276,15 @@
                                   <p>Profesores</p>
                               </a>
                           </li>
+                          <li class="nav-item">
+                              <a href="escuela-areas-empresas" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Empresas</p>
+                              </a>
+                          </li>
                       </ul>
                   </li>
-                  <li class="nav-header">Evaluaciones</li>
 
-                  <li class="nav-item ">
-                      <a href="#" class="nav-link ">
-                          <i class="nav-icon fas fa-users"></i>
-                          <p>
-                              Realizar Evaluaciones
-                              <i class="fas fa-angle-left right"></i>
-                          </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="escuela-areas" class="nav-link ">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Comites</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="escuela-tesistas-cargar" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Consejos</p>
-                              </a>
-                          </li>
-                      </ul>
-                  </li>
               </ul>
           </nav>
       </div>
