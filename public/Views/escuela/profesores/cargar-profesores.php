@@ -18,7 +18,7 @@
 	<div class="wrapper">
 
 		
-		<?php include_once('../public/Views/componentes/profesorSidebar.php'); ?>
+	<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 
 
 		<div class="content-wrapper p-5">

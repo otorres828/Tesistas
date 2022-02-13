@@ -16,7 +16,7 @@
 
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed ">
     <div class="wrapper">
-        <?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
+    <?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
         <div class="content-wrapper">
             <div class="content-header">
                 <div class="container-fluid">
