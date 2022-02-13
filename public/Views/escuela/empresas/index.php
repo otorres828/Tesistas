@@ -96,7 +96,7 @@
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
-													<h5 class="modal-title" >Actualizar Area</h5>
+													<h5 class="modal-title">Actualizar Area</h5>
 													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 												</div>
 												<div class="modal-body">
@@ -104,13 +104,14 @@
 														<div class="card-body">
 															<form action="escuela-empresas-modificar" method="POST">
 																<div class="form-group">
+																	<input name="sluganterior" hidden value="<?php echo $empresa['slug']; ?>">
 
 																	<label>Nombre de la Empresa</label>
-																	<input type="text" name="nuevonombre" class="form-control" value="<?php echo $empresa['nombre']; ?>"required>
+																	<input type="text" name="nuevonombre" class="form-control" value="<?php echo $empresa['nombre']; ?>" required>
 																</div>
 
 																<div class="d-flex justify-content-end align-items-baseline">
-																	<button name="modificararea" type="submit" class="btn btn-primary" required>Modificar Area</button>
+																	<button name="modificarempresa" type="submit" class="btn btn-primary" required>Modificar Area</button>
 																	<button type="button" class=" ml-1 btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
 																</div>
 															</form>

@@ -40,20 +40,20 @@ class EmpresaController extends \Core\Controller
 
     public function modificar()
     {
-        if (isset($_POST['modificararea'])) {
+        if (isset($_POST['modificarempresa'])) {
             if (isset($_POST['nuevonombre'])) {
                 session_start();
                 $slug = $this->slug($_POST['nuevonombre']);
                 $resultado = (new Empresas())->where('slug', '=', $slug)->getOb();
                 if ($resultado > 0) {
-                    $_SESSION['mensaje'] = "El Area ya existe";
+                    $_SESSION['mensaje'] = "La empresa ya esta registrada";
                     $_SESSION['colorcito'] = "danger";
                 } else {
-                    (new Empresas())->modificarArea($_POST['nuevonombre'], $slug, $_POST['idarea']);
+                    (new Empresas())->modificar($_POST['nuevonombre'], $slug, $_POST['sluganterior']);
                     $_SESSION['mensaje'] = "Se modifico el area con exito";
                     $_SESSION['colorcito'] = "success";
                 }
-                header('location:escuela-areas');
+                header('location:escuela-empresas');
             } else {
                 header('location:error');
             }

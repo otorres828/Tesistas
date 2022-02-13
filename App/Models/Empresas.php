@@ -19,10 +19,10 @@ class Empresas extends ModeloGenerico
       
     }
     
-    public function modificarArea($nombre, $slug, $id)
+    public function modificar($nombre, $slug, $sluganterior)
     {
-        return $this->sentenciaObj("UPDATE areas set nombre='$nombre', slug='$slug'
-                                    WHERE id_area=$id");
+        return $this->sentenciaObj("UPDATE empresas set nombre='$nombre', slug='$slug'
+                                    WHERE slug='$sluganterior'");
     }
 
     public function eliminarArea($id)
