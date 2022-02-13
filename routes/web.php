@@ -81,7 +81,7 @@ $router->add('escuela-areas-profesores-eliminar', ['controller' => 'escuela\Area
 // EMPRESAS
 $router->add('escuela-empresas', ['controller' => 'escuela\EmpresaController', 'method' => 'index']);
 $router->add('escuela-empresas-crear', ['controller' => 'escuela\EmpresaController', 'method' => 'crear']);
-$router->add('escuela-empresas-modificar', ['controller' => 'escuela\EmpresaController', 'method' => 'modificarArea']);
+$router->add('escuela-empresas-modificar', ['controller' => 'escuela\EmpresaController', 'method' => 'modificar']);
 $router->add('escuela-empresas-eliminar', ['controller' => 'escuela\EmpresaController', 'method' => 'eliminarArea']);
 $router->add('escuela-empresas-cargar', ['controller' => 'escuela\EmpresaController', 'method' => 'cargarArea']);
 

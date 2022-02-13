@@ -19,12 +19,13 @@ class EmpresaController extends \Core\Controller
             if (isset($_POST['nombreempresa'])) {
                 $nombre=$_POST['nombreempresa'];
                 session_start();
-                $resultado = (new Empresas())->where('nombre', '=',$nombre)->getOb();
+                $slug = $this->slug($_POST['nombreempresa']);
+                $resultado = (new Empresas())->where('slug', '=', $slug)->getOb();;
                 if ($resultado > 0) {
                     $_SESSION['mensaje'] = "La empresa ya existe";
                     $_SESSION['colorcito'] = "danger";
                 } else {
-                    (new Empresas())->crear($nombre);
+                    (new Empresas())->crear($nombre,$slug);
                     $_SESSION['mensaje'] = "Se registro la empresa con exito";
                     $_SESSION['colorcito'] = "success";
                 }
@@ -37,7 +38,7 @@ class EmpresaController extends \Core\Controller
         }
     }
 
-    public function modificarArea()
+    public function modificar()
     {
         if (isset($_POST['modificararea'])) {
             if (isset($_POST['nuevonombre'])) {
@@ -79,5 +80,10 @@ class EmpresaController extends \Core\Controller
 
         $this->autenticar();
         View::render('escuela/areas/cargar-areas.php');
+    }
+
+    public function slug($empresa)
+    {
+        return $empresa = str_replace(' ', '-', strtolower(preg_replace('([^A-Za-z0-9 ])', '', trim($empresa))));
     }
 }

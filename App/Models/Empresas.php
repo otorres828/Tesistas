@@ -13,9 +13,9 @@ class Empresas extends ModeloGenerico
     }
     public $sql;
 
-    public function crear($nombre)
+    public function crear($nombre,$slug)
     {
-        $this->insertarObj("INSERT INTO empresas VALUES('$nombre')");
+        $this->insertarObj("INSERT INTO empresas VALUES('$nombre','$slug')");
       
     }
     
