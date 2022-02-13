@@ -261,7 +261,7 @@
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="#" class="nav-link">
+                              <a href="escuela-trabajodegrado" class="nav-link">
                                   <i class="nav-icon fab fa-buffer"></i>
                                   <p>Trabjos de Grado</p>
                               </a>

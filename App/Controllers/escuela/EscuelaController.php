@@ -14,11 +14,10 @@ class EscuelaController extends \Core\Controller
     public function index()
     {
         
-        $propuestasTG = (new PropuestaTG())->get();      // Listar todas las propuestas de TG 
-        $estadisticas = (new Escuela())->estadisticas();  // Estadisticas de la escuela
+        $propuestasTG = (new PropuestaTG())->get();     
+        $estadisticas = (new Escuela())->estadisticas(); 
 
-        // var_dump($estadisticas['cantidad-tesistas']['cantidadtesistas']);
-        // echo $estadisticas['cantidad-tesistas']['cantidadtesistas'] . '<br>';
+
         View::render('escuela/index.php', [
             'propuestasTG' => $propuestasTG,
             'estadisticas' => $estadisticas
@@ -36,6 +35,11 @@ class EscuelaController extends \Core\Controller
         ]);
     }
   
+    public function trabajosdegrado(){
+        $propuestas = (new PropuestaTG())->aprobados();
+        View::render('escuela\aprobados.php',['propuestas'=>$propuestas]);
+    }
+
     private function autenticar()
     {
         $autenticacion = new Auth();

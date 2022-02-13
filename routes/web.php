@@ -67,6 +67,7 @@ $router->add('escuela-consejos', ['controller' => 'escuela\ConsejoController', '
 $router->add('escuela-consejos-cargar', ['controller' => 'escuela\ConsejoController', 'method' => 'cargarconsejo']);
 // propuestastg
 $router->add('escuela-propuestastg', ['controller' => 'escuela\EscuelaController', 'method' => 'propuestastgTodas']);
+$router->add('escuela-trabajodegrado', ['controller' => 'escuela\EscuelaController', 'method' => 'trabajosdegrado']);
 
 // AREAS
 $router->add('escuela-areas', ['controller' => 'escuela\AreasController', 'method' => 'index']);
