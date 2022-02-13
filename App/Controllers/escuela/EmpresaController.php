@@ -2,6 +2,7 @@
 
 namespace App\Controllers\escuela;
 
+use App\Models\Auth;
 use App\Models\Empresas;
 use \Core\View;
 
@@ -75,15 +76,14 @@ class EmpresaController extends \Core\Controller
         }
     }
 
-    public function cargarArea()
+    public function cargar()
     {
-
-        $this->autenticar();
-        View::render('escuela/areas/cargar-areas.php');
+        View::render('escuela/empresas/cargar.php');
     }
 
     public function slug($empresa)
     {
         return $empresa = str_replace(' ', '-', strtolower(preg_replace('([^A-Za-z0-9 ])', '', trim($empresa))));
     }
+
 }

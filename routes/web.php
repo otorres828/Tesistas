@@ -83,6 +83,6 @@ $router->add('escuela-empresas', ['controller' => 'escuela\EmpresaController', '
 $router->add('escuela-empresas-crear', ['controller' => 'escuela\EmpresaController', 'method' => 'crear']);
 $router->add('escuela-empresas-modificar', ['controller' => 'escuela\EmpresaController', 'method' => 'modificar']);
 $router->add('escuela-empresas-eliminar', ['controller' => 'escuela\EmpresaController', 'method' => 'eliminar']);
-$router->add('escuela-empresas-cargar', ['controller' => 'escuela\EmpresaController', 'method' => 'cargarArea']);
+$router->add('escuela-empresas-cargar', ['controller' => 'escuela\EmpresaController', 'method' => 'cargar']);
 
 $router->dispatch($_SERVER['QUERY_STRING']);
