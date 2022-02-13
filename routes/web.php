@@ -69,13 +69,15 @@ $router->add('escuela-consejos-cargar', ['controller' => 'escuela\ConsejoControl
 $router->add('escuela-propuestastg', ['controller' => 'escuela\EscuelaController', 'method' => 'propuestastgTodas']);
 
 // AREAS
-$router->add('escuela-areas', ['controller' => 'escuela\AreasController', 'method' => 'todasAreas']);
+$router->add('escuela-areas', ['controller' => 'escuela\AreasController', 'method' => 'index']);
 $router->add('escuela-areas-crear', ['controller' => 'escuela\AreasController', 'method' => 'crearArea']);
 $router->add('escuela-areas-modificar', ['controller' => 'escuela\AreasController', 'method' => 'modificarArea']);
 $router->add('escuela-areas-eliminar', ['controller' => 'escuela\AreasController', 'method' => 'eliminarArea']);
 $router->add('escuela-areas-cargar', ['controller' => 'escuela\AreasController', 'method' => 'cargarArea']);
-$router->add('escuela-areas-profesores', ['controller' => 'escuela\AreasController', 'method' => 'especializacion']);
+//ASIGNAR AREAS A PROFESORES
+$router->add('escuela-areas-profesores', ['controller' => 'escuela\AreasController', 'method' => 'index_profesor']);
 $router->add('escuela-areas-profesores-cargar', ['controller' => 'escuela\AreasController', 'method' => 'Cargarespecializacion']);
+$router->add('escuela-areas-profesores-asignar', ['controller' => 'escuela\AreasController', 'method' => 'asignarArea']);
 $router->add('escuela-areas-profesores-eliminar', ['controller' => 'escuela\AreasController', 'method' => 'eliminarespecializacion']);
 
 // EMPRESAS

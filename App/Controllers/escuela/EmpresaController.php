@@ -10,6 +10,7 @@ class EmpresaController extends \Core\Controller
 {
     public function index()
     {
+        $this->autenticar();
         $empresas = (new Empresas())->get();        // Listar todos las areas 
         View::render('escuela/empresas/index.php', ['empresas' => $empresas]);
     }
@@ -23,12 +24,12 @@ class EmpresaController extends \Core\Controller
                 $slug = $this->slug($_POST['nombreempresa']);
                 $resultado = (new Empresas())->where('slug', '=', $slug)->getOb();;
                 if ($resultado > 0) {
-                    $_SESSION['mensaje'] = "La empresa ya existe";
+                     $_SESSION['mensaje'] = "La empresa ya existe";
                     $_SESSION['colorcito'] = "danger";
                 } else {
                     (new Empresas())->crear($nombre,$slug);
-                    $_SESSION['mensaje'] = "Se registro la empresa con exito";
-                    $_SESSION['colorcito'] = "success";
+                     $_SESSION['mensaje'] = "Se registro la empresa con exito";
+                     $_SESSION['colorcito'] = "success";
                 }
                 header('location:escuela-empresas');
             } else {
@@ -86,4 +87,10 @@ class EmpresaController extends \Core\Controller
         return $empresa = str_replace(' ', '-', strtolower(preg_replace('([^A-Za-z0-9 ])', '', trim($empresa))));
     }
 
+    private function autenticar()
+    {
+        $autenticacion = new Auth();
+        $autenticacion->verificado();
+        $autenticacion->rol('Escuela');
+    }
 }

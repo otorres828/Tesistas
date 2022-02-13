@@ -44,7 +44,7 @@
 								<div class="modal-body">
 									<div class="card">
 										<div class="card-body">
-											<form action="escuela-areas-profesores" method="POST" enctype="multipart/form-data">
+											<form action="escuela-areas-profesores-asignar" method="POST" enctype="multipart/form-data">
 												<label>Seleccione el Profesor</label></br>
 												<select class="custom-select" name="profesor">
 													<?php foreach ($profes as $p) : ?>
@@ -121,7 +121,6 @@
 										</td>
 										<td class="d-flex">
 											<a class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#eliminar<?php echo $cedula ?>" data-bs-whatever="@mdo"><i class="far fa-trash-alt"></i></a>
-
 										</td>
 									</tr>
 									<!-- MODAL ELIMINAR AREA DEL PROFESOR -->
@@ -138,14 +137,13 @@
 													<div class="card">
 														<div class="card-body">
 															<?php
-
 															$sql = "SELECT a.id_area,a.nombre FROM se_especializan AS se, profesores AS p,areas AS a
 																WHERE p.cedula=se.cedula
 																AND a.id_area=se.id_area
 																AND p.cedula=$cedula";
 															$areas = (new Areas())->sentenciaAll($sql);
 															?>
-															<form action="escuela-areas-profesores" method="POST" enctype="multipart/form-data">
+															<form action="escuela-areas-profesores-eliminar" method="POST" enctype="multipart/form-data">
 																<label>Seleccione el Area a Eliminar</label></br>
 																<input hidden value=<?php echo $cedula ?> name="ced">
 																<select class="custom-select" name="areaaeliminar">

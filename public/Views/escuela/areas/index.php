@@ -38,9 +38,7 @@
 									<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
-									
 								</div>
-								
 								<div class="modal-body">
 									<div class="card">
 										<div class="card-body">
@@ -49,7 +47,6 @@
 													<label>Nombre del Area</label>
 													<input type="text" name="nombrearea" placeholder="nombre de la propuesta" class="form-control" required>
 												</div>
-												
 												<div class="d-flex justify-content-end align-items-baseline">
 													<button name="nuevaarea" type="submit" class="btn btn-success" required>Crear Area</button>
 													<button type="button" class="ml-1 btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
