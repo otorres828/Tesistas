@@ -83,7 +83,8 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-						<?php unset($_SESSION['mensaje']); unset($_SESSION['colorcito']);
+						<?php unset($_SESSION['mensaje']);
+							unset($_SESSION['colorcito']);
 						endif; ?>
 						<table class="card-body table table-flush" id="example">
 							<thead class="thead-light">
@@ -97,7 +98,11 @@
 							<tbody>
 								<?php foreach ($profesores as $profesor) : ?>
 									<tr>
-										<td><?php echo $profesor['cedula']; ?></td>
+										<form action="escuela-profesores-mostrar-profesor" method="POST">
+											<td>
+												<button type="submit" name="cedula" value="<?php echo $profesor['cedula']; ?>"><?php echo $profesor['cedula']; ?></button>
+											</td>
+										</form>
 										<td><?php echo $profesor['nombre']; ?></td>
 										<td>
 											<?php
@@ -120,11 +125,11 @@
 										</td>
 									</tr>
 									<!-- MODAL ELIMINAR AREA DEL PROFESOR -->
-									<div class="modal fade" id="eliminar<?php echo $cedula;?>" tabindex="-1" aria-labelledby="eliminar<?php echo $cedula;?>" aria-hidden="true">
+									<div class="modal fade" id="eliminar<?php echo $cedula; ?>" tabindex="-1" aria-labelledby="eliminar<?php echo $cedula; ?>" aria-hidden="true">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
-													<h5 class="modal-title" >Eliminar Especializacion</h5>
+													<h5 class="modal-title">Eliminar Especializacion</h5>
 													<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 														<span aria-hidden="true">&times;</span>
 													</button>
@@ -132,8 +137,8 @@
 												<div class="modal-body">
 													<div class="card">
 														<div class="card-body">
-															<?php 
-															
+															<?php
+
 															$sql = "SELECT a.id_area,a.nombre FROM se_especializan AS se, profesores AS p,areas AS a
 																WHERE p.cedula=se.cedula
 																AND a.id_area=se.id_area
@@ -142,7 +147,7 @@
 															?>
 															<form action="escuela-areas-profesores" method="POST" enctype="multipart/form-data">
 																<label>Seleccione el Area a Eliminar</label></br>
-																<input hidden value=<?php echo $cedula?> name="ced">
+																<input hidden value=<?php echo $cedula ?> name="ced">
 																<select class="custom-select" name="areaaeliminar">
 																	<?php foreach ($areas as $p) : ?>
 																		<option value="<?php echo $p['id_area']; ?>">
