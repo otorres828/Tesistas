@@ -30,14 +30,23 @@ class EscuelaController extends \Core\Controller
         $this->autenticar();
         $propuestasTG = (new PropuestaTG())->get();   // Listar todas las propuestas de TG 
 
-        View::render('escuela/propuestastg-todos.php', [
+        View::render('escuela/trabajosdg/propuestastg-todos.php', [
             'propuestasTG' => $propuestasTG
         ]);
     }
   
     public function trabajosdegrado(){
         $propuestas = (new PropuestaTG())->aprobados();
-        View::render('escuela\aprobados.php',['propuestas'=>$propuestas]);
+        View::render('escuela/trabajosdg/aprobados.php',['propuestas'=>$propuestas]);
+    }
+
+    public function verpropuesta(){
+        if(isset($_POST['num_c'])){
+            $trabajodg= (new PropuestaTG())->where('num_c','=',$_POST['num_c'])->get();
+            View::render('escuela/trabajosdg/vertrabajo.php',['trabajosdg'=> $trabajodg]);   
+        }else{
+            header('location:error');
+        }
     }
 
     private function autenticar()

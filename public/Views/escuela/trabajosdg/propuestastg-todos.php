@@ -19,7 +19,6 @@
 		<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 		<div class="content-wrapper">
 			<div class="row">
-				<!-- Left col -->
 				<section class="col-lg-12 connectedSortable p-4">
 					<div class="card table-responsive  p-4">
 						<div class="card-header">
@@ -99,12 +98,7 @@
 						</table>
 					</div>
 
-					<!-- /.card -->
-				</section>
-				<!-- /.Left col -->
-				<!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-				<!-- right col -->
+				</section>		
 			</div>
 		</div>
 	</div>

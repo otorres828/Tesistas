@@ -41,7 +41,9 @@
 							<tbody>
 								<?php foreach ($propuestas as $propuestaTG) : ?>
 									<tr>
-										<td><?php echo $propuestaTG['num_c']; ?></td>
+										<td><form action="escuela-ver-propuesta" method="POST">
+											<button type="submit" name="num_c" value="<?php echo $propuestaTG['num_c']; ?>"><?php echo $propuestaTG['num_c']; ?></button>
+										</form></td>
 										<td><?php echo $propuestaTG['titulo']; ?></td>
 										<td class="text-center">
 											<?php if (is_null($propuestaTG['observaciones'])) { ?>
