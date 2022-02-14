@@ -10,21 +10,20 @@ use App\Models\Tesistas;
 
 class EscuelaController extends \Core\Controller
 {
-
     // Vista del dashboard para la escuela
     public function index()
-    {
-        
+    {     
         $propuestasTG = (new PropuestaTG())->get();     
         $estadisticas = (new Escuela())->estadisticas(); 
-
-
         View::render('escuela/index.php', [
             'propuestasTG' => $propuestasTG,
             'estadisticas' => $estadisticas
         ]);
     }
 
+    public function perfil(){
+        
+    }
     // Ver todas las propuestas tg  en escuela-propuestastg
     public function propuestastgTodas()
     {
@@ -54,13 +53,6 @@ class EscuelaController extends \Core\Controller
             header('location:error');
         }
     }
-
-    private function autenticar()
-    {
-        $autenticacion = new Auth();
-        $autenticacion->verificado();
-        $autenticacion->rol('Escuela');
-    }
     
     public function evaluacioncomite(){
         if (isset($_POST['BOTON_ENVIAR_EVALUACION'])) {
@@ -80,5 +72,12 @@ class EscuelaController extends \Core\Controller
             header('location:error');
         }
         
+    }
+
+    private function autenticar()
+    {
+        $autenticacion = new Auth();
+        $autenticacion->verificado();
+        $autenticacion->rol('Escuela');
     }
 }
