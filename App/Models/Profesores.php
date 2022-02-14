@@ -20,7 +20,7 @@ class Profesores extends ModeloGenerico
     {
         return $this->sentenciaAll("SELECT * FROM usuarios AS u, roles_usuarios AS r 
                                     WHERE r.id_rol=2 
-                                    AND r.id_usuario = u.cedula
+                                    AND r.cedula = u.cedula
                                     ");
     }
 
@@ -29,7 +29,7 @@ class Profesores extends ModeloGenerico
     {
         return $this->sentenciaAll("SELECT * FROM usuarios AS u, roles_usuarios AS r 
                                     WHERE r.id_rol=2 
-                                    AND r.id_usuario = u.cedula
+                                    AND r.cedula = u.cedula
                                     ");
     }
 
@@ -38,7 +38,7 @@ class Profesores extends ModeloGenerico
     {
         return $this->sentenciaAll("SELECT * FROM usuarios AS u, roles_usuarios AS r 
                                     WHERE r.id_rol=2 
-                                    AND r.id_usuario = u.cedula
+                                    AND r.cedula = u.cedula
                                     ");
     }
 
