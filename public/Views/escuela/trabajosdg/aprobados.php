@@ -23,7 +23,7 @@
 				<section class="col-lg-12 connectedSortable p-4">
 					<div class="card table-responsive  p-4">
 						<div class="card-header">
-							<h1>Lista de propuestas de trabajo de grado </h1>
+							<h1>Lista de Trabajo de Grado </h1>
 						</div>
 						<table class="card-body table table-flush" id="example">
 							<thead class="thead-light">
@@ -39,10 +39,15 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php foreach ($propuestasTG as $propuestaTG) : ?>
+								<?php foreach ($propuestas as $propuestaTG) : ?>
 									<tr>
-										<td><?php echo $propuestaTG['num_c']; ?></td>
+										<td>
+											<form action="escuela-ver-propuesta" method="POST">
+												<button type="submit" name="num_c" value="<?php echo $propuestaTG['num_c']; ?>"><?php echo $propuestaTG['num_c']; ?></button>
+											</form>
+										</td>
 										<td><?php echo $propuestaTG['titulo']; ?></td>
+										<!-- Observaciones : observaciones-->
 										<td class="text-center">
 											<?php if (is_null($propuestaTG['observaciones'])) { ?>
 												<h2 class="badge bg-warning">PENDIENTE</h2>
@@ -50,6 +55,7 @@
 												echo $propuestaTG['observaciones'];
 											} ?>
 										</td>
+										<!-- Modalidad : modalidad -->
 										<td class="text-center">
 											<?php if ($propuestaTG['modalidad'] == 'I') { ?>
 												<h2 class="badge bg-primary">Instrumental</h2>
@@ -57,15 +63,16 @@
 												<h2 class="badge bg-success">Experimental</h2>
 											<?php } ?>
 										</td>
+										<!-- id del Comite : id_comite -->
 										<td class="text-center">
 											<?php if (is_null($propuestaTG['id_comite'])) { ?>
 												<h2 class="badge bg-warning">PENDIENTE</h2>
 												<?php } else {
 												$num_c = $propuestaTG['num_c'];
 												$sql = "SELECT estatus FROM evaluacioncomite  WHERE num_c=$num_c";
-												$valor = (new PropuestaTG())->sentenciaObj($sql);
-												$valor = $valor['estatus'];
-												if ($valor == 'REPROBADO') { ?>
+												$valorcomite = (new PropuestaTG())->sentenciaObj($sql);
+												$valorcomite = $valorcomite['estatus'];
+												if ($valorcomite == 'REPROBADO') { ?>
 													<h2 class="badge bg-danger">REPROBADO</h2>
 												<?php } else { ?>
 													<h2 class="badge bg-success">APROBADO</h2>
@@ -73,6 +80,7 @@
 											<?php }
 											} ?>
 										</td>
+										<!-- Numero del consejo : nro_consejo -->
 										<td class="text-center">
 											<?php if (is_null($propuestaTG['nro_consejo'])) { ?>
 												<h2 class="badge bg-warning">PENDIENTE</h2>
@@ -89,21 +97,36 @@
 											<?php }
 											} ?>
 										</td>
+										<!-- id del Comite : id_comite -->
 										<td class="text-center">
-											<?php if (is_null($propuestaTG['cedula_revisor'])) { ?>
-												<h2 class="badge bg-secondary">SIN ASIGNAR</h2>
-											<?php  } else {
-												echo $propuestaTG['cedula_revisor'];
-											} ?>
-										</td>
-										<td class="text-center">
-											<?php if (is_null($propuestaTG['cedula_tutor'])) { ?>
-												<h2 class="badge bg-secondary">SIN ASIGNAR</h2>
-											<?php  } else {
-												echo $propuestaTG['cedula_tutor'];
-											} ?>
-										</td>
+											<?php if (is_null($propuestaTG['id_comite'])) { ?>
+												<h2 class="badge bg-warning">PENDIENTE</h2>
+												<?php  } else {
+												if ($valorcomite == 'REPROBADO') { ?>
+													<h2 class="badge bg-secondary"> X </h2>
+												<?php } else { ?>
+													<form action="escuela-profesores-mostrar-profesor" method="POST">
+														<button type="submit" name="cedula" value="<?php echo $propuestaTG['cedula_revisor']; ?>">
 
+															<?php echo $propuestaTG['cedula_revisor']; ?>
+														</button>
+													</form>
+											<?php }
+											} ?>
+										</td>
+										<td class="text-center">
+											<?php if (is_null($propuestaTG['nro_consejo'])) { ?>
+												<h2 class="badge bg-warning">PENDIENTE</h2>
+												<?php  } else {
+												if ($valor == 'REPROBADO') { ?>
+													X
+												<?php } else { ?>
+													<form action="escuela-profesores-mostrar-profesor" method="POST">
+														<button type="submit" name="cedula" value="<?php echo $propuestaTG['cedula_tutor']; ?>"><?php echo $propuestaTG['cedula_tutor']; ?></button>
+													</form>
+											<?php }
+											} ?>
+										</td>
 									</tr>
 								<?php endforeach; ?>
 

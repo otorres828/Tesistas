@@ -124,7 +124,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($propuestastesista as $propuesta) { ?>
+                                    <?php
+                                    foreach ($propuestastesista as $propuesta) { ?>
                                         <tr>
                                             <td class="text-center"><?php echo $propuesta['num_c']; ?></td>
                                             <td> <?php echo $propuesta['titulo']; ?></td>
@@ -148,9 +149,7 @@
                                                     <?php } else {
                                                     $cedula = $propuesta['cedula'];
                                                     $num_c = $propuesta['num_c'];
-                                                    $sql = "SELECT estatus
-                              FROM evaluacioncomite 
-                              WHERE num_c=$num_c";
+                                                    $sql = "SELECT estatus FROM evaluacioncomite  WHERE num_c=$num_c";
                                                     $valor = (new PropuestaTG())->sentenciaObj($sql);
                                                     $valor = $valor['estatus'];
                                                     if ($valor == 'REPROBADO') { ?>
@@ -167,9 +166,7 @@
                                                     <?php } else {
                                                     $cedula = $propuesta['cedula'];
                                                     $num_c = $propuesta['num_c'];
-                                                    $sql = "SELECT estatus
-                              FROM evaluacionconsejo 
-                              WHERE num_c=$num_c";
+                                                    $sql = "SELECT estatus  FROM evaluacionconsejo  WHERE num_c=$num_c";
                                                     $valor = (new PropuestaTG())->sentenciaObj($sql);
                                                     $valor = $valor['estatus'];
                                                     if ($valor == 'REPROBADO') { ?>

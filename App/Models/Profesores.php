@@ -18,9 +18,30 @@ class Profesores extends ModeloGenerico
     // Traer todos los profesores revisores
     public function revisores()
     {
-        return $this->sentenciaAll("SELECT * FROM usuarios AS us INNER JOIN roles_usuarios as ru ON ru.id_rol=2 AND ru.id_usuario = us.id_usuario
-        ");
+        return $this->sentenciaAll("SELECT * FROM usuarios AS u, roles_usuarios AS r 
+                                    WHERE r.id_rol=2 
+                                    AND r.id_usuario = u.cedula
+                                    ");
     }
+
+    // Traer todos los profesores tutores
+    public function tutores()
+    {
+        return $this->sentenciaAll("SELECT * FROM usuarios AS u, roles_usuarios AS r 
+                                    WHERE r.id_rol=2 
+                                    AND r.id_usuario = u.cedula
+                                    ");
+    }
+
+    // Traer todos los profesores jurados
+    public function jurados()
+    {
+        return $this->sentenciaAll("SELECT * FROM usuarios AS u, roles_usuarios AS r 
+                                    WHERE r.id_rol=2 
+                                    AND r.id_usuario = u.cedula
+                                    ");
+    }
+
     // Traer todos los profesores cedulas de losinternos
     public function obtenerInternos()
     {
@@ -28,27 +49,6 @@ class Profesores extends ModeloGenerico
                                     FROM profesores 
                                     WHERE tipo='I' 
                                     ORDER BY(nombre)");
-    }
-    public function obtenerInternosNoRevisores()
-    {
-        $sql = "SELECT cedula,nombre 
-                                    FROM profesores 
-                                    WHERE tipo='I' 
-                                    AND cedula NOT IN (SELECT cedula FROM propuestatg)
-                                    ORDER BY(nombre)";
-        return $this->sentenciaAll($sql);
-    }
-    // Traer todos los profesores tutores
-    public function tutores()
-    {
-        return $this->sentenciaAll("SELECT * FROM usuarios AS us INNER JOIN roles_usuarios as ru ON ru.id_rol=3 AND ru.id_usuario = us.id_usuario
-        ");
-    }
-    // Traer todos los profesores jurados
-    public function jurados()
-    {
-        return $this->sentenciaAll("SELECT * FROM usuarios AS us INNER JOIN roles_usuarios as ru ON ru.id_rol=4 AND ru.id_usuario = us.id_usuario
-        ");
     }
     //CREAR PROFESOR
 
@@ -90,6 +90,11 @@ class Profesores extends ModeloGenerico
         $sql = "INSERT INTO  usuarios (cedula,nombre_usuario,correo,contraseña,modelo,codigo) VALUES($cedula,'$nombre','$correoparticular','$contraseña','Profesores','$contraseña')";
         $this->insertarObj($query);
         $this->insertarObj($sql);
+        if ($tipo == 'I') {
+            $this->insertarObj("INSERT INTO internos values($cedula)");
+        } else {
+            $this->insertarObj("INSERT INTO externos values($cedula)");
+        }
     }
 
     public function validarEliminarRevisor($cedula)

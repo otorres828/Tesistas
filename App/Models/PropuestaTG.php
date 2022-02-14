@@ -173,6 +173,13 @@ class PropuestaTG extends ModeloGenerico
   //PARA TRABAJOS DE GRADO
   public function aprobados()
   {
-    return $this->sentenciaAll("SELECT *  FROM propuestatg WHERE nro_consejo IS NOT NULL");
+    return $this->sentenciaAll("SELECT ptg.*
+      FROM presentan AS p,evaluacioncomite AS ec,evaluacionconsejo AS ecj,propuestatg AS ptg
+      WHERE p.num_c=ptg.num_c
+      AND p.num_C=ec.num_c
+      AND ec.num_c=ecj.num_c
+      AND ec.estatus='APROBADO'
+      AND ecj.estatus='APROBADO'
+      GROUP BY(ptg.num_c)");
   }
 }

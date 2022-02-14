@@ -15,11 +15,8 @@
 
 	<?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 
-		<div class="content-wrapper">
-
-			
+		<div class="content-wrapper">	
 				<div class="row">
-					<!-- Left col -->
 					<section class="col-lg-12 connectedSortable p-4">
 						<div class="card table-responsive  p-2">
 							<div class="card-header">
@@ -45,22 +42,12 @@
 											<td><?php echo $profesor['codigo']; ?></td>
 										</tr>
 									<?php endforeach; ?>
-
-
 								</tbody>
 							</table>
 						</div>
-
-						<!-- /.card -->
-					</section>
-					<!-- /.Left col -->
-					<!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-					<!-- right col -->
+					</section>	
 				</div>
-				<!-- /.row (main row) -->
-		</div><!-- /.container-fluid -->
-		<!-- /.content -->
+		</div>
 	</div>
 
 	<?php include_once('../public/Views/componentes/footer.php'); ?>

@@ -13,16 +13,16 @@ class Auth extends ModeloGenerico{
 
     public function correo($correo){
         $resultado=$this->where('correo','=',$correo)->getOb();
-        // $query = $this->conexion->prepare('SELECT * FROM users WHERE email = :correo');
-        // $query->bindParam(':correo', $correo);
-        // $query->execute();
-        // $resultado = $query->fetch(PDO::FETCH_ASSOC);
         if($resultado>0){
             return 1;
         }
         return 0;
     }
-
+    public function modificarCorreo($correo)
+    {
+        $cedula = (new Auth())->autenticado();
+        $this->sentenciaObj("UPDATE usuarios SET correo=" . "'" . $correo . "'" . " WHERE cedula=" . $cedula['cedula']);
+    }
     public function clave($correo, $clave){
         $resultado=$this->where('correo','=',$correo)->getOb();
         $cla=password_verify($clave, $resultado['contraseña']);

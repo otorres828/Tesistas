@@ -79,10 +79,10 @@ class TesistasController extends \Core\Controller
 
         if (isset($_POST['modificarcorreo'])) {
             if (isset($_POST['correo'])) {
-                $resultado = (new Auth())->where('correo', '=', $_POST['correo'])->getOb();
+                session_start();
 
+                $resultado = (new Auth())->where('correo', '=', $_POST['correo'])->getOb();
                 if ($resultado > 0) {
-                    session_start();
                     $_SESSION['mensaje'] = "Correo ya registrado, intente con otro correo";
                     $_SESSION['colorcito'] = "danger";
                 } else {
