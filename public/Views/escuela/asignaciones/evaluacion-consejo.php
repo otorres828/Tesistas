@@ -66,28 +66,28 @@
 
                                                 </select>
                                     </div>
-                                    <!-- Numero de los comites : id_comite -->
+                                    <!-- Numero de los consejo : nro_consejo -->
                                     <div class="form-group flex">
-                                        <label>Numero de los comites</label></br>
+                                        <label>Numero del consejo</label></br>
                                         <?php //Verificacion de que contenga almenos un comite 
-                                        sizeof($comites) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
+                                        sizeof($consejos) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
                                         if ($esPosibleEvaluar) { ?>
-                                            <select class="custom-select" aria-label="" name="id_comite" required>
+                                            <select class="custom-select" aria-label="" name="nro_consejo" required>
                                                 <option value="" selected>Seleccione una opcion</option>
 
                                             <?php } else {          ?>
-                                                <select class="custom-select Disabled" aria-label="" name="id_comite" required disabled>
-                                                    <option value="" selected>Aun no existen comites en donde no haya sido evaluado</option>
+                                                <select class="custom-select Disabled" aria-label="" name="nro_consejo" required disabled>
+                                                    <option value="" selected>Aun no existen consejos en donde no haya sido evaluado</option>
                                                 <?php }            ?>
 
 
-                                                <?php foreach ($comites as $comite) { ?>
-                                                    <option value="<?php echo $comite['id_comite']; ?>"><?php echo "N: (" . $comite['id_comite'] . ") -> " . $comite['fecha']; ?></option>
+                                                <?php foreach ($consejos as $comite) { ?>
+                                                    <option value="<?php echo $comite['nro_consejo']; ?>"><?php echo "N: (" . $comite['nro_consejo'] . ") -> " . $comite['fecha']; ?></option>
                                                 <?php } ?>
                                                 </select>
                                     </div>
 
-                                    <!-- Estatus de la evaluacion del comite -->
+                                    <!-- Estatus de la evaluacion del consejo-->
                                     <div class="form-group flex">
                                         <label>Estatus</label></br>
                                         <select class="custom-select" name="estatus" type required>
@@ -95,11 +95,11 @@
                                             <option value="APROBADO">APROBADO</option>
                                         </select>
                                     </div>
-                                    <!-- Cedula del profesor revisor  -->
+                                    <!-- Cedula del profesor tutor  -->
                                     <div class="form-group flex">
-                                        <label>Cedula del revisor</label></br>
+                                        <label>Cedula del tutor</label></br>
 
-                                        <?php //Verificacion de que contenga almenos un comite 
+                                        <?php //Verificacion de que contenga almenos un profe
                                         sizeof($internos) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
                                         if ($esPosibleEvaluar) { ?>
                                             <select class="custom-select" aria-label="" name="cedulatutor" required>
@@ -107,7 +107,51 @@
 
                                             <?php } else {          ?>
                                                 <select class="custom-select Disabled" aria-label="" name="cedulatutor" required disabled>
-                                                    <option value="" selected>No hay profesores internos disponibles (Que no sean revisores)</option>
+                                                    <option value="" selected>No hay profesores internos disponibles (Que no sean tutores)</option>
+                                                <?php }            ?>
+
+
+                                                <?php foreach ($internos as $interno) { ?>
+                                                    <option value="<?php echo $interno['cedula']; ?>">(<?php echo $interno['cedula']; ?>)=><?php echo $interno['nombre']; ?></option>
+                                                <?php } ?>
+                                                </select>
+
+                                    </div>
+                                    <!-- Cedula del profesor JURADO 1 -->
+                                    <div class="form-group flex">
+                                        <label>Cedula del jurado 1</label></br>
+
+                                        <?php //Verificacion de que contenga almenos un profe
+                                        sizeof($internos) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
+                                        if ($esPosibleEvaluar) { ?>
+                                            <select class="custom-select" aria-label="" name="cedulajurado1" required>
+                                                <option value="" selected>Seleccione una opcion</option>
+
+                                            <?php } else {          ?>
+                                                <select class="custom-select Disabled" aria-label="" name="cedulajurado1" required disabled>
+                                                    <option value="" selected>No hay profesores internos disponibles (Que no sean jurado)</option>
+                                                <?php }            ?>
+
+
+                                                <?php foreach ($internos as $interno) { ?>
+                                                    <option value="<?php echo $interno['cedula']; ?>">(<?php echo $interno['cedula']; ?>)=><?php echo $interno['nombre']; ?></option>
+                                                <?php } ?>
+                                                </select>
+
+                                    </div>
+                                    <!-- Cedula del profesor Jurado 2   -->
+                                    <div class="form-group flex">
+                                        <label>Cedula del Jurado 2</label></br>
+
+                                        <?php //Verificacion de que contenga almenos un profe
+                                        sizeof($internos) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
+                                        if ($esPosibleEvaluar) { ?>
+                                            <select class="custom-select" aria-label="" name="cedulajurado2" required>
+                                                <option value="" selected>Seleccione una opcion</option>
+
+                                            <?php } else {          ?>
+                                                <select class="custom-select Disabled" aria-label="" name="cedulajurado2" required disabled>
+                                                    <option value="" selected>No hay profesores internos disponibles (Que no sean tutores)</option>
                                                 <?php }            ?>
 
 

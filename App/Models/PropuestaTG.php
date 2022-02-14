@@ -46,7 +46,11 @@ class PropuestaTG extends ModeloGenerico
                       GROUP BY(cedula)";
     return $this->sentenciaObj($this->sql);
   }
-
+  public function getModalidad($num_c)
+  {
+    $sql = "SELECT modalidad FROM propuestatg WHERE num_c=$num_c";
+    return $this->sentenciaObj($sql);
+  }
   public function contar_por_evaluacion_comite()
   {
     $cedula = $_SESSION['cedula'];
@@ -161,7 +165,7 @@ class PropuestaTG extends ModeloGenerico
   //PARA EVALUACION consejo, TRAER LAS PROPUESTAS QUE NO HAN SIDO EVALUADAS
   public function evaluacionConsejo()
   {
-    $sql = "SELECT * FROM propuestatg AS ptg  WHERE ptg.num_c NOT IN (SELECT num_c FROM evaluacionconsejo)";
+    $sql = "SELECT * FROM propuestatg AS ptg  WHERE ( ptg.id_comite IS NOT NULL) AND (ptg.num_c NOT IN (SELECT num_c FROM evaluacionconsejo))";
     return $this->sentenciaAll($sql);
   }
 
