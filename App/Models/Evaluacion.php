@@ -41,12 +41,17 @@ class Evaluacion extends ModeloGenerico
     //===============================================================CONSEJO
     public function insertarEvaluacionConsejo($num_c, $nro_consejo, $estatus)
     {
-        $estaDuplicado = "SELECT * FROM evaluacionconsejo WHERE num_c=$num_c AND nro_consejo=$nro_consejo";
-        $this->sentenciaObj($estaDuplicado);
-        if (!$estaDuplicado) {
+        // $estaDuplicado = "SELECT * FROM evaluacionconsejo WHERE num_c=$num_c AND nro_consejo=$nro_consejo";
+        $estaDuplicado = "SELECT COUNT(num_c)        FROM evaluacionconsejo        WHERE num_c=$num_c AND nro_consejo=$nro_consejo";
+        $a = $this->sentenciaObj($estaDuplicado);
+        $b = $a['count'];
+
+        if ($b == 0) {
             $sql = "INSERT INTO evaluacionconsejo(num_c,nro_consejo,estatus) VALUES($num_c,$nro_consejo,'$estatus')";
             echo $sql;
             $this->sentenciaObj($sql);
+        } else {
+            // echo "ya existe";
         }
     }
     // Actualiza en propuestatg el nro del consejo
