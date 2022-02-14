@@ -84,7 +84,7 @@ class EvaluacionController extends \Core\Controller
             $nro_consejo = $_POST['nro_consejo'];
             $cedula_tutor = $_POST['cedula_tutor'];
 
-            // $resultadoInsert = (new Evaluacion())->insertarEvaluacionConsejo($num_c, $nro_consejo, $estatus);
+            $resultadoInsert = (new Evaluacion())->insertarEvaluacionConsejo($num_c, $nro_consejo, $estatus);
             if ($estatus == 'APROBADO') {
                 $resultado = (new Evaluacion())->actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor);
             } else { //Esta REPROBADO
