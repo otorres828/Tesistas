@@ -167,10 +167,9 @@ class PropuestaTG extends ModeloGenerico
 
 
   //PARA EVALUACION consejo, TRAER LAS PROPUESTAS QUE NO HAN SIDO EVALUADAS
-  public function evaluacionConsejo()
+  public function propuestasAprobadasPorComite()
   {
-    $sql = "SELECT * FROM propuestatg AS ptg  
-      WHERE ( ptg.id_comite IS NOT NULL) AND (ptg.num_c NOT IN (SELECT num_c FROM evaluacionconsejo))";
+    $sql = "SELECT ptg.num_c,ptg.titulo,ptg.modalidad FROM propuestatg as ptg,evaluacioncomite as ec WHERE ptg.num_c = ec.num_c AND ec.estatus='APROBADO' AND ptg.num_c NOT IN (SELECT num_c FROM evaluacionconsejo)";
     return $this->sentenciaAll($sql);
   }
 

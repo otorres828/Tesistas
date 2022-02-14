@@ -41,84 +41,23 @@ class Evaluacion extends ModeloGenerico
     //===============================================================CONSEJO
     public function insertarEvaluacionConsejo($num_c, $nro_consejo, $estatus)
     {
-        $num_c = (int) $num_c;
-        $nro_consejo = (int) $nro_consejo;
-        // echo "====Datos recibidos del formulario====<br>";
-        // echo "Estatus:" . $estatus . "<br>";
-        // echo "Numero de propuesta:" . $num_c . "<br>";
-        // echo "Numero de consejo:" . $nro_consejo . "<br>";
-        $a = $this->sentenciaObj("SELECT EXISTS (SELECT * FROM evaluacionconsejo WHERE num_c=$num_c)");
-        $propuestaEstaEvaluadaPorElConsejo = $a['exists'];
-        if ($propuestaEstaEvaluadaPorElConsejo) { //si ya esta en evaluacionconsejo
-            // Ya existe ese registro osea no lo inserto en la tabla
-        } else {
-            $sql = "INSERT INTO evaluacionconsejo(nro_consejo,num_c,estatus) VALUES($nro_consejo,$num_c,'$estatus')";
+        $estaDuplicado = "SELECT * FROM evaluacionconsejo WHERE num_c=$num_c AND nro_consejo=$nro_consejo";
+        $this->sentenciaObj($estaDuplicado);
+        if (!$estaDuplicado) {
+            $sql = "INSERT INTO evaluacionconsejo(num_c,nro_consejo,estatus) VALUES($num_c,$nro_consejo,'$estatus')";
+            echo $sql;
             $this->sentenciaObj($sql);
         }
     }
-    public function insertarJuradoPTG($num_c, $cedula_jurado1, $cedula_jurado2, $modalidad)
+    // Actualiza en propuestatg el nro del consejo
+    public function actualizar_NroConsejo($num_c, $nro_consejo)
     {
-        $num_c = (int) $num_c;
-        $cedula_jurado1 = (int) $cedula_jurado1;
-        $cedula_jurado2 = (int) $cedula_jurado2;
-
-        switch ($modalidad) {
-            case 'I':
-                $tabla = "es_jurado_instrumental";
-                $tabla2 = "instrumentales";
-
-                // Ingreso en instrumentales
-                $a = $this->sentenciaObj("SELECT EXISTS (SELECT * FROM $tabla2 WHERE num_c=$num_c)");
-                $ingresadaEnInstrumentales = $a['exists'];
-                if ($ingresadaEnInstrumentales) { //ya esta en instrumentales
-
-                } else {
-                    $sql = "INSERT INTO $tabla2(num_c,cedula_profesor) VALUES($num_c,$cedula_jurado1)";
-                    $this->sentenciaObj($sql);
-                    $sql = "INSERT INTO $tabla2(num_c,cedula_profesor) VALUES($num_c,$cedula_jurado2)";
-                    $this->sentenciaObj($sql);
-                    echo "INSERT DE INSTRUMENTALES<br><br><br>";
-                }
-
-                break;
-            case 'E':
-                $tabla = "es_jurado_experimental";
-                $tabla2 = "experimentales";
-                // Ingreso en experimentales
-                $a = $this->sentenciaObj("SELECT EXISTS (SELECT * FROM $tabla2 WHERE num_c=$num_c)");
-                $ingresadaEnInstrumentales = $a['exists'];
-
-                if ($ingresadaEnInstrumentales) { //ya esta en instrumentales
-
-                } else {
-                    $sql = "INSERT INTO $tabla2(num_c,id_tutore) VALUES($num_c,$cedula_jurado1)";
-                    $this->sentenciaObj($sql);
-                    $sql = "INSERT INTO $tabla2(num_c,id_tutore) VALUES($num_c,$cedula_jurado2)";
-                    $this->sentenciaObj($sql);
-                    echo "INSERT DE EXPERIMEENTALES<br><br><br>";
-                }
-
-                break;
-        }
-
-        $sql = "SELECT count(*) as numeroJurados FROM $tabla WHERE num_c=$num_c";
-        $numeroJuradosDepropuesta = $this->sentenciaObj($sql);
-        if ($numeroJuradosDepropuesta['numeroJurados'] >= 2) {
-        } else {
-
-            // Ingreso en es_jurado_'modalidad'
-            $sql = "INSERT INTO $tabla(num_c,cedula) VALUES($num_c,$cedula_jurado1)";
-            $this->sentenciaObj($sql);
-            echo "<hr> insert 1 es jurado ";
-            $sql = "INSERT INTO $tabla(num_c,cedula) VALUES($num_c,$cedula_jurado2)";
-            $this->sentenciaObj($sql);
-            echo "<hr> insert 2 es jurado ";
-        }
+        $sql = "UPDATE propuestatg SET nro_consejo=$nro_consejo WHERE num_c=$num_c";
+        $this->sentenciaObj($sql);
     }
-    public function evaluarConsejo($num_c, $nro_consejo, $cedula_tutor)
+    // Actualiza en propuestatg, el nro consejo y la cedula tutor
+    public function actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor)
     {
-        $nro_consejo = (int) $nro_consejo;
-        $cedula_tutor = (int) $cedula_tutor;
         $sql = "UPDATE propuestatg SET nro_consejo=$nro_consejo,cedula_tutor=$cedula_tutor WHERE num_c=$num_c";
         $this->sentenciaObj($sql);
     }

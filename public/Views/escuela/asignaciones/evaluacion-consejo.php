@@ -102,11 +102,11 @@
                                         <?php //Verificacion de que contenga almenos un profe
                                         sizeof($internos) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
                                         if ($esPosibleEvaluar) { ?>
-                                            <select class="custom-select" aria-label="" name="cedulatutor" required>
+                                            <select class="custom-select" aria-label="" name="cedula_tutor">
                                                 <option value="" selected>Seleccione una opcion</option>
 
                                             <?php } else {          ?>
-                                                <select class="custom-select Disabled" aria-label="" name="cedulatutor" required disabled>
+                                                <select class="custom-select Disabled" aria-label="" name="cedula_tutor" disabled>
                                                     <option value="" selected>No hay profesores internos disponibles (Que no sean tutores)</option>
                                                 <?php }            ?>
 
@@ -124,16 +124,16 @@
                                         <?php //Verificacion de que contenga almenos un profe
                                         sizeof($internos) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
                                         if ($esPosibleEvaluar) { ?>
-                                            <select class="custom-select" aria-label="" name="cedulajurado1" required>
+                                            <select class="custom-select" aria-label="" name="cedulajurado1">
                                                 <option value="" selected>Seleccione una opcion</option>
 
                                             <?php } else {          ?>
-                                                <select class="custom-select Disabled" aria-label="" name="cedulajurado1" required disabled>
+                                                <select class="custom-select Disabled" aria-label="" name="cedulajurado1" disabled>
                                                     <option value="" selected>No hay profesores internos disponibles (Que no sean jurado)</option>
                                                 <?php }            ?>
 
 
-                                                <?php foreach ($internos as $interno) { ?>
+                                                <?php foreach ($jurados as $interno) { ?>
                                                     <option value="<?php echo $interno['cedula']; ?>">(<?php echo $interno['cedula']; ?>)=><?php echo $interno['nombre']; ?></option>
                                                 <?php } ?>
                                                 </select>
@@ -146,16 +146,16 @@
                                         <?php //Verificacion de que contenga almenos un profe
                                         sizeof($internos) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
                                         if ($esPosibleEvaluar) { ?>
-                                            <select class="custom-select" aria-label="" name="cedulajurado2" required>
+                                            <select class="custom-select" aria-label="" name="cedulajurado2">
                                                 <option value="" selected>Seleccione una opcion</option>
 
                                             <?php } else {          ?>
-                                                <select class="custom-select Disabled" aria-label="" name="cedulajurado2" required disabled>
+                                                <select class="custom-select Disabled" aria-label="" name="cedulajurado2" disabled>
                                                     <option value="" selected>No hay profesores internos disponibles (Que no sean tutores)</option>
                                                 <?php }            ?>
 
 
-                                                <?php foreach ($internos as $interno) { ?>
+                                                <?php foreach ($jurados as $interno) { ?>
                                                     <option value="<?php echo $interno['cedula']; ?>">(<?php echo $interno['cedula']; ?>)=><?php echo $interno['nombre']; ?></option>
                                                 <?php } ?>
                                                 </select>
