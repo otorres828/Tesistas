@@ -40,29 +40,51 @@
                                 </div>
                             <?php unset($_SESSION['mensaje']);
                             } ?>
+
+
+                            <?php $esPosibleEvaluar = true; ?>
                             <div class="col-12 col-xl-6  mx-auto">
                                 <form action="escuela-evaluar-comite" method="POST">
                                     <!-- Numero correlativo : num_c -->
                                     <div class="form-group flex">
                                         <label>Numeros correlativo, Trabajo de grado</label></br>
-                                        <select class="custom-select" name="num_c" type required>
-                                            <option value="" selected>Seleccione una opcion</option>
-                                            <?php foreach ($propuestastg as $ptg) { ?>
-                                                <option value="<?php echo $ptg['num_c']; ?>"><?php echo "(" . $ptg['num_c'] . ") - " . $ptg['titulo'] . "- " . $ptg['modalidad']; ?></option>
-                                            <?php } ?>
+                                        <?php //Verificacion de que contenga almenos un comite 
+                                        sizeof($propuestastg) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
+                                        if ($esPosibleEvaluar) { ?>
+                                            <select class="custom-select" aria-label="" name="num_c" required>
+                                                <option value="" selected>Seleccione una opcion</option>
+                                            <?php } else {          ?>
+                                                <select class="custom-select Disabled" aria-label="" name="num_c" required disabled>
+                                                    <option value="" selected>Aun no existen propuestas de trabajo de grado en donde no haya sido evaluado</option>
+                                                <?php }            ?>
 
-                                        </select>
+
+
+                                                <?php foreach ($propuestastg as $ptg) { ?>
+                                                    <option value="<?php echo $ptg['num_c']; ?>"><?php echo "(" . $ptg['num_c'] . ") - " . $ptg['titulo'] . "- " . $ptg['modalidad']; ?></option>
+                                                <?php } ?>
+
+                                                </select>
                                     </div>
                                     <!-- Numero de los comites : id_comite -->
                                     <div class="form-group flex">
                                         <label>Numero de los comites</label></br>
-                                        <select class="custom-select" name="id_comite" type required>
-                                            <option value="" selected>Seleccione una opcion</option>
+                                        <?php //Verificacion de que contenga almenos un comite 
+                                        sizeof($comites) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
+                                        if ($esPosibleEvaluar) { ?>
+                                            <select class="custom-select" aria-label="" name="id_comite" required>
+                                                <option value="" selected>Seleccione una opcion</option>
 
-                                            <?php foreach ($comites as $comite) { ?>
-                                                <option value="<?php echo $comite['id_comite']; ?>"><?php echo "N: (" . $comite['id_comite'] . ") -> " . $comite['fecha']; ?></option>
-                                            <?php } ?>
-                                        </select>
+                                            <?php } else {          ?>
+                                                <select class="custom-select Disabled" aria-label="" name="id_comite" required disabled>
+                                                    <option value="" selected>Aun no existen comites en donde no haya sido evaluado</option>
+                                                <?php }            ?>
+
+
+                                                <?php foreach ($comites as $comite) { ?>
+                                                    <option value="<?php echo $comite['id_comite']; ?>"><?php echo "N: (" . $comite['id_comite'] . ") -> " . $comite['fecha']; ?></option>
+                                                <?php } ?>
+                                                </select>
                                     </div>
 
                                     <!-- Estatus de la evaluacion del comite -->
@@ -76,14 +98,32 @@
                                     <!-- Cedula del profesor revisor  -->
                                     <div class="form-group flex">
                                         <label>Cedula del revisor</label></br>
-                                        <select class="custom-select" name="cedularevisor" type required>
-                                            <option value="" selected>Seleccione una opcion</option>
-                                            <?php foreach ($internos as $interno) { ?>
-                                                <option value="<?php echo $interno['cedula']; ?>">(<?php echo $interno['cedula']; ?>)=><?php echo $interno['nombre']; ?></option>
-                                            <?php } ?>
-                                        </select>
+
+                                        <?php //Verificacion de que contenga almenos un comite 
+                                        sizeof($internos) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
+                                        if ($esPosibleEvaluar) { ?>
+                                            <select class="custom-select" aria-label="" name="cedularevisor" required>
+                                                <option value="" selected>Seleccione una opcion</option>
+
+                                            <?php } else {          ?>
+                                                <select class="custom-select Disabled" aria-label="" name="cedularevisor" required disabled>
+                                                    <option value="" selected>No hay profesores internos disponibles (Que no sean revisores)</option>
+                                                <?php }            ?>
+
+
+                                                <?php foreach ($internos as $interno) { ?>
+                                                    <option value="<?php echo $interno['cedula']; ?>">(<?php echo $interno['cedula']; ?>)=><?php echo $interno['nombre']; ?></option>
+                                                <?php } ?>
+                                                </select>
+
                                     </div>
-                                    <button type="submit" class="btn btn-success col-12 name" name="evaluarComite">Enviar evaluacion</button>
+                                    <?php if (!$esPosibleEvaluar) { ?>
+                                        <button type="submit" class="btn btn-success col-12 name" name="evaluarComite">Enviar evaluacion</button>
+                                    <?php } else {          ?>
+                                        <button type="submit" class="btn btn-success col-12 name " name="evaluarComite">Enviar evaluacion</button>
+
+                                    <?php }            ?>
+
                                 </form>
 
                             </div>

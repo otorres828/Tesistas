@@ -34,9 +34,9 @@ class Conexion
             // //Se crea la conexión.
             // $this->conexion = new PDO($url, $USUARIO, $CLAVE);
 
-            $contraseña = "26269828";
+            $contraseña = "admin";
             $usuario = "postgres";
-            $nombreBaseDeDatos = "Tesistas";
+            $nombreBaseDeDatos = "tesistas";
             $rutaServidor = "localhost";
             $puerto = "5432";
             try {

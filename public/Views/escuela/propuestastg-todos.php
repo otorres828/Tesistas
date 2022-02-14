@@ -89,8 +89,21 @@
 											<?php }
 											} ?>
 										</td>
-										<td><?php echo $propuestaTG['cedula_revisor']; ?></td>
-										<td><?php echo $propuestaTG['cedula_tutor']; ?></td>
+										<td class="text-center">
+											<?php if (is_null($propuestaTG['cedula_revisor'])) { ?>
+												<h2 class="badge bg-secondary">SIN ASIGNAR</h2>
+											<?php  } else {
+												echo $propuestaTG['cedula_revisor'];
+											} ?>
+										</td>
+										<td class="text-center">
+											<?php if (is_null($propuestaTG['cedula_tutor'])) { ?>
+												<h2 class="badge bg-secondary">SIN ASIGNAR</h2>
+											<?php  } else {
+												echo $propuestaTG['cedula_tutor'];
+											} ?>
+										</td>
+
 									</tr>
 								<?php endforeach; ?>
 

@@ -100,6 +100,7 @@
 										<th>id_criterio</th>
 										<th>Nota maxima </th>
 										<th>Descripcion</th>
+										<th>Tipo de profe</th>
 										<th>Estatus</th>
 										<th>Acciones</th>
 									</tr>
@@ -116,6 +117,7 @@
 											<td><?php echo $c['id_criterio']; ?></td>
 											<td><?php echo $c['notamax']; ?></td>
 											<td><?php echo $c['descripcion']; ?></td>
+											<td><?php echo $tipoProfe; ?></td>
 											<?php if ($c['estatus'] == 'ACTIVO') {
 												$accion = 'deshabilitar'; ?>
 												<td class="text-center">
@@ -215,6 +217,8 @@
 											<td><?php echo $c['id_criterio']; ?></td>
 											<td><?php echo $c['notamax']; ?></td>
 											<td><?php echo $c['descripcion']; ?></td>
+											<td><?php echo $tipoProfe; ?></td>
+
 											<?php if ($c['estatus'] == 'ACTIVO') {
 												$accion = 'deshabilitar'; ?>
 												<td class="text-center">
@@ -314,6 +318,8 @@
 											<td><?php echo $c['id_criterio']; ?></td>
 											<td><?php echo $c['notamax']; ?></td>
 											<td><?php echo $c['descripcion']; ?></td>
+											<td><?php echo $tipoProfe; ?></td>
+
 											<?php if ($c['estatus'] == 'ACTIVO') {
 												$accion = 'deshabilitar'; ?>
 												<td class="text-center">

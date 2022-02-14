@@ -29,6 +29,15 @@ class Profesores extends ModeloGenerico
                                     WHERE tipo='I' 
                                     ORDER BY(nombre)");
     }
+    public function obtenerInternosNoRevisores()
+    {
+        $sql = "SELECT cedula,nombre 
+                                    FROM profesores 
+                                    WHERE tipo='I' 
+                                    AND cedula NOT IN (SELECT cedula FROM propuestatg)
+                                    ORDER BY(nombre)";
+        return $this->sentenciaAll($sql);
+    }
     // Traer todos los profesores tutores
     public function tutores()
     {

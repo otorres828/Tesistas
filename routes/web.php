@@ -52,6 +52,7 @@ $router->add('escuela-profesores-mostrar-profesor', ['controller' => 'escuela\Pr
 $router->add('escuela-evaluacion-comite', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluacionComite']);
 $router->add('escuela-evaluar-comite', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluarComite']);
 $router->add('escuela-evaluacion-consejo', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluacionConsejo']);
+$router->add('escuela-evaluar-consejo', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluarConsejo']);
 
 // Criterios
 $router->add('escuela-criterios-experimentales-todos', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosExperimentalesTodos']);

@@ -73,7 +73,7 @@
                           </p>
                       </a>
                   </li>
-
+                  <!-- Tesistas -->
                   <li class="nav-item ">
                       <a href="#" class="nav-link ">
                           <i class="nav-icon fas fa-users"></i>
@@ -98,8 +98,7 @@
                           </li>
                       </ul>
                   </li>
-
-
+                  <!-- Profesores -->
                   <li class="nav-item">
                       <a href="#" class="nav-link ">
                           <i class="nav-icon fas fa-table"></i>
@@ -142,7 +141,7 @@
 
                       </ul>
                   </li>
-
+                  <!-- Consejos y comites -->
                   <li class="nav-item">
                       <a href="#" class="nav-link">
                           <i class="nav-icon fas fa-balance-scale"></i>
@@ -152,35 +151,6 @@
                           </p>
                       </a>
                       <ul class="nav nav-treeview" style="display: none">
-                          <li class="nav-item">
-                              <a href="#" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>
-                                      Consejos
-                                      <i class="right fas fa-angle-left"></i>
-                                  </p>
-                              </a>
-                              <ul class="nav nav-treeview" style="display: none">
-                                  <li class="nav-item">
-                                      <a href="escuela-consejos" class="nav-link">
-                                          <i class="far fa-dot-circle nav-icon"></i>
-                                          <p>Todos</p>
-                                      </a>
-                                  </li>
-                                  <li class="nav-item">
-                                      <a href="escuela-consejos-cargar" class="nav-link">
-                                          <i class="far fa-dot-circle nav-icon"></i>
-                                          <p>Cargar Consejo</p>
-                                      </a>
-                                  </li>
-                                  <li class="nav-item">
-                                      <a href="escuela-evaluacion-consejo" class="nav-link">
-                                          <i class="far fa-dot-circle nav-icon"></i>
-                                          <p>Evaluacion Consejos</p>
-                                      </a>
-                                  </li>
-                              </ul>
-                          </li>
                           <li class="nav-item">
                               <a href="#" class="nav-link">
                                   <i class="far fa-circle nav-icon"></i>
@@ -210,9 +180,39 @@
                                   </li>
                               </ul>
                           </li>
+                          <li class="nav-item">
+                              <a href="#" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>
+                                      Consejos
+                                      <i class="right fas fa-angle-left"></i>
+                                  </p>
+                              </a>
+                              <ul class="nav nav-treeview" style="display: none">
+                                  <li class="nav-item">
+                                      <a href="escuela-consejos" class="nav-link">
+                                          <i class="far fa-dot-circle nav-icon"></i>
+                                          <p>Todos</p>
+                                      </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a href="escuela-consejos-cargar" class="nav-link">
+                                          <i class="far fa-dot-circle nav-icon"></i>
+                                          <p>Cargar Consejo</p>
+                                      </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a href="escuela-evaluacion-consejo" class="nav-link">
+                                          <i class="far fa-dot-circle nav-icon"></i>
+                                          <p>Evaluacion Consejos</p>
+                                      </a>
+                                  </li>
+                              </ul>
+                          </li>
+
                       </ul>
                   </li>
-
+                  <!-- Criterios -->
                   <li class="nav-header">Criterios </li>
                   <li class="nav-item">
                       <a href="#" class="nav-link">
@@ -241,11 +241,11 @@
                           </li>
                       </ul>
                   </li>
-
+                  <!-- Propuestastg -->
                   <li class="nav-header">Propuestas de TG</li>
                   <li class="nav-item ">
-                      <a href="#" class="nav-link ">
-                          <i class="fas fa-book"></i>
+                      <a href="#" class="nav-link">
+                          <i class="nav-icon fas fa-book"></i>
                           <p>
                               PropuestasTG
                               <i class="fas fa-angle-left right"></i>
@@ -263,14 +263,13 @@
                           <li class="nav-item">
                               <a href="escuela-trabajodegrado" class="nav-link">
                                   <i class="nav-icon fab fa-buffer"></i>
-                                  <p>Trabjos de Grado</p>
+                                  <p>Trabajos de Grado</p>
                               </a>
                           </li>
                       </ul>
                   </li>
-
+                  <!-- Extras -->
                   <li class="nav-header">Extras</li>
-
                   <li class="nav-item ">
                       <a href="#" class="nav-link ">
                           <i class="nav-icon fas fa-users"></i>

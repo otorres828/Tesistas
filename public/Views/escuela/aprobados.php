@@ -41,8 +41,11 @@
 							<tbody>
 								<?php foreach ($propuestas as $propuestaTG) : ?>
 									<tr>
+										<!-- Numero correlativo: Num_c  -->
 										<td><?php echo $propuestaTG['num_c']; ?></td>
+										<!-- Titulo de la propuesta: titulo  -->
 										<td><?php echo $propuestaTG['titulo']; ?></td>
+										<!-- Observaciones : observaciones-->
 										<td class="text-center">
 											<?php if (is_null($propuestaTG['observaciones'])) { ?>
 												<h2 class="badge bg-warning">PENDIENTE</h2>
@@ -50,6 +53,7 @@
 												echo $propuestaTG['observaciones'];
 											} ?>
 										</td>
+										<!-- Modalidad : modalidad -->
 										<td class="text-center">
 											<?php if ($propuestaTG['modalidad'] == 'I') { ?>
 												<h2 class="badge bg-primary">Instrumental</h2>
@@ -57,6 +61,7 @@
 												<h2 class="badge bg-success">Experimental</h2>
 											<?php } ?>
 										</td>
+										<!-- id del Comite : id_comite -->
 										<td class="text-center">
 											<?php if (is_null($propuestaTG['id_comite'])) { ?>
 												<h2 class="badge bg-warning">PENDIENTE</h2>
@@ -73,6 +78,7 @@
 											<?php }
 											} ?>
 										</td>
+										<!-- Numero del consejo : nro_consejo -->
 										<td class="text-center">
 											<?php if (is_null($propuestaTG['nro_consejo'])) { ?>
 												<h2 class="badge bg-warning">PENDIENTE</h2>
@@ -89,15 +95,19 @@
 											<?php }
 											} ?>
 										</td>
+										<!-- id del Comite : id_comite -->
 										<td class="text-center">
 											<?php if (is_null($propuestaTG['id_comite'])) { ?>
 												<h2 class="badge bg-warning">PENDIENTE</h2>
 												<?php  } else {
 												if ($valorcomite == 'REPROBADO') { ?>
-													X
+													<h2 class="badge bg-secondary"> X </h2>
 												<?php } else { ?>
 													<form action="escuela-profesores-mostrar-profesor" method="POST">
-														<button type="submit" name="cedula" value="<?php echo $propuestaTG['cedula_revisor']; ?>"><?php echo $propuestaTG['cedula_revisor']; ?></button>
+														<button type="submit" name="cedula" value="<?php echo $propuestaTG['cedula_revisor']; ?>">
+
+															<?php echo $propuestaTG['cedula_revisor']; ?>
+														</button>
 													</form>
 											<?php }
 											} ?>
@@ -108,7 +118,7 @@
 												<?php  } else {
 												if ($valor == 'REPROBADO') { ?>
 													X
-												<?php } else {?>
+												<?php } else { ?>
 													<form action="escuela-profesores-mostrar-profesor" method="POST">
 														<button type="submit" name="cedula" value="<?php echo $propuestaTG['cedula_tutor']; ?>"><?php echo $propuestaTG['cedula_tutor']; ?></button>
 													</form>
