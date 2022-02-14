@@ -6,6 +6,7 @@ use App\Models\Auth;
 use \Core\View;
 use App\Models\PropuestaTG;
 use App\Models\Escuela;
+use App\Models\Tesistas;
 
 class EscuelaController extends \Core\Controller
 {
@@ -42,8 +43,13 @@ class EscuelaController extends \Core\Controller
 
     public function verpropuesta(){
         if(isset($_POST['num_c'])){
-            $trabajodg= (new PropuestaTG())->where('num_c','=',$_POST['num_c'])->get();
-            View::render('escuela/trabajosdg/vertrabajo.php',['trabajosdg'=> $trabajodg]);   
+            $num_c=$_POST['num_c'];
+            $trabajodg= (new PropuestaTG())->where('num_c','=',$_POST['num_c'])->getOb();
+            $tesistas= (new Tesistas())->sentenciaAll("SELECT t.* FROM tesistas as t, presentan as p
+                                                        WHERE t.cedula=p.cedula
+                                                        AND p.num_c=$num_c");
+            View::render('escuela/trabajosdg/vertrabajo.php',['trabajodg'=> $trabajodg,
+                                                              'tesistas'=>$tesistas]);   
         }else{
             header('location:error');
         }
