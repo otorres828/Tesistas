@@ -18,9 +18,9 @@
                   <i class="fas fa-cog"></i>
               </a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                  <span class="dropdown-item dropdown-header">USUARIO</span>
+                  <span class="dropdown-item dropdown-header">Escuela</span>
                   <div class="dropdown-divider"></div>
-                  <a href="administrador/profile" class="dropdown-item">
+                  <a href="escuela-perfil" class="dropdown-item">
                       <i class="fas fa-user"></i> Perfil
                   </a>
                   <div class="dropdown-divider"></div>

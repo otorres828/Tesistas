@@ -55,7 +55,7 @@
                 </div>
                 <?php $i = 1;
                 foreach ($tesistas as $tesista) : ?>
-                  <h2 class="h5 mb-4">Datos del Tesista <? echo $i++; ?></h2>
+                  <h2 class="h5 mb-4 bg-info p-2 text-center">Datos del Tesista <?php echo $i++; ?></h2>
                   <div class="row align-items-center">
                     <div class="col-md-6 mb-3">
                       <div class="form-group">
@@ -124,12 +124,7 @@
                           <input class="form-control" type="email" value="" disabled>
                         </div>
                       </div>
-                      <div class="col-md-12 mb-3">
-                        <div class="form-group">
-                          <label>Fecha de Aprobacion</label>
-                          <input class="form-control" value="" disabled>
-                        </div>
-                      </div>
+                      
                       <div class="col-md-12">
                         <label>Estatus</label>
                         <input class="form-control w-20 bg-warning" value="PENDIENTE" disabled>

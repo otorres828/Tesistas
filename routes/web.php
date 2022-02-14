@@ -29,16 +29,18 @@ $router->add('propuestas-aprobadas-imprimir', ['controller' => 'tesistas\Tesista
 $router->add('profesores', ['controller' => 'profesores\ProfesorController', 'method' => 'index']);
 $router->add('profesor-perfil', ['controller' => 'profesores\ProfesorController', 'method' => 'perfil']);
 
-
 //=====================================ESCUELA
 $router->add('escuela', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);
+$router->add('escuela-perfil', ['controller' => 'escuela\EscuelaController', 'method' => 'perfil']);
+
 // Tesistas
 $router->add('escuela-tesistas', ['controller' => 'escuela\TesistaController', 'method' => 'tesistasTodos']);
 $router->add('escuela-tesistas-cargar', ['controller' => 'escuela\TesistaController', 'method' => 'tesistasCargar']);
 $router->add('escuela-tesistas-crear', ['controller' => 'escuela\TesistaController', 'method' => 'crearTesista']);
 $router->add('escuela-tesistas-eliminar', ['controller' => 'escuela\TesistaController', 'method' => 'eliminarTesista']);
-// Profesores
 $router->add('escuela-tesistas-mostrar-tesista', ['controller' => 'escuela\TesistaController', 'method' => 'mostrarTesista']);
+
+// Profesores
 
 $router->add('escuela-profesores', ['controller' => 'escuela\ProfesorController', 'method' => 'index']);
 $router->add('escuela-profesor-revisor', ['controller' => 'escuela\ProfesorController', 'method' => 'profesoresRevisores']);
@@ -52,7 +54,6 @@ $router->add('escuela-profesores-mostrar-profesor', ['controller' => 'escuela\Pr
 $router->add('escuela-evaluacion-comite', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluacionComite']);
 $router->add('escuela-evaluar-comite', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluarComite']);
 $router->add('escuela-evaluacion-consejo', ['controller' => 'escuela\EvaluacionController', 'method' => 'evaluacionConsejo']);
-
 // Criterios
 $router->add('escuela-criterios-experimentales-todos', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosExperimentalesTodos']);
 $router->add('escuela-criterios-instrumentales-todos', ['controller' => 'escuela\CriteriosController', 'method' => 'criteriosInstrumentalesTodos']);
