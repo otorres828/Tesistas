@@ -156,19 +156,30 @@ class PropuestaTG extends ModeloGenerico
     return $this->sentenciaObj($this->sql);
   }
 
+
+
   //PARA EVALUACION COMITE, TRAER LAS PROPUESTAS QUE NO HAN SIDO EVALUADAS
-  public function evaluacionComite()
+  public function propuestasNoEvaluadasPorElComite()
   {
-    $sql = "SELECT * FROM propuestatg AS ptg  WHERE ptg.num_c NOT IN (SELECT num_c FROM evaluacioncomite)";
-    return $this->sentenciaAll($sql);
-  }
-  //PARA EVALUACION consejo, TRAER LAS PROPUESTAS QUE NO HAN SIDO EVALUADAS
-  public function evaluacionConsejo()
-  {
-    $sql = "SELECT * FROM propuestatg AS ptg  WHERE ( ptg.id_comite IS NOT NULL) AND (ptg.num_c NOT IN (SELECT num_c FROM evaluacionconsejo))";
+    $sql = "SELECT * FROM propuestatg AS ptg  WHERE ptg.num_c NOT IN (SELECT num_c FROM evaluacioncomite) ORDER BY ptg.num_c ASC";
     return $this->sentenciaAll($sql);
   }
 
+
+  //PARA EVALUACION consejo, TRAER LAS PROPUESTAS QUE NO HAN SIDO EVALUADAS
+  public function evaluacionConsejo()
+  {
+    $sql = "SELECT * FROM propuestatg AS ptg  
+      WHERE ( ptg.id_comite IS NOT NULL) AND (ptg.num_c NOT IN (SELECT num_c FROM evaluacionconsejo))";
+    return $this->sentenciaAll($sql);
+  }
+
+
+  public function evaluadosComiteYNoConsejo()
+  {
+    $sql = "";
+    return $this->sentenciaAll($sql);
+  }
 
   //PARA TRABAJOS DE GRADO
   public function aprobados()

@@ -19,18 +19,23 @@ class Evaluacion extends ModeloGenerico
     {
         $num_c = (int) $num_c;
         $id_comite = (int) $id_comite;
-        // echo "====Datos recibidos del formulario====<br>";
-        // echo "Estatus:" . $estatus . "<br>";
-        // echo "Numero de propuesta:" . $num_c . "<br>";
-        // echo "Id de comite:" . $id_comite . "<br>";
-        // echo "======================================<br>";
-        $sql = "INSERT INTO evaluacioncomite(num_c,id_comite,estatus) VALUES($num_c,$id_comite,'$estatus')";
-        $this->sentenciaObj($sql);
+
+        $comprobarDuplicado = "SELECT * FROM evaluacioncomite WHERE num_c=$num_c AND id_comite=$id_comite";
+        $this->sentenciaObj($comprobarDuplicado);
+        if (!$comprobarDuplicado) {
+            $sql = "INSERT INTO evaluacioncomite(num_c,id_comite,estatus) VALUES($num_c,$id_comite,'$estatus')";
+            $this->sentenciaObj($sql);
+        }
     }
 
-    public function evaluarComite($num_c, $id_comite, $cedularevisor)
+    public function actualizar_IdComite_CedulaRevisor($num_c, $id_comite, $cedularevisor)
     {
         $sql = "UPDATE propuestatg SET id_comite=$id_comite,cedula_revisor='$cedularevisor' WHERE num_c=$num_c";
+        $this->sentenciaObj($sql);
+    }
+    public function actualizar_IdComite($num_c, $id_comite)
+    {
+        $sql = "UPDATE propuestatg SET id_comite=$id_comite WHERE num_c=$num_c";
         $this->sentenciaObj($sql);
     }
     //===============================================================CONSEJO
