@@ -32,6 +32,8 @@ $router->add('profesor-perfil', ['controller' => 'profesores\ProfesorController'
 //=====================================ESCUELA
 $router->add('escuela', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);
 $router->add('escuela-perfil', ['controller' => 'escuela\EscuelaController', 'method' => 'perfil']);
+$router->add('escuela-perfil-modificarClave', ['controller' => 'escuela\EscuelaController', 'method' => 'modificarClave']);
+$router->add('escuela-perfil-modificarCorreo', ['controller' => 'escuela\EscuelaController', 'method' => 'modificarCorreo']);
 
 // Tesistas
 $router->add('escuela-tesistas', ['controller' => 'escuela\TesistaController', 'method' => 'tesistasTodos']);

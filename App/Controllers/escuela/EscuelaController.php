@@ -12,7 +12,8 @@ class EscuelaController extends \Core\Controller
 {
     // Vista del dashboard para la escuela
     public function index()
-    {     
+    {   
+        $this->autenticar();  
         $propuestasTG = (new PropuestaTG())->get();     
         $estadisticas = (new Escuela())->estadisticas(); 
         View::render('escuela/index.php', [
@@ -22,8 +23,59 @@ class EscuelaController extends \Core\Controller
     }
 
     public function perfil(){
-        
+        $this->autenticar();  
+        $escuela=(new Auth())->autenticado();
+        View::render('escuela/perfil.php', ['escuela' => $escuela]);
     }
+
+    public function modificarClave()
+    {
+        if (isset($_POST['modificarclave'])) {
+            if (isset($_POST['claveactual']) && isset($_POST['nuevaclave'])) {
+                session_start();
+                $autenticado = (new Auth());
+                $usuario = $autenticado->autenticado();
+
+                $actual = password_verify($_POST['claveactual'], $usuario['contraseña']);
+                if ($actual > 0) {
+
+                    $nueva = password_hash($_POST['nuevaclave'], PASSWORD_BCRYPT);
+                    $autenticado->cambiarcontraseña($nueva, $usuario['cedula']);
+
+                    $_SESSION['mensaje'] = "contraseña cambiada con exito";
+                    $_SESSION['colorcito'] =  "success";
+                } else {
+                    $_SESSION['mensaje'] = "la contraseña que ingreso no coincide con la registrada";
+                    $_SESSION['colorcito'] =  "danger";
+                }
+                header("Location: escuela-perfil");
+            }
+        } else
+            header("Location: error");
+    }
+
+    public function modificarCorreo()
+    {
+
+        if (isset($_POST['modificarcorreo'])) {
+            session_start();
+            if (isset($_POST['correo'])) {
+                $resultado = (new Auth())->where('correo', '=', $_POST['correo'])->getOb();
+
+                if ($resultado > 0) {        
+                    $_SESSION['mensaje'] = "Correo ya registrado, intente con otro correo";
+                    $_SESSION['colorcito'] = "danger";
+                } else {
+                    (new Auth())->modificarCorreo($_POST['correo']);
+                    $_SESSION['mensaje'] = "Se modifico el correo con exito";
+                    $_SESSION['colorcito'] = "success";
+                }
+                header('location:escuela-perfil');
+            }
+        } else
+            header('location:error');
+    }
+
     // Ver todas las propuestas tg  en escuela-propuestastg
     public function propuestastgTodas()
     {

@@ -34,7 +34,6 @@ class Tesistas extends ModeloGenerico
 
     public function modificarCorreo($correo)
     {
-        session_start();
         $cedula = (new Auth())->autenticado();
         $this->sentenciaObj("UPDATE tesistas SET correoparticular=" . "'" . $correo . "'" . " WHERE cedula=" . $cedula['cedula']);
     }
