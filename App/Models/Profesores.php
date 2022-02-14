@@ -81,6 +81,11 @@ class Profesores extends ModeloGenerico
         $sql = "INSERT INTO  usuarios (cedula,nombre_usuario,correo,contraseña,modelo,codigo) VALUES($cedula,'$nombre','$correoparticular','$contraseña','Profesores','$contraseña')";
         $this->insertarObj($query);
         $this->insertarObj($sql);
+        if($tipo=='I'){
+            $this->insertarObj("INSERT INTO internos values($cedula)");
+        }else{
+            $this->insertarObj("INSERT INTO externos values($cedula)");
+        }
     }
 
     public function validarEliminarRevisor($cedula)

@@ -64,7 +64,11 @@
 									if ($rows > 1) {
 										$query = "INSERT INTO  profesores (cedula,nombre,direccion,correoparticular,telefono,tipo) VALUES($cedula,'$nombre','$direccion','$correoparticular','$telefono','$tipo')";
 										$valor = (new Profesores())->insertarObj($query);
-
+										if($tipo=='I'){
+											(new Profesores())->insertarObj("INSERT INTO internos values($cedula)");
+										}else if($tipo=='E'){
+											(new Profesores())->insertarObj("INSERT INTO externos values($cedula)");
+										}
 										if ($valor > 0) {
 											$contraseña = password_hash($cedula, PASSWORD_BCRYPT);
         									$sql = "INSERT INTO  usuarios (cedula,nombre_usuario,correo,contraseña,modelo,codigo) VALUES($cedula,'$nombre','$correoparticular','$contraseña','Profesores','$contraseña')";

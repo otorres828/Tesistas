@@ -61,4 +61,24 @@ class EscuelaController extends \Core\Controller
         $autenticacion->verificado();
         $autenticacion->rol('Escuela');
     }
+    
+    public function evaluacioncomite(){
+        if (isset($_POST['BOTON_ENVIAR_EVALUACION'])) {
+            $id_comite=$_POST['id_comite'];
+            $num_c=$_POST['num_c'];
+            $estatus=$_POST['estatus'];
+            if($_POST['estatus']=='REPROBADO'){
+                $query="UPDATE propuestatg SET id_comite=$id_comite WHERE num_c=$num_c";
+            }else{
+                $cedula_revisor=$estatus=$_POST['cedula_revisor'];
+                $query="UPDATE propuestatg SET id_comite=$id_comite,cedula_revisor=$cedula_revisor WHERE num_c=$num_c";
+            }
+            $sql="INSERT INTO evaluacioncomite values ($id_comite,$num_c,'$estatus')";
+            (new PropuestaTG())->insertarObj($query);
+            (new PropuestaTG())->insertarObj($sql);
+        } else {
+            header('location:error');
+        }
+        
+    }
 }
