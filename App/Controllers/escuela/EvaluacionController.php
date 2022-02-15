@@ -83,7 +83,8 @@ class EvaluacionController extends \Core\Controller
             $num_c = $_POST['num_c'];
             $nro_consejo = $_POST['nro_consejo'];
             $cedula_tutor = $_POST['cedula_tutor'];
-
+            $cedulajurado1 = $_POST['cedulajurado1'];
+            $cedulajurado2 = $_POST['cedulajurado2'];
 
             $internos = (new Profesores())->obtenerInternos();
             $jurados = (new Profesores())->get();
@@ -91,12 +92,29 @@ class EvaluacionController extends \Core\Controller
             $propuestastg = (new PropuestaTG())->propuestasAprobadasPorComite();
 
 
-            $resultadoInsert = (new Evaluacion())->insertarEvaluacionConsejo($num_c, $nro_consejo, $estatus);
             if ($estatus == 'APROBADO') {
-                $resultado = (new Evaluacion())->actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor);
+                if ($cedulajurado1 == $cedulajurado2 || $cedulajurado1 == $cedula_tutor || $cedulajurado2 == $cedula_tutor) {
+                    $_SESSION['mensaje'] = "Error: Los dos jurados no pueden ser el mismo";
+                    $_SESSION['colorcito'] = "warning";
+
+                    View::render(
+                        'escuela/asignaciones/evaluacion-consejo.php',
+                        [
+                            'internos' => $internos,
+                            'consejos' => $consejos,
+                            'jurados' => $jurados,
+                            'propuestastg' => $propuestastg
+                        ]
+                    );
+                } else { // los profes son distintos
+                    $resultado = (new Evaluacion())->actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor);
+                    $resultado = (new Evaluacion())->insertarEsJuradoXmodalidad($num_c, $cedulajurado1, $cedulajurado2);
+                }
             } else { //Esta REPROBADO
                 $resultado = (new Evaluacion())->actualizar_NroConsejo($num_c, $nro_consejo);
             }
+            $resultadoInsert = (new Evaluacion())->insertarEvaluacionConsejo($num_c, $nro_consejo, $estatus);
+
             $_SESSION['mensaje'] = "Se evaluo correctamente la propuesta <b>($num_c) por el consejo</b>";
             $_SESSION['colorcito'] = "success";
 
