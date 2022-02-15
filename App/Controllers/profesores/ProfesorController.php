@@ -21,6 +21,9 @@ class ProfesorController extends \Core\Controller{
         View::render('profesores\perfil.php',['profesor'=>$profesor]);
     
     }
+
+
+    
     private function autenticar(){
         $autenticacion= new Auth();
         $autenticacion->verificado();

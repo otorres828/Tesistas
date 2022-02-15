@@ -183,4 +183,10 @@ class Tesistas extends ModeloGenerico
                                     WHERE ptg.num_c=$num_c
                                     AND p.cedula=ptg.cedula_tutor");
     }
+
+
+    //PROFESORES
+    public function tesistasdeunapropuesta($num_c){
+        return $this->sentenciaAll("SELECT t.* FROM tesistas as t, presentan as p WHERE p.cedula=t.cedula AND p.num_c= $num_c");
+    }
 }

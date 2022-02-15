@@ -28,6 +28,8 @@ $router->add('propuestas-aprobadas-imprimir', ['controller' => 'tesistas\Tesista
 //=====================================PROFESORES
 $router->add('profesores', ['controller' => 'profesores\ProfesorController', 'method' => 'index']);
 $router->add('profesor-perfil', ['controller' => 'profesores\ProfesorController', 'method' => 'perfil']);
+$router->add('profesor-revisor', ['controller' => 'profesores\RevisorController', 'method' => 'revisor']);
+$router->add('profesor-revisor-evaluar', ['controller' => 'profesores\RevisorController', 'method' => 'evaluarRevisor']);
 
 //=====================================ESCUELA
 $router->add('escuela', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);

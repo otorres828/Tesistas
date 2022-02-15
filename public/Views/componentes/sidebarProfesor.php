@@ -1,6 +1,6 @@
-<div class="preloader flex-column justify-content-center align-items-center">
+<!-- <div class="preloader flex-column justify-content-center align-items-center">
     <img class="animation__shake" src="../../dist/img/Ucabg.png" alt="Ucab Guayana" height="30%" width="15%">
-</div>
+</div> -->
 
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -44,14 +44,12 @@
 </nav>
 
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="index3.html" class="brand-link">
+    <a href="profesores" class="brand-link">
         <img src="../../dist/img/ucablogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">UCABG</span>
     </a>
 
-    <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
@@ -60,8 +58,6 @@
                 <a href="profesor-perfil" class="d-block"><?php echo $profesor['nombre']; ?></a>
             </div>
         </div>
-
-        <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
@@ -74,50 +70,32 @@
                     </a>
                 </li>
 
-
                 <li class="nav-item">
-                    <a href="profesor-propuestas-aprobadas" class="nav-link">
+                    <a href="profesor-revisor" class="nav-link ">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
-                            Propuestas Aprobadas
+                            Revisor
                         </p>
                     </a>
-
+                    
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
-                            Entregas
+                            Tutor Academico
                         </p>
                     </a>
                 </li>
-
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-balance-scale"></i>
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon fas fa-table"></i>
                         <p>
-                            Perfil
-                            <i class="fas fa-angle-left right"></i>
+                            Jurado
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/search/simple.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Todos</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/search/enhanced.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Cargar Comites</p>
-                            </a>
-                        </li>
-                    </ul>
+                    
                 </li>
-
-
             </ul>
         </nav>
     </div>

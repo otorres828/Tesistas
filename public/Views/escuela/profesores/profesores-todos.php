@@ -19,7 +19,7 @@
 		<div class="content-wrapper">
 			<section class="content">
 				<div class="row">
-					<section class="col-lg-12 connectedSortable p-4">
+					<section class="col-lg-12  p-4">
 						<div class="container-fluid">
 							<div class="row mb-2">
 								<div class="col-sm-6">
@@ -140,8 +140,6 @@
 											</td>
 										</tr>
 									<?php endforeach; ?>
-
-
 								</tbody>
 							</table>
 						</div>

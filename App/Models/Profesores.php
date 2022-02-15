@@ -82,7 +82,6 @@ class Profesores extends ModeloGenerico
         }
     }
 
-
     public function insertarprofesor($cedula, $nombre, $direccion, $correoparticular, $telefono, $tipo)
     {
         $query = "INSERT INTO  profesores (cedula,nombre,direccion,correoparticular,telefono,tipo) VALUES($cedula,'$nombre','$direccion','$correoparticular','$telefono','$tipo')";
@@ -153,10 +152,14 @@ class Profesores extends ModeloGenerico
         }
     }
 
-
     public function eliminarProfesor($cedula)
     {
         $this->sentenciaObj("DELETE FROM profesores WHERE cedula=$cedula");
         $this->sentenciaObj("DELETE FROM usuarios WHERE cedula=$cedula");
+    }
+
+    //PROFESORES
+    public function propuestasRevisor($cedula){
+        return $this->sentenciaAll("SELECT num_c,titulo,modalidad FROM propuestatg WHERE cedula_revisor=$cedula");
     }
 }
