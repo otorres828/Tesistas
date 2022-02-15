@@ -7,7 +7,7 @@
     <title>Profesor| Revisor</title>
     <?php
 
-use App\Models\RevisaInstrumental;
+use App\Models\RevisaRevisor;
 
  include_once('../public/Views/componentes/cssadminlte.php'); ?>
     <!-- DATATABLES -->
@@ -62,9 +62,12 @@ use App\Models\RevisaInstrumental;
                                                         <input hidden name="modalidad" value="<?php echo $propuesta['modalidad']; ?>">
                                                         <button class="btn btn-warning" value="<?php echo $propuesta['num_c']; ?>" name="evaluar" 
                                                         <?php
-                                                            $cantidad = (new RevisaInstrumental())->validadExistencia($propuesta['num_c']);
-                                                            if($cantidad){ ?> disabled <?php } ?>
-                                                        
+                                                            if($propuesta['modalidad']=='I'){
+                                                            $cantidad = (new RevisaRevisor())->validadExistenciaInstrumental($propuesta['num_c']);
+                                                            }else{
+                                                                $cantidad = (new RevisaRevisor())->validadExistenciaExperimental($propuesta['num_c']);
+                                                            }?>
+                                                        <?php  if($cantidad){ ?> disabled <?php } ?>
                                                         >EVALUAR</button>
                                                     </form>
                                                 </td>
