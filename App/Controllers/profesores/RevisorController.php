@@ -34,13 +34,16 @@ class RevisorController extends \Core\Controller
             if($_POST['modalidad']=='E'){
                 $criterios =(new Criterios())->criteriosRevExp();
             }else{
+                $cantidad = (new Criterios())->cantidad_criterios_rev_in();
+                $cantidad=$cantidad['cantidad'];
                 $criterios =(new Criterios())->criteriosRevIns();
             }
             View::render('profesores\revisor\evaluar.php', [
                 'tesitas' => $tesitas,
                 'criterios' => $criterios,
                 'profesor'=>$profesor,
-                'propuesta'=>$propuesta
+                'propuesta'=>$propuesta,
+                'cantidad'=>$cantidad
             ]);
 
         } else {

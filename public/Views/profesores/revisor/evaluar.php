@@ -50,12 +50,12 @@
 
                                 </div>
                                 <div class="row align-items-center">
-                                    <?php for ($i = 1; $i < 15; $i++) : ?>
+                                    <?php $i=1; foreach ($criterios as $criterio) : ?>
                                         <!-- INPUT CRITERIO -->
                                         <div class="col-md-9 mb-3">
                                             <div class="form-group">
-                                                <label>Criterio <?= $i ?></label>
-                                                <input class="form-control" value="<?php echo $propuesta['modalidad']; ?>" disabled>
+                                                <label>Criterio <?= $i++ ?></label>
+                                                <input class="form-control" value="<?php echo $criterio['descripcion']; ?>" disabled>
                                             </div>
                                         </div>
                                         <!-- SELECT DE LA NOTA -->
@@ -63,15 +63,12 @@
                                             <div class="form-group">
                                                 <label>Nota</label>
                                                 <select name="criterio1" class="form-control">
-                                                    <option value="">1</option>
-                                                    <option value="">2</option>
-                                                    <option value="">3</option>
-                                                    <option value="">4</option>
-                                                    <option value="">5</option>
+                                                    <option value="APROBADO">APROBADO</option>
+                                                    <option value="REPROBADO">REPROBADO</option>
                                                 </select>
                                             </div>
                                         </div>
-                                    <?php endfor; ?>
+                                    <?php endforeach; ?>
                                 </div>
 
                             </div>

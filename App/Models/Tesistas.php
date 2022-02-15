@@ -63,7 +63,7 @@ class Tesistas extends ModeloGenerico
     }
 
     public function guardar_propuesta_pareja($slug, $nombrepropuesta, $modalidad, $cedula)
-    {
+    {   
         $cedula_log = $_SESSION['cedula'];
         $this->sentenciaObj("INSERT INTO propuestatg (titulo,modalidad,slug) VALUES ('$nombrepropuesta','$modalidad','$slug')");
         $num_c = $this->sentenciaObj('SELECT num_c FROM propuestatg WHERE slug=' . "'" . $slug . "'");

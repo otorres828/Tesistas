@@ -152,4 +152,9 @@ class Criterios extends ModeloGenerico
         $sql = "SELECT * FROM criterios_instrumental_jurado";
         return $this->sentenciaAll($sql);
     }
+
+    //CONTAR LAS CANTIDADES DE CRITERIOS
+    public function cantidad_criterios_rev_in(){
+        return $this->sentenciaObj("SELECT COUNT (id_criterio) AS cantidad FROM CRITERIOS_REV_INS");
+    }
 }
