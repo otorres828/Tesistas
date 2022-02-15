@@ -15,8 +15,6 @@
 
         <?php include_once('../public/Views/componentes/indexSidebar.php'); ?>
 
-
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <section class="content">
                 <div class="row ">
@@ -28,22 +26,19 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class=" table-responsive p-2 ">
-                            <?php
-                            if (isset($_SESSION['mensaje'])) { ?>
-                                <div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
-                                    <?php echo $_SESSION['mensaje']; ?>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            <?php unset($_SESSION['mensaje']);
-                            } ?>
-
-
                             <?php $esPosibleEvaluar = true; ?>
                             <div class="col-12 col-xl-6  mx-auto">
+                                <?php
+                                if (isset($_SESSION['mensaje'])) { ?>
+                                    <div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
+                                        <?php echo $_SESSION['mensaje']; ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                <?php unset($_SESSION['mensaje']);
+                                } ?>
                                 <form action="escuela-evaluar-consejo" method="POST">
                                     <!-- Numero correlativo : num_c -->
                                     <div class="form-group flex">
@@ -165,7 +160,7 @@
                                         <label>Fecha de Presentacion</label></br>
                                         <input type="date" name="fecha" class="form-control" required>
                                     </div>
-                                    
+
                                     <?php if (!$esPosibleEvaluar) { ?>
                                         <button type="submit" class="btn btn-success col-12 name" name="evaluarConsejo">Enviar evaluacion</button>
                                     <?php } else {          ?>
@@ -178,12 +173,9 @@
                             </div>
 
                         </div>
-
                     </section>
                 </div>
-
         </div>
-        <!-- /.content -->
     </div>
 
     <?php include_once('../public/Views/componentes/footer.php'); ?>

@@ -30,20 +30,21 @@
                         </div>
 
                         <div class=" table-responsive p-2 ">
-                            <?php
-                            if (isset($_SESSION['mensaje'])) { ?>
-                                <div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
-                                    <?php echo $_SESSION['mensaje']; ?>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            <?php unset($_SESSION['mensaje']);
-                            } ?>
+                            
 
 
                             <?php $esPosibleEvaluar = true; ?>
                             <div class="col-12 col-xl-6  mx-auto">
+                                <?php
+                                if (isset($_SESSION['mensaje'])) { ?>
+                                    <div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
+                                        <?php echo $_SESSION['mensaje']; ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                <?php unset($_SESSION['mensaje']);
+                                } ?>
                                 <form action="escuela-evaluar-comite" method="POST">
                                     <!-- Numero correlativo : num_c -->
                                     <div class="form-group flex">

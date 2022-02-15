@@ -7,9 +7,9 @@
     <title>Profesor| Revisor</title>
     <?php
 
-use App\Models\RevisaRevisor;
+    use App\Models\RevisaRevisor;
 
- include_once('../public/Views/componentes/cssadminlte.php'); ?>
+    include_once('../public/Views/componentes/cssadminlte.php'); ?>
     <!-- DATATABLES -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -49,6 +49,7 @@ use App\Models\RevisaRevisor;
                                         <tr>
                                             <th>Nº</th>
                                             <th>Titulo</th>
+                                            <th>Modalidad</th>
                                             <th>Evaluar</th>
                                         </tr>
                                     </thead>
@@ -57,18 +58,22 @@ use App\Models\RevisaRevisor;
                                             <tr>
                                                 <td><?php echo $propuesta['num_c']; ?></td>
                                                 <td><?php echo $propuesta['titulo']; ?></td>
+                                                <td class="text-center">
+                                                    <?php if ($propuesta['modalidad'] == 'I') { ?>
+                                                        <h2 class="badge bg-primary">Instrumental</h2>
+                                                    <?php } else { ?>
+                                                        <h2 class="badge bg-success">Experimental</h2>
+                                                    <?php } ?>
+                                                </td>
                                                 <td>
                                                     <form action="profesor-revisor-evaluar" method="post">
                                                         <input hidden name="modalidad" value="<?php echo $propuesta['modalidad']; ?>">
-                                                        <button class="btn btn-warning" value="<?php echo $propuesta['num_c']; ?>" name="evaluar" 
-                                                        <?php
-                                                            if($propuesta['modalidad']=='I'){
-                                                            $cantidad = (new RevisaRevisor())->validadExistenciaInstrumental($propuesta['num_c']);
-                                                            }else{
-                                                                $cantidad = (new RevisaRevisor())->validadExistenciaExperimental($propuesta['num_c']);
-                                                            }?>
-                                                        <?php  if($cantidad){ ?> disabled <?php } ?>
-                                                        >EVALUAR</button>
+                                                        <button class="btn btn-warning" value="<?php echo $propuesta['num_c']; ?>" name="evaluar" <?php
+                                                                                                                                                    if ($propuesta['modalidad'] == 'I') {
+                                                                                                                                                        $cantidad = (new RevisaRevisor())->validadExistenciaInstrumental($propuesta['num_c']);
+                                                                                                                                                    } else {
+                                                                                                                                                        $cantidad = (new RevisaRevisor())->validadExistenciaExperimental($propuesta['num_c']);
+                                                                                                                                                    } ?> <?php if ($cantidad) { ?> disabled <?php } ?>>EVALUAR</button>
                                                     </form>
                                                 </td>
                                             </tr>
