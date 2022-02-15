@@ -35,7 +35,13 @@
                             <div class="card card-body border-0 shadow mb-4">
                                 <h2 class="h5 mb-4">EVALUAR PROPUESTA DE TRABAJO DE GRADO</h2>
                                 <div class="row">
-                                    <div class="col-md-12 mb-3">
+                                    <div class="col-md-2 mb-3">
+                                        <div>
+                                            <label for="first_name">Nº Propuesta</label>
+                                            <input class="form-control" type="text" value="<?php echo $propuesta['num_c']; ?>" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10 mb-3">
                                         <div>
                                             <label for="first_name">Titulo de la Propuesta</label>
                                             <input class="form-control" type="text" value="<?php echo $propuesta['titulo']; ?>" disabled>
@@ -44,25 +50,27 @@
 
                                 </div>
                                 <div class="row align-items-center">
-                                <?php for($i=1;$i<15;$i++):?>
-                                    <div class="col-md-9 mb-3">
-                                        <div class="form-group">
-                                            <label>Criterio <?=$i?></label>
-                                            <input class="form-control" value="<?php echo $propuesta['modalidad']; ?>" disabled>
+                                    <?php for ($i = 1; $i < 15; $i++) : ?>
+                                        <!-- INPUT CRITERIO -->
+                                        <div class="col-md-9 mb-3">
+                                            <div class="form-group">
+                                                <label>Criterio <?= $i ?></label>
+                                                <input class="form-control" value="<?php echo $propuesta['modalidad']; ?>" disabled>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <div class="form-group">
-                                            <label>Nota</label>
-                                            <select name="criterio1" class="form-control">
-                                            <option value="">1</option>
-                                            <option value="">2</option>
-                                            <option value="">3</option>
-                                            <option value="">4</option>
-                                            <option value="">5</option>
-                                            </select>
+                                        <!-- SELECT DE LA NOTA -->
+                                        <div class="col-md-3 mb-3">
+                                            <div class="form-group">
+                                                <label>Nota</label>
+                                                <select name="criterio1" class="form-control">
+                                                    <option value="">1</option>
+                                                    <option value="">2</option>
+                                                    <option value="">3</option>
+                                                    <option value="">4</option>
+                                                    <option value="">5</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
                                     <?php endfor; ?>
                                 </div>
 
