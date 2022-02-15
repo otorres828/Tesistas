@@ -102,8 +102,7 @@
                                         <?php //Verificacion de que contenga almenos un comite 
                                         sizeof($internos) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
                                         if ($esPosibleEvaluar) { ?>
-                                            <select class="custom-select" aria-label="" name="cedularevisor" required>
-                                                <option value="" selected>Seleccione una opcion</option>
+                                            <select class="custom-select" aria-label="" name="cedularevisor" >
 
                                             <?php } else {          ?>
                                                 <select class="custom-select Disabled" aria-label="" name="cedularevisor" required disabled>
