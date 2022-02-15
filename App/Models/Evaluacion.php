@@ -91,9 +91,9 @@ class Evaluacion extends ModeloGenerico
         $this->sentenciaObj($sql);
     }
     // Actualiza en propuestatg, el nro consejo y la cedula tutor
-    public function actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor)
+    public function actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor,$fecha)
     {
-        $sql = "UPDATE propuestatg SET nro_consejo=$nro_consejo,cedula_tutor=$cedula_tutor WHERE num_c=$num_c";
+        $sql = "UPDATE propuestatg SET nro_consejo=$nro_consejo,cedula_tutor=$cedula_tutor,fecha_defensa='$fecha' WHERE num_c=$num_c";
         $this->sentenciaObj($sql);
     }
 }

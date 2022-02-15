@@ -162,4 +162,12 @@ class Tesistas extends ModeloGenerico
         $this->sentenciaObj("DELETE FROM usuarios WHERE cedula=$cedula");
 
     }
+
+    public function misjurados($modalidad){
+        if($modalidad=='I'){
+            return $this->sentenciaAll("SELECT *FROM");
+        }else{
+            return $this->sentenciaAll("");
+        }
+    }
 }

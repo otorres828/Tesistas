@@ -161,6 +161,11 @@
                                                 </select>
 
                                     </div>
+                                    <div class="form-group flex">
+                                        <label>Fecha de Presentacion</label></br>
+                                        <input type="date" name="fecha" class="form-control" required>
+                                    </div>
+                                    
                                     <?php if (!$esPosibleEvaluar) { ?>
                                         <button type="submit" class="btn btn-success col-12 name" name="evaluarConsejo">Enviar evaluacion</button>
                                     <?php } else {          ?>

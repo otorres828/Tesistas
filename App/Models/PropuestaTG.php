@@ -17,9 +17,10 @@ class PropuestaTG extends ModeloGenerico
   public function mispropuestasaprobadas()
   {
     $cedula = $_SESSION['cedula'];
-    $this->sql = "SELECT ptg.num_c,ptg.titulo,ptg.modalidad,ptg.observaciones,ec.estatus,ecj.estatus as estatusc 
-                      FROM propuestatg AS ptg,evaluacioncomite AS ec,evaluacionconsejo AS ecj
+    $this->sql = "SELECT ptg.num_c,ptg.titulo,ptg.modalidad,ptg.observaciones,p.nombre as tutor,ptg.fecha_defensa,ec.estatus,ecj.estatus as estatusc 
+                      FROM propuestatg AS ptg,evaluacioncomite AS ec,evaluacionconsejo AS ecj,profesores AS p
                       WHERE ptg.num_c=ec.num_c
+                        AND ptg.cedula_tutor=p.cedula 
                         AND ptg.num_c=ecj.num_c
                         AND ec.estatus='APROBADO'
                         AND ecj.estatus='APROBADO'

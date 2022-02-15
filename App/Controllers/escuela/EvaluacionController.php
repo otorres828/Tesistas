@@ -85,7 +85,7 @@ class EvaluacionController extends \Core\Controller
             $cedula_tutor = $_POST['cedula_tutor'];
             $cedulajurado1 = $_POST['cedulajurado1'];
             $cedulajurado2 = $_POST['cedulajurado2'];
-
+            $fecha=$_POST['fecha'];
             $internos = (new Profesores())->obtenerInternos();
             $jurados = (new Profesores())->get();
             $consejos = (new Consejos())->get();
@@ -107,7 +107,7 @@ class EvaluacionController extends \Core\Controller
                         ]
                     );
                 } else { // los profes son distintos
-                    $resultado = (new Evaluacion())->actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor);
+                    $resultado = (new Evaluacion())->actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor,$fecha);
                     $resultado = (new Evaluacion())->insertarEsJuradoXmodalidad($num_c, $cedulajurado1, $cedulajurado2);
                 }
             } else { //Esta REPROBADO
