@@ -176,4 +176,11 @@ class Tesistas extends ModeloGenerico
             AND p.cedula=es.cedula");
         }
     }
+
+    public function miTutoracademico($num_c){
+        return $this->sentenciaObj("SELECT p.nombre 
+                                    FROM propuestatg AS ptg, profesores AS p
+                                    WHERE ptg.num_c=$num_c
+                                    AND p.cedula=ptg.cedula_tutor");
+    }
 }

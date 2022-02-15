@@ -7,6 +7,8 @@
   <title>Propuesta | Propuesta Aprobadas</title>
   <?php
 
+  use App\Models\Tesistas;
+
   include_once('../public/Views/componentes/cssadminlte.php'); ?>
   <!-- DATATABLES -->
 </head>
@@ -54,6 +56,8 @@
 
                 </div>
                 <?php $i = 1;
+
+
                 foreach ($tesistas as $tesista) : ?>
                   <h2 class="h5 mb-4 bg-info p-2 text-center">Datos del Tesista <?php echo $i++; ?></h2>
                   <div class="row align-items-center">
@@ -99,17 +103,21 @@
                       <div class="row">
                         <div class="col-md-12 mb-3">
                           <div>
-                            <label>Jurado 1</label>
-                            <input class="form-control" type="text" value="" disabled>
+                            <label>Tutor Academico</label>
+                            <input class="form-control text-center" type="text" value="<?php echo $tutor['nombre']; ?>" disabled>
                           </div>
-                          <div>
-                            <label>Jurado 2</label>
-                            <input class="form-control" type="text" value="" disabled>
-                          </div>
-                          <div>
-                            <label>Jurado 3</label>
-                            <input class="form-control" type="text" value="" disabled>
-                          </div>
+
+                          <?php
+                          $i = 1;
+                          $misjurados = (new Tesistas())->misjurados($trabajodg['num_c'], $trabajodg['modalidad']);
+                          foreach ($misjurados as $jurado) : ?>
+                            <div>
+                              <label class="mt-3">Jurado <?php echo $i; ?></label>
+                              <input class="form-control text-center" type="text" value="<?php echo $jurado['nombre'] ?>" disabled>
+                            </div>
+                          <?php endforeach; ?>
+
+
                         </div>
                         <!-- <a href="propuestas-aprobadas-imprimir" class="col-md-6 mt-4 btn btn-success">IMPRIMIR</a> -->
 
@@ -118,22 +126,10 @@
                   </div>
                   <div class="card shadow border-0 text-center p-0">
                     <div class="card-body pb-5">
-                      <div class="col-md-12 mb-3">
-                        <div class="form-group">
-                          <label for="email">Tutor Academico</label>
-                          <input class="form-control" type="email" value="" disabled>
-                        </div>
-                      </div>
-                      
-                      <div class="col-md-12">
-                        <label>Estatus</label>
-                        <input class="form-control w-20 bg-warning" value="PENDIENTE" disabled>
-                      </div>
                       <div class="col-md-12">
                         <label>Nota Final</label>
-                        <input class="form-control w-20" disabled>
+                        <input class="form-control w-20 bg-warning text-center" value="PENDIENTE" disabled>
                       </div>
-
                     </div>
                   </div>
                 </div>

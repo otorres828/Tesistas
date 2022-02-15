@@ -99,8 +99,10 @@ class EscuelaController extends \Core\Controller
             $tesistas= (new Tesistas())->sentenciaAll("SELECT t.* FROM tesistas as t, presentan as p
                                                         WHERE t.cedula=p.cedula
                                                         AND p.num_c=$num_c");
+            $tutor=(new Tesistas())->miTutoracademico($num_c);
             View::render('escuela/trabajosdg/vertrabajo.php',['trabajodg'=> $trabajodg,
-                                                              'tesistas'=>$tesistas]);   
+                                                              'tesistas'=>$tesistas,
+                                                                'tutor'=>$tutor]);   
         }else{
             header('location:error');
         }
