@@ -69,7 +69,7 @@
                         </p>
                     </a>
                 </li>
-                
+
                 <!-- REVISOR -->
                 <?php foreach($roles as $rol):
                     if( $rol['id_rol']==1){?>
@@ -101,7 +101,7 @@
 
                 <!-- JURADO -->
                 <?php foreach($roles as $rol):
-                    if( $rol['id_rol']==1){?>
+                    if( $rol['id_rol']==3){?>
                 <li class="nav-item">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-table"></i>
