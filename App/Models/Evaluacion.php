@@ -17,14 +17,15 @@ class Evaluacion extends ModeloGenerico
 
     public function insertarEvaluacionComite($num_c, $id_comite, $estatus)
     {
-        $num_c = (int) $num_c;
-        $id_comite = (int) $id_comite;
+        $estaDuplicado = "SELECT COUNT(num_c)   FROM evaluacioncomite WHERE num_c=$num_c AND id_comite=$id_comite";
+        $a = $this->sentenciaObj($estaDuplicado);
+        $b = $a['count'];
 
-        $comprobarDuplicado = "SELECT * FROM evaluacioncomite WHERE num_c=$num_c AND id_comite=$id_comite";
-        $this->sentenciaObj($comprobarDuplicado);
-        if (!$comprobarDuplicado) {
+        if ($b == 0) {
             $sql = "INSERT INTO evaluacioncomite(num_c,id_comite,estatus) VALUES($num_c,$id_comite,'$estatus')";
             $this->sentenciaObj($sql);
+        } else {
+            // echo "ya existe";
         }
     }
 
