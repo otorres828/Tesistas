@@ -113,7 +113,7 @@ use App\Models\Tesistas;
         <div class="container-fluid">
           <?php foreach ($propuestasaprobadas as $propuestas) { ?>
             <?php
-              $misjurados=(new Tesistas())->misjurados($propuestas['modalidad']);
+              $misjurados=(new Tesistas())->misjurados($propuestas['num_c'],$propuestas['modalidad']);
               ?>
             <div class="row">
               <div class="col-12 col-xl-8">
@@ -225,17 +225,16 @@ use App\Models\Tesistas;
                         <div class="row">
                           <div class="col-md-12 mb-3">
                             <div>
-                              <label>Tutor Academico</label>
+                              <label class="mt-1">Tutor Academico</label>
                               <input class="form-control text-center" type="email" value="<?php echo $propuestas['tutor'];?>" disabled>
                             </div>
+                            <?php $i=1;
+                            foreach($misjurados as $jurado):?>
                             <div>
-                              <label>Jurado 2</label>
-                              <input class="form-control" type="text" value="" disabled>
+                              <label class="mt-3">Jurado <?php echo $i;?></label>
+                              <input class="form-control text-center" type="text" value="<?php echo $jurado['nombre']?>" disabled>
                             </div>
-                            <div>
-                              <label>Jurado 3</label>
-                              <input class="form-control" type="text" value="" disabled>
-                            </div>
+                            <?php endforeach;?>
                           </div>
                           <!-- <a href="propuestas-aprobadas-imprimir" class="col-md-6 mt-4 btn btn-success">IMPRIMIR</a> -->
 

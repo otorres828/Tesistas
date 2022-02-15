@@ -163,11 +163,17 @@ class Tesistas extends ModeloGenerico
 
     }
 
-    public function misjurados($modalidad){
+    public function misjurados($num_c,$modalidad){
         if($modalidad=='I'){
-            return $this->sentenciaAll("SELECT *FROM");
+            return $this->sentenciaAll("SELECT p.nombre,p.cedula 
+            FROM ES_JURADO_INSTRUMENTAL AS es, profesores AS p
+            WHERE es.num_c=$num_c
+            AND p.cedula=es.cedula");
         }else{
-            return $this->sentenciaAll("");
+            return $this->sentenciaAll("SELECT p.nombre,p.cedula 
+            FROM ES_JURADO_INSTRUMENTAL AS es, profesores AS p
+            WHERE es.num_c=$num_c
+            AND p.cedula=es.cedula");
         }
     }
 }
