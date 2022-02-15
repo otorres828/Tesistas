@@ -31,14 +31,14 @@
                         <?php unset($_SESSION['mensaje']);
                         }
                         ?>
-                        <form action="" method="post">
-                            <div class="card card-body border-0 shadow mb-4">
+                        <div class="card card-body border-0 shadow mb-4">
+                            <form action="profesor-revisor-evaluar-enviar" method="post" enctype="multipart/form-data">
                                 <h2 class="h5 mb-4">EVALUAR PROPUESTA DE TRABAJO DE GRADO</h2>
                                 <div class="row">
                                     <div class="col-md-2 mb-3">
                                         <div>
-                                            <label for="first_name">Nº Propuesta</label>
-                                            <input class="form-control" type="text" value="<?php echo $propuesta['num_c']; ?>" disabled>
+                                            <label>Nº Propuesta</label>
+                                            <input class="form-control" name="num_c" type="text" value="<?php echo $propuesta['num_c']; ?>" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-10 mb-3">
@@ -47,10 +47,11 @@
                                             <input class="form-control" type="text" value="<?php echo $propuesta['titulo']; ?>" disabled>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="row align-items-center">
-                                    <?php $i=1; foreach ($criterios as $criterio) : ?>
+                                    <?php $i = 1;
+                                    foreach ($criterios as $criterio) : ?>
+                                        <input type="hidden" name="id" .$i value="<?php echo $criterio['id_criterio']; ?>">
                                         <!-- INPUT CRITERIO -->
                                         <div class="col-md-9 mb-3">
                                             <div class="form-group">
@@ -62,22 +63,24 @@
                                         <div class="col-md-3 mb-3">
                                             <div class="form-group">
                                                 <label>Nota</label>
-                                                <select name="criterio1" class="form-control">
+                                                <select name="<?php echo $criterio['id_criterio']; ?>" class="form-control">
                                                     <option value="APROBADO">APROBADO</option>
                                                     <option value="REPROBADO">REPROBADO</option>
                                                 </select>
                                             </div>
                                         </div>
                                     <?php endforeach; ?>
+                                    <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                            <div>
+                                                <button type="submit" class="btn btn-warning w-full">ENVIAR EVALUACION</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
-                            </div>
-
-                        </form>
+                            </form>
+                        </div>
                     </div>
-
-
-
                 </div>
             </div>
         </div>
