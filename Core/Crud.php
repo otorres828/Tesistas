@@ -136,6 +136,7 @@ class Crud {
         }  
     }
     public function insertarObj($obj){
+        echo $obj . "</br>";
         try {
             $query = $this->conexion->prepare($obj);
             $query->execute();

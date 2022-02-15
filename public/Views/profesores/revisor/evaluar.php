@@ -32,7 +32,7 @@
                         }
                         ?>
                         <div class="card card-body border-0 shadow mb-4">
-                            <form action="profesor-revisor-evaluar-enviar" method="post" enctype="multipart/form-data">
+                            <form action="profesor-revisor-evaluar-enviar" method="POST" enctype="multipart/form-data">
                                 <h2 class="h5 mb-4">EVALUAR PROPUESTA DE TRABAJO DE GRADO</h2>
                                 <div class="row">
                                     <div class="col-md-2 mb-3">
@@ -45,6 +45,7 @@
                                         <div>
                                             <label for="first_name">Titulo de la Propuesta</label>
                                             <input class="form-control" type="text" value="<?php echo $propuesta['titulo']; ?>" disabled>
+                                            <input value="<?php echo $propuesta['num_c']; ?>" name="num_c" hidden>
                                         </div>
                                     </div>
                                 </div>

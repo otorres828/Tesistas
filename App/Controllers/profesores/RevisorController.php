@@ -52,17 +52,21 @@ class RevisorController extends \Core\Controller
     }
 
     public function formularioRevisor(){
-        $cantidad = (new Criterios())->cantidad_criterios_rev_in();
-        $cantidad=$cantidad['cantidad'];
+        $criterios =(new Criterios())->criteriosRevIns();
         $num_c=$_POST['num_c'];
-        for ($i=1; $i <=$cantidad ; $i++) { 
-            echo $nota= $_POST[$i] . "</br>";
-            // $id_criterio=$_POST['id_criterio'];
+        session_start();
+        foreach ($criterios as $criterio) { 
+            $i=$criterio['id_criterio'];
+            $nota= $_POST[$i];
 
-            // (new Criterios())->insertarObj("INSERT INTO revisa_instrumental 
-            // VALUES($num_c,'$id_criterio','$nota')");
+            (new Criterios())->insertarObj("INSERT INTO revisa_instrumental 
+             VALUES($num_c,'$i','$nota')");
         }
+        $_SESSION['mensaje'] = "Se evaluo correctamente";
+        $_SESSION['colorcito'] = "success";
+        header('location:profesor-revisor');
     }
+
     private function autenticar()
     {
         $autenticacion = new Auth();

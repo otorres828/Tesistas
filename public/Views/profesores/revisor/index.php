@@ -5,7 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Profesor| Revisor</title>
-    <?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
+    <?php
+
+use App\Models\RevisaInstrumental;
+
+ include_once('../public/Views/componentes/cssadminlte.php'); ?>
     <!-- DATATABLES -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -30,7 +34,16 @@
                     <section class="col-lg-12 ">
                         <div class="card">
                             <div class=" table-responsive py-4 p-4">
-
+                                <?php if (isset($_SESSION['mensaje'])) : ?>
+                                    <div class="alert alert-<?= $_SESSION['colorcito']; ?> alert-dismissible fade show" role="alert">
+                                        <?php echo $_SESSION['mensaje']; ?>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                <?php unset($_SESSION['mensaje']);
+                                    unset($_SESSION['colorcito']);
+                                endif; ?>
                                 <table class="card-body table table-flush" id="example">
                                     <thead class="thead-light">
                                         <tr>
@@ -47,8 +60,13 @@
                                                 <td>
                                                     <form action="profesor-revisor-evaluar" method="post">
                                                         <input hidden name="modalidad" value="<?php echo $propuesta['modalidad']; ?>">
-                                                        <button class="btn btn-warning" value="<?php echo $propuesta['num_c']; ?>" name="evaluar">EVALUAR</button>
-                                                    </form> 
+                                                        <button class="btn btn-warning" value="<?php echo $propuesta['num_c']; ?>" name="evaluar" 
+                                                        <?php
+                                                            $cantidad = (new RevisaInstrumental())->validadExistencia($propuesta['num_c']);
+                                                            if($cantidad){ ?> disabled <?php } ?>
+                                                        
+                                                        >EVALUAR</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
