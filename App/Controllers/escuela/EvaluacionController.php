@@ -84,6 +84,13 @@ class EvaluacionController extends \Core\Controller
             $nro_consejo = $_POST['nro_consejo'];
             $cedula_tutor = $_POST['cedula_tutor'];
 
+
+            $internos = (new Profesores())->obtenerInternos();
+            $jurados = (new Profesores())->get();
+            $consejos = (new Consejos())->get();
+            $propuestastg = (new PropuestaTG())->propuestasAprobadasPorComite();
+
+
             $resultadoInsert = (new Evaluacion())->insertarEvaluacionConsejo($num_c, $nro_consejo, $estatus);
             if ($estatus == 'APROBADO') {
                 $resultado = (new Evaluacion())->actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor);
@@ -93,7 +100,15 @@ class EvaluacionController extends \Core\Controller
             $_SESSION['mensaje'] = "Se evaluo correctamente la propuesta <b>($num_c) por el consejo</b>";
             $_SESSION['colorcito'] = "success";
 
-            header('location:escuela-evaluacion-consejo');
+            View::render(
+                'escuela/asignaciones/evaluacion-consejo.php',
+                [
+                    'internos' => $internos,
+                    'consejos' => $consejos,
+                    'jurados' => $jurados,
+                    'propuestastg' => $propuestastg
+                ]
+            );
         } else {
             header('location:error');
         }
