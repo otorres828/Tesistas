@@ -96,4 +96,9 @@ class Evaluacion extends ModeloGenerico
         $sql = "UPDATE propuestatg SET nro_consejo=$nro_consejo,cedula_tutor=$cedula_tutor,fecha_defensa='$fecha' WHERE num_c=$num_c";
         $this->sentenciaObj($sql);
     }
+
+    //INSERTAR CEDULA DE REVISOR EN ROLES_USUARIOS
+    public function rol_revisor($cedula){
+        $this->insertarObj("INSERT INTO roles_usuarios values($cedula,1)");
+    }
 }

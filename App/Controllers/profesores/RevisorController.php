@@ -6,6 +6,7 @@ use App\Models\Auth;
 use App\Models\Criterios;
 use App\Models\Profesores;
 use App\Models\PropuestaTG;
+use App\Models\RolesUsuarios;
 use App\Models\Tesistas;
 use \Core\View;
 
@@ -17,9 +18,11 @@ class RevisorController extends \Core\Controller
         $this->autenticar();
         $profesor = (new Profesores())->where('cedula', '=', $_SESSION['cedula'])->getOb();
         $propuestas = (new Profesores())->propuestasRevisor($_SESSION['cedula']);
+        $roles = (new RolesUsuarios())->where('cedula','=',$_SESSION['cedula'])->get();
         View::render('profesores\revisor\index.php', [
             'profesor' => $profesor,
-            'propuestas' => $propuestas
+            'propuestas' => $propuestas,
+            'roles'=>$roles
         ]);
     }
 
@@ -31,19 +34,21 @@ class RevisorController extends \Core\Controller
             $tesitas = (new Tesistas())->tesistasdeunapropuesta($num_c);
             $profesor = (new Profesores())->where('cedula', '=', $_SESSION['cedula'])->getOb();
             $propuesta = (new PropuestaTG())->where('num_c', '=', $num_c)->getOb();
+            $cantidad = (new Criterios())->cantidad_criterios_rev_in();
+            $cantidad = $cantidad['cantidad'];
             if ($_POST['modalidad'] == 'E') {
                 $criterios = (new Criterios())->criteriosRevExp();
             } else {
-                $cantidad = (new Criterios())->cantidad_criterios_rev_in();
-                $cantidad = $cantidad['cantidad'];
                 $criterios = (new Criterios())->criteriosRevIns();
             }
+            $roles = (new RolesUsuarios())->where('cedula','=',$_SESSION['cedula'])->get();
             View::render('profesores\revisor\evaluar.php', [
                 'tesitas' => $tesitas,
                 'criterios' => $criterios,
                 'profesor' => $profesor,
                 'propuesta' => $propuesta,
-                'cantidad' => $cantidad
+                'cantidad' => $cantidad,
+                'roles'=>$roles
             ]);
         } else {
             header('location:error');
@@ -54,12 +59,12 @@ class RevisorController extends \Core\Controller
     {
         $criterios = (new Criterios())->criteriosRevIns();
         $num_c = $_POST['num_c'];
-        $modalidad= (new PropuestaTG())->where('num_c','=',$num_c)->get();
+        $modalidad= (new PropuestaTG())->where('num_c','=',$num_c)->getOb();
         session_start();
         foreach ($criterios as $criterio) {
             $i = $criterio['id_criterio'];
             $nota = $_POST[$i];
-            if ($modalidad['modalidad'] = 'I') {
+            if ($modalidad['modalidad']=='I') {
                 (new Criterios())->insertarObj("INSERT INTO revisa_instrumental 
                                                  VALUES($num_c,'$i','$nota')");
             } else {

@@ -69,7 +69,8 @@
                         </p>
                     </a>
                 </li>
-
+                <?php foreach($roles as $rol):
+                    if( $rol['id_rol']==1){?>
                 <li class="nav-item">
                     <a href="profesor-revisor" class="nav-link ">
                         <i class="nav-icon fas fa-table"></i>
@@ -79,6 +80,8 @@
                     </a>
                     
                 </li>
+                <?php } endforeach;?>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-table"></i>

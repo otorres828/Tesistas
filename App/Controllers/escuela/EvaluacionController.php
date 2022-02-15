@@ -35,7 +35,7 @@ class EvaluacionController extends \Core\Controller
             $cedularevisor = $_POST['cedularevisor'];
             $num_c = $_POST['num_c'];
             $id_comite = $_POST['id_comite'];
-            $modalidad=(new PropuestaTG())->where('num_c','=',$num_c)->get();
+            $modalidad=(new PropuestaTG())->where('num_c','=',$num_c)->getOb();
             $resultadoInsert = (new Evaluacion())->insertarEvaluacionComite($num_c, $id_comite, $estatus);
 
             $internos = (new Profesores())->obtenerInternos();
@@ -43,12 +43,13 @@ class EvaluacionController extends \Core\Controller
             $propuestastg = (new PropuestaTG())->propuestasNoEvaluadasPorElComite();
 
             if ($estatus == 'APROBADO') {
-                if($modalidad['modalidad']='I'){
+                if($modalidad['modalidad']=='I'){ 
                     (new Evaluacion())->insertarObj("INSERT INTO instrumentales values($num_c)");
-                }else{
+                }else{  
                     (new Evaluacion())->insertarObj("INSERT INTO experimentales values($num_c)");
                 }
                 $resultado = (new Evaluacion())->actualizar_IdComite_CedulaRevisor($num_c, $id_comite, $cedularevisor);
+                (new Evaluacion())->rol_revisor($cedularevisor);
             } else {
                 $resultado = (new Evaluacion())->actualizar_IdComite($num_c, $id_comite);
             }
