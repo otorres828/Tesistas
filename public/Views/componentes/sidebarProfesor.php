@@ -69,6 +69,8 @@
                         </p>
                     </a>
                 </li>
+                
+                <!-- REVISOR -->
                 <?php foreach($roles as $rol):
                     if( $rol['id_rol']==1){?>
                 <li class="nav-item">
@@ -82,6 +84,10 @@
                 </li>
                 <?php } endforeach;?>
 
+
+                <!-- TUTOR ACADEMICO -->
+                <?php foreach($roles as $rol):
+                    if( $rol['id_rol']==2){?>
                 <li class="nav-item">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-table"></i>
@@ -90,6 +96,12 @@
                         </p>
                     </a>
                 </li>
+                <?php } endforeach;?>
+
+
+                <!-- JURADO -->
+                <?php foreach($roles as $rol):
+                    if( $rol['id_rol']==1){?>
                 <li class="nav-item">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-table"></i>
@@ -97,8 +109,9 @@
                             Jurado
                         </p>
                     </a>
-                    
                 </li>
+                <?php } endforeach;?>
+
             </ul>
         </nav>
     </div>
