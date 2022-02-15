@@ -13,7 +13,7 @@
 <body class="sidebar-mini layout-fixed vsc-initialized layout-navbar-fixed sidebar-closed">
 
   <div class="wrapper">
-  <?php include_once('../public/Views/componentes/sidebarProfesor.php');?>
+    <?php include_once('../public/Views/componentes/sidebarProfesor.php'); ?>
 
 
 
@@ -93,141 +93,43 @@
         </div>
 
         <div class="row">
-          <section class="col-lg-12 connectedSortable">
-            <div class="card">
-              <div class=" table-responsive py-4 p-4">
-                <div class="card-header">
-                  <h1>SOY TUTOR ACADEMICO DE</h1>
-                </div>
-                <table class="card-body table table-flush" id="example">
-                  <thead class="thead-light">
-                    <tr>
-
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/07/25</td>
-                      <td>$170,750</td>
-                    </tr>
-
-                  </tbody>
-                </table>
-              </div>
-
-            </div>
-          </section>
-
           <section class="col-lg-7 connectedSortable">
             <div class="card">
-              <div class=" table-responsive py-4 p-4">
-                <div class="card-header">
-                  <h1>SOY JURADO DE</h1>
-                </div>
-                <table class="card-body table table-flush" id="example">
-                  <thead class="thead-light">
-                    <tr>
-
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/07/25</td>
-                      <td>$170,750</td>
-                    </tr>
-
-                  </tbody>
-                </table>
+              <div class="card-header  bg-info">
+                <h3 class="card-title">
+                  <i class="ion ion-clipboard mr-1"></i>
+                  Pongamos nuestro granito de arena
+                </h3>
               </div>
-
+              <div class="card">
+                <iframe width="w-full" height="315" src="https://www.youtube.com/embed/fQMkX9UU-rY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
             </div>
+
+
           </section>
-
           <section class="col-lg-5 connectedSortable">
+
             <div class="card">
-              <div class=" table-responsive py-4 p-4">
-                <div class="card-header">
-                  <h1>SOY REVISOR DE</h1>
-                </div>
-                <table class="card-body table table-flush" id="example">
-                  <thead class="thead-light">
-                    <tr>
+              <div class="card-header  bg-warning">
+                <h3 class="card-title">
+                  <i class="ion ion-clipboard mr-1"></i>
+                  CUIDAR EL AMBIENTE ES TRABAJO DE TODOS
+                </h3>
 
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/07/25</td>
-                      <td>$170,750</td>
-                    </tr>
 
-                  </tbody>
-                </table>
               </div>
 
+              <img src="../../dist/img/conservacionambiental.jpg" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
             </div>
+           
           </section>
         </div>
-      </div>
     </section>
   </div>
 
 
-	<?php include_once('../public/Views/componentes/footer.php'); ?>
+  <?php include_once('../public/Views/componentes/footer.php'); ?>
 
 
   </div>
