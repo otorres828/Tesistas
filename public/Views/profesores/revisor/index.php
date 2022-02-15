@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Profesor| Revisor</title>
+    <title>Profesor | Revisor</title>
     <?php
 
     use App\Models\RevisaRevisor;
@@ -18,9 +18,6 @@
 
     <div class="wrapper">
         <?php include_once('../public/Views/componentes/sidebarProfesor.php'); ?>
-
-
-
         <div class="content-wrapper">
             <section class="content p-4">
                 <div class="container-fluid">
@@ -69,11 +66,12 @@
                                                     <form action="profesor-revisor-evaluar" method="post">
                                                         <input hidden name="modalidad" value="<?php echo $propuesta['modalidad']; ?>">
                                                         <button class="btn btn-warning" value="<?php echo $propuesta['num_c']; ?>" name="evaluar" <?php
-                                                                                                                                                    if ($propuesta['modalidad'] == 'I') {
-                                                                                                                                                        $cantidad = (new RevisaRevisor())->validadExistenciaInstrumental($propuesta['num_c']);
-                                                                                                                                                    } else {
-                                                                                                                                                        $cantidad = (new RevisaRevisor())->validadExistenciaExperimental($propuesta['num_c']);
-                                                                                                                                                    } ?> <?php if ($cantidad) { ?> disabled <?php } ?>>EVALUAR</button>
+                                                            if ($propuesta['modalidad'] == 'I') {
+                                                                $cantidad = (new RevisaRevisor())->validadExistenciaInstrumental($propuesta['num_c']);
+                                                            } else {
+                                                                $cantidad = (new RevisaRevisor())->validadExistenciaExperimental($propuesta['num_c']);
+                                                            } ?> <?php if ($cantidad) { ?> disabled <?php } ?> 
+                                                        >EVALUAR</button>
                                                     </form>
                                                 </td>
                                             </tr>
