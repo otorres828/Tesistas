@@ -91,14 +91,17 @@ class Evaluacion extends ModeloGenerico
         $this->sentenciaObj($sql);
     }
     // Actualiza en propuestatg, el nro consejo y la cedula tutor
-    public function actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor,$fecha)
+    public function actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor, $fecha)
     {
         $sql = "UPDATE propuestatg SET nro_consejo=$nro_consejo,cedula_tutor=$cedula_tutor,fecha_defensa='$fecha' WHERE num_c=$num_c";
         $this->sentenciaObj($sql);
     }
 
     //INSERTAR CEDULA DE REVISOR EN ROLES_USUARIOS
-    public function rol_revisor($cedula){
+    public function rol_revisor($cedula)
+    {
         $this->insertarObj("INSERT INTO roles_usuarios values($cedula,1)");
     }
+
+
 }

@@ -10,9 +10,7 @@ use App\Models\Profesores;
 use App\Models\Comites;
 use App\Models\Consejos;
 use App\Models\PropuestaTG;
-
-
-
+use App\Models\RolesUsuarios;
 
 class EvaluacionController extends \Core\Controller
 {
@@ -49,7 +47,7 @@ class EvaluacionController extends \Core\Controller
                     (new Evaluacion())->insertarObj("INSERT INTO experimentales values($num_c)");
                 }
                 $resultado = (new Evaluacion())->actualizar_IdComite_CedulaRevisor($num_c, $id_comite, $cedularevisor);
-                (new Evaluacion())->rol_revisor($cedularevisor);
+                (new RolesUsuarios())->rol_revisor($cedularevisor);
             } else {
                 $resultado = (new Evaluacion())->actualizar_IdComite($num_c, $id_comite);
             }
@@ -115,6 +113,9 @@ class EvaluacionController extends \Core\Controller
                 } else { // los profes son distintos
                     $resultado = (new Evaluacion())->actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor,$fecha);
                     $resultado = (new Evaluacion())->insertarEsJuradoXmodalidad($num_c, $cedulajurado1, $cedulajurado2);
+                    (new RolesUsuarios())->rol_tutor($cedula_tutor);
+                    (new RolesUsuarios())->rol_jurado($cedulajurado1,$cedulajurado2);
+
                 }
             } else { //Esta REPROBADO
                 $resultado = (new Evaluacion())->actualizar_NroConsejo($num_c, $nro_consejo);
