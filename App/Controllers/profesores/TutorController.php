@@ -35,7 +35,8 @@ class TutorController extends \Core\Controller
             $profesor = (new Profesores())->where('cedula', '=', $_SESSION['cedula'])->getOb();
             $propuesta = (new PropuestaTG())->where('num_c', '=', $num_c)->getOb();
             $roles = (new RolesUsuarios())->where('cedula', '=', $_SESSION['cedula'])->get();
-            if ($_POST['modalidad'] == 'E') {
+            $modalidad=$_POST['modalidad'];
+            if ($modalidad== 'E') {
                 $criterios = (new Criterios())->criteriosTutExp();
             } else {
                 $criterios = (new Criterios())->criteriosTutIns();
@@ -45,7 +46,8 @@ class TutorController extends \Core\Controller
                 'criterios' => $criterios,
                 'profesor' => $profesor,
                 'propuesta' => $propuesta,
-                'roles' => $roles
+                'roles' => $roles,
+                'modalidad'=>$modalidad
             ]);
         } else {
             header('location:error');
