@@ -186,24 +186,40 @@ class Tesistas extends ModeloGenerico
     }
 
     public function notafinal($cedula, $num_c, $modalidad)
-    { 
-        if ($modalidad=='E') {
+    {
+        if ($modalidad == 'E') {
             $jurados = $this->sentenciaAll("SELECT * FROM es_jurado_experimental WHERE num_c=$num_c");
             $acumulativo = 0;
-            foreach ($jurados as $jurado) { 
+            foreach ($jurados as $jurado) {
                 $cedulajurado = $jurado['cedula'];
-                
+
                 $nota = $this->sentenciaObj("SELECT SUM(NOTA) as nota
                                         FROM es_evaluado_por_jurado
                                         WHERE cedula=$cedula
                                           AND cedula_jurado=$cedulajurado");
                 $acumulativo = $acumulativo + $nota['nota'];
-                
             }
-            $notatutor=$this->sentenciaObj("SELECT SUM(NOTA) AS nota
+            $notatutor = $this->sentenciaObj("SELECT SUM(NOTA) AS nota
                                             FROM evalua_experimental
                                             WHERE num_c=$num_c");
-            $notafinal=($acumulativo+$notatutor['nota'])/3;
+            $notafinal = ($acumulativo + $notatutor['nota']) / 3;
+            return $notafinal;
+        } else {
+            $jurados = $this->sentenciaAll("SELECT * FROM es_jurado_instrumental WHERE num_c=$num_c");
+            $acumulativo = 0;
+            foreach ($jurados as $jurado) {
+                $cedulajurado = $jurado['cedula'];
+
+                $nota = $this->sentenciaObj("SELECT SUM(NOTA) as nota
+                                            FROM es_evaluado_por_jurado
+                                            WHERE cedula=$cedula
+                                              AND cedula_jurado=$cedulajurado");
+                $acumulativo = $acumulativo + $nota['nota'];
+            }
+            $notatutor = $this->sentenciaObj("SELECT SUM(NOTA) AS nota
+                                                FROM evalua_intrumental
+                                                WHERE num_c=$num_c");
+            $notafinal = ($acumulativo + $notatutor['nota']) / 3;
             return $notafinal;
         }
     }
