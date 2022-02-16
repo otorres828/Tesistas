@@ -150,15 +150,18 @@ use App\Models\Tesistas;
 
                   </div>
                   <?php
+            //        $sql = "SELECT COUNT(p.num_c) as cuenta
+            //        FROM presentan as p, evaluacioncomite as ec,evaluacionconsejo as ecj
+            //        where p.num_c=$num_c
+            //          and p.num_c=ecj.num_c
+            //          and p.num_C=ec.num_c
+            //          and ec.estatus='APROBADO'
+            //          and ecj.estatus='APROBADO'
+            // ";
                   $num_c = $propuestas['num_c'];
-                  $sql = "SELECT COUNT(p.num_c) as cuenta
-                          FROM presentan as p, evaluacioncomite as ec,evaluacionconsejo as ecj
-                          where p.num_c=$num_c
-                            and p.num_c=ecj.num_c
-                            and p.num_C=ec.num_c
-                            and ec.estatus='APROBADO'
-                            and ecj.estatus='APROBADO'
-                   ";
+                  $sql = "SELECT COUNT(p.cedula) as cuenta
+                    FROM presentan as p
+                    where p.num_c=$num_c";
                   $valor = (new PropuestaTG())->sentenciaObj($sql);
                   $valor = $valor['cuenta'];
                   if ($valor == 2) {
@@ -166,7 +169,7 @@ use App\Models\Tesistas;
                     $sql = "SELECT (p.cedula)
                               FROM presentan as p, evaluacioncomite as ec,evaluacionconsejo as ecj
                               where p.num_c=$num_c
-                                and p.cedula!=$cedula
+                                and p.cedula<>$cedula
                                 and p.num_c=ecj.num_c
                                 and p.num_C=ec.num_c
                                 and ec.estatus='APROBADO'
@@ -210,7 +213,7 @@ use App\Models\Tesistas;
                     <div class="col-md-12 mb-3">
                       <div class="form-group">
                         <label>Nota Final</label>
-                        <?php $nota=(new Tesistas())->notafinal($_SESSION['cedula'],$propuestas['num_c'],$propuestas['modalidad']);?>
+                        <?php  $nota=(new Tesistas())->notafinal($_SESSION['cedula'],$propuestas['num_c'],$propuestas['modalidad']);?>
                         <input class="form-control w-20  <?php if($nota>10){?>bg-success<?php }else{?>bg-warning<?php }?> " <?php
                               if($nota>0){ ?>value="<?=$nota;}else?>" value="PENDIENTE" disabled>
                       </div>

@@ -217,7 +217,7 @@ class Tesistas extends ModeloGenerico
                 $acumulativo = $acumulativo + $nota['nota'];
             }
             $notatutor = $this->sentenciaObj("SELECT SUM(NOTA) AS nota
-                                                FROM evalua_intrumental
+                                                FROM evalua_instrumental
                                                 WHERE num_c=$num_c");
             $notafinal = ($acumulativo + $notatutor['nota']) / 3;
             return $notafinal;

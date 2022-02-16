@@ -24,7 +24,9 @@ class PropuestaTG extends ModeloGenerico
                         AND ptg.num_c=ecj.num_c
                         AND ec.estatus='APROBADO'
                         AND ecj.estatus='APROBADO'
-                        AND ptg.num_c = ANY(SELECT Num_C FROM Presentan WHERE Cedula =$cedula)";
+                        AND ptg.num_c = ANY(SELECT Num_C FROM Presentan WHERE Cedula =$cedula)
+                        GROUP BY (ptg.num_c,ptg.titulo,ptg.modalidad,ptg.observaciones,tutor,ptg.fecha_defensa,ec.estatus,estatusc)
+";
     return $this->sentenciaAll($this->sql);
   }
 
