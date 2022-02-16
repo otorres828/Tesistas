@@ -41,7 +41,13 @@
                                             <input class="form-control" name="num_c" type="text" value="<?php echo $propuesta['num_c']; ?>" disabled>
                                         </div>
                                     </div>
-                                    <div class="col-md-10 mb-3">
+                                    <div class="col-md-2 mb-3">
+                                        <div>
+                                            <label>Modalidad</label>
+                                            <input class="form-control" type="text" <?php if ($modalidad == 'I') { ?>value="INSTRUMENTAL" <?php } else ?> value="EXPERIMENTAL" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 mb-3">
                                         <div>
                                             <label for="first_name">Titulo de la Propuesta</label>
                                             <input class="form-control" type="text" value="<?php echo $propuesta['titulo']; ?>" disabled>

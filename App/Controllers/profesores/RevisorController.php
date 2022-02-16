@@ -33,7 +33,7 @@ class RevisorController extends \Core\Controller
             $num_c = $_POST['evaluar'];
             $profesor = (new Profesores())->where('cedula', '=', $_SESSION['cedula'])->getOb();
             $propuesta = (new PropuestaTG())->where('num_c', '=', $num_c)->getOb();
-            
+            $modalidad=$propuesta['modalidad'];
             $roles = (new RolesUsuarios())->where('cedula', '=', $_SESSION['cedula'])->get();
             if ($_POST['modalidad'] == 'E') {
                 $criterios = (new Criterios())->criteriosRevExp();
@@ -44,7 +44,8 @@ class RevisorController extends \Core\Controller
                 'criterios' => $criterios,
                 'profesor' => $profesor,
                 'propuesta' => $propuesta,
-                'roles' => $roles
+                'roles' => $roles,
+                'modalidad' => $modalidad
             ]);
         } else {
             header('location:error');
