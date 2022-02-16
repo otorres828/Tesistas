@@ -210,7 +210,9 @@ use App\Models\Tesistas;
                     <div class="col-md-12 mb-3">
                       <div class="form-group">
                         <label>Nota Final</label>
-                        <input class="form-control w-20 bg-warning" value="PENDIENTE" disabled>
+                        <?php $nota=(new Tesistas())->notafinal($_SESSION['cedula'],$propuestas['num_c'],$propuestas['modalidad']);?>
+                        <input class="form-control w-20  <?php if($nota>10){?>bg-success<?php }else{?>bg-warning<?php }?> " <?php
+                              if($nota>0){ ?>value="<?=$nota;}else?>" value="PENDIENTE" disabled>
                       </div>
                     </div>
                   </div>

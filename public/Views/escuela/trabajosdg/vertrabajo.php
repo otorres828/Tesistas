@@ -99,7 +99,7 @@
               <div class="row">
                 <div class="col-12 mb-4">
                   <div class="card shadow border-0 text-center p-0">
-                    <div class="card-body pb-5">
+                    <div class="card-body">
                       <div class="row">
                         <div class="col-md-12 mb-3">
                           <div>
@@ -122,14 +122,18 @@
                         <!-- <a href="propuestas-aprobadas-imprimir" class="col-md-6 mt-4 btn btn-success">IMPRIMIR</a> -->
 
                       </div>
-                    </div>
-                  </div>
-                  <div class="card shadow border-0 text-center p-0">
-                    <div class="card-body pb-5">
-                      <div class="col-md-12">
-                        <label>Nota Final</label>
-                        <input class="form-control w-20 bg-warning text-center" value="PENDIENTE" disabled>
+                      <?php $a=1; foreach ($tesistas as $tesista) : ?>
+                      <div class="row align-items-center">
+                        <div class="col-md-12 mb-3">
+                          <div class="form-group text-center">
+                            <label class="">Nota Final del Tesista <?=$a++;?></label>
+                            <?php $nota=(new Tesistas())->notafinal($tesista['cedula'],$trabajodg['num_c'],$trabajodg['modalidad']);?>
+                            <input class="form-control w-20 <?php if($nota>10){?>bg-success<?php }else{?>bg-warning<?php }?> text-center" <?php
+                              if($nota>0){ ?>value="<?=$nota;}else?>" value="PENDIENTE" disabled>
+                          </div>
+                        </div>
                       </div>
+                      <?php endforeach; ?>
                     </div>
                   </div>
                 </div>

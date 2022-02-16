@@ -63,7 +63,7 @@ class Tesistas extends ModeloGenerico
     }
 
     public function guardar_propuesta_pareja($slug, $nombrepropuesta, $modalidad, $cedula)
-    {   
+    {
         $cedula_log = $_SESSION['cedula'];
         $this->sentenciaObj("INSERT INTO propuestatg (titulo,modalidad,slug) VALUES ('$nombrepropuesta','$modalidad','$slug')");
         $num_c = $this->sentenciaObj('SELECT num_c FROM propuestatg WHERE slug=' . "'" . $slug . "'");
@@ -160,33 +160,57 @@ class Tesistas extends ModeloGenerico
     {
         $this->sentenciaObj("DELETE FROM tesistas WHERE cedula=$cedula");
         $this->sentenciaObj("DELETE FROM usuarios WHERE cedula=$cedula");
-
     }
 
-    public function misjurados($num_c,$modalidad){
-        if($modalidad=='I'){
+    public function misjurados($num_c, $modalidad)
+    {
+        if ($modalidad == 'I') {
             return $this->sentenciaAll("SELECT p.nombre,p.cedula 
             FROM ES_JURADO_INSTRUMENTAL AS es, profesores AS p
             WHERE es.num_c=$num_c
             AND p.cedula=es.cedula");
-        }else{
+        } else {
             return $this->sentenciaAll("SELECT p.nombre,p.cedula 
-            FROM ES_JURADO_INSTRUMENTAL AS es, profesores AS p
+            FROM ES_JURADO_EXPERIMENTAL AS es, profesores AS p
             WHERE es.num_c=$num_c
             AND p.cedula=es.cedula");
         }
     }
 
-    public function miTutoracademico($num_c){
+    public function miTutoracademico($num_c)
+    {
         return $this->sentenciaObj("SELECT p.nombre 
                                     FROM propuestatg AS ptg, profesores AS p
                                     WHERE ptg.num_c=$num_c
                                     AND p.cedula=ptg.cedula_tutor");
     }
 
+    public function notafinal($cedula, $num_c, $modalidad)
+    { 
+        if ($modalidad=='E') {
+            $jurados = $this->sentenciaAll("SELECT * FROM es_jurado_experimental WHERE num_c=$num_c");
+            $acumulativo = 0;
+            foreach ($jurados as $jurado) { 
+                $cedulajurado = $jurado['cedula'];
+                
+                $nota = $this->sentenciaObj("SELECT SUM(NOTA) as nota
+                                        FROM es_evaluado_por_jurado
+                                        WHERE cedula=$cedula
+                                          AND cedula_jurado=$cedulajurado");
+                $acumulativo = $acumulativo + $nota['nota'];
+                
+            }
+            $notatutor=$this->sentenciaObj("SELECT SUM(NOTA) AS nota
+                                            FROM evalua_experimental
+                                            WHERE num_c=$num_c");
+            $notafinal=($acumulativo+$notatutor['nota'])/3;
+            return $notafinal;
+        }
+    }
 
     //PROFESORES
-    public function tesistasdeunapropuesta($num_c){
+    public function tesistasdeunapropuesta($num_c)
+    {
         return $this->sentenciaAll("SELECT t.* FROM tesistas as t, presentan as p WHERE p.cedula=t.cedula AND p.num_c= $num_c");
     }
 }
