@@ -77,7 +77,7 @@ use App\Models\Criterios;
                                             <!-- SELECT DE LA NOTA -->
                                             <div class="col-md-3 mb-3">
                                                 <div class="form-group">
-                                                    <label>Nota</label>
+                                                    <label>Escoja Una Nota</label>
                                                     <select name="<?php echo $criterio['id_criterio']; ?>" class="form-control">
                                                         <?php for($a=1;$a<=$criterio['notamax'];$a++):?>
                                                             <option value="<?=$a;?>"><?=$a;?></option>
