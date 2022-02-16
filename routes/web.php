@@ -28,12 +28,15 @@ $router->add('propuestas-aprobadas-imprimir', ['controller' => 'tesistas\Tesista
 //=====================================PROFESORES
 $router->add('profesores', ['controller' => 'profesores\ProfesorController', 'method' => 'index']);
 $router->add('profesor-perfil', ['controller' => 'profesores\ProfesorController', 'method' => 'perfil']);
+//PROFESOR REVISOR
 $router->add('profesor-revisor', ['controller' => 'profesores\RevisorController', 'method' => 'revisor']);
 $router->add('profesor-revisor-evaluar', ['controller' => 'profesores\RevisorController', 'method' => 'evaluarRevisor']);
 $router->add('profesor-revisor-evaluar-enviar', ['controller' => 'profesores\RevisorController', 'method' => 'formularioRevisor']);
+//PROFESOR TUTOR
 $router->add('profesor-tutor', ['controller' => 'profesores\TutorController', 'method' => 'tutor']);
 $router->add('profesor-tutor-evaluar', ['controller' => 'profesores\TutorController', 'method' => 'evaluarTutor']);
-
+$router->add('profesor-tutor-evaluar-enviar', ['controller' => 'profesores\TutorController', 'method' => 'formularioTutor']);
+//PROFESOR JURADO
 $router->add('profesor-jurado', ['controller' => 'profesores\JuradoController', 'method' => 'jurado']);
 
 //=====================================ESCUELA

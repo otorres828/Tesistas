@@ -32,7 +32,7 @@
                         }
                         ?>
                         <div class="card card-body border-0 shadow mb-4">
-                            <form action="profesor-revisor-evaluar-enviar" method="POST" enctype="multipart/form-data">
+                            <form action="profesor-tutor-evaluar-enviar" method="POST" enctype="multipart/form-data">
                                 <h2 class="h5 mb-4">EVALUAR PROPUESTA DE TRABAJO DE GRADO</h2>
                                 <div class="row">
                                     <div class="col-md-2 mb-3">

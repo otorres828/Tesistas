@@ -52,7 +52,7 @@ class TutorController extends \Core\Controller
         }
     }
 
-    public function formularioRevisor()
+    public function formularioTutor()
     {
         if (isset($_POST['num_c'])) {
             $criterios = (new Criterios())->criteriosRevIns();
