@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Profesor | Jurado</title>
     <?php
-    use App\Models\RevisaTutor;
+
+use App\Models\RevisaJurado;
 
     include_once('../public/Views/componentes/cssadminlte.php'); ?>
     <!-- DATATABLES -->
@@ -66,9 +67,9 @@
                                                         <input hidden name="modalidad" value="<?php echo $propuesta['modalidad']; ?>">
                                                         <button class="btn btn-warning" value="<?php echo $propuesta['num_c']; ?>" name="evaluar" <?php
                                                             if ($propuesta['modalidad'] == 'I') {
-                                                                $cantidad = (new RevisaTutor())->validadExistenciaInstrumental($propuesta['num_c']);
+                                                                $cantidad = (new RevisaJurado())->validadExistenciaPTG_Ins($propuesta['num_c']);
                                                             } else {
-                                                                $cantidad = (new RevisaTutor())->validadExistenciaExperimental($propuesta['num_c']);
+                                                                $cantidad = (new RevisaJurado())->validadExistenciaPTG_Exp($propuesta['num_c']);
                                                             } ?> <?php if ($cantidad) { ?> disabled <?php } ?> 
                                                         >EVALUAR</button>
                                                     </form>
@@ -91,9 +92,9 @@
                                                         <input hidden name="modalidad" value="<?php echo $propuesta['modalidad']; ?>">
                                                         <button class="btn btn-warning" value="<?php echo $propuesta['num_c']; ?>" name="evaluar" <?php
                                                             if ($propuesta['modalidad'] == 'I') {
-                                                                $cantidad = (new RevisaTutor())->validadExistenciaInstrumental($propuesta['num_c']);
+                                                                $cantidad = (new RevisaJurado())->validadExistenciaPTG_Ins($propuesta['num_c']);
                                                             } else {
-                                                                $cantidad = (new RevisaTutor())->validadExistenciaExperimental($propuesta['num_c']);
+                                                                $cantidad = (new RevisaJurado())->validadExistenciaPTG_Exp($propuesta['num_c']);
                                                             } ?> <?php if ($cantidad) { ?> disabled <?php } ?> 
                                                         >EVALUAR</button>
                                                     </form>
