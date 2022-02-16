@@ -170,13 +170,25 @@ class PropuestaTG extends ModeloGenerico
   //PARA EVALUACION consejo, TRAER LAS PROPUESTAS QUE NO HAN SIDO EVALUADAS
   public function propuestasAprobadasPorComite()
   {
+    // $sql = "SELECT ptg.num_c,ptg.titulo,ptg.modalidad 
+    //         FROM propuestatg as ptg,evaluacioncomite as ec 
+    //         WHERE ptg.num_c = ec.num_c 
+    //           AND ec.estatus='APROBADO' 
+    //           AND ptg.num_c 
+    //           NOT IN (SELECT num_c FROM evaluacionconsejo)";
     $sql = "SELECT ptg.num_c,ptg.titulo,ptg.modalidad 
             FROM propuestatg as ptg,evaluacioncomite as ec 
             WHERE ptg.num_c = ec.num_c 
               AND ec.estatus='APROBADO' 
-              AND ptg.num_c 
-              NOT IN (SELECT num_c FROM evaluacionconsejo)";
-              
+              AND ptg.num_c
+              NOT IN (SELECT num_c FROM evaluacionconsejo)
+            GROUP BY (ptg.num_c)
+            HAVING (SELECT count(nota) from revisa_experimental 
+            WHERE num_c IN (SELECT num_c 
+                      FROM propuestatg 
+                      WHERE cedula_revisor IS NOT NULL)
+              AND nota='APROBADO')>=((SELECT count(nota) FROM revisa_experimental)*0.5) ";
+
     return $this->sentenciaAll($sql);
   }
 

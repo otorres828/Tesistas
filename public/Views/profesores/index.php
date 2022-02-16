@@ -14,9 +14,6 @@
 
   <div class="wrapper">
     <?php include_once('../public/Views/componentes/sidebarProfesor.php'); ?>
-
-
-
     <div class="content-wrapper">
       <div class="content-header">
         <div class="container-fluid">
