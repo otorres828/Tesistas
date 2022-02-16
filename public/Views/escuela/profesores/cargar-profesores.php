@@ -33,7 +33,7 @@
 					$archivo_copiado = $_FILES["archivo"]["tmp_name"];
 					$archivo_guardado = "copia_" . $archivo;
 					if (copy($archivo_copiado, $archivo_guardado)) {
-						echo "se copio correctamente " . "</br>";
+						
 					} else {
 						header('location:error');
 					}

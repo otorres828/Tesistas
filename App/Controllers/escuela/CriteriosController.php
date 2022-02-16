@@ -145,6 +145,7 @@ class CriteriosController extends \Core\Controller
         $criteriosRevisores = (new Criterios())->criteriosRevExp();
         $criteriosTutores = (new Criterios())->criteriosTutExp();
         $criteriosJurados = (new Criterios())->criteriosJurExp();
+        
         View::render('escuela/criterios/criterios-experimentales-todos.php', [
             'criteriosRevisores' => $criteriosRevisores,
             'criteriosTutores' => $criteriosTutores,
