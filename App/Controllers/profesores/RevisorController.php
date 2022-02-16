@@ -34,20 +34,18 @@ class RevisorController extends \Core\Controller
             $tesitas = (new Tesistas())->tesistasdeunapropuesta($num_c);
             $profesor = (new Profesores())->where('cedula', '=', $_SESSION['cedula'])->getOb();
             $propuesta = (new PropuestaTG())->where('num_c', '=', $num_c)->getOb();
-            $cantidad = (new Criterios())->cantidad_criterios_rev_in();
-            $cantidad = $cantidad['cantidad'];
+            
+            $roles = (new RolesUsuarios())->where('cedula', '=', $_SESSION['cedula'])->get();
             if ($_POST['modalidad'] == 'E') {
                 $criterios = (new Criterios())->criteriosRevExp();
             } else {
                 $criterios = (new Criterios())->criteriosRevIns();
             }
-            $roles = (new RolesUsuarios())->where('cedula', '=', $_SESSION['cedula'])->get();
             View::render('profesores\revisor\evaluar.php', [
                 'tesitas' => $tesitas,
                 'criterios' => $criterios,
                 'profesor' => $profesor,
                 'propuesta' => $propuesta,
-                'cantidad' => $cantidad,
                 'roles' => $roles
             ]);
         } else {

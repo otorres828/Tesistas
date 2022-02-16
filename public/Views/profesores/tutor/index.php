@@ -22,7 +22,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-12 ">
-                            <h1 class="float-lg-right"><strong>Lista de Propuestas que soy Revisor</strong></h1>
+                            <h1 class="float-lg-right"><strong>Lista de Propuestas que soy Tutor Academico</strong></h1>
                         </div>
                     </div>
                 </div>

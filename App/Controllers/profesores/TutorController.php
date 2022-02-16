@@ -19,11 +19,11 @@ class TutorController extends \Core\Controller
         $profesor = (new Profesores())->where('cedula', '=', $_SESSION['cedula'])->getOb();
         $propuestas = (new Profesores())->propuestasTutor($_SESSION['cedula']);
         $roles = (new RolesUsuarios())->where('cedula', '=', $_SESSION['cedula'])->get();
-        View::render('profesores\tutor\index.php', [
-            'profesor' => $profesor,
-            'propuestas' => $propuestas,
-            'roles' => $roles
-        ]);
+        // View::render('profesores\tutor\index.php', [
+        //     'profesor' => $profesor,
+        //     'propuestas' => $propuestas,
+        //     'roles' => $roles
+        // ]);
     }
 
     public function evaluarRevisor()
@@ -34,8 +34,6 @@ class TutorController extends \Core\Controller
             $tesitas = (new Tesistas())->tesistasdeunapropuesta($num_c);
             $profesor = (new Profesores())->where('cedula', '=', $_SESSION['cedula'])->getOb();
             $propuesta = (new PropuestaTG())->where('num_c', '=', $num_c)->getOb();
-            $cantidad = (new Criterios())->cantidad_criterios_rev_in();
-            $cantidad = $cantidad['cantidad'];
             if ($_POST['modalidad'] == 'E') {
                 $criterios = (new Criterios())->criteriosRevExp();
             } else {
@@ -47,7 +45,6 @@ class TutorController extends \Core\Controller
                 'criterios' => $criterios,
                 'profesor' => $profesor,
                 'propuesta' => $propuesta,
-                'cantidad' => $cantidad,
                 'roles' => $roles
             ]);
         } else {
