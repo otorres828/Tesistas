@@ -54,9 +54,13 @@ class RevisorController extends \Core\Controller
     public function formularioRevisor()
     {
         if (isset($_POST['num_c'])) {
-            $criterios = (new Criterios())->criteriosRevIns();
             $num_c = $_POST['num_c'];
             $modalidad = (new PropuestaTG())->where('num_c', '=', $num_c)->getOb();
+            if($modalidad['modalidad']=='I'){
+                $criterios = (new Criterios())->criteriosRevIns();
+            }else{
+                $criterios = (new Criterios())->criteriosRevExp();
+            }
             session_start();
             foreach ($criterios as $criterio) {
                 $i = $criterio['id_criterio'];

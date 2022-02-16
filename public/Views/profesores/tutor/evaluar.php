@@ -48,7 +48,7 @@ use App\Models\Criterios;
                                     <div class="col-md-2 mb-3">
                                         <div>
                                             <label>Modalidad</label>
-                                            <input class="form-control" name="num_c" type="text" <?php if($modalidad=='I'){ ?>value="INSTRUMENTAL" <?php }else ?> value="EXPERIMENTAL"
+                                            <input class="form-control" type="text" <?php if($modalidad=='I'){ ?>value="INSTRUMENTAL" <?php }else ?> value="EXPERIMENTAL"
                                             disabled>
                                         </div>
                                     </div>
@@ -60,12 +60,9 @@ use App\Models\Criterios;
                                         </div>
                                     </div>
                                 </div>
-                                <?php $numtesista=1; foreach ($tesitas as $tesista) : ?>
-                                    <h2 class="h4 mb-4 bg-info p-2 text-center">Tesista <?= $numtesista++ ?></h2>
                                     <div class="row align-items-center">
-                                        <?php $i = 1;
+                                        <?php $i=1;
                                         foreach ($criterios as $criterio) : ?>
-                                            <input type="hidden" name="id" .$i value="<?php echo $criterio['id_criterio']; ?>">
                                             <!-- INPUT CRITERIO -->
                                             <div class="col-md-9 mb-3">
                                                 <div class="form-group">
@@ -78,7 +75,7 @@ use App\Models\Criterios;
                                             <div class="col-md-3 mb-3">
                                                 <div class="form-group">
                                                     <label>Escoja Una Nota</label>
-                                                    <select name="<?php echo $tesista['cedula'].$criterio['id_criterio']; ?>" class="form-control">
+                                                    <select name="<?php echo $criterio['id_criterio']; ?>" class="form-control">
                                                         <?php for($a=1;$a<=$criterio['notamax'];$a++):?>
                                                             <option value="<?=$a;?>"><?=$a;?></option>
                                                         <?php endfor; ?>
@@ -87,7 +84,6 @@ use App\Models\Criterios;
                                             </div>
                                         <?php endforeach; ?>
                                     </div>
-                                <?php endforeach; ?>
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
                                         <div>

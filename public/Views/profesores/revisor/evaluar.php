@@ -52,7 +52,6 @@
                                 <div class="row align-items-center">
                                     <?php $i = 1;
                                     foreach ($criterios as $criterio) : ?>
-                                        <input type="hidden" name="id" .$i value="<?php echo $criterio['id_criterio']; ?>">
                                         <!-- INPUT CRITERIO -->
                                         <div class="col-md-9 mb-3">
                                             <div class="form-group">
