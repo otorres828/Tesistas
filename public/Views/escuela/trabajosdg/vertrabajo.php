@@ -48,8 +48,8 @@
 
                   <div class="col-md-6 mb-3">
                     <div class="form-group ">
-                      <label>Fecha de Presentacion</label>
-                      <input class="form-control" value="" disabled>
+                      <label>Fecha de Defensa</label>
+                      <input class="form-control" value="<?php echo $trabajodg['fecha_defensa']; ?>" disabled>
 
                     </div>
                   </div>
