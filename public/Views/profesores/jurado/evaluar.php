@@ -32,7 +32,7 @@
                         }
                         ?>
                         <div class="card card-body border-0 shadow mb-4">
-                            <form action="profesor-revisor-evaluar-enviar" method="POST" enctype="multipart/form-data">
+                            <form action="profesor-jurado-evaluar-enviar" method="POST" enctype="multipart/form-data">
                                 <h2 class="h5 mb-4">EVALUAR PROPUESTA DE TRABAJO DE GRADO</h2>
                                 <div class="row">
                                     <div class="col-md-2 mb-3">
@@ -41,7 +41,13 @@
                                             <input class="form-control" name="num_c" type="text" value="<?php echo $propuesta['num_c']; ?>" disabled>
                                         </div>
                                     </div>
-                                    <div class="col-md-10 mb-3">
+                                    <div class="col-md-2 mb-3">
+                                        <div>
+                                            <label>Modalidad</label>
+                                            <input class="form-control" type="text" <?php if ($modalidad == 'I') { ?>value="INSTRUMENTAL" <?php } else ?> value="EXPERIMENTAL" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8 mb-3">
                                         <div>
                                             <label for="first_name">Titulo de la Propuesta</label>
                                             <input class="form-control" type="text" value="<?php echo $propuesta['titulo']; ?>" disabled>
@@ -49,33 +55,38 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row align-items-center">
-                                    <?php $i = 1;
-                                    foreach ($criterios as $criterio) : ?>
-                                        <input type="hidden" name="id" .$i value="<?php echo $criterio['id_criterio']; ?>">
-                                        <!-- INPUT CRITERIO -->
-                                        <div class="col-md-9 mb-3">
-                                            <div class="form-group">
-                                                <label>Criterio <?= $i++ ?></label>
-                                                <input class="form-control" value="<?php echo $criterio['descripcion']; ?>" disabled>
+                                <?php $ii = 1;
+                                foreach ($tesistas as $tesista) : ?>
+                                    <h2 class="h4 mb-4 p-2 bg-info text-center">TESISTA <?= $ii++; ?></h2>
+                                    <div class="row align-items-center">
+                                        <?php $i = 1;
+                                        foreach ($criterios as $criterio) : ?>
+                                            <!-- INPUT CRITERIO -->
+                                            <div class="col-md-9 mb-3">
+                                                <div class="form-group">
+                                                    <label>Criterio <?= $i++ ?></label>
+                                                    <input class="form-control" value="<?php echo $criterio['descripcion']; ?>" disabled>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- SELECT DE LA NOTA -->
-                                        <div class="col-md-3 mb-3">
-                                            <div class="form-group">
-                                                <label>Nota</label>
-                                                <select name="<?php echo $criterio['id_criterio']; ?>" class="form-control">
-                                                    <option value="APROBADO">APROBADO</option>
-                                                    <option value="REPROBADO">REPROBADO</option>
-                                                </select>
+
+                                            <!-- SELECT DE LA NOTA -->
+                                            <div class="col-md-3 mb-3">
+                                                <div class="form-group">
+                                                    <label>Escoja Una Nota</label>
+                                                    <select name="<?php echo $tesista['cedula'].$criterio['id_criterio']; ?>" class="form-control">
+                                                        <?php for ($a = 1; $a <= $criterio['notamax']; $a++) : ?>
+                                                            <option value="<?= $a; ?>"><?= $a; ?></option>
+                                                        <?php endfor; ?>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                    <div class="row">
-                                        <div class="col-md-12 mb-3">
-                                            <div>
-                                                <button type="submit" class="btn btn-warning w-full">ENVIAR EVALUACION</button>
-                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php endforeach; ?>
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <div>
+                                            <button type="submit" class="btn btn-warning w-full">ENVIAR EVALUACION</button>
                                         </div>
                                     </div>
                                 </div>

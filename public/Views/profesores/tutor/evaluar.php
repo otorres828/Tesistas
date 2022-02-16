@@ -7,9 +7,9 @@
     <title>Revisor | Evaluar</title>
     <?php
 
-use App\Models\Criterios;
+    use App\Models\Criterios;
 
- include_once('../public/Views/componentes/cssadminlte.php'); ?>
+    include_once('../public/Views/componentes/cssadminlte.php'); ?>
     <!-- DATATABLES -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -48,8 +48,7 @@ use App\Models\Criterios;
                                     <div class="col-md-2 mb-3">
                                         <div>
                                             <label>Modalidad</label>
-                                            <input class="form-control" type="text" <?php if($modalidad=='I'){ ?>value="INSTRUMENTAL" <?php }else ?> value="EXPERIMENTAL"
-                                            disabled>
+                                            <input class="form-control" type="text" <?php if ($modalidad == 'I') { ?>value="INSTRUMENTAL" <?php } else ?> value="EXPERIMENTAL" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-8 mb-3">
@@ -60,30 +59,30 @@ use App\Models\Criterios;
                                         </div>
                                     </div>
                                 </div>
-                                    <div class="row align-items-center">
-                                        <?php $i=1;
-                                        foreach ($criterios as $criterio) : ?>
-                                            <!-- INPUT CRITERIO -->
-                                            <div class="col-md-9 mb-3">
-                                                <div class="form-group">
-                                                    <label>Criterio <?= $i++ ?></label>
-                                                    <input class="form-control" value="<?php echo $criterio['descripcion']; ?>" disabled>
-                                                </div>
+                                <div class="row align-items-center">
+                                    <?php $i = 1;
+                                    foreach ($criterios as $criterio) : ?>
+                                        <!-- INPUT CRITERIO -->
+                                        <div class="col-md-9 mb-3">
+                                            <div class="form-group">
+                                                <label>Criterio <?= $i++ ?></label>
+                                                <input class="form-control" value="<?php echo $criterio['descripcion']; ?>" disabled>
                                             </div>
-                                           
-                                            <!-- SELECT DE LA NOTA -->
-                                            <div class="col-md-3 mb-3">
-                                                <div class="form-group">
-                                                    <label>Escoja Una Nota</label>
-                                                    <select name="<?php echo $criterio['id_criterio']; ?>" class="form-control">
-                                                        <?php for($a=1;$a<=$criterio['notamax'];$a++):?>
-                                                            <option value="<?=$a;?>"><?=$a;?></option>
-                                                        <?php endfor; ?>
-                                                    </select>
-                                                </div>
+                                        </div>
+
+                                        <!-- SELECT DE LA NOTA -->
+                                        <div class="col-md-3 mb-3">
+                                            <div class="form-group">
+                                                <label>Escoja Una Nota</label>
+                                                <select name="<?php echo $criterio['id_criterio']; ?>" class="form-control">
+                                                    <?php for ($a = 1; $a <= $criterio['notamax']; $a++) : ?>
+                                                        <option value="<?= $a; ?>"><?= $a; ?></option>
+                                                    <?php endfor; ?>
+                                                </select>
                                             </div>
-                                        <?php endforeach; ?>
-                                    </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-12 mb-3">
                                         <div>
