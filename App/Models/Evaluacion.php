@@ -82,6 +82,12 @@ class Evaluacion extends ModeloGenerico
         $sql = "UPDATE propuestatg SET nro_consejo=$nro_consejo WHERE num_c=$num_c";
         $this->sentenciaObj($sql);
     }
+    // Actualiza en propuestatg la observacion del comite
+    public function actualizar_observaciones($num_c, $obs)
+    {
+        $sql = "UPDATE propuestatg SET observaciones='$obs' WHERE num_c=$num_c";
+        $this->sentenciaObj($sql);
+    }
     // Actualiza en propuestatg, el nro consejo y la cedula tutor
     public function actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor, $fecha)
     {
