@@ -49,33 +49,35 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row align-items-center">
-                                    <?php $i = 1;
-                                    foreach ($criterios as $criterio) : ?>
-                                        <input type="hidden" name="id" .$i value="<?php echo $criterio['id_criterio']; ?>">
-                                        <!-- INPUT CRITERIO -->
-                                        <div class="col-md-9 mb-3">
-                                            <div class="form-group">
-                                                <label>Criterio <?= $i++ ?></label>
-                                                <input class="form-control" value="<?php echo $criterio['descripcion']; ?>" disabled>
+                                <?php foreach ($tesitas as $tesista) : ?>
+                                    <div class="row align-items-center">
+                                        <?php $i = 1;
+                                        foreach ($criterios as $criterio) : ?>
+                                            <input type="hidden" name="id" .$i value="<?php echo $criterio['id_criterio']; ?>">
+                                            <!-- INPUT CRITERIO -->
+                                            <div class="col-md-9 mb-3">
+                                                <div class="form-group">
+                                                    <label>Criterio <?= $i++ ?></label>
+                                                    <input class="form-control" value="<?php echo $criterio['descripcion']; ?>" disabled>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- SELECT DE LA NOTA -->
-                                        <div class="col-md-3 mb-3">
-                                            <div class="form-group">
-                                                <label>Nota</label>
-                                                <select name="<?php echo $criterio['id_criterio']; ?>" class="form-control">
-                                                    <option value="APROBADO">APROBADO</option>
-                                                    <option value="REPROBADO">REPROBADO</option>
-                                                </select>
+                                            <!-- SELECT DE LA NOTA -->
+                                            <div class="col-md-3 mb-3">
+                                                <div class="form-group">
+                                                    <label>Nota</label>
+                                                    <select name="<?php echo $criterio['id_criterio']; ?>" class="form-control">
+                                                        <option value="APROBADO">APROBADO</option>
+                                                        <option value="REPROBADO">REPROBADO</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                    <div class="row">
-                                        <div class="col-md-12 mb-3">
-                                            <div>
-                                                <button type="submit" class="btn btn-warning w-full">ENVIAR EVALUACION</button>
-                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php endforeach; ?>
+                                <div class="row">
+                                    <div class="col-md-12 mb-3">
+                                        <div>
+                                            <button type="submit" class="btn btn-warning w-full">ENVIAR EVALUACION</button>
                                         </div>
                                     </div>
                                 </div>
