@@ -177,17 +177,22 @@ class PropuestaTG extends ModeloGenerico
     //           AND ptg.num_c 
     //           NOT IN (SELECT num_c FROM evaluacionconsejo)";
     $sql = "SELECT ptg.num_c,ptg.titulo,ptg.modalidad 
-            FROM propuestatg as ptg,evaluacioncomite as ec 
-            WHERE ptg.num_c = ec.num_c 
-              AND ec.estatus='APROBADO' 
-              AND ptg.num_c
-              NOT IN (SELECT num_c FROM evaluacionconsejo)
-            GROUP BY (ptg.num_c)
-            HAVING (SELECT count(nota) from revisa_experimental 
-            WHERE num_c IN (SELECT num_c 
-                      FROM propuestatg 
-                      WHERE cedula_revisor IS NOT NULL)
-              AND nota='APROBADO')>=((SELECT count(nota) FROM revisa_experimental)*0.5) ";
+    FROM propuestatg as ptg,evaluacioncomite as ec 
+    WHERE ptg.num_c = ec.num_c 
+      AND ec.estatus='APROBADO' 
+      AND ptg.num_c
+      NOT IN (SELECT num_c FROM evaluacionconsejo)
+    GROUP BY (ptg.num_c)
+    HAVING (select COUNT(nota) FROM revisa_experimental 
+      WHERE num_c IN (SELECT num_c 
+              FROM propuestatg 
+              WHERE cedula_revisor IS NOT NULL)
+              AND nota='APROBADO')>=((SELECT COUNT(id_criterio) FROM criterios_rev_exp)*0.5) 
+    OR (SELECT COUNT(nota) FROM revisa_instrumental
+    WHERE num_c IN (SELECT num_c 
+            FROM propuestatg 
+            WHERE cedula_revisor IS NOT NULL)
+            AND nota='APROBADO')>=((SELECT COUNT(id_criterio) FROM criterios_rev_ins)*0.5)";
 
     return $this->sentenciaAll($sql);
   }
