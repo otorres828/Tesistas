@@ -160,11 +160,29 @@ class Profesores extends ModeloGenerico
 
     //PROFESORES
     //REVISOR
-    public function propuestasRevisor($cedula){
+    public function propuestasRevisor($cedula)
+    {
         return $this->sentenciaAll("SELECT num_c,titulo,modalidad FROM propuestatg WHERE cedula_revisor=$cedula");
     }
     //TUTOR
-    public function propuestasTutor($cedula){
+    public function propuestasTutor($cedula)
+    {
         return $this->sentenciaAll("SELECT num_c,titulo,modalidad FROM propuestatg WHERE cedula_tutor=$cedula");
+    }
+    //JURADO EXPERIMENTAL
+    public function propuestasJuradoExp($cedula)
+    {
+        return $this->sentenciaAll("SELECT ptg.num_c,ptg.titulo,ptg.modalidad 
+        FROM es_jurado_experimental AS je,propuestatg AS ptg
+        WHERE je.cedula=$cedula
+        AND ptg.num_c=je.num_c");
+    }
+    //JURADO INSTRUMENTAL
+    public function propuestasJuradoIns($cedula)
+    {
+        return $this->sentenciaAll("SELECT ptg.num_c,ptg.titulo,ptg.modalidad 
+            FROM es_jurado_instrumental AS je,propuestatg AS ptg
+            WHERE je.cedula=$cedula
+            AND ptg.num_c=je.num_c");
     }
 }
