@@ -30,7 +30,7 @@
                         </div>
 
                         <div class=" table-responsive p-2 ">
-                            
+
 
 
                             <?php $esPosibleEvaluar = true; ?>
@@ -103,7 +103,7 @@
                                         <?php //Verificacion de que contenga almenos un comite 
                                         sizeof($internos) > 0 ? $esPosibleEvaluar = true : $esPosibleEvaluar = false;
                                         if ($esPosibleEvaluar) { ?>
-                                            <select class="custom-select" aria-label="" name="cedularevisor" >
+                                            <select class="custom-select" aria-label="" name="cedularevisor">
 
                                             <?php } else {          ?>
                                                 <select class="custom-select Disabled" aria-label="" name="cedularevisor" required disabled>
@@ -116,6 +116,11 @@
                                                 <?php } ?>
                                                 </select>
 
+                                    </div>
+                                    <!-- Observaciones -->
+                                    <div class="mb-3">
+                                        <label for="observaciones" class="form-label">Observaciones</label>
+                                        <textarea class="form-control" id="observaciones" rows="3" name="observaciones" required></textarea>
                                     </div>
                                     <?php if (!$esPosibleEvaluar) { ?>
                                         <button type="submit" class="btn btn-success col-12 name" name="evaluarComite">Enviar evaluacion</button>

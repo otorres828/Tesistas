@@ -33,17 +33,19 @@ class EvaluacionController extends \Core\Controller
             $cedularevisor = $_POST['cedularevisor'];
             $num_c = $_POST['num_c'];
             $id_comite = $_POST['id_comite'];
-            $modalidad=(new PropuestaTG())->where('num_c','=',$num_c)->getOb();
+            $observaciones = $_POST['observaciones'];
+            $modalidad = (new PropuestaTG())->where('num_c', '=', $num_c)->getOb();
             $resultadoInsert = (new Evaluacion())->insertarEvaluacionComite($num_c, $id_comite, $estatus);
+            $observacionesInsert = (new Evaluacion())->actualizar_observaciones($num_c, $observaciones);
 
             $internos = (new Profesores())->obtenerInternos();
             $comites = (new Comites())->comitesNoEvaluados();
             $propuestastg = (new PropuestaTG())->propuestasNoEvaluadasPorElComite();
 
             if ($estatus == 'APROBADO') {
-                if($modalidad['modalidad']=='I'){ 
+                if ($modalidad['modalidad'] == 'I') {
                     (new Evaluacion())->insertarObj("INSERT INTO instrumentales values($num_c)");
-                }else{  
+                } else {
                     (new Evaluacion())->insertarObj("INSERT INTO experimentales values($num_c)");
                 }
                 $resultado = (new Evaluacion())->actualizar_IdComite_CedulaRevisor($num_c, $id_comite, $cedularevisor);
@@ -89,7 +91,7 @@ class EvaluacionController extends \Core\Controller
             $cedula_tutor = $_POST['cedula_tutor'];
             $cedulajurado1 = $_POST['cedulajurado1'];
             $cedulajurado2 = $_POST['cedulajurado2'];
-            $fecha=$_POST['fecha'];
+            $fecha = $_POST['fecha'];
             $internos = (new Profesores())->obtenerInternos();
             $jurados = (new Profesores())->get();
             $consejos = (new Consejos())->get();
@@ -110,11 +112,10 @@ class EvaluacionController extends \Core\Controller
                         ]
                     );
                 } else { // los profes son distintos
-                    $resultado = (new Evaluacion())->actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor,$fecha);
+                    $resultado = (new Evaluacion())->actualizar_NroConsejo_CedulaTutor($num_c, $nro_consejo, $cedula_tutor, $fecha);
                     $resultado = (new Evaluacion())->insertarEsJuradoXmodalidad($num_c, $cedulajurado1, $cedulajurado2);
                     (new RolesUsuarios())->rol_tutor($cedula_tutor);
-                    (new RolesUsuarios())->rol_jurado($cedulajurado1,$cedulajurado2);
-                   
+                    (new RolesUsuarios())->rol_jurado($cedulajurado1, $cedulajurado2);
                 }
             } else { //Esta REPROBADO
                 $resultado = (new Evaluacion())->actualizar_NroConsejo($num_c, $nro_consejo);
