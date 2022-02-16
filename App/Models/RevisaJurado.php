@@ -16,7 +16,7 @@ class RevisaJurado extends ModeloGenerico
     public function validadExistenciaPTG_Ins($num_c)
     {
         $cantidad = $this->sentenciaObj("SELECT COUNT (num_c) AS cantidad
-                                        FROM evalua_instrumental
+                                        FROM es_evaluado_por_jurado
                                         WHERE num_c=$num_c");
         $cantidad = $cantidad['cantidad'];
         return $cantidad;
@@ -25,7 +25,7 @@ class RevisaJurado extends ModeloGenerico
     public function validadExistenciaPTG_Exp($num_c)
     {
         $cantidad = $this->sentenciaObj("SELECT COUNT (num_c) AS cantidad
-                                        FROM evalua_experimental
+                                        FROM es_evaluado_por_jurado
                                         WHERE num_c=$num_c");
         $cantidad = $cantidad['cantidad'];
         return $cantidad;
