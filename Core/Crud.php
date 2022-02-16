@@ -123,7 +123,6 @@ class Crud {
             $query->execute();
             return $query->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
         }  
     }
     public function sentenciaObj($obj){
@@ -132,7 +131,6 @@ class Crud {
             $query->execute();
             return $query->fetch(PDO::FETCH_ASSOC);
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
         }  
     }
     public function insertarObj($obj){ 
@@ -141,7 +139,6 @@ class Crud {
             $query->execute();
             return $query->fetch(PDO::FETCH_ASSOC);
         } catch (Exception $exc) {
-            echo $exc->getTraceAsString();
 
         }  
     }
