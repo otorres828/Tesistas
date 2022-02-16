@@ -31,6 +31,7 @@ $router->add('profesor-perfil', ['controller' => 'profesores\ProfesorController'
 $router->add('profesor-revisor', ['controller' => 'profesores\RevisorController', 'method' => 'revisor']);
 $router->add('profesor-revisor-evaluar', ['controller' => 'profesores\RevisorController', 'method' => 'evaluarRevisor']);
 $router->add('profesor-revisor-evaluar-enviar', ['controller' => 'profesores\RevisorController', 'method' => 'formularioRevisor']);
+$router->add('profesor-tutor', ['controller' => 'profesores\TutorController', 'method' => 'tutor']);
 
 //=====================================ESCUELA
 $router->add('escuela', ['controller' => 'escuela\EscuelaController', 'method' => 'index']);

@@ -159,7 +159,12 @@ class Profesores extends ModeloGenerico
     }
 
     //PROFESORES
+    //REVISOR
     public function propuestasRevisor($cedula){
         return $this->sentenciaAll("SELECT num_c,titulo,modalidad FROM propuestatg WHERE cedula_revisor=$cedula");
+    }
+    //TUTOR
+    public function propuestasTutor($cedula){
+        return $this->sentenciaAll("SELECT num_c,titulo,modalidad FROM propuestatg WHERE cedula_tutor=$cedula");
     }
 }

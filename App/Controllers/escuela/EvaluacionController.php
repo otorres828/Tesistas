@@ -95,7 +95,6 @@ class EvaluacionController extends \Core\Controller
             $consejos = (new Consejos())->get();
             $propuestastg = (new PropuestaTG())->propuestasAprobadasPorComite();
 
-
             if ($estatus == 'APROBADO') {
                 if ($cedulajurado1 == $cedulajurado2 || $cedulajurado1 == $cedula_tutor || $cedulajurado2 == $cedula_tutor) {
                     $_SESSION['mensaje'] = "Error: Los dos jurados no pueden ser el mismo";
@@ -115,7 +114,7 @@ class EvaluacionController extends \Core\Controller
                     $resultado = (new Evaluacion())->insertarEsJuradoXmodalidad($num_c, $cedulajurado1, $cedulajurado2);
                     (new RolesUsuarios())->rol_tutor($cedula_tutor);
                     (new RolesUsuarios())->rol_jurado($cedulajurado1,$cedulajurado2);
-
+                   
                 }
             } else { //Esta REPROBADO
                 $resultado = (new Evaluacion())->actualizar_NroConsejo($num_c, $nro_consejo);

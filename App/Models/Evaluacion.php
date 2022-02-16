@@ -57,31 +57,23 @@ class Evaluacion extends ModeloGenerico
     }
     public function insertarEsJuradoXmodalidad($num_c, $cedulajurado1, $cedulajurado2)
     {
-        $sql = "SELECT modalidad FROM propuestatg WHERE num_c = $num_c";
+        $sql = "SELECT modalidad FROM propuestatg WHERE num_c=$num_c";
         $modalidad = $this->sentenciaObj($sql);
 
-        if ($modalidad['modalidad'] = 'I') {
+        if ($modalidad['modalidad'] == 'I') {
             $estaDuplicado = "SELECT COUNT(num_c) FROM instrumentales WHERE num_c=$num_c";
             $a = $this->sentenciaObj($estaDuplicado);
             $b = $a['count'];
-            if ($b == 0) {
-                $insertInstrumentales = "INSERT INTO instrumentales(num_c) VALUES($num_c)    ";
-                $this->sentenciaObj($insertInstrumentales);
 
-                $cabezahuevo = "INSERT INTO es_jurado_instrumental(num_c,cedula) VALUES($num_c,$cedulajurado1), ($num_c,$cedulajurado2)";
-                $this->sentenciaObj($cabezahuevo);
-            }
+            $cabezahuevo = "INSERT INTO es_jurado_instrumental(num_c,cedula) VALUES($num_c,$cedulajurado1), ($num_c,$cedulajurado2)";
+            $this->sentenciaObj($cabezahuevo);
         } else {
             $estaDuplicado = "SELECT COUNT(num_c) FROM experimentales WHERE num_c=$num_c";
             $a = $this->sentenciaObj($estaDuplicado);
             $b = $a['count'];
-            if ($b == 0) {
-                $insertexperimentales = "INSERT INTO experimentales(num_c) VALUES($num_c)    ";
-                $this->sentenciaObj($insertexperimentales);
 
-                $cabezahuevo = "INSERT INTO es_jurado_experimental(num_c,cedula) VALUES($num_c,$cedulajurado1), ($num_c,$cedulajurado2)";
-                $this->sentenciaObj($cabezahuevo);
-            }
+            $cabezahuevo = "INSERT INTO es_jurado_experimental(num_c,cedula) VALUES($num_c,$cedulajurado1), ($num_c,$cedulajurado2)";
+            $this->sentenciaObj($cabezahuevo);
         }
     }
     // Actualiza en propuestatg el nro del consejo
@@ -102,6 +94,4 @@ class Evaluacion extends ModeloGenerico
     {
         $this->insertarObj("INSERT INTO roles_usuarios values($cedula,1)");
     }
-
-
 }
