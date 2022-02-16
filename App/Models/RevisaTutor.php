@@ -11,7 +11,7 @@ class RevisaTutor extends ModeloGenerico
     {
         parent::__construct("revisa_instrumental", RevisaTutor::class, $propiedades);
     }
-
+    //VALIDAR EXISTENCIA PARA EL REVISOR
     public function validadExistenciaInstrumental($num_c)
     {
         $cantidad = $this->sentenciaObj("SELECT COUNT (num_c) AS cantidad
@@ -25,6 +25,25 @@ class RevisaTutor extends ModeloGenerico
     {
         $cantidad = $this->sentenciaObj("SELECT COUNT (num_c) AS cantidad
                                         FROM revisa_experimental
+                                        WHERE num_c=$num_c");
+        $cantidad = $cantidad['cantidad'];
+        return $cantidad;
+    }
+
+    //VALIDAR EXISTENCIA DE PTG PARA EL TUTOR
+    public function validadExistenciaPTG_Ins($num_c)
+    {
+        $cantidad = $this->sentenciaObj("SELECT COUNT (num_c) AS cantidad
+                                        FROM evalua_instrumental
+                                        WHERE num_c=$num_c");
+        $cantidad = $cantidad['cantidad'];
+        return $cantidad;
+    }
+
+    public function validadExistenciaPTG_Exp($num_c)
+    {
+        $cantidad = $this->sentenciaObj("SELECT COUNT (num_c) AS cantidad
+                                        FROM evalua_experimental
                                         WHERE num_c=$num_c");
         $cantidad = $cantidad['cantidad'];
         return $cantidad;
