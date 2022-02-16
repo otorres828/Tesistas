@@ -115,7 +115,7 @@
 										?>
 										<tr>
 											<td><?php echo $c['id_criterio']; ?></td>
-											<td><?php echo $c['notamax']; ?></td>
+											<td>A/R</td>
 											<td><?php echo $c['descripcion']; ?></td>
 											<td><?php echo $tipoProfe; ?></td>
 											<?php if ($c['estatus'] == 'ACTIVO') {
