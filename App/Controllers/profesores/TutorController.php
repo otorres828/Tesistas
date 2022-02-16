@@ -26,7 +26,7 @@ class TutorController extends \Core\Controller
         ]);
     }
 
-    public function evaluarRevisor()
+    public function evaluarTutor()
     {
         if (isset($_POST['evaluar'])) {
             session_start();
@@ -34,13 +34,13 @@ class TutorController extends \Core\Controller
             $tesitas = (new Tesistas())->tesistasdeunapropuesta($num_c);
             $profesor = (new Profesores())->where('cedula', '=', $_SESSION['cedula'])->getOb();
             $propuesta = (new PropuestaTG())->where('num_c', '=', $num_c)->getOb();
-            if ($_POST['modalidad'] == 'E') {
-                $criterios = (new Criterios())->criteriosRevExp();
-            } else {
-                $criterios = (new Criterios())->criteriosRevIns();
-            }
             $roles = (new RolesUsuarios())->where('cedula', '=', $_SESSION['cedula'])->get();
-            View::render('profesores\revisor\evaluar.php', [
+            if ($_POST['modalidad'] == 'E') {
+                $criterios = (new Criterios())->criteriosTutExp();
+            } else {
+                $criterios = (new Criterios())->criteriosTutIns();
+            }
+            View::render('profesores\tutor\evaluar.php', [
                 'tesitas' => $tesitas,
                 'criterios' => $criterios,
                 'profesor' => $profesor,

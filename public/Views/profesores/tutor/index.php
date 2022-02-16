@@ -62,7 +62,7 @@
                                                     <?php } ?>
                                                 </td>
                                                 <td>
-                                                    <form action="profesor-revisor-evaluar" method="post">
+                                                    <form action="profesor-tutor-evaluar" method="post">
                                                         <input hidden name="modalidad" value="<?php echo $propuesta['modalidad']; ?>">
                                                         <button class="btn btn-warning" value="<?php echo $propuesta['num_c']; ?>" name="evaluar" <?php
                                                             if ($propuesta['modalidad'] == 'I') {

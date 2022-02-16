@@ -31,7 +31,6 @@ class RevisorController extends \Core\Controller
         if (isset($_POST['evaluar'])) {
             session_start();
             $num_c = $_POST['evaluar'];
-            $tesitas = (new Tesistas())->tesistasdeunapropuesta($num_c);
             $profesor = (new Profesores())->where('cedula', '=', $_SESSION['cedula'])->getOb();
             $propuesta = (new PropuestaTG())->where('num_c', '=', $num_c)->getOb();
             
@@ -42,7 +41,6 @@ class RevisorController extends \Core\Controller
                 $criterios = (new Criterios())->criteriosRevIns();
             }
             View::render('profesores\revisor\evaluar.php', [
-                'tesitas' => $tesitas,
                 'criterios' => $criterios,
                 'profesor' => $profesor,
                 'propuesta' => $propuesta,
