@@ -13,12 +13,13 @@ class RevisaJurado extends ModeloGenerico
     }
 
     //VALIDAR EXISTENCIA DE PTG PARA EL TUTOR
-    public function validadExistenciaPTG_Ins($num_c)
+    public function validadExistenciaPTG_Ins($num_c,$cedula)
     {
         $cantidad = $this->sentenciaObj("SELECT COUNT (ptg.num_c) AS cantidad 
                                         FROM es_jurado_instrumental as eji,es_evaluado_por_jurado AS eej,propuestatg AS ptg
                                         WHERE ptg.num_c=$num_c
                                         AND ptg.num_c=eji.num_c
+                                        AND eej.cedula=$cedula
                                         AND eji.cedula=eej.cedula_jurado");
         $cantidad = $cantidad['cantidad'];
         return $cantidad;
