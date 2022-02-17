@@ -5,7 +5,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Escuela | Profesores revisores </title>
-	<?php include_once('../public/Views/componentes/cssadminlte.php'); ?>
+	<?php
+
+use App\Models\Profesores;
+
+ include_once('../public/Views/componentes/cssadminlte.php'); ?>
 	<!-- DATATABLES -->
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
 </head>
@@ -28,18 +32,33 @@
 										<!-- <th>id_usuario</th> -->
 										<th>Cedula</th>
 										<th>Nombre</th>
-										<th>Correo</th>
-										<th>Codigo</th>
+										<th>correo</th>
+										<th>telefono</th>
+										<th>direccion</th>
+										<th>Nº Propuestas</th>
 									</tr>
 								</thead>
 								<tbody>
 									<?php foreach ($profesores as $profesor) : ?>
 										<tr>
-											<!-- <td><?php echo $profesor['id_usuario']; ?></td> -->
 											<td><?php echo $profesor['cedula']; ?></td>
-											<td><?php echo $profesor['nombre_usuario']; ?></td>
-											<td><?php echo $profesor['correo']; ?></td>
-											<td><?php echo $profesor['codigo']; ?></td>
+											<td><?php echo $profesor['nombre']; ?></td>
+											<td><?php echo $profesor['correoparticular']; ?></td>
+											<td><?php echo $profesor['telefono']; ?></td>
+											<td><?php echo $profesor['direccion']; ?></td>
+											<td><?php  
+												$cedula=$profesor['cedula'];
+												$sql="SELECT ptg.num_c FROM propuestatg AS ptg, profesores AS p
+													WHERE ptg.cedula_revisor=$cedula GROUP BY (ptg.num_c)";
+												$propuestas=(New Profesores())->sentenciaAll($sql);?>
+												<ul>
+													<?php foreach ($propuestas as $propuesta):?>
+														<li>
+														<?php echo $propuesta['num_c'];?>
+														</li>
+													<?php endforeach; ?>			
+												</ul>
+											</td>
 										</tr>
 									<?php endforeach; ?>
 								</tbody>

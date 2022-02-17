@@ -18,19 +18,15 @@ class Profesores extends ModeloGenerico
     // Traer todos los profesores revisores
     public function revisores()
     {
-        return $this->sentenciaAll("SELECT * FROM usuarios AS u, roles_usuarios AS r 
-                                    WHERE r.id_rol=2 
-                                    AND r.cedula = u.cedula
-                                    ");
+        return $this->sentenciaAll("SELECT p.* FROM profesores AS p, propuestatg AS ptg 
+                                    WHERE ptg.cedula_revisor=p.cedula");
     }
 
     // Traer todos los profesores tutores
     public function tutores()
     {
-        return $this->sentenciaAll("SELECT * FROM usuarios AS u, roles_usuarios AS r 
-                                    WHERE r.id_rol=2 
-                                    AND r.cedula = u.cedula
-                                    ");
+        return $this->sentenciaAll("SELECT p.* FROM profesores AS p, propuestatg AS ptg 
+        WHERE ptg.cedula_tutor=p.cedula");
     }
 
     // Traer todos los profesores jurados
