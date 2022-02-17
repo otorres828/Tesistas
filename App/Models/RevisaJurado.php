@@ -16,11 +16,11 @@ class RevisaJurado extends ModeloGenerico
     public function validadExistenciaPTG_Ins($num_c, $cedula_jurado)
     {
         $cantidad = $this->sentenciaObj("SELECT COUNT (ptg.num_c) AS cantidad 
-        FROM es_jurado_instumental as eje,es_evaluado_por_jurado AS eej,propuestatg AS ptg
+        FROM es_jurado_instrumental as eji,es_evaluado_por_jurado AS eej,propuestatg AS ptg
         WHERE ptg.num_c=$num_c
-        AND ptg.num_c=eje.num_c
-        AND eje.cedula=$cedula_jurado	
-        AND eje.cedula = eej.cedula_jurado");
+        AND ptg.num_c=eji.num_c
+        AND eji.cedula=$cedula_jurado	
+        AND eji.cedula = eej.cedula_jurado");
         $cantidad = $cantidad['cantidad'];
         return $cantidad;
     }

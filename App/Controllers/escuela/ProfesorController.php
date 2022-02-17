@@ -53,7 +53,7 @@ class ProfesorController extends \Core\Controller
         $this->autenticar();
         $profesores = (new Profesores())->jurados();
 
-        View::render('escuela/profesores/profesor-jurado.php', ['profesores' => $profesores]);
+        View::render('escuela/profesores/profesor-jurado.php', ['profesoresI' => $profesores]);
     }
 
     public function mostrarPerfilProfesor(){

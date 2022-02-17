@@ -32,10 +32,11 @@ class Profesores extends ModeloGenerico
     // Traer todos los profesores jurados
     public function jurados()
     {
-        return $this->sentenciaAll("SELECT * FROM usuarios AS u, roles_usuarios AS r 
-                                    WHERE r.id_rol=2 
-                                    AND r.cedula = u.cedula
-                                    ");
+        return $this->sentenciaAll("SELECT p.* 
+        FROM profesores as p
+        WHERE p.cedula IN (SELECT cedula FROM es_jurado_experimental)
+        OR p.cedula IN (SELECT cedula FROM es_jurado_instrumental)
+        GROUP BY(p.cedula)");
     }
 
     // Traer todos los profesores cedulas de losinternos
