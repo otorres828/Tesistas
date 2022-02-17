@@ -7,7 +7,7 @@
     <title>Profesor | Jurado</title>
     <?php
 
-use App\Models\RevisaJurado;
+    use App\Models\RevisaJurado;
 
     include_once('../public/Views/componentes/cssadminlte.php'); ?>
     <!-- DATATABLES -->
@@ -66,12 +66,11 @@ use App\Models\RevisaJurado;
                                                     <form action="profesor-jurado-evaluar" method="post">
                                                         <input hidden name="modalidad" value="<?php echo $propuesta['modalidad']; ?>">
                                                         <button class="btn btn-warning" value="<?php echo $propuesta['num_c']; ?>" name="evaluar" <?php
-                                                            if ($propuesta['modalidad'] == 'I') {
-                                                                $cantidad = (new RevisaJurado())->validadExistenciaPTG_Ins($propuesta['num_c'],$profesor['cedula']);
-                                                            } else {
-                                                                $cantidad = (new RevisaJurado())->validadExistenciaPTG_Exp($propuesta['num_c']);
-                                                            } ?> <?php if ($cantidad) { ?> disabled <?php } ?> 
-                                                        >EVALUAR JURADO</button>
+                                                                                                                                                    if ($propuesta['modalidad'] == 'I') {
+                                                                                                                                                        $cantidad = (new RevisaJurado())->validadExistenciaPTG_Ins($propuesta['num_c'], $profesor['cedula']);
+                                                                                                                                                    } else {
+                                                                                                                                                        $cantidad = (new RevisaJurado())->validadExistenciaPTG_Exp($propuesta['num_c'], $profesor['cedula']);
+                                                                                                                                                    } ?> <?php if ($cantidad) { ?> disabled <?php } ?>>EVALUAR JURADO</button>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -91,12 +90,11 @@ use App\Models\RevisaJurado;
                                                     <form action="profesor-jurado-evaluar" method="post">
                                                         <input hidden name="modalidad" value="<?php echo $propuesta['modalidad']; ?>">
                                                         <button class="btn btn-warning" value="<?php echo $propuesta['num_c']; ?>" name="evaluar" <?php
-                                                            if ($propuesta['modalidad'] == 'I') {
-                                                                $cantidad = (new RevisaJurado())->validadExistenciaPTG_Ins($propuesta['num_c'],$profesor['cedula']);
-                                                            } else {
-                                                                $cantidad = (new RevisaJurado())->validadExistenciaPTG_Exp($propuesta['num_c']);
-                                                            } ?> <?php if ($cantidad) { ?> disabled <?php } ?> 
-                                                        >EVALUAR JURADO</button>
+                                                                                                                                                    if ($propuesta['modalidad'] == 'I') {
+                                                                                                                                                        $cantidad = (new RevisaJurado())->validadExistenciaPTG_Ins($propuesta['num_c'], $profesor['cedula']);
+                                                                                                                                                    } else {
+                                                                                                                                                        $cantidad = (new RevisaJurado())->validadExistenciaPTG_Exp($propuesta['num_c'], $profesor['cedula']);
+                                                                                                                                                    } ?> <?php if ($cantidad) { ?> disabled <?php } ?>>EVALUAR JURADO</button>
                                                     </form>
                                                 </td>
                                             </tr>

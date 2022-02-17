@@ -50,13 +50,13 @@
                                 <div class="row align-items-center">
                                     <div class="col-md-6 mb-3">
                                         <div class="form-group">
-                                            <label>cedula</label>
+                                            <label>Cedula</label>
                                             <input class="form-control" value="<?php echo $profesor['cedula']; ?>" disabled>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <div class="form-group">
-                                            <label>correoparticular</label>
+                                            <label>Correo particular</label>
                                             <input class="form-control" type="email" value="<?php echo $profesor['correoparticular']; ?>" disabled>
                                         </div>
                                     </div>
