@@ -88,13 +88,21 @@ class CriteriosController extends \Core\Controller
             $descripcion = $_POST['descripcion'];
             $tipo = $_POST['tipo'];
             $modalidad = $_POST['modalidad'];
-            $notamax = $_POST['notamax'];
-            echo "====Datos recibidos del formulario====<br>";
-            echo "TipoProfesor:" . $tipo . "<br>";
-            echo "Modalidad:" . $modalidad . "<br>";
-            echo "tabla:" . $descripcion . "<br>";
-            echo "Notamax:" . $notamax . "<br>";
-            echo "======================================<br>";
+            if ($tipo != 'Revisor') {
+                if ($_POST['notamax'] == "") {
+                    $notamax = 5;
+                } else {
+                    $notamax = $_POST['notamax'];
+                }
+            } else {
+                $notamax = "A/R";
+            }
+            // echo "====Datos recibidos del formulario====<br>";
+            // echo "TipoProfesor:" . $tipo . "<br>";
+            // echo "Modalidad:" . $modalidad . "<br>";
+            // echo "tabla:" . $descripcion . "<br>";
+            // // echo "Notamax:" . $notamax . "<br>";
+            // echo "======================================<br>";
 
             (new Criterios())->insertarCriterio($notamax, $descripcion, $tipo, $modalidad);
 
@@ -145,7 +153,7 @@ class CriteriosController extends \Core\Controller
         $criteriosRevisores = (new Criterios())->criteriosRevExp();
         $criteriosTutores = (new Criterios())->criteriosTutExp();
         $criteriosJurados = (new Criterios())->criteriosJurExp();
-        
+
         View::render('escuela/criterios/criterios-experimentales-todos.php', [
             'criteriosRevisores' => $criteriosRevisores,
             'criteriosTutores' => $criteriosTutores,

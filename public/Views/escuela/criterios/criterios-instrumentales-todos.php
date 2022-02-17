@@ -55,7 +55,10 @@
 													</div>
 													<div class="form-group">
 														<label>Nota maxima</label>
-														<input type="number" name="notamax" placeholder="Escriba la nota maxima que puede recibir el criterio" class="form-control" required>
+														<input type="number" name="notamax" placeholder="Escriba la nota maxima que puede recibir el criterio" class="form-control" aria-describedby="emailHelp">
+														<div id="emailHelp" class="form-text">Por defecto la nota ingresada es de 5 </div>
+
+
 													</div>
 													<div class="form-group flex">
 														<label>Tipo</label></br>

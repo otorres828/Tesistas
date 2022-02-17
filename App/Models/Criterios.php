@@ -24,25 +24,68 @@ class Criterios extends ModeloGenerico
     public function insertarCriterio($notamax, $descripcion, $tipo, $modalidad)
     {
 
+
+
         switch ($modalidad) {
             case "Experimental":
                 switch ($tipo) {
                     case "Revisor":
                         $tabla = "criterios_rev_exp";
-                        $sql = "INSERT INTO $tabla(notamax,descripcion,estatus) VALUES($notamax,'$descripcion','INACTIVO')";
-                        // echo "<br><br>$sql<br><br>";
-                        $this->sentenciaObj($sql);
+
+                        $count = $this->sentenciaObj("SELECT MAX (id_criterio) as id_criterio FROM $tabla");
+                        $count = $count['id_criterio'];
+                        if ($count) {
+                            $count = $count + 1;
+                            $sql = "INSERT INTO $tabla(id_criterio,descripcion,estatus) VALUES($count,'$descripcion','INACTIVO')";
+                            $this->sentenciaObj($sql);
+                        } else {
+                            $sql = "INSERT INTO $tabla(id_criterio,descripcion,estatus) VALUES(1,'$descripcion','INACTIVO')";
+                            $this->sentenciaObj($sql);
+                        }
+
+
+
+                        // $this->sentenciaObj($sql);
                         break;
                     case "Tutor":
                         $tabla = "criterios_tutor_exp";
-                        $sql = "INSERT INTO $tabla(notamax,descripcion,estatus) VALUES($notamax,'$descripcion','INACTIVO')";
-                        $this->sentenciaObj($sql);
+
+                        $count = $this->sentenciaObj("SELECT MAX (id_criterio) as id_criterio FROM $tabla");
+                        $count = $count['id_criterio'];
+                        if ($count) {
+                            $count = $count + 1;
+                            $sql = "INSERT INTO $tabla(id_criterio,notamax,descripcion,estatus) 
+                            VALUES ($count,$notamax,'$descripcion','INACTIVO')";
+                            $this->sentenciaObj($sql);
+                        } else {
+                            $sql = "INSERT INTO $tabla(id_criterio,notamax,descripcion,estatus) 
+                            VALUES(1,$notamax,'$descripcion','INACTIVO')";
+                            $this->sentenciaObj($sql);
+                        }
+
+
+                        // $sql = "INSERT INTO $tabla(notamax,descripcion,estatus) VALUES($notamax,'$descripcion','INACTIVO')";
+                        // $this->sentenciaObj($sql);
 
                         break;
                     case "Jurado":
                         $tabla = "criterios_experimental_jurado";
-                        $sql = "INSERT INTO $tabla(notamax,descripcion,estatus) VALUES($notamax,'$descripcion','INACTIVO')";
-                        $this->sentenciaObj($sql);
+                        $count = $this->sentenciaObj("SELECT MAX (id_criterio) as id_criterio FROM $tabla");
+                        $count = $count['id_criterio'];
+                        if ($count) {
+                            $count = $count + 1;
+                            $sql = "INSERT INTO $tabla(id_criterio,notamax,descripcion,estatus) 
+                            VALUES($count,$notamax,'$descripcion','INACTIVO')";
+                            $this->sentenciaObj($sql);
+                        } else {
+                            $sql = "INSERT INTO $tabla(id_criterio,notamax,descripcion,estatus) 
+                            VALUES(1,$notamax,'$descripcion','INACTIVO')";
+                            $this->sentenciaObj($sql);
+                        }
+
+
+                        // $sql = "INSERT INTO $tabla(notamax,descripcion,estatus) VALUES($notamax,'$descripcion','INACTIVO')";
+                        // $this->sentenciaObj($sql);
 
                         break;
                 }
@@ -51,20 +94,61 @@ class Criterios extends ModeloGenerico
                 switch ($tipo) {
                     case "Revisor":
                         $tabla = "criterios_rev_ins";
-                        $sql = "INSERT INTO $tabla(notamax,descripcion,estatus) VALUES($notamax,'$descripcion','INACTIVO')";
-                        $this->sentenciaObj($sql);
+
+                        $count = $this->sentenciaObj("SELECT MAX (id_criterio) as id_criterio FROM $tabla");
+                        $count = $count['id_criterio'];
+                        if ($count) {
+                            $count = $count + 1;
+                            $sql = "INSERT INTO $tabla(id_criterio,descripcion,estatus) 
+                                        VALUES($count,'$descripcion','INACTIVO')";
+                            $this->sentenciaObj($sql);
+                        } else {
+                            $sql = "INSERT INTO $tabla(id_criterio,descripcion,estatus) 
+                            VALUES(1,'$descripcion','INACTIVO')";
+                            $this->sentenciaObj($sql);
+                        }
+
+                        // $sql = "INSERT INTO $tabla(descripcion,estatus) VALUES('$descripcion','INACTIVO')";
+                        // $this->sentenciaObj($sql);
 
                         break;
                     case "Tutor":
                         $tabla = "criterios_tutor_ins";
-                        $sql = "INSERT INTO $tabla(notamax,descripcion,estatus) VALUES($notamax,'$descripcion','INACTIVO')";
-                        $this->sentenciaObj($sql);
+
+                        $count = $this->sentenciaObj("SELECT MAX (id_criterio) as id_criterio FROM $tabla");
+                        $count = $count['id_criterio'];
+                        if ($count) {
+                            $count = $count + 1;
+                            $sql = "INSERT INTO $tabla(id_criterio,notamax,descripcion,estatus) 
+                            VALUES($count,$notamax,'$descripcion','INACTIVO')";
+                            $this->sentenciaObj($sql);
+                        } else {
+                            $sql = "INSERT INTO $tabla(id_criterio,notamax,descripcion,estatus) 
+                            VALUES(1,$notamax,'$descripcion','INACTIVO')";
+                            $this->sentenciaObj($sql);
+                        }
+
+                        // $sql = "INSERT INTO $tabla(notamax,descripcion,estatus) VALUES($notamax,'$descripcion','INACTIVO')";
+                        // $this->sentenciaObj($sql);
 
                         break;
                     case "Jurado":
                         $tabla = "criterios_instrumental_jurado";
-                        $sql = "INSERT INTO $tabla(notamax,descripcion,estatus) VALUES($notamax,'$descripcion','INACTIVO')";
-                        $this->sentenciaObj($sql);
+                        $count = $this->sentenciaObj("SELECT MAX (id_criterio) as id_criterio FROM $tabla");
+                        $count = $count['id_criterio'];
+                        if ($count) {
+                            $count = $count + 1;
+                            $sql = "INSERT INTO $tabla(id_criterio,notamax,descripcion,estatus) 
+                            VALUES($count,$notamax,'$descripcion','INACTIVO')";
+                            $this->sentenciaObj($sql);
+                        } else {
+                            $sql = "INSERT INTO $tabla(id_criterio,notamax,descripcion,estatus) 
+                            VALUES(1,$notamax,'$descripcion','INACTIVO')";
+                            $this->sentenciaObj($sql);
+                        }
+
+                        // $sql = "INSERT INTO $tabla(notamax,descripcion,estatus) VALUES($notamax,'$descripcion','INACTIVO')";
+                        // $this->sentenciaObj($sql);
                         break;
                 }
                 break;
@@ -154,7 +238,8 @@ class Criterios extends ModeloGenerico
     }
 
     //CONTAR LAS CANTIDADES DE CRITERIOS
-    public function cantidad_criterios_rev_in(){
+    public function cantidad_criterios_rev_in()
+    {
         return $this->sentenciaObj("SELECT COUNT (id_criterio) AS cantidad FROM CRITERIOS_REV_INS");
     }
 }
