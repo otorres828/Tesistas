@@ -1,0 +1,662 @@
+/EN ESTA SECCIÓN SE DEFINEN LOS DOMINIOS ASOCIADOS A LAS TABLAS/
+CREATE DOMAIN DomCedula AS BIGINT;
+CREATE DOMAIN DomNombre AS VARCHAR (70);
+CREATE DOMAIN DomCorreo AS VARCHAR(100);
+CREATE DOMAIN DomTlf AS BIGINT;
+CREATE DOMAIN DomFecha AS DATE;
+CREATE DOMAIN DomEstatus AS VARCHAR(12)
+	CHECK(VALUE IN('NO REVISADO','APROBADO','REPROBADO'));
+CREATE DOMAIN DomNota AS VARCHAR(12)
+	CHECK(VALUE IN('APROBADO','REPROBADO'));
+CREATE DOMAIN DomTipo AS CHAR
+	CHECK(VALUE IN('E','I'));
+CREATE DOMAIN DomEstatusCriterio AS VARCHAR(10)
+	CHECK(VALUE IN('ACTIVO','INACTIVO'));
+/EN ESTA SECCIÓN SE DEFINEN LAS TABLAS DE LA BASE DE DATOS/	
+
+/***TABLAS PARA INICIOS DE SESION***/
+
+
+-----------------------------------------------------------------
+-------------------   Tabla Roles   --------------------------
+-----------------------------------------------------------------
+CREATE TABLE Roles(
+ID_Rol SERIAL NOT NULL,
+Nombre DomNombre NOT NULL,
+PRIMARY KEY(ID_Rol)
+);
+
+-----------------------------------------------------------------
+-------------------   Tabla Usuario   --------------------------
+-----------------------------------------------------------------
+CREATE TABLE Usuarios(
+cedula DomCedula NOT NULL,
+Nombre_Usuario DomNombre NOT NULL,
+Correo  DomCorreo NOT NULL,
+Contraseña VARCHAR(50) NOT NULL,
+Modelo VARCHAR(12),
+Codigo VARCHAR(10),
+PRIMARY KEY(cedula)
+);
+
+-----------------------------------------------------------------
+-------------------   Tabla Roles_Usuarios   --------------------------
+-----------------------------------------------------------------
+CREATE TABLE Roles_Usuarios(
+ID_usuario INTEGER NOT NULL,
+ID_Rol INTEGER NOT NULL,
+PRIMARY KEY(ID_usuario,ID_Rol),
+	
+FOREIGN KEY(ID_usuario) 
+REFERENCES Usuarios(ID_usuario)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+	
+FOREIGN KEY(ID_Rol) 
+REFERENCES Roles(ID_Rol)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+/***TABLAS PRIMARIAS***/
+
+-----------------------------------------------------------------
+-------------------   Tabla Tesistas   --------------------------
+-----------------------------------------------------------------
+CREATE TABLE Tesistas(
+Cedula DomCedula NOT NULL,
+Nombre DomNombre NOT NULL,
+CorreoUCAB  DomCorreo NOT NULL,
+CorreoParticular DomCorreo NOT NULL,
+Telefono VARCHAR(12) NOT NULL,
+Comentario VARCHAR(100) NOT NULL,
+Num_C INTEGER,
+PRIMARY KEY(Cedula),
+FOREIGN KEY(Num_C) 
+REFERENCES PropuestaTG(Num_C)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+--INDICE
+CREATE INDEX idx_Tesistas_Cedula 
+ON Tesistas (Cedula);
+
+-----------------------------------------------------------------
+----------------   Tabla ConsejoEscuela   -----------------------
+-----------------------------------------------------------------
+CREATE TABLE ConsejoEscuela(
+Nro_Consejo SERIAL NOT NULL,
+Fecha DomFecha NOT NULL,
+PRIMARY KEY(Nro_Consejo)
+);
+
+-----------------------------------------------------------------
+-------------------   Tabla Empresas   --------------------------
+-----------------------------------------------------------------
+CREATE TABLE Empresas(
+Nombre DomNombre NOT NULL,
+Slug VARCHAR(50) NOT NULL,
+PRIMARY KEY(Nombre)
+);
+
+-----------------------------------------------------------------
+-------------   Tabla Tutores_Empresariales   -------------------
+-----------------------------------------------------------------
+CREATE TABLE Tutores_Empresariales(
+ID_TE SERIAL NOT NULL,
+Nombre DomNombre NOT NULL,
+NombreEmpresa DomNombre NOT NULL,
+PRIMARY KEY(ID_TE),
+FOREIGN KEY(NombreEmpresa) 
+REFERENCES Empresas(Nombre)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+----------------------   Tabla Areas   ---------------------------
+-----------------------------------------------------------------
+CREATE TABLE Areas(
+ID_Area SERIAL NOT NULL,
+Nombre DomNombre NOT NULL,
+Slug VARCHAR(70) NOT NULL,
+PRIMARY KEY(ID_Area)
+);
+
+-----------------------------------------------------------------
+----------   Tabla Criterios_Instrumental_Jurado   ---------------
+-----------------------------------------------------------------
+CREATE TABLE Criterios_Instrumental_Jurado(
+ID_Criterio SERIAL NOT NULL,
+NotaMAX INTEGER NOT NULL
+		CONSTRAINT ck_NotaMAX
+		CHECK(NotaMAX>=0 AND NotaMAX<=20),
+Descripcion VARCHAR(100) NOT NULL,
+Estatus DomEstatusCriterio DEFAULT 'ACTIVO',
+PRIMARY KEY(ID_Criterio)
+);
+
+-----------------------------------------------------------------
+----------   Tabla Criterios_Experimental_Jurado   ---------------
+-----------------------------------------------------------------
+CREATE TABLE Criterios_Experimental_Jurado(
+ID_Criterio SERIAL NOT NULL,
+NotaMAX INTEGER NOT NULL
+	CONSTRAINT ck_NotaMAX
+	CHECK(NotaMAX>=0 AND NotaMAX<=20),
+Descripcion VARCHAR(100) NOT NULL,
+Estatus DomEstatusCriterio DEFAULT 'ACTIVO',
+PRIMARY KEY(ID_Criterio)
+);
+
+-----------------------------------------------------------------
+----------------   Tabla Criterios_Rev_Ins   ---------------------
+-----------------------------------------------------------------
+CREATE TABLE Criterios_Rev_Ins(
+ID_Criterio SERIAL NOT NULL,
+Descripcion VARCHAR(100) NOT NULL,
+Estatus DomEstatusCriterio DEFAULT 'ACTIVO',
+PRIMARY KEY(ID_Criterio)
+);
+
+-----------------------------------------------------------------
+---------------   Tabla Criterios_Rev_Exp   ---------------------
+-----------------------------------------------------------------
+CREATE TABLE Criterios_Rev_Exp(
+ID_Criterio SERIAL NOT NULL,
+Descripcion VARCHAR(100) NOT NULL,
+Estatus DomEstatusCriterio DEFAULT 'ACTIVO',
+PRIMARY KEY(ID_Criterio)
+);
+
+-----------------------------------------------------------------
+--------------   Tabla Criterios_Tutor_Ins   -------------------
+-----------------------------------------------------------------
+CREATE TABLE Criterios_Tutor_Ins(
+ID_Criterio SERIAL NOT NULL,
+NotaMAX INTEGER NOT NULL,
+Descripcion VARCHAR(100) NOT NULL
+	CONSTRAINT ck_NotaMAX
+	CHECK(NotaMAX>=0 AND NotaMAX<=20),
+Estatus DomEstatusCriterio DEFAULT 'ACTIVO',
+PRIMARY KEY(ID_Criterio)
+);
+
+-----------------------------------------------------------------
+--------------   Tabla Criterios_Tutor_Exp   -------------------
+-----------------------------------------------------------------
+CREATE TABLE Criterios_Tutor_Exp(
+ID_Criterio SERIAL NOT NULL,
+NotaMAX INTEGER NOT NULL,
+Descripcion VARCHAR(100) NOT NULL
+	CONSTRAINT ck_NotaMAX
+	CHECK(NotaMAX>=0 AND NotaMAX<=20),
+Estatus DomEstatusCriterio DEFAULT 'ACTIVO',
+PRIMARY KEY(ID_Criterio)
+);
+
+-----------------------------------------------------------------
+--------------   Tabla Criterios_Tutor_E   -------------------
+-----------------------------------------------------------------
+CREATE TABLE Criterios_Tutor_E(
+ID_Criterio SERIAL NOT NULL,
+NotaMAX INTEGER NOT NULL,
+Descripcion VARCHAR(100) NOT NULL
+	CONSTRAINT ck_NotaMAX
+	CHECK(NotaMAX>=0 AND NotaMAX<=20),
+Estatus DomEstatusCriterio DEFAULT 'ACTIVO',
+PRIMARY KEY(ID_Criterio)
+);
+
+-----------------------------------------------------------------
+--------------   Tabla Comites   -------------------
+-----------------------------------------------------------------
+CREATE TABLE Comites(
+ID_Comite SERIAL NOT NULL,
+Fecha DomFecha NOT NULL,
+PRIMARY KEY(ID_Comite)
+);
+
+-----------------------------------------------------------------
+-------------------   Tabla Profesores   ------------------------
+-----------------------------------------------------------------
+CREATE TABLE Profesores(
+Cedula DomCedula NOT NULL,
+Nombre DomNombre NOT NULL,
+Direccion VARCHAR(100) NOT NULL,
+CorreoParticular DomCorreo NOT NULL,
+Telefono VARCHAR(12) NOT NULL,
+Tipo DomTipo NOT NULL,
+PRIMARY KEY(Cedula)
+);
+
+--INDICE
+CREATE INDEX idx_Profesores_Cedula 
+ON Profesores (Cedula);
+
+-----------------------------------------------------------------
+-------------------   Tabla Internos   ------------------------
+-----------------------------------------------------------------
+CREATE TABLE Internos(
+Cedula DomCedula NOT NULL,
+PRIMARY KEY(Cedula),
+FOREIGN KEY(Cedula) 
+REFERENCES Profesores(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+--INDICE
+CREATE INDEX idx_Internos_Cedula 
+ON Internos (Cedula);
+
+-----------------------------------------------------------------
+-------------------   Tabla Externos   ------------------------
+-----------------------------------------------------------------
+CREATE TABLE Externos(
+Cedula DomCedula NOT NULL,
+Institucion DomNombre NOT NULL,
+PRIMARY KEY(Cedula),
+FOREIGN KEY(Cedula) 
+REFERENCES Profesores(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+--INDICE
+CREATE INDEX idx_Externos_Cedula 
+ON Externos (Cedula);
+
+-----------------------------------------------------------------
+------------------   Tabla PropuestaTG   ------------------------
+-----------------------------------------------------------------
+CREATE TABLE PropuestaTG(
+Num_C SERIAL NOT NULL,
+Titulo DomNombre NOT NULL,
+Fecha_Defensa DomFecha,
+Observaciones VARCHAR(100) NOT NULL,
+Modalidad DomTipo NOT NULL,
+ID_Comite INTEGER,
+Nro_Consejo INTEGER,
+Cedula_Revisor DomCedula,
+Cedula_Tutor DomCedula,
+	
+PRIMARY KEY(Num_C),
+	
+FOREIGN KEY(ID_Comite) 
+REFERENCES Comites(ID_Comite)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Nro_Consejo) 
+REFERENCES ConsejoEscuela(Nro_Consejo)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Cedula_Revisor) 
+REFERENCES Profesores(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+	
+FOREIGN KEY(Cedula_Tutor) 
+REFERENCES Profesores(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+--INDICE
+CREATE INDEX idx_PropuestaTG_Num_C 
+ON PropuestaTG (Num_C);
+
+-----------------------------------------------------------------
+---------------   Tabla EvaluacionConsejo   ---------------------
+-----------------------------------------------------------------
+CREATE TABLE EvaluacionConsejo(
+Num_C SERIAL NOT NULL,
+Nro_Consejo INTEGER NOT NULL,
+Estatus DomEstatus NOT NULL,
+	
+PRIMARY KEY(Num_C,Nro_Consejo),
+	
+FOREIGN KEY(Num_C,Nro_Consejo) 
+REFERENCES PropuestaTG(Num_C,Nro_Consejo)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+---------------   Tabla EvaluacionConsejo   ---------------------
+-----------------------------------------------------------------
+CREATE TABLE EvaluacionConsejo(
+Num_C INTEGER NOT NULL,
+Nro_Consejo INTEGER NOT NULL,
+Estatus DomEstatus DEFAULT 'NO REVISADO',
+	
+PRIMARY KEY(Num_C,Nro_Consejo),
+	
+FOREIGN KEY(Num_C,Nro_Consejo) 
+REFERENCES PropuestaTG(Num_C,Nro_Consejo)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+---------------   Tabla EvaluacionComite   ---------------------
+-----------------------------------------------------------------
+CREATE TABLE EvaluacionComite(
+Num_C INTEGER NOT NULL,
+id_Comite INTEGER NOT NULL,
+Estatus DomEstatus DEFAULT 'NO REVISADO',
+	
+PRIMARY KEY(Num_C,Nro_Comite),
+	
+FOREIGN KEY(Num_C,Nro_Comite) 
+REFERENCES PropuestaTG(Num_C,id_Comite)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+-----------------   Tabla Experimentales   ----------------------
+-----------------------------------------------------------------
+CREATE TABLE Experimentales(
+Num_C INTEGER NOT NULL,
+Nombre_Empresa DomNombre,
+ID_TutorE INTEGER,
+	
+PRIMARY KEY(Num_C),
+	
+FOREIGN KEY(Num_C) 
+REFERENCES PropuestaTG(Num_C)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Nombre_Empresa) 
+REFERENCES Empresas(Nombre)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+	
+FOREIGN KEY(ID_TutorE) 
+REFERENCES Tutores_Empresariales(ID_TE)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+--INDICE
+CREATE INDEX idx_Experimentales_Num_C 
+ON Experimentales (Num_C);
+
+-----------------------------------------------------------------
+-----------------   Tabla Instrumentales   ----------------------
+-----------------------------------------------------------------
+CREATE TABLE Instrumentales(
+Num_C INTEGER NOT NULL,
+Cedula_Profesor DomCedula,
+	
+PRIMARY KEY(Num_C),
+	
+FOREIGN KEY(Num_C) 
+REFERENCES PropuestaTG(Num_C)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Cedula_Profesor) 
+REFERENCES Profesores(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+--INDICE
+CREATE INDEX idx_Instrumentales_Num_C 
+ON Instrumentales (Num_C);
+
+-----------------------------------------------------------------
+---------------------   Tabla Presentan   -----------------------
+-----------------------------------------------------------------
+CREATE TABLE Presentan(
+Num_C INTEGER NOT NULL,
+Cedula DomCedula NOT NULL,
+	
+PRIMARY KEY(Num_C,Cedula),
+	
+FOREIGN KEY(Num_C) 
+REFERENCES PropuestaTG(Num_C)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Cedula) 
+REFERENCES Profesores(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+--INDICE
+CREATE INDEX idx_Presentan_Num_C_Cedula 
+ON Presentan (Num_C,Cedula);
+
+-----------------------------------------------------------------
+------------------   Tabla Se_Especializan   --------------------
+-----------------------------------------------------------------
+CREATE TABLE Se_Especializan(
+Cedula DomCedula NOT NULL,
+ID_Area INTEGER NOT NULL,
+	
+PRIMARY KEY(Cedula,ID_Area),
+	
+FOREIGN KEY(ID_Area) 
+REFERENCES Areas(ID_Area)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Cedula) 
+REFERENCES Profesores(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+---------------   Tabla Revisa_Experimental   -------------------
+-----------------------------------------------------------------
+CREATE TABLE Revisa_Experimental(
+Num_C INTEGER NOT NULL,
+ID_Criterio INTEGER NOT NULL,
+Nota DomNota NOT NULL,
+	
+PRIMARY KEY(Num_C,ID_Criterio),
+	
+FOREIGN KEY(ID_Criterio) 
+REFERENCES Criterios_Rev_Exp(ID_Criterio)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Num_C) 
+REFERENCES Experimentales(Num_C)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+---------------   Tabla Revisa_Instrumental   -------------------
+-----------------------------------------------------------------
+CREATE TABLE Revisa_Instrumental(
+Num_C INTEGER NOT NULL,
+ID_Criterio INTEGER NOT NULL,
+Nota DomNota NOT NULL,
+	
+PRIMARY KEY(Num_C,ID_Criterio),
+	
+FOREIGN KEY(ID_Criterio) 
+REFERENCES Criterios_Rev_Ins(ID_Criterio)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Num_C) 
+REFERENCES Instrumentales(Num_C)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+---------------   Tabla Evalua_Experimental   -------------------
+-----------------------------------------------------------------
+CREATE TABLE Evalua_Experimental(
+Num_C INTEGER NOT NULL,
+ID_Criterio INTEGER NOT NULL,
+Nota INTEGER NOT NULL,
+	
+PRIMARY KEY(Num_C,ID_Criterio),
+	
+FOREIGN KEY(ID_Criterio) 
+REFERENCES Criterios_Tutor_Exp(ID_Criterio)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Num_C) 
+REFERENCES Experimentales(Num_C)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+---------------   Tabla Evalua_Instrumental   -------------------
+-----------------------------------------------------------------
+CREATE TABLE Evalua_Instrumental(
+Num_C INTEGER NOT NULL,
+ID_Criterio INTEGER NOT NULL,
+Nota INTEGER NOT NULL,
+	
+PRIMARY KEY(Num_C,ID_Criterio),
+	
+FOREIGN KEY(ID_Criterio) 
+REFERENCES Criterios_Tutor_Ins(ID_Criterio)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Num_C) 
+REFERENCES Instrumentales(Num_C)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+--------------   Tabla Es_Jurado_Experimental   -----------------
+-----------------------------------------------------------------
+CREATE TABLE Es_Jurado_Experimental(
+Num_C INTEGER NOT NULL,
+Cedula BIGINT NOT NULL,
+	
+PRIMARY KEY(Num_C,Cedula),
+	
+FOREIGN KEY(Cedula) 
+REFERENCES Profesores(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Num_C) 
+REFERENCES Experimentales(Num_C)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+--------------   Tabla Es_Jurado_Instrumental   -----------------
+-----------------------------------------------------------------
+CREATE TABLE Es_Jurado_Instrumental(
+Num_C INTEGER NOT NULL,
+Cedula BIGINT NOT NULL,
+	
+PRIMARY KEY(Num_C,Cedula),
+	
+FOREIGN KEY(Cedula) 
+REFERENCES Profesores(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Num_C) 
+REFERENCES Instrumentales(Num_C)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+-----------   Tabla Evaluacion_Tutor_Empresarial   --------------
+-----------------------------------------------------------------
+CREATE TABLE Evaluacion_Tutor_Empresarial(
+Cedula DomCedula NOT NULL,
+ID_Criterio INTEGER NOT NULL,
+Nota INTEGER NOT NULL,
+	
+PRIMARY KEY(Num_C,ID_Criterio),
+	
+FOREIGN KEY(ID_Criterio) 
+REFERENCES Criterios_Tutor_E(ID_Criterio)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Cedula) 
+REFERENCES Tesistas(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+----------------------   Es_Evaluado_Por_Jurado_Ins   ------------------------
+-----------------------------------------------------------------
+CREATE TABLE Es_Evaluado_Por_Jurado_Ins (
+Cedula DomCedula NOT NULL,
+ID_Criterio INTEGER NOT NULL,
+Cedula_Jurado DomCedula NOT NULL,
+Nota INTEGER NOT NULL
+	CONSTRAINT ck_Nota
+	CHECK(Nota>=0 AND Nota<=20),
+Tipo DomTipo NOT NULL,
+	
+PRIMARY KEY(Cedula,ID_Criterio,Cedula_Jurado),
+	
+FOREIGN KEY(Cedula) 
+REFERENCES Tesistas(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+	
+FOREIGN KEY(ID_Criterio) 
+REFERENCES Criterios_Instrumental_Jurado(ID_Criterio)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Cedula_Jurado) 
+REFERENCES Profesores(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
+-----------------------------------------------------------------
+----------------------   Es_Evaluado_Por_Jurado_Exp   ------------------------
+-----------------------------------------------------------------
+CREATE TABLE Es_Evaluado_Por_Jurado_Exp(
+Cedula DomCedula NOT NULL,
+ID_Criterio INTEGER NOT NULL,
+Cedula_Jurado DomCedula NOT NULL,
+Nota INTEGER NOT NULL
+	CONSTRAINT ck_Nota
+	CHECK(Nota>=0 AND Nota<=20),
+Tipo DomTipo NOT NULL,
+	
+PRIMARY KEY(Cedula,ID_Criterio,Cedula_Jurado),
+	
+FOREIGN KEY(Cedula) 
+REFERENCES Tesistas(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+	
+FOREIGN KEY(ID_Criterio) 
+REFERENCES Criterios_Instrumental_Jurado(ID_Criterio)
+ON UPDATE CASCADE
+ON DELETE CASCADE,
+
+FOREIGN KEY(Cedula_Jurado) 
+REFERENCES Profesores(Cedula)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
+
