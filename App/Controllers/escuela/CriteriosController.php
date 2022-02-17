@@ -73,7 +73,11 @@ class CriteriosController extends \Core\Controller
             (new Criterios())->modificarCriterio($id_criterio, $proximoEstatus, $tabla, $sql);
             $_SESSION['mensaje'] = "Estado de Criterio se actualizado correctamente";
             $_SESSION['colorcito'] = "success";
+            if($modalidad=='E')
             header('location:escuela-criterios-experimentales-todos');
+            else
+            header('location:escuela-criterios-instrumentales-todos');
+
         } else {
             // No esta enviando datos desde el formulario
             header('location:escuela-criterios-experimentales-todos');
