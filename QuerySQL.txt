@@ -1,4 +1,4 @@
-/EN ESTA SECCIÓN SE DEFINEN LOS DOMINIOS ASOCIADOS A LAS TABLAS/
+/EN ESTA SECCIï¿½N SE DEFINEN LOS DOMINIOS ASOCIADOS A LAS TABLAS/
 CREATE DOMAIN DomCedula AS BIGINT;
 CREATE DOMAIN DomNombre AS VARCHAR (70);
 CREATE DOMAIN DomCorreo AS VARCHAR(100);
@@ -12,7 +12,7 @@ CREATE DOMAIN DomTipo AS CHAR
 	CHECK(VALUE IN('E','I'));
 CREATE DOMAIN DomEstatusCriterio AS VARCHAR(10)
 	CHECK(VALUE IN('ACTIVO','INACTIVO'));
-/EN ESTA SECCIÓN SE DEFINEN LAS TABLAS DE LA BASE DE DATOS/	
+/EN ESTA SECCIï¿½N SE DEFINEN LAS TABLAS DE LA BASE DE DATOS/	
 
 /***TABLAS PARA INICIOS DE SESION***/
 
@@ -33,7 +33,7 @@ CREATE TABLE Usuarios(
 cedula DomCedula NOT NULL,
 Nombre_Usuario DomNombre NOT NULL,
 Correo  DomCorreo NOT NULL,
-Contraseña VARCHAR(50) NOT NULL,
+Contraseï¿½a VARCHAR(50) NOT NULL,
 Modelo VARCHAR(12),
 Codigo VARCHAR(10),
 PRIMARY KEY(cedula)
@@ -98,20 +98,6 @@ CREATE TABLE Empresas(
 Nombre DomNombre NOT NULL,
 Slug VARCHAR(50) NOT NULL,
 PRIMARY KEY(Nombre)
-);
-
------------------------------------------------------------------
--------------   Tabla Tutores_Empresariales   -------------------
------------------------------------------------------------------
-CREATE TABLE Tutores_Empresariales(
-ID_TE SERIAL NOT NULL,
-Nombre DomNombre NOT NULL,
-NombreEmpresa DomNombre NOT NULL,
-PRIMARY KEY(ID_TE),
-FOREIGN KEY(NombreEmpresa) 
-REFERENCES Empresas(Nombre)
-ON UPDATE CASCADE
-ON DELETE CASCADE
 );
 
 -----------------------------------------------------------------
@@ -579,6 +565,19 @@ ON UPDATE CASCADE
 ON DELETE CASCADE
 );
 
+-----------------------------------------------------------------
+-------------   Tabla Tutores_Empresariales   -------------------
+-----------------------------------------------------------------
+CREATE TABLE Tutores_Empresariales(
+ID_TE SERIAL NOT NULL,
+Nombre DomNombre NOT NULL,
+NombreEmpresa DomNombre NOT NULL,
+PRIMARY KEY(ID_TE),
+FOREIGN KEY(NombreEmpresa) 
+REFERENCES Empresas(Nombre)
+ON UPDATE CASCADE
+ON DELETE CASCADE
+);
 -----------------------------------------------------------------
 -----------   Tabla Evaluacion_Tutor_Empresarial   --------------
 -----------------------------------------------------------------
